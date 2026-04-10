@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Masan Omni-Channel Demo v2: Meal-Occasion + Zalo Mini-App POS</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{colors:{masan:'#1B2A4A','masan-red':'#E30613','zalo-blue':'#0068FF'}}}}</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+*{box-sizing:border-box;margin:0}
+body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100vh;overflow-x:auto}
+.blob-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.15;animation:drift 16s ease-in-out infinite alternate}
+.blob-1{width:600px;height:600px;background:#0068FF;top:-10%;left:0}
+.blob-2{width:500px;height:500px;background:#E30613;bottom:-10%;left:30%;animation-delay:4s}
+.blob-3{width:500px;height:500px;background:#27AE60;top:20%;right:0;animation-delay:8s}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(25px,-15px) scale(1.04)}100%{transform:translate(-15px,20px) scale(.97)}}
+.glass{background:rgba(255,255,255,.04);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:14px}
+
+/* PHONE */
+.phone{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4);display:flex;flex-direction:column;height:640px;width:100%}
+.zhdr{display:flex;align-items:center;gap:8px;padding:10px 12px;color:#fff}
+.zav{width:32px;height:32px;border-radius:50%;background-size:cover;background-position:center;flex-shrink:0;border:2px solid rgba(255,255,255,.4)}
+.zwho{flex:1}.zwho .zn{font-weight:700;font-size:11.5px}.zwho .zs{font-size:9px;opacity:.75;display:flex;align-items:center;gap:3px}
+.zdot{width:5px;height:5px;border-radius:50%;background:#5EF38C;display:inline-block}
+.zchat{flex:1;overflow-y:auto;padding:8px;display:flex;flex-direction:column;gap:6px;background:#E5EFF8;scroll-behavior:smooth}
+.zchat::-webkit-scrollbar{width:3px}.zchat::-webkit-scrollbar-thumb{background:#C0C8D0;border-radius:2px}
+.zrow{display:flex;gap:5px;align-items:flex-end;animation:zf .3s ease}.zrow.zu{justify-content:flex-end}
+@keyframes zf{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.zm{width:20px;height:20px;border-radius:50%;background-size:cover;background-position:center;flex-shrink:0}
+.zb{max-width:82%;padding:7px 9px;border-radius:11px;font-size:11px;line-height:1.45;word-wrap:break-word}
+.zbot .zb{background:#fff;color:#1A1A1A;border-bottom-left-radius:2px;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+.zu .zb{background:#D5F1FF;color:#1A1A1A;border-bottom-right-radius:2px}
+.zt{font-size:7.5px;color:#8C939D;margin-top:1px}
+.zcard{background:#fff;border:1px solid #E5E8EC;border-radius:10px;max-width:82%;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.zcard img{width:100%;display:block;height:90px;object-fit:cover}
+.zcard .zbd{padding:6px 8px}.zcard .zti{font-weight:700;font-size:10.5px;color:#1A1A1A;margin-bottom:1px}
+.zcard .zme{font-size:9px;color:#8C939D;margin-bottom:2px}
+.zpr{color:#E30613;font-weight:700;font-size:11px}.zst{color:#8C939D;text-decoration:line-through;font-size:9px;margin-left:3px}
+.ztg{display:inline-block;background:#E30613;color:#fff;font-size:7.5px;padding:1px 4px;border-radius:5px;font-weight:700;margin-left:3px;vertical-align:middle}
+.zq{display:flex;flex-wrap:wrap;gap:3px;padding:4px 8px 1px}
+.zch{background:#fff;border:1.5px solid #0068FF;color:#0068FF;padding:4px 9px;border-radius:12px;font-size:9.5px;cursor:pointer;transition:all .12s;font-weight:600}
+.zch:hover{background:#0068FF;color:#fff}.zch.zr{border-color:#E30613;color:#E30613}.zch.zr:hover{background:#E30613;color:#fff}
+.zch.zg{border-color:#27AE60;color:#27AE60}.zch.zg:hover{background:#27AE60;color:#fff}
+.zin{padding:6px 8px;border-top:1px solid #E5E8EC;background:#fff;display:flex;gap:5px;align-items:center;color:#8C939D;font-size:10px}
+.zin .zbx{flex:1;background:#F3F5F6;border-radius:12px;padding:5px 8px;color:#B0B5BD;font-size:9px}
+.zty{display:inline-flex;gap:2px;padding:7px 9px;background:#fff;border-radius:11px;border-bottom-left-radius:2px;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+.zty span{width:4px;height:4px;background:#B0B5BD;border-radius:50%;animation:zbb 1.2s infinite}
+.zty span:nth-child(2){animation-delay:.15s}.zty span:nth-child(3){animation-delay:.3s}
+@keyframes zbb{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-2px);opacity:1}}
+.zord{background:#fff;border:1px solid #E5E8EC;border-radius:10px;padding:7px;max-width:84%;font-size:9.5px;color:#1A1A1A;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.zord h4{margin:0 0 4px;font-size:10px;color:#E30613}
+.zord .zln{display:flex;justify-content:space-between;padding:1.5px 0;border-bottom:1px dashed #E5E8EC;font-size:9px}
+.zord .zln:last-child{border-bottom:none;font-weight:700;color:#E30613;padding-top:3px}
+.zsp{display:inline-block;background:linear-gradient(90deg,#005BAA,#0077C8);color:#fff;font-size:7px;padding:1px 4px;border-radius:5px;font-weight:700;margin-left:2px;vertical-align:middle}
+.zmap{background:#F3F5F6;border-radius:6px;padding:5px;margin-top:3px;font-size:9.5px;border:1px solid #E5E8EC;color:#1A1A1A}
+/* MEAL COMBO BOX */
+.zmeal{background:#fff;border:1.5px solid #27AE60;border-radius:10px;max-width:84%;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.zmeal .mimg{width:100%;height:80px;object-fit:cover;display:block}
+.zmeal .mhdr{background:linear-gradient(135deg,#27AE60,#219653);padding:5px 8px;color:#fff;font-weight:700;font-size:10px;display:flex;align-items:center;gap:4px}
+.zmeal .mbdy{padding:6px 8px}
+.zmeal .mitm{display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:9px;color:#333;border-bottom:1px solid #F3F5F6;gap:4px}
+.zmeal .mitm:last-child{border-bottom:none}
+.zmeal .mitm .mi-chk{width:14px;height:14px;border-radius:3px;border:1.5px solid #27AE60;cursor:pointer;accent-color:#27AE60;flex-shrink:0}
+.zmeal .mitm .mi-name{flex:1}
+.zmeal .mitm .mi-price{color:#E30613;font-weight:700;font-size:9px;white-space:nowrap}
+.zmeal .mtot{display:flex;justify-content:space-between;align-items:center;padding:4px 0 0;border-top:1.5px solid #27AE60;margin-top:3px;font-weight:800;font-size:11px;color:#27AE60}
+.zmeal .mtag{font-size:7px;background:#27AE60;color:#fff;padding:1px 4px;border-radius:4px;font-weight:700}
+.zmeal .msave{background:linear-gradient(90deg,#FF6B00,#FF8C33);color:#fff;font-size:8px;padding:2px 6px;border-radius:4px;font-weight:700;text-align:center;margin:4px 8px 6px}
+.zmeal .mact{display:flex;gap:4px;padding:4px 8px 6px}
+.zmeal .mact button{flex:1;padding:5px 4px;border-radius:6px;font-size:8.5px;font-weight:700;border:none;cursor:pointer;transition:all .12s}
+.zmeal .mact .ma-all{background:#27AE60;color:#fff}
+.zmeal .mact .ma-all:hover{background:#219653}
+.zmeal .mact .ma-pick{background:#fff;border:1.5px solid #27AE60;color:#27AE60}
+.zmeal .mact .ma-pick:hover{background:#F0FFF4}
+
+/* INTERNAL PANELS */
+.sys{transition:all .4s;position:relative}
+.sys.on{border-color:rgba(0,104,255,.5) !important;box-shadow:0 0 20px rgba(0,104,255,.12)}
+.sys.on .sd{background:#0068FF;box-shadow:0 0 6px #0068FF}
+.sys.on .sl{color:#0068FF}
+.sys.on .dl{color:rgba(255,255,255,.8)}
+.sd{width:6px;height:6px;border-radius:50%;background:#333;transition:all .3s}
+.sl{font-size:8px;color:rgba(255,255,255,.3);font-weight:700;text-transform:uppercase;letter-spacing:.04em;transition:color .3s}
+.dl{font-size:9px;color:rgba(255,255,255,.4);transition:color .3s}
+@keyframes pr{0%{transform:scale(1);opacity:.5}100%{transform:scale(2.5);opacity:0}}
+.pulse-dot{position:absolute;top:8px;left:8px;width:6px;height:6px;border-radius:50%;border:1.5px solid #0068FF;animation:pr 1.5s ease-out infinite;display:none;pointer-events:none}
+.sys.on .pulse-dot{display:block}
+
+/* POPUP */
+.popup-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:50;display:flex;align-items:end;justify-content:center;animation:popIn .3s ease;border-radius:16px;overflow:hidden}
+.popup{background:#fff;border-radius:14px 14px 0 0;padding:12px;width:100%;color:#1A1A1A;box-shadow:0 -4px 20px rgba(0,0,0,.15)}
+@keyframes popIn{from{opacity:0}to{opacity:1}}
+
+/* GAP CALLOUT */
+.gap-card{background:linear-gradient(135deg,rgba(227,6,19,.08),rgba(227,6,19,.02));border:1.5px dashed #E30613;border-radius:14px;padding:12px;position:relative}
+
+/* ZALO MINI-APP POS */
+.zma{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4);display:flex;flex-direction:column;height:100%;width:100%}
+.zma-hdr{background:#0068FF;padding:8px 12px;display:flex;align-items:center;gap:8px}
+.zma-hdr .zma-back{color:#fff;font-size:18px;opacity:.8;cursor:pointer;line-height:1;transition:opacity .12s}
+.zma-hdr .zma-back:hover{opacity:1}
+.zma-hdr .zma-title{flex:1;color:#fff;font-weight:700;font-size:12px}
+.zma-hdr .zma-sub{color:rgba(255,255,255,.7);font-size:8px}
+.zma-hdr .zma-dots{color:#fff;font-size:16px;opacity:.6;cursor:pointer}
+.zma-bar{background:#F0F6FF;border-bottom:1px solid #D6E4F0;padding:4px 10px;display:flex;align-items:center;gap:4px}
+.zma-bar .zma-lock{font-size:8px;color:#27AE60}
+.zma-bar .zma-url{font-size:8px;color:#6B7280;flex:1}
+.zma-body{flex:1;overflow-y:auto;padding:10px;background:#F8F9FA}
+.zma-body::-webkit-scrollbar{width:3px}.zma-body::-webkit-scrollbar-thumb{background:#D0D5DD;border-radius:2px}
+.pc{background:#fff;border-radius:10px;padding:10px;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,.05);border:1px solid #E5E8EC}
+.pc h3{font-size:11px;font-weight:700;color:#1B2A4A;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.pc .ico{width:18px;height:18px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0}
+.ptab{display:flex;gap:0;border-radius:7px;overflow:hidden;border:1px solid #E5E8EC;margin-bottom:8px}
+.ptab button{flex:1;padding:6px 3px;font-size:9px;font-weight:600;border:none;cursor:pointer;transition:all .12s;background:#fff;color:#666}
+.ptab button.active{background:#0068FF;color:#fff}
+.pr{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #F3F5F6;font-size:10px;color:#333}.pr:last-child{border-bottom:none}
+.pbdg{font-size:8px;padding:2px 6px;border-radius:5px;font-weight:700}
+.pbtn{padding:6px 12px;border-radius:7px;font-size:10px;font-weight:700;border:none;cursor:pointer;transition:all .12s}
+.pbtn-p{background:#0068FF;color:#fff}.pbtn-p:hover{background:#0055D4}
+.pbtn-r{background:#E30613;color:#fff}.pbtn-r:hover{background:#C00510}
+.pbtn-o{background:#fff;border:1.5px solid #0068FF;color:#0068FF}.pbtn-o:hover{background:#F0F6FF}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.psku{background:#F8F9FA;border:1.5px solid #E5E8EC;border-radius:8px;padding:6px 4px;text-align:center;cursor:pointer;transition:all .12s;font-size:9px}
+.psku:hover{border-color:#0068FF;background:#F0F6FF}
+.psku img{width:36px;height:36px;border-radius:6px;object-fit:cover;margin:0 auto 4px;display:block}
+.psku .nm{font-weight:700;color:#333;margin-bottom:2px;font-size:10px}.psku .pri{color:#E30613;font-weight:700;font-size:10px}
+.pstat{text-align:center;padding:6px}
+.pstat .num{font-size:18px;font-weight:800;color:#1B2A4A}.pstat .lbl{font-size:9px;color:#8C939D;margin-top:1px}
+.pchart{height:55px;display:flex;align-items:end;gap:3px;padding:3px 0}
+.pbar{flex:1;border-radius:3px 3px 0 0;transition:height .5s ease;cursor:pointer;position:relative}
+.pbar:hover::after{content:attr(data-val);position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:7px;background:#1B2A4A;color:#fff;padding:1px 4px;border-radius:3px;white-space:nowrap}
+.pnav{display:flex;border-top:1px solid #E5E8EC;background:#fff}
+.pnav button{flex:1;padding:6px 2px;font-size:7.5px;font-weight:700;border:none;cursor:pointer;background:#fff;color:#8C939D;display:flex;flex-direction:column;align-items:center;gap:1px;transition:all .12s}
+.pnav button.active{color:#0068FF}
+.pr-img{width:20px;height:20px;border-radius:4px;object-fit:cover;flex-shrink:0}
+
+/* ROAS / FUNNEL */
+.funnel-bar{height:16px;border-radius:3px;display:flex;align-items:center;padding:0 6px;font-size:8px;font-weight:700;color:#fff;transition:width .6s ease;margin-bottom:3px}
+.roas-card{background:linear-gradient(135deg,#F8F9FA,#fff);border:1px solid #E5E8EC;border-radius:8px;padding:8px;margin-bottom:6px}
+.roas-card .brand-logo{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#fff;flex-shrink:0}
+.roas-metric{text-align:center;padding:4px}
+.roas-metric .rv{font-size:14px;font-weight:800}.roas-metric .rl{font-size:8px;color:#8C939D;margin-top:1px}
+
+/* ADS PORTAL — BM STYLE */
+.adp{font-family:'Inter',sans-serif;color:#1C2B33}
+.adp-sidebar{width:260px;background:#1B2A4A;min-height:calc(100vh - 52px);padding:0;flex-shrink:0;display:flex;flex-direction:column}
+.adp-sidebar .sb-brand{padding:20px 18px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.adp-sidebar .sb-brand .sb-logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#0068FF,#00C2FF);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#fff}
+.adp-sidebar .sb-nav{padding:8px 0;flex:1}
+.adp-sidebar .sb-item{display:flex;align-items:center;gap:10px;padding:9px 18px;font-size:12px;color:rgba(255,255,255,.55);cursor:pointer;transition:all .12s;border-left:3px solid transparent}
+.adp-sidebar .sb-item:hover{background:rgba(255,255,255,.04);color:rgba(255,255,255,.85)}
+.adp-sidebar .sb-item.active{background:rgba(0,104,255,.15);color:#fff;border-left-color:#0068FF;font-weight:600}
+.adp-sidebar .sb-item .sb-ico{width:18px;text-align:center;font-size:13px;opacity:.7}
+.adp-sidebar .sb-section{padding:6px 18px 4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.25);margin-top:8px}
+.adp-sidebar .sb-acct{padding:14px 18px;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:10px}
+.adp-sidebar .sb-acct .sb-avatar{width:32px;height:32px;border-radius:8px;background:#1F36C7;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff}
+.adp-main{flex:1;background:#F0F2F5;min-height:calc(100vh - 52px);overflow-y:auto}
+.adp-topbar{background:#fff;border-bottom:1px solid #E4E6EB;padding:12px 24px;display:flex;align-items:center;gap:16px}
+.adp-content{padding:20px 24px}
+.adp-kpi{background:#fff;border-radius:12px;border:1px solid #E4E6EB;padding:16px;text-align:center;transition:box-shadow .15s}
+.adp-kpi:hover{box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.adp-kpi .kv{font-size:26px;font-weight:800;color:#1B2A4A}.adp-kpi .kl{font-size:11px;color:#65676B;margin-top:2px}.adp-kpi .kd{font-size:10px;font-weight:700;margin-top:4px}
+.adp-card{background:#fff;border-radius:12px;border:1px solid #E4E6EB;padding:18px;margin-bottom:16px}
+.adp-card h3{font-size:14px;font-weight:700;color:#1C2B33;margin:0 0 14px;display:flex;align-items:center;gap:8px}
+.adp-card h3 .badge{font-size:9px;background:#E7F3FF;color:#0068FF;padding:2px 8px;border-radius:10px;font-weight:600}
+.adp-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.adp-bar-label{width:150px;font-size:11px;color:#65676B;text-align:right}
+.adp-bar-track{flex:1;height:24px;background:#F0F2F5;border-radius:6px;overflow:hidden}
+.adp-bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:10px;font-weight:700;color:#fff;transition:width .8s ease}
+.adp-table{width:100%;border-collapse:collapse;font-size:11px}
+.adp-table th{text-align:left;padding:8px 10px;font-size:10px;font-weight:700;color:#65676B;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid #E4E6EB;background:#FAFBFC}
+.adp-table td{padding:8px 10px;border-bottom:1px solid #F0F2F5;color:#1C2B33}
+.adp-table tr:hover td{background:#F8F9FA}
+.adp-tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:700}
+.adp-tag-green{background:#E6F4EA;color:#137333}.adp-tag-blue{background:#E7F3FF;color:#0068FF}.adp-tag-amber{background:#FEF3E2;color:#B06000}
+.adp-funnel-step{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #F0F2F5}
+.adp-funnel-step:last-child{border-bottom:none}
+.adp-funnel-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0}
+
+/* VIETQR CARD */
+.zqr{background:#fff;border:1px solid #E5E8EC;border-radius:10px;max-width:82%;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04);padding:0}
+.zqr-hdr{background:linear-gradient(135deg,#A50064,#D0006F);padding:6px 10px;display:flex;align-items:center;gap:6px}
+.zqr-hdr img{height:16px}
+.zqr-hdr span{color:#fff;font-size:10px;font-weight:700}
+.zqr-body{padding:10px;text-align:center}
+.zqr-body .qr-box{width:110px;height:110px;margin:6px auto;border:2px solid #E5E8EC;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#fff;position:relative}
+.zqr-body .qr-grid{display:grid;grid-template-columns:repeat(11,1fr);gap:1px;width:88px;height:88px}
+.zqr-body .qr-cell{border-radius:1px}
+.zqr-info{font-size:9px;color:#65676B;margin-top:6px;line-height:1.5}
+.zqr-info b{color:#1A1A1A}
+.zqr-banks{display:flex;justify-content:center;gap:6px;margin-top:8px}
+.zqr-banks .qrb{width:28px;height:28px;border-radius:6px;border:1px solid #E5E8EC;display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:900;color:#fff}
+
+/* ZALO HOME SCREEN */
+.zalo-home{padding:10px;text-align:center}
+.zalo-home .zh-logo{font-size:28px;margin:20px 0 6px}
+.zalo-home .zh-title{font-size:13px;font-weight:800;color:#1B2A4A;margin-bottom:3px}
+.zalo-home .zh-sub{font-size:10px;color:#8C939D;margin-bottom:16px}
+.zalo-home .zh-apps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 6px}
+.zalo-home .zh-app{background:#F8F9FA;border:1.5px solid #E5E8EC;border-radius:10px;padding:10px 6px;text-align:center;cursor:pointer;transition:all .15s}
+.zalo-home .zh-app:hover{border-color:#0068FF;background:#F0F6FF;transform:translateY(-1px)}
+.zalo-home .zh-app .zha-ico{font-size:22px;margin-bottom:4px}
+.zalo-home .zh-app .zha-name{font-size:9px;font-weight:700;color:#333}
+</style>
+</head>
+<body>
+<div class="blob-bg"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+
+<div class="relative z-10">
+
+<!-- TOP VIEW SWITCHER -->
+<div class="flex items-center gap-2 px-5 pt-3 pb-1">
+  <button id="tab-demo" onclick="switchView('demo')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff">Omni-Channel Demo</button>
+  <button id="tab-ads" onclick="switchView('ads')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">WinX Ads Portal — Góc nhìn nhà tài trợ</button>
+</div>
+
+<!-- ============ VIEW 1: OMNI-CHANNEL DEMO ============ -->
+<div id="view-demo" class="flex flex-col" style="min-width:1700px">
+
+<!-- HEADER -->
+<div class="flex items-center justify-between px-5 py-3">
+  <div class="flex items-center gap-8">
+    <div><div class="text-[9px] font-bold tracking-widest text-blue-400 uppercase">Cột 1: Kênh MT</div><div class="text-sm font-bold text-white/90">WinMart Zalo OA, "Hôm nay ăn gì?"</div></div>
+    <div><div class="text-[9px] font-bold tracking-widest text-orange-400 uppercase">Cột 2: Kênh GT</div><div class="text-sm font-bold text-white/90">Tạp Hoá Cô Lan, bữa cơm gia đình</div></div>
+  </div>
+  <div class="flex items-center gap-3">
+    <button onclick="resetAll()" class="px-3 py-1.5 bg-white/10 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-semibold transition">Chơi lại</button>
+    <div class="w-px h-6 bg-white/10"></div>
+    <div class="text-right"><div class="text-[9px] font-bold tracking-widest text-green-400 uppercase">Cột 3: Zalo Mini-App POS</div><div class="text-sm font-bold text-white/90">POS cho Cô Lan (trong Zalo)</div></div>
+  </div>
+</div>
+
+<!-- 3 PANES -->
+<div class="flex gap-4 px-5 pb-5 items-start">
+
+<!-- ======= PANE 1: WINMART MT — MEAL OCCASION ======= -->
+<div class="flex flex-col gap-3" style="width:400px;flex-shrink:0">
+  <div class="phone" id="p1">
+    <div class="zhdr" style="background:#0068FF">
+      <span class="text-lg opacity-80">&#8249;</span>
+      <div class="zav" id="av1"></div>
+      <div class="zwho"><div class="zn">WinMart+ Thảo Điền</div><div class="zs"><span class="zdot"></span> Đang hoạt động</div></div>
+    </div>
+    <div class="zchat" id="c1"></div>
+    <div class="zin"><div class="zbx">Nhập tin nhắn...</div></div>
+  </div>
+  <!-- MT INTERNAL PANEL -->
+  <div class="text-[9px] font-bold tracking-widest text-blue-400 uppercase mb-1">Bảng điều khiển nội bộ MT</div>
+  <div class="grid grid-cols-2 gap-2">
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="mt-crm">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">WIN CRM</div></div>
+      <div class="dl">Tên: <span class="text-white/70 font-medium">Nguyễn Thị Linh</span></div>
+      <div class="dl">Hạng: <span class="text-yellow-400 font-medium">Gold, 1.805 điểm</span></div>
+      <div class="dl">Hộ gia đình: <span class="text-white/70 font-medium">3 người</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="mt-meal">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">MEAL PATTERN AI</div></div>
+      <div class="dl">Món thường nấu: <span class="text-orange-300 font-medium">sườn kho, canh chua</span></div>
+      <div class="dl">Protein chính: <span class="text-white/70 font-medium">sườn non, cá basa</span></div>
+      <div class="dl">Tần suất nấu: <span class="text-white/70 font-medium">5 bữa/tuần</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="mt-region">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">REGIONAL DISH INDEX</div></div>
+      <div class="dl">Q2 HCM: <span class="text-white/70 font-medium">canh chua cá, sườn kho</span></div>
+      <div class="dl">Mùa: <span class="text-green-400 font-medium">Tháng 4, nóng</span></div>
+      <div class="dl">Xu hướng: <span class="text-white/70 font-medium">món mát, gỏi cuốn</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="mt-pos">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">WCM POS DATA</div></div>
+      <div class="dl">Giờ: <span class="text-white/70 font-medium">9:30 sáng (lên thực đơn)</span></div>
+      <div class="dl">Giỏ TB: <span class="text-white/70 font-medium">385.000đ</span></div>
+      <div class="dl">Protein #1: <span class="text-orange-300 font-medium">MEATDeli sườn non</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="mt-meat">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">MEATDeli SUPPLY</div></div>
+      <div class="dl">Lô: <span class="text-green-400 font-medium">#MD-100426</span></div>
+      <div class="dl">Mổ: <span class="text-white/70 font-medium">04:00 sáng nay</span></div>
+      <div class="dl">Lạnh: <span class="text-green-400 font-medium">OK (2,1 độ C)</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="mt-promo">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">PROMO + SPONSOR</div></div>
+      <div class="dl">Combo bữa cơm: <span class="text-red-400 font-medium">129k/3 người</span></div>
+      <div class="dl">Vinamilk sponsor: <span class="text-blue-300 font-medium">Ly sứ Q2</span></div>
+      <div class="dl">Budget: <span class="text-white/70 font-medium">1.247/5.000</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="mt-sponsor">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">VINAMILK SPONSOR</div></div>
+      <div class="dl">Chiến dịch: <span class="text-blue-300 font-medium">Ly sứ Q2</span></div>
+      <div class="dl">Tiến độ KH: <span class="text-yellow-400 font-medium">2/4 hộp</span></div>
+      <div class="dl">CPM: <span class="text-white/70 font-medium">85.000đ</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="mt-logistics">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">WINX LOGISTICS</div></div>
+      <div class="dl">Gần nhất: <span class="text-white/70 font-medium">Thảo Điền 0,4km</span></div>
+      <div class="dl">Tài xế: <span class="text-white/70 font-medium">3 người sẵn</span></div>
+      <div class="dl">ETA: <span class="text-white/70 font-medium">42 phút</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= PANE 2: CÔ LAN GT — MEAL OCCASION ======= -->
+<div class="flex flex-col gap-3" style="width:400px;flex-shrink:0">
+  <div class="phone" id="p2" style="position:relative">
+    <div class="zhdr" style="background:#FF6B00">
+      <span class="text-lg opacity-80">&#8249;</span>
+      <div class="zav" id="av2"></div>
+      <div class="zwho"><div class="zn">Tạp Hoá Cô Lan, Trương Định</div><div class="zs"><span class="zdot"></span> Đang hoạt động</div></div>
+    </div>
+    <div class="zchat" id="c2"></div>
+    <div class="zin"><div class="zbx">Nhập tin nhắn...</div></div>
+    <div class="popup-overlay" id="tcbPopup" style="display:none">
+      <div class="popup">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white font-black text-[8px]">TCB</div>
+          <div><div class="font-bold text-xs">Techcombank cho Cô Lan</div><div class="text-[9px] text-gray-500">Ưu đãi riêng cho chủ tạp hoá Masan</div></div>
+        </div>
+        <div class="bg-red-50 rounded-lg p-2 mb-2">
+          <div class="text-red-700 font-bold text-xs mb-0.5">Thấu chi kinh doanh 10 triệu đồng</div>
+          <div class="text-[9px] text-gray-600">Lãi 0,8%/tháng. Giải ngân 24h. Không thế chấp. Dựa trên lịch sử nhập hàng Masan.</div>
+        </div>
+        <div class="flex gap-2">
+          <button class="pbtn pbtn-r flex-1" onclick="document.getElementById('tcbPopup').style.display='none'">Để sale gọi tôi</button>
+          <button class="pbtn pbtn-o flex-1" onclick="document.getElementById('tcbPopup').style.display='none'">Để sau</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GT INTERNAL PANEL -->
+  <div class="text-[9px] font-bold tracking-widest text-orange-400 uppercase mb-1">Bảng điều khiển nội bộ GT</div>
+  <div class="grid grid-cols-2 gap-2">
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="gt-owner">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">HỒ SƠ CHỦ TIỆM</div></div>
+      <div class="dl">Cô Lan: <span class="text-white/70 font-medium">Tạp hoá 156 Trương Định</span></div>
+      <div class="dl">Nhập TB/tháng: <span class="text-white/70 font-medium">18,7tr</span></div>
+      <div class="dl">Sản phẩm Masan: <span class="text-orange-300 font-medium">43% DT</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="gt-customer">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">HỒ SƠ KHÁCH MUA</div></div>
+      <div class="dl">Tên: <span class="text-white/70 font-medium">Trần Thị Hương</span></div>
+      <div class="dl">Hộ gia đình: <span class="text-white/70 font-medium">4 người</span></div>
+      <div class="dl">Món thường nấu: <span class="text-orange-300 font-medium">thịt kho, canh rau</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="gt-meal">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">GT MEAL ENGINE</div></div>
+      <div class="dl">Vùng HBT, Hà Nội: <span class="text-white/70 font-medium">thịt kho trứng, rau muống</span></div>
+      <div class="dl">Giá bữa cơm 4 người: <span class="text-green-400 font-medium">~95k-140k</span></div>
+      <div class="dl">Protein: <span class="text-orange-300 font-medium">ba chỉ, trứng</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="gt-chinsu">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">MASAN/MCH PROMO</div></div>
+      <div class="dl">Chin-Su: <span class="text-red-400 font-medium">giảm 20%</span></div>
+      <div class="dl">Omachi: <span class="text-white/70 font-medium">thùng giảm 8%</span></div>
+      <div class="dl">Budget: <span class="text-white/70 font-medium">Còn 55%</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="gt-unilever">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">UNILEVER SPONSOR</div></div>
+      <div class="dl">Chiến dịch: <span class="text-blue-300 font-medium">Omo Q2 Push</span></div>
+      <div class="dl">Trợ giá: <span class="text-white/70 font-medium">15%/đơn vị</span></div>
+      <div class="dl">Attribution: <span class="text-green-400 font-medium">GT POS data</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="gt-tcb">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">TECHCOMBANK API</div></div>
+      <div class="dl">Hạn mức: <span class="text-white/70 font-medium">10 triệu</span></div>
+      <div class="dl">Lãi suất: <span class="text-green-400 font-medium">0,8%/tháng</span></div>
+      <div class="dl">Dựa trên: <span class="text-white/70 font-medium">Lịch sử nhập Masan</span></div>
+    </div>
+    <div class="col-span-2 gap-card !p-3" id="gt-gap">
+      <div class="text-[10px] font-bold text-red-400 uppercase tracking-wider mb-1">Dữ liệu thiếu: GT POS</div>
+      <div class="text-[9px] text-white/60 leading-relaxed mb-2">Không có POS data từ 600.000+ tạp hoá. Hiện Cô Lan dùng sổ tay/KiotViet. Nếu có GT POS: biết tồn kho thực tế, tần suất bán từng SKU, giờ cao điểm, basket size, biên lợi nhuận, meal-pattern của khách hàng.</div>
+      <div class="flex gap-2">
+        <div class="glass px-2 py-1.5 text-center flex-1">
+          <div class="text-[8px] text-white/30 uppercase font-bold">Phương án 1</div>
+          <div class="text-[9.5px] text-yellow-400 font-bold mt-0.5">Mua lại KiotViet</div>
+          <div class="text-[8px] text-white/40">150k+ cửa hàng</div>
+        </div>
+        <div class="glass px-2 py-1.5 text-center flex-1" style="border-color:rgba(0,104,255,.3)">
+          <div class="text-[8px] text-white/30 uppercase font-bold">Phương án 2</div>
+          <div class="text-[9.5px] text-blue-400 font-bold mt-0.5">Zalo Mini-App POS</div>
+          <div class="text-[8px] text-white/40">Xem cột 3</div>
+        </div>
+      </div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="gt-zalo">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">ZALO OA API</div></div>
+      <div class="dl">Phiên: <span class="text-green-400 font-medium">Hoạt động</span></div>
+      <div class="dl">Tin gửi: <span class="text-white/70 font-medium" id="gt-msg">0</span></div>
+      <div class="dl">Đã đọc: <span class="text-green-400 font-medium">Có</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= PANE 3: ZALO MINI-APP POS ======= -->
+<div style="width:400px;flex-shrink:0">
+  <div class="zma" style="height:calc(640px + 300px + 44px)">
+    <!-- ZALO CHROME -->
+    <div class="zma-hdr">
+      <div class="zma-back" onclick="posBack()">&#8249;</div>
+      <div class="flex-1">
+        <div class="zma-title" id="posTitle">Quản lý tạp hoá</div>
+        <div class="zma-sub" id="posSub">Mini App, Masan</div>
+      </div>
+      <div class="zma-dots">&#8943;</div>
+    </div>
+    <div class="zma-bar">
+      <div class="zma-lock">&#x1F512;</div>
+      <div class="zma-url" id="posUrl">miniapp.zalo.me/masan-pos</div>
+    </div>
+    <!-- POS CONTENT -->
+    <div class="zma-body" id="posBody">
+
+      <!-- ZALO HOME (shown when pressing Back from POS) -->
+      <div id="pv-home" style="display:none">
+        <div class="zalo-home">
+          <div class="zh-logo">&#x1F4AC;</div>
+          <div class="zh-title">Zalo Mini Apps</div>
+          <div class="zh-sub">Ứng dụng tiện ích trên Zalo</div>
+          <div class="zh-apps">
+            <div class="zh-app" onclick="enterPOS()" style="border-color:#0068FF;background:#F0F6FF">
+              <div class="zha-ico">&#x1F6D2;</div>
+              <div class="zha-name" style="color:#0068FF">Masan POS</div>
+            </div>
+            <div class="zh-app">
+              <div class="zha-ico">&#x1F3E6;</div>
+              <div class="zha-name">TCB Bank</div>
+            </div>
+            <div class="zh-app">
+              <div class="zha-ico">&#x1F4B3;</div>
+              <div class="zha-name">ZaloPay</div>
+            </div>
+            <div class="zh-app">
+              <div class="zha-ico">&#x1F697;</div>
+              <div class="zha-name">Grab</div>
+            </div>
+            <div class="zh-app">
+              <div class="zha-ico">&#x1F3AC;</div>
+              <div class="zha-name">FPT Play</div>
+            </div>
+            <div class="zh-app">
+              <div class="zha-ico">&#x2708;&#xFE0F;</div>
+              <div class="zha-name">VietJet</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DASHBOARD -->
+      <div id="pv-dash">
+        <div class="pc !mb-3 !p-0 overflow-hidden" style="border-color:#0068FF;background:linear-gradient(135deg,#F0F6FF,#fff)">
+          <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&auto=format" style="width:100%;height:60px;object-fit:cover;opacity:.85"/>
+          <div style="padding:8px 10px">
+            <div style="font-size:12px;font-weight:800;color:#1B2A4A;margin-bottom:2px">Tạp hoá Cô Lan</div>
+            <div style="font-size:10px;color:#6B7280">156 Trương Định, Hai Bà Trưng, Hà Nội</div>
+            <div style="font-size:9px;color:#0068FF;margin-top:2px;font-weight:600">10/04/2026, đang mở cửa</div>
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-2 mb-2">
+          <div class="pc !p-2"><div class="pstat"><div class="num text-green-600">2,4tr</div><div class="lbl">Doanh thu hôm nay</div></div></div>
+          <div class="pc !p-2"><div class="pstat"><div class="num text-blue-600">37</div><div class="lbl">Đơn hàng</div></div></div>
+          <div class="pc !p-2"><div class="pstat"><div class="num text-orange-500">64,8k</div><div class="lbl">Giỏ trung bình</div></div></div>
+        </div>
+        <div class="pc"><h3>Doanh thu 7 ngày</h3>
+          <div class="pchart">
+            <div class="pbar bg-blue-200 hover:bg-blue-400" style="height:45%" data-val="1,8tr"></div>
+            <div class="pbar bg-blue-200 hover:bg-blue-400" style="height:62%" data-val="2,5tr"></div>
+            <div class="pbar bg-blue-200 hover:bg-blue-400" style="height:38%" data-val="1,5tr"></div>
+            <div class="pbar bg-blue-200 hover:bg-blue-400" style="height:70%" data-val="2,8tr"></div>
+            <div class="pbar bg-blue-200 hover:bg-blue-400" style="height:55%" data-val="2,2tr"></div>
+            <div class="pbar bg-blue-200 hover:bg-blue-400" style="height:48%" data-val="1,9tr"></div>
+            <div class="pbar bg-green-400" style="height:60%" data-val="2,4tr"></div>
+          </div>
+          <div class="flex justify-between text-[8px] text-gray-400 mt-1"><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span><span>T2</span><span>Nay</span></div>
+        </div>
+        <div class="pc"><h3>Sản phẩm bán chạy</h3>
+          <div class="pr"><div class="flex items-center gap-2"><img class="pr-img" src="https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=100&auto=format"/><span>1. Nước mắm Chin-Su 500ml</span></div><span class="font-bold text-green-600">23 chai</span></div>
+          <div class="pr"><div class="flex items-center gap-2"><img class="pr-img" src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=100&auto=format"/><span>2. Mì Omachi tôm chua cay</span></div><span class="font-bold">18 gói</span></div>
+          <div class="pr"><div class="flex items-center gap-2"><img class="pr-img" src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=100&auto=format"/><span>3. Sữa Vinamilk 180ml</span></div><span class="font-bold">15 hộp</span></div>
+          <div class="pr"><div class="flex items-center gap-2"><img class="pr-img" src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=100&auto=format"/><span>4. Bia Sài Gòn lon 330ml</span></div><span class="font-bold">12 lon</span></div>
+          <div class="pr"><div class="flex items-center gap-2"><img class="pr-img" src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=100&auto=format"/><span>5. Xúc xích Ponnie gói 5</span></div><span class="font-bold">10 gói</span></div>
+        </div>
+        <div class="pc" style="border-color:#FDE047"><h3>Sắp hết hàng</h3>
+          <div class="pr"><span>Chin-Su 250ml</span><span class="pbdg bg-red-100 text-red-600">Còn 3</span></div>
+          <div class="pr"><span>Kokomi đại 90g</span><span class="pbdg bg-yellow-100 text-yellow-700">Còn 8</span></div>
+          <div class="pr"><span>Tương ớt Chin-Su</span><span class="pbdg bg-red-100 text-red-600">Còn 2</span></div>
+          <button class="pbtn pbtn-p w-full mt-2" onclick="showPV('order')">Đặt hàng bổ sung</button>
+        </div>
+        <div class="pc" style="border-color:#86EFAC"><h3>Khuyến mãi đang chạy</h3>
+          <div class="pr"><span>Chin-Su 500ml: Mua 10 tặng 1</span><span class="pbdg bg-green-100 text-green-700">Đang chạy</span></div>
+          <div class="pr"><span>Omachi thùng: Giảm 8%</span><span class="pbdg bg-green-100 text-green-700">Đang chạy</span></div>
+          <div class="pr"><span>WinEco rau sạch: Giảm 15%</span><span class="pbdg bg-blue-100 text-blue-700">Từ 12/4</span></div>
+        </div>
+        <div class="pc"><h3>Khách hàng thân thiết</h3>
+          <div class="pr"><span>Chị Hương (tầng 5, nhà 12)<br/><span class="text-[9px] text-gray-400">Ghé 4 lần/tuần, giỏ TB 78k</span></span><span class="pbdg bg-purple-100 text-purple-600">VIP</span></div>
+          <div class="pr"><span>Anh Hùng (nhà 42)<br/><span class="text-[9px] text-gray-400">Ghé 3 lần/tuần, giỏ TB 55k</span></span><span class="pbdg bg-blue-100 text-blue-600">Thường</span></div>
+          <div class="pr"><span>Bác Tâm (đầu ngõ)<br/><span class="text-[9px] text-gray-400">Ghé 2 lần/tuần, giỏ TB 42k</span></span><span class="pbdg bg-blue-100 text-blue-600">Thường</span></div>
+        </div>
+      </div>
+
+      <!-- BÁN HÀNG -->
+      <div id="pv-sell" style="display:none">
+        <div class="pc"><h3>Bán hàng nhanh</h3>
+          <input type="text" placeholder="Quét mã vạch hoặc tìm sản phẩm..." class="w-full border border-gray-200 rounded-lg px-3 py-2 text-[10px] mb-2 outline-none focus:border-blue-400"/>
+          <div class="pgrid">
+            <div class="psku" onclick="addC('Chin-Su 500ml',32000)"><img src="https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=200&auto=format"/><div class="nm">Chin-Su 500ml</div><div class="pri">32.000đ</div></div>
+            <div class="psku" onclick="addC('Omachi tôm',5500)"><img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=200&auto=format"/><div class="nm">Omachi tôm</div><div class="pri">5.500đ</div></div>
+            <div class="psku" onclick="addC('Vinamilk 180ml',7000)"><img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format"/><div class="nm">Vinamilk 180ml</div><div class="pri">7.000đ</div></div>
+            <div class="psku" onclick="addC('Ponnie xúc xích',25000)"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=200&auto=format"/><div class="nm">Ponnie x.xích</div><div class="pri">25.000đ</div></div>
+            <div class="psku" onclick="addC('Bia SG lon',12000)"><img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=200&auto=format"/><div class="nm">Bia SG lon</div><div class="pri">12.000đ</div></div>
+            <div class="psku" onclick="addC('Chin-Su t.ớt',18000)"><img src="https://images.unsplash.com/photo-1590779033100-9f60a05a013d?w=200&auto=format"/><div class="nm">Chin-Su t.ớt</div><div class="pri">18.000đ</div></div>
+            <div class="psku" onclick="addC('Kokomi đại',4000)"><img src="https://images.unsplash.com/photo-1569058242567-93de6f36f8e6?w=200&auto=format"/><div class="nm">Kokomi đại</div><div class="pri">4.000đ</div></div>
+            <div class="psku" onclick="addC('Omo Matic 2.7',89000)"><img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=200&auto=format"/><div class="nm">Omo Matic</div><div class="pri">89.000đ</div></div>
+            <div class="psku" onclick="addC('Phúc Long trà',29000)"><img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=200&auto=format"/><div class="nm">Phúc Long trà</div><div class="pri">29.000đ</div></div>
+          </div>
+        </div>
+        <div class="pc" id="cartC" style="display:none"><h3>Đơn hàng hiện tại</h3>
+          <div id="cartI"></div>
+          <div class="flex justify-between items-center mt-2 pt-2 border-t border-gray-100"><span class="font-bold text-xs text-gray-800">Tổng:</span><span class="font-bold text-xs text-red-600" id="cartT">0đ</span></div>
+          <div class="flex gap-2 mt-2"><button class="pbtn pbtn-o flex-1" onclick="clrC()">Huỷ</button><button class="pbtn pbtn-r flex-1" onclick="payC()">Thanh toán</button></div>
+        </div>
+      </div>
+
+      <!-- ĐẶT HÀNG -->
+      <div id="pv-order" style="display:none">
+        <div class="pc"><h3>Đặt hàng từ Masan / NPP</h3>
+          <div class="ptab"><button class="active" onclick="swOrd(this,'masan')">Masan trực tiếp</button><button onclick="swOrd(this,'npp')">NPP khu vực</button><button onclick="swOrd(this,'sp')">KM nhà tài trợ</button></div>
+          <div id="oc-masan">
+            <div class="pr"><span>Chin-Su 500ml (thùng 12)<br/><span class="text-[9px] text-gray-400">Tồn: 3 chai, bán TB: 3,3/ngày</span></span><button class="pbtn pbtn-p" onclick="this.textContent='Đã thêm';this.disabled=true">Thêm</button></div>
+            <div class="pr"><span>Tương ớt Chin-Su 250g (thùng 24)<br/><span class="text-[9px] text-gray-400">Tồn: 2 chai, bán TB: 1,5/ngày</span></span><button class="pbtn pbtn-p" onclick="this.textContent='Đã thêm';this.disabled=true">Thêm</button></div>
+            <div class="pr"><span>Kokomi đại 90g (thùng 30)<br/><span class="text-[9px] text-gray-400">Tồn: 8 gói, bán TB: 4/ngày</span></span><button class="pbtn pbtn-p" onclick="this.textContent='Đã thêm';this.disabled=true">Thêm</button></div>
+            <div class="pr"><span>Omachi thùng 30 gói<br/><span class="text-[9px] text-gray-400">Tồn: 12 gói, bán TB: 3,6/ngày</span></span><button class="pbtn pbtn-p" onclick="this.textContent='Đã thêm';this.disabled=true">Thêm</button></div>
+          </div>
+          <div id="oc-npp" style="display:none">
+            <div class="pr"><span>NPP Hoàng Long (HBT)<br/><span class="text-[9px] text-gray-400">Giao trong 4h, MOQ: 500k</span></span><button class="pbtn pbtn-o">Gọi ngay</button></div>
+            <div class="pr"><span>NPP Minh Phát (Đống Đa)<br/><span class="text-[9px] text-gray-400">Giao ngày mai, MOQ: 300k</span></span><button class="pbtn pbtn-o">Gọi ngay</button></div>
+          </div>
+          <div id="oc-sp" style="display:none">
+            <div class="pc !p-2 !mb-2" style="border-color:#0077C8">
+              <div class="flex items-center gap-1 mb-1"><span class="zsp" style="margin:0">UNILEVER</span><span class="text-[10px] font-bold text-gray-700">Omo Matic 2.7kg</span></div>
+              <div class="text-[9px] text-gray-500">Mua 6 thùng tặng 1 + kệ trưng bày</div>
+              <button class="pbtn pbtn-p mt-1.5 w-full" onclick="this.textContent='Đã đăng ký'">Đăng ký</button>
+            </div>
+            <div class="pc !p-2 !mb-2" style="border-color:#E30613">
+              <div class="flex items-center gap-1 mb-1"><span class="ztg" style="margin:0">MASAN</span><span class="text-[10px] font-bold text-gray-700">Chin-Su mua 10 tặng 1</span></div>
+              <div class="text-[9px] text-gray-500">Đến 30/4. Tự động trừ khi đặt qua app.</div>
+              <div class="text-[9px] text-green-600 font-bold mt-1">Đang áp dụng</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SỔ NỢ -->
+      <div id="pv-debt" style="display:none">
+        <div class="pc"><h3>Sổ nợ khách hàng</h3>
+          <div class="pr"><span>Anh Hùng (nhà 42)<br/><span class="text-[9px] text-gray-400">Nợ từ 7/4</span></span><div class="flex items-center gap-1"><span class="font-bold text-red-500">185.000đ</span><button class="pbtn pbtn-o" style="font-size:9px;padding:3px 8px" onclick="this.textContent='Đã nhắc'">Nhắc</button></div></div>
+          <div class="pr"><span>Chị Thuỷ (tầng 3)<br/><span class="text-[9px] text-gray-400">Nợ từ 9/4</span></span><div class="flex items-center gap-1"><span class="font-bold text-red-500">62.000đ</span><button class="pbtn pbtn-o" style="font-size:9px;padding:3px 8px" onclick="this.textContent='Đã nhắc'">Nhắc</button></div></div>
+          <div class="pr"><span>Bác Tâm (đầu ngõ)<br/><span class="text-[9px] text-gray-400">Nợ từ 5/4</span></span><div class="flex items-center gap-1"><span class="font-bold text-orange-500">45.000đ</span><button class="pbtn pbtn-o" style="font-size:9px;padding:3px 8px" onclick="this.textContent='Đã nhắc'">Nhắc</button></div></div>
+          <div class="flex justify-between items-center mt-2 pt-2 border-t border-gray-100"><span class="font-bold text-[10px] text-gray-600">Tổng nợ:</span><span class="font-bold text-xs text-red-600">292.000đ</span></div>
+        </div>
+        <div class="pc"><h3>Tài chính cửa hàng</h3>
+          <div class="pr"><span>Doanh thu tháng 4</span><span class="font-bold text-green-600">18,7 triệu</span></div>
+          <div class="pr"><span>Chi phí nhập hàng</span><span class="font-bold">14,2 triệu</span></div>
+          <div class="pr"><span>Lợi nhuận gộp</span><span class="font-bold text-green-600">4,5 triệu (24%)</span></div>
+          <div class="pr"><span>Thấu chi TCB</span><span class="font-bold text-blue-600">10 triệu</span></div>
+        </div>
+      </div>
+
+      <!-- BÁO CÁO -->
+      <div id="pv-rpt" style="display:none">
+        <div class="pc"><h3>Báo cáo kinh doanh</h3>
+          <div class="ptab"><button class="active" onclick="swRpt(this,'today')">Hôm nay</button><button onclick="swRpt(this,'week')">Tuần</button><button onclick="swRpt(this,'month')">Tháng</button></div>
+          <div id="rc-today">
+            <div class="grid grid-cols-2 gap-2 mb-2">
+              <div class="bg-green-50 rounded-lg p-2 text-center"><div class="font-bold text-green-700 text-sm">2,4 triệu</div><div class="text-[8px] text-gray-500">Doanh thu</div></div>
+              <div class="bg-blue-50 rounded-lg p-2 text-center"><div class="font-bold text-blue-700 text-sm">37 đơn</div><div class="text-[8px] text-gray-500">Giao dịch</div></div>
+            </div>
+            <div class="pr"><span>Giờ cao điểm</span><span class="font-bold">11:00 - 12:30</span></div>
+            <div class="pr"><span>SP Masan chiếm</span><span class="font-bold text-red-600">43% DT</span></div>
+            <div class="pr"><span>SP Unilever chiếm</span><span class="font-bold text-blue-600">18% DT</span></div>
+            <div class="pr"><span>Khách quay lại</span><span class="font-bold">22/37 (59%)</span></div>
+          </div>
+          <div id="rc-week" style="display:none">
+            <div class="grid grid-cols-2 gap-2 mb-2">
+              <div class="bg-green-50 rounded-lg p-2 text-center"><div class="font-bold text-green-700 text-sm">15,1 triệu</div><div class="text-[8px] text-gray-500">DT tuần</div></div>
+              <div class="bg-blue-50 rounded-lg p-2 text-center"><div class="font-bold text-blue-700 text-sm">243 đơn</div><div class="text-[8px] text-gray-500">Giao dịch</div></div>
+            </div>
+            <div class="pr"><span>So tuần trước</span><span class="font-bold text-green-600">+12%</span></div>
+            <div class="pr"><span>Ngày tốt nhất</span><span class="font-bold">Thứ 7 (2,8tr)</span></div>
+          </div>
+          <div id="rc-month" style="display:none">
+            <div class="grid grid-cols-2 gap-2 mb-2">
+              <div class="bg-green-50 rounded-lg p-2 text-center"><div class="font-bold text-green-700 text-sm">18,7 triệu</div><div class="text-[8px] text-gray-500">DT tháng</div></div>
+              <div class="bg-blue-50 rounded-lg p-2 text-center"><div class="font-bold text-blue-700 text-sm">4,5 triệu</div><div class="text-[8px] text-gray-500">Lợi nhuận</div></div>
+            </div>
+            <div class="pr"><span>Biên LN</span><span class="font-bold text-green-600">24%</span></div>
+            <div class="pr"><span>SP Masan (% DT)</span><span class="font-bold text-red-600">43%</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="pnav" id="posNav">
+      <button class="active" onclick="showPV('dash',this)"><span style="font-size:14px">&#x1F3E0;</span><span>Tổng quan</span></button>
+      <button onclick="showPV('sell',this)"><span style="font-size:14px">&#x1F6D2;</span><span>Bán hàng</span></button>
+      <button onclick="showPV('order',this)"><span style="font-size:14px">&#x1F4E6;</span><span>Đặt hàng</span></button>
+      <button onclick="showPV('debt',this)"><span style="font-size:14px">&#x1F4D2;</span><span>Sổ nợ</span></button>
+      <button onclick="showPV('rpt',this)"><span style="font-size:14px">&#x1F4C8;</span><span>Báo cáo</span></button>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+</div><!-- /view-demo -->
+
+<!-- ============ VIEW 2: BRAND ADS PORTAL (FULL SCREEN DESKTOP) ============ -->
+<div id="view-ads" class="adp" style="display:none">
+
+<!-- ===== ADS PORTAL: FB BM-STYLE LAYOUT ===== -->
+<div style="display:flex;min-height:calc(100vh - 52px)">
+
+<!-- ──── SIDEBAR ──── -->
+<div class="adp-sidebar">
+  <div class="sb-brand">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="sb-logo">W</div>
+      <div>
+        <div style="font-size:13px;font-weight:800;color:#fff;letter-spacing:-.2px">WinX Ads Manager</div>
+        <div style="font-size:9px;color:rgba(255,255,255,.4);margin-top:1px">Traditional Trade Media Platform</div>
+      </div>
+    </div>
+  </div>
+  <div class="sb-nav">
+    <div class="sb-section">Tổng quan</div>
+    <div class="sb-item active"><span class="sb-ico">📊</span> Dashboard</div>
+    <div class="sb-item"><span class="sb-ico">📈</span> Chiến dịch</div>
+    <div class="sb-item"><span class="sb-ico">👥</span> Đối tượng GT</div>
+    <div class="sb-section">Đo lường</div>
+    <div class="sb-item"><span class="sb-ico">🎯</span> Attribution</div>
+    <div class="sb-item"><span class="sb-ico">🔄</span> Phễu chuyển đổi</div>
+    <div class="sb-item"><span class="sb-ico">📦</span> SKU Analytics</div>
+    <div class="sb-section">Quản lý</div>
+    <div class="sb-item"><span class="sb-ico">🏪</span> Mạng lưới cửa hàng</div>
+    <div class="sb-item"><span class="sb-ico">💰</span> Ngân sách &amp; Billing</div>
+    <div class="sb-item"><span class="sb-ico">⚙️</span> Cài đặt</div>
+  </div>
+  <div class="sb-acct">
+    <div class="sb-avatar">UNI</div>
+    <div>
+      <div style="font-size:11px;font-weight:700;color:#fff">Unilever Vietnam</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.4)">Trade Marketing Team</div>
+    </div>
+  </div>
+</div>
+
+<!-- ──── MAIN CONTENT ──── -->
+<div class="adp-main">
+
+  <!-- TOP BAR -->
+  <div class="adp-topbar">
+    <div style="flex:1">
+      <div style="font-size:16px;font-weight:800;color:#1C2B33">Chiến dịch Truyền Thống (GT) — Q2 2026</div>
+      <div style="font-size:11px;color:#65676B;margin-top:1px">Media buy cho kênh Traditional Trade · 12.847 điểm bán · Omo + Comfort</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="background:#E6F4EA;color:#137333;padding:4px 12px;border-radius:16px;font-size:10px;font-weight:700">● Đang chạy</span>
+      <span style="background:#F0F2F5;color:#65676B;padding:4px 12px;border-radius:16px;font-size:10px;font-weight:600">01/04 — 30/06/2026</span>
+      <button style="background:#0068FF;color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer">Xuất báo cáo</button>
+    </div>
+  </div>
+
+  <div class="adp-content">
+
+    <!-- CONTEXT BANNER -->
+    <div style="background:linear-gradient(135deg,#EBF5FF,#F0E6FF);border:1px solid #D0E2FF;border-radius:12px;padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;gap:14px">
+      <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#0068FF,#6366F1);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🏪</div>
+      <div style="flex:1">
+        <div style="font-size:12px;font-weight:700;color:#1C2B33">Chương trình Media Buy — Kênh Truyền Thống (Traditional Trade)</div>
+        <div style="font-size:10px;color:#65676B;margin-top:2px">Quảng cáo cá nhân hoá qua mạng lưới 12.847 tạp hoá GT của WinCommerce. Sản phẩm được gợi ý trực tiếp trong bữa cơm gia đình khi khách đến mua hàng — closed-loop attribution từ impression đến từng đơn hàng tại POS.</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-size:9px;color:#65676B">Managed by</div>
+        <div style="font-size:11px;font-weight:700;color:#1C2B33;margin-top:1px">Unilever Trade Marketing</div>
+        <div style="font-size:9px;color:#65676B">Nguyễn Minh Tú · Brand Manager</div>
+      </div>
+    </div>
+
+    <!-- KPI ROW -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px">
+      <div class="adp-kpi">
+        <div class="kv" style="color:#0068FF">3,8x</div>
+        <div class="kl">ROAS tổng</div>
+        <div class="kd" style="color:#137333">▲ +1,7x vs Facebook Ads</div>
+      </div>
+      <div class="adp-kpi">
+        <div class="kv" style="color:#1C2B33">245.000</div>
+        <div class="kl">Impressions</div>
+        <div class="kd" style="color:#137333">▲ +34% vs tháng 3</div>
+      </div>
+      <div class="adp-kpi">
+        <div class="kv" style="color:#1C2B33">41.200</div>
+        <div class="kl">Đơn hàng chuyển đổi</div>
+        <div class="kd" style="color:#137333">CVR 16,8%</div>
+      </div>
+      <div class="adp-kpi">
+        <div class="kv" style="color:#137333">3,72 tỷ</div>
+        <div class="kl">Doanh thu attributed</div>
+        <div class="kd" style="color:#65676B">Budget: 980tr</div>
+      </div>
+      <div class="adp-kpi">
+        <div class="kv" style="color:#1C2B33">12.847</div>
+        <div class="kl">Điểm bán GT active</div>
+        <div class="kd" style="color:#137333">▲ +2.100 vs Q1</div>
+      </div>
+    </div>
+
+    <!-- TWO COLUMN -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+
+      <!-- CONVERSION FUNNEL -->
+      <div class="adp-card">
+        <h3>Phễu chuyển đổi <span class="badge">Closed-loop</span></h3>
+        <div class="adp-funnel-step">
+          <div class="adp-funnel-num" style="background:#0068FF">1</div>
+          <div style="flex:1">
+            <div style="font-size:12px;font-weight:700;color:#1C2B33">Hiển thị tại Zalo OA + POS</div>
+            <div style="font-size:10px;color:#65676B">Gợi ý Omo trong combo bữa cơm tại 12.847 tạp hoá</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:16px;font-weight:800;color:#1C2B33">245.000</div>
+            <div style="font-size:9px;color:#65676B">impressions</div>
+          </div>
+        </div>
+        <div class="adp-funnel-step">
+          <div class="adp-funnel-num" style="background:#1877F2">2</div>
+          <div style="flex:1">
+            <div style="font-size:12px;font-weight:700;color:#1C2B33">Khách xem / hỏi sản phẩm</div>
+            <div style="font-size:10px;color:#65676B">Mở tin nhắn hoặc hỏi chủ tiệm về Omo</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:16px;font-weight:800;color:#1C2B33">176.400</div>
+            <div style="font-size:9px;color:#0068FF;font-weight:600">72% engagement</div>
+          </div>
+        </div>
+        <div class="adp-funnel-step">
+          <div class="adp-funnel-num" style="background:#6366F1">3</div>
+          <div style="flex:1">
+            <div style="font-size:12px;font-weight:700;color:#1C2B33">Thêm vào giỏ / yêu cầu mua</div>
+            <div style="font-size:10px;color:#65676B">Chủ tiệm cross-sell hoặc khách tự chọn</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:16px;font-weight:800;color:#1C2B33">58.800</div>
+            <div style="font-size:9px;color:#6366F1;font-weight:600">24% add-to-cart</div>
+          </div>
+        </div>
+        <div class="adp-funnel-step">
+          <div class="adp-funnel-num" style="background:#137333">4</div>
+          <div style="flex:1">
+            <div style="font-size:12px;font-weight:700;color:#1C2B33">Thanh toán thành công</div>
+            <div style="font-size:10px;color:#65676B">Tracked qua POS — mỗi đơn gắn ad touchpoint</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:16px;font-weight:800;color:#137333">41.200</div>
+            <div style="font-size:9px;color:#137333;font-weight:600">16,8% conversion</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;background:#F0F7FF;border:1px solid #D0E2FF;border-radius:8px;padding:10px;font-size:10px;color:#1C2B33">
+          <b style="color:#0068FF">Closed-loop attribution:</b> 100% đơn hàng tracked từ impression → thanh toán. Mỗi SKU bán được gắn chính xác với touchpoint quảng cáo. Không dark funnel, không ước lượng.
+        </div>
+      </div>
+
+      <!-- ATTRIBUTION BY CHANNEL -->
+      <div class="adp-card">
+        <h3>Attribution theo kênh <span class="badge">Real-time</span></h3>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label" style="font-weight:700;color:#1C2B33">GT POS cross-sell</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:61%;background:linear-gradient(90deg,#0068FF,#1877F2)">61% · 25.132 đơn</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">Zalo OA meal push</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:22%;background:#6366F1">22%</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">WinMart in-store display</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:12%;background:#818CF8">12%</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">Organic / halo effect</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:5%;background:#C7D2FE">5%</div></div>
+        </div>
+
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid #E4E6EB">
+          <div style="font-size:12px;font-weight:700;color:#1C2B33;margin-bottom:4px">💡 Insight</div>
+          <div style="font-size:11px;color:#65676B;line-height:1.6">Cross-sell tại POS tạp hoá (<b style="color:#1C2B33">Cô Lan gợi ý "Thêm Omo nhé Chị?"</b> khi khách mua bữa cơm) hiệu quả <b style="color:#0068FF">gấp 2,8x</b> so với push notification trên Zalo OA. Đây là sức mạnh riêng của kênh Traditional Trade — trust giữa chủ tiệm và khách hàng.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKU TABLE + BENCHMARKS -->
+    <div style="display:grid;grid-template-columns:3fr 2fr;gap:16px;margin-bottom:16px">
+
+      <!-- SKU PERFORMANCE TABLE -->
+      <div class="adp-card">
+        <h3>Hiệu quả theo SKU <span class="badge">SKU-level tracking</span></h3>
+        <table class="adp-table">
+          <thead>
+            <tr>
+              <th>Sản phẩm</th>
+              <th>Đơn hàng</th>
+              <th>Doanh thu</th>
+              <th>ROAS</th>
+              <th>Kênh chính</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Omo Matic 2.7kg</b></td>
+              <td>28.400</td>
+              <td>2,13 tỷ</td>
+              <td><span class="adp-tag adp-tag-green">4,2x</span></td>
+              <td style="font-size:10px;color:#65676B">GT POS (68%)</td>
+            </tr>
+            <tr>
+              <td><b>Omo Matic 4.5kg</b></td>
+              <td>8.900</td>
+              <td>1,07 tỷ</td>
+              <td><span class="adp-tag adp-tag-green">3,6x</span></td>
+              <td style="font-size:10px;color:#65676B">GT POS (54%)</td>
+            </tr>
+            <tr>
+              <td><b>Comfort Đậm Đặc 1.8L</b></td>
+              <td>3.900</td>
+              <td>520tr</td>
+              <td><span class="adp-tag adp-tag-amber">2,8x</span></td>
+              <td style="font-size:10px;color:#65676B">Zalo OA (61%)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ROAS BENCHMARK -->
+      <div class="adp-card">
+        <h3>So sánh ROAS vs thị trường</h3>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label" style="font-weight:800;color:#0068FF;font-size:12px">WinX GT Ads</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:78%;background:linear-gradient(90deg,#0068FF,#00C2FF);font-size:12px;font-weight:800">3,8x</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">Google Shopping</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:47%;background:#CED0D4;color:#65676B">2,3x</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">Shopee Ads</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:41%;background:#CED0D4;color:#65676B">2,0x</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">Facebook/Meta</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:37%;background:#CED0D4;color:#65676B">1,8x</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">TikTok Shop</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:31%;background:#CED0D4;color:#65676B">1,5x</div></div>
+        </div>
+        <div style="margin-top:12px;background:#F0F7FF;border:1px solid #D0E2FF;border-radius:8px;padding:10px;font-size:10px;color:#1C2B33;line-height:1.5">
+          <b style="color:#0068FF">Lợi thế WinX:</b> Dữ liệu 1st-party từ CRM + POS + meal-pattern AI. Đo lường đến từng SKU, biết chính xác ai mua gì, khi nào, ở đâu. Không pixel, không cookie, không ước lượng.
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM: CHANNEL SPLIT + CUSTOMER JOURNEY -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+
+      <!-- MT vs GT SPLIT -->
+      <div class="adp-card">
+        <h3>Phân bổ theo kênh phân phối</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+          <div style="background:#F8F9FA;border-radius:10px;padding:14px;border:1px solid #E4E6EB">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
+              <span style="font-size:14px">🏪</span>
+              <span style="font-size:10px;color:#65676B;font-weight:600">Kênh GT (Tạp hoá)</span>
+            </div>
+            <div style="font-size:22px;font-weight:800;color:#1C2B33">25.400 <span style="font-size:11px;color:#65676B;font-weight:400">đơn</span></div>
+            <div style="font-size:10px;color:#137333;font-weight:700;margin-top:4px">ROAS 3,6x</div>
+            <div style="font-size:9px;color:#65676B;margin-top:2px">Cross-sell tại quầy POS bởi chủ tiệm</div>
+            <div style="margin-top:8px;height:6px;background:#E4E6EB;border-radius:3px"><div style="height:100%;width:62%;background:#0068FF;border-radius:3px"></div></div>
+            <div style="font-size:9px;color:#65676B;margin-top:3px">62% tổng đơn hàng</div>
+          </div>
+          <div style="background:#F8F9FA;border-radius:10px;padding:14px;border:1px solid #E4E6EB">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
+              <span style="font-size:14px">🛒</span>
+              <span style="font-size:10px;color:#65676B;font-weight:600">Kênh MT (WinMart)</span>
+            </div>
+            <div style="font-size:22px;font-weight:800;color:#1C2B33">15.800 <span style="font-size:11px;color:#65676B;font-weight:400">đơn</span></div>
+            <div style="font-size:10px;color:#137333;font-weight:700;margin-top:4px">ROAS 4,1x</div>
+            <div style="font-size:9px;color:#65676B;margin-top:2px">Upsell trong combo bữa cơm qua Zalo</div>
+            <div style="margin-top:8px;height:6px;background:#E4E6EB;border-radius:3px"><div style="height:100%;width:38%;background:#6366F1;border-radius:3px"></div></div>
+            <div style="font-size:9px;color:#65676B;margin-top:3px">38% tổng đơn hàng</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CUSTOMER JOURNEY -->
+      <div class="adp-card">
+        <h3>Hành trình khách hàng GT điển hình</h3>
+        <div style="position:relative;padding-left:20px">
+          <div style="position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:#E4E6EB"></div>
+          <div style="position:relative;padding:6px 0 12px 16px">
+            <div style="position:absolute;left:-16px;top:8px;width:12px;height:12px;border-radius:50%;background:#0068FF;border:2px solid #fff"></div>
+            <div style="font-size:11px;font-weight:700;color:#1C2B33">Zalo OA gợi ý bữa cơm</div>
+            <div style="font-size:9px;color:#65676B">WinX AI gợi ý combo dựa trên lịch sử mua</div>
+          </div>
+          <div style="position:relative;padding:6px 0 12px 16px">
+            <div style="position:absolute;left:-16px;top:8px;width:12px;height:12px;border-radius:50%;background:#1877F2;border:2px solid #fff"></div>
+            <div style="font-size:11px;font-weight:700;color:#1C2B33">Chủ tiệm gợi ý thêm Omo</div>
+            <div style="font-size:9px;color:#65676B">"Chị ơi, tuần này Omo đang giảm, thêm nhé?"</div>
+          </div>
+          <div style="position:relative;padding:6px 0 12px 16px">
+            <div style="position:absolute;left:-16px;top:8px;width:12px;height:12px;border-radius:50%;background:#6366F1;border:2px solid #fff"></div>
+            <div style="font-size:11px;font-weight:700;color:#1C2B33">Khách đồng ý mua</div>
+            <div style="font-size:9px;color:#65676B">Trust cao — chủ tiệm là người quen, đã mua hàng nhiều năm</div>
+          </div>
+          <div style="position:relative;padding:6px 0 12px 16px">
+            <div style="position:absolute;left:-16px;top:8px;width:12px;height:12px;border-radius:50%;background:#137333;border:2px solid #fff"></div>
+            <div style="font-size:11px;font-weight:700;color:#1C2B33">Thanh toán tại POS</div>
+            <div style="font-size:9px;color:#65676B">Đơn hàng ghi nhận trên Zalo Mini-App POS</div>
+          </div>
+          <div style="position:relative;padding:6px 0 0 16px">
+            <div style="position:absolute;left:-16px;top:8px;width:12px;height:12px;border-radius:50%;background:#F59E0B;border:2px solid #fff"></div>
+            <div style="font-size:11px;font-weight:700;color:#1C2B33">Attribution ghi nhận</div>
+            <div style="font-size:9px;color:#65676B">Unilever thấy chính xác: SKU nào, cửa hàng nào, khách nào, touchpoint nào</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;background:#FEF3E2;border:1px solid #FBD38D;border-radius:8px;padding:10px;font-size:10px;color:#7C5C00;line-height:1.5">
+          <b>Điểm đặc biệt:</b> Không nền tảng nào ở Việt Nam có thể cung cấp closed-loop attribution cho kênh Traditional Trade. WinX là hạ tầng duy nhất kết nối được từ ad impression → POS transaction tại 12.847 điểm bán GT.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /adp-content -->
+</div><!-- /adp-main -->
+</div><!-- /flex layout -->
+</div><!-- /view-ads -->
+
+</div><!-- /relative z-10 -->
+
+<script>
+// VIEW SWITCHER
+function switchView(v){
+  document.getElementById('view-demo').style.display=v==='demo'?'flex':'none';
+  document.getElementById('view-ads').style.display=v==='ads'?'block':'none';
+  const td=document.getElementById('tab-demo'),ta=document.getElementById('tab-ads');
+  if(v==='demo'){
+    td.style.background='rgba(255,255,255,.12)';td.style.borderColor='rgba(255,255,255,.2)';td.style.color='#fff';
+    ta.style.background='transparent';ta.style.borderColor='rgba(255,255,255,.08)';ta.style.color='rgba(255,255,255,.5)';
+    document.body.style.overflowX='auto';
+  } else {
+    ta.style.background='rgba(255,255,255,.12)';ta.style.borderColor='rgba(255,255,255,.2)';ta.style.color='#fff';
+    td.style.background='transparent';td.style.borderColor='rgba(255,255,255,.08)';td.style.color='rgba(255,255,255,.5)';
+    document.body.style.overflowX='hidden';
+  }
+}
+
+// POS NAVIGATION
+let posHistory=[];
+let inPOS=true;
+function showPV(v,btn){
+  document.querySelectorAll('[id^="pv-"]').forEach(e=>e.style.display='none');
+  const el=document.getElementById('pv-'+v);if(el)el.style.display='block';
+  document.querySelectorAll('.pnav button').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  else{const btns=document.querySelectorAll('.pnav button');const map={dash:0,sell:1,order:2,debt:3,rpt:4,ads:5};if(map[v]!==undefined&&btns[map[v]])btns[map[v]].classList.add('active');}
+  document.getElementById('posBody').scrollTop=0;
+  if(inPOS)posHistory.push(v);
+}
+function posBack(){
+  if(!inPOS){enterPOS();return;}
+  if(posHistory.length>1){
+    posHistory.pop();
+    const prev=posHistory[posHistory.length-1];
+    posHistory.pop();
+    showPV(prev);
+  } else {
+    // Exit to Zalo home
+    inPOS=false;
+    document.querySelectorAll('[id^="pv-"]').forEach(e=>e.style.display='none');
+    document.getElementById('pv-home').style.display='block';
+    document.getElementById('posNav').style.display='none';
+    document.getElementById('posTitle').textContent='Zalo';
+    document.getElementById('posSub').textContent='';
+    document.getElementById('posUrl').textContent='zalo.me';
+    document.getElementById('posBody').scrollTop=0;
+  }
+}
+function enterPOS(){
+  inPOS=true;
+  posHistory=['dash'];
+  document.getElementById('posNav').style.display='flex';
+  document.getElementById('posTitle').textContent='Quản lý tạp hoá';
+  document.getElementById('posSub').textContent='Mini App, Masan';
+  document.getElementById('posUrl').textContent='miniapp.zalo.me/masan-pos';
+  showPV('dash');
+}
+
+function swOrd(b,t){b.closest('.ptab').querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');['masan','npp','sp'].forEach(x=>{const e=document.getElementById('oc-'+x);if(e)e.style.display=x===t?'block':'none'});}
+function swRpt(b,t){b.closest('.ptab').querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');['today','week','month'].forEach(x=>{const e=document.getElementById('rc-'+x);if(e)e.style.display=x===t?'block':'none'});}
+let cart=[];
+function addC(n,p){const x=cart.find(c=>c.n===n);if(x)x.q++;else cart.push({n,p,q:1});rC();}
+function rC(){document.getElementById('cartC').style.display='block';document.getElementById('cartI').innerHTML=cart.map((c,i)=>`<div class="pr"><span>${c.n} x${c.q}</span><div class="flex items-center gap-1"><span class="font-bold">${(c.p*c.q).toLocaleString('vi-VN')}đ</span><button onclick="rmC(${i})" class="text-red-400 text-[10px] font-bold">X</button></div></div>`).join('');document.getElementById('cartT').textContent=cart.reduce((s,c)=>s+c.p*c.q,0).toLocaleString('vi-VN')+'đ';}
+function rmC(i){cart.splice(i,1);if(!cart.length)document.getElementById('cartC').style.display='none';else rC();}
+function clrC(){cart=[];document.getElementById('cartC').style.display='none';}
+function payC(){const t=cart.reduce((s,c)=>s+c.p*c.q,0);alert('Thanh toán thành công!\nTổng: '+t.toLocaleString('vi-VN')+'đ\nĐã in hoá đơn.');clrC();}
+
+// SYSTEM ACTIVATION
+function act(ids){ids.forEach(id=>{const e=document.getElementById(id);if(e)e.classList.add('on')});}
+let gtMsg=0;
+function incGT(){gtMsg++;document.getElementById('gt-msg').textContent=gtMsg;}
+
+// CHAT ENGINES
+const AV1='https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=faces';
+const AV2='https://images.unsplash.com/photo-1548142813-c348350df52b?w=200&h=200&fit=crop&crop=faces';
+document.getElementById('av1').style.backgroundImage=`url(${AV1})`;
+document.getElementById('av2').style.backgroundImage=`url(${AV2})`;
+const now=()=>{const d=new Date();return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0')};
+function mkBot(cid,av,onSend){return function(h,d=500){return new Promise(r=>{if(onSend)onSend();const c=document.getElementById(cid),t=document.createElement('div');t.className='zrow zbot';t.innerHTML=`<div class="zm" style="background-image:url(${av})"></div><div class="zty"><span></span><span></span><span></span></div>`;c.appendChild(t);c.scrollTop=c.scrollHeight;setTimeout(()=>{t.innerHTML=`<div class="zm" style="background-image:url(${av})"></div><div><div class="zb">${h}</div><div class="zt">${now()}</div></div>`;c.scrollTop=c.scrollHeight;r();},d);})}}
+function mkCard(cid,av,onSend){return function(h,d=450){return new Promise(r=>{if(onSend)onSend();const c=document.getElementById(cid),t=document.createElement('div');t.className='zrow zbot';t.innerHTML=`<div class="zm" style="background-image:url(${av})"></div><div class="zty"><span></span><span></span><span></span></div>`;c.appendChild(t);c.scrollTop=c.scrollHeight;setTimeout(()=>{t.innerHTML=`<div class="zm" style="background-image:url(${av})"></div>${h}`;c.scrollTop=c.scrollHeight;r();},d);})}}
+function mkUser(cid){return function(t){const c=document.getElementById(cid),r=document.createElement('div');r.className='zrow zu';r.innerHTML=`<div><div class="zb">${t}</div><div class="zt">${now()}</div></div>`;c.appendChild(r);c.scrollTop=c.scrollHeight;}}
+function mkChips(cid){return function(opts){return new Promise(r=>{const c=document.getElementById(cid),box=document.createElement('div');box.className='zq';opts.forEach(o=>{const b=document.createElement('button');b.className='zch'+(o.red?' zr':'')+(o.green?' zg':'');b.textContent=o.label;b.onclick=()=>{mkUser(cid)(o.label);box.remove();r(o.value);};box.appendChild(b);});c.appendChild(box);c.scrollTop=c.scrollHeight;});}}
+// MEAL COMBO CARD — with interactive item picking
+function mkMeal(cid,av,onSend){return function(data,d=500){return new Promise(r=>{if(onSend)onSend();const c=document.getElementById(cid),t=document.createElement('div');t.className='zrow zbot';t.innerHTML=`<div class="zm" style="background-image:url(${av})"></div><div class="zty"><span></span><span></span><span></span></div>`;c.appendChild(t);c.scrollTop=c.scrollHeight;setTimeout(()=>{let items=data.items.map((i,idx)=>`<div class="mitm"><input type="checkbox" class="mi-chk" checked data-idx="${idx}" data-price="${i.price||0}"/><span class="mi-name">${i.name} <span style="color:#999;font-size:8px">${i.note||''}</span></span><span class="mi-price">${i.priceLabel||''}</span></div>`).join('');let imgHtml=data.image?`<img class="mimg" src="${data.image}"/>`:'';let saveHtml=data.save?`<div class="msave">${data.save}</div>`:'';const mealId='meal_'+Date.now();t.innerHTML=`<div class="zm" style="background-image:url(${av})"></div><div class="zmeal" id="${mealId}">${imgHtml}<div class="mhdr">${data.title}</div><div class="mbdy">${items}<div class="mtot"><span>${data.serves}</span><span class="meal-total">${data.price}</span></div></div>${saveHtml}<div class="mact"><button class="ma-all" onclick="mealAll('${mealId}')">Lấy cả combo</button><button class="ma-pick" onclick="mealPick('${mealId}')">Chọn từng món</button></div></div>`;c.scrollTop=c.scrollHeight;t._mealId=mealId;t._mealData=data;r(mealId);},d);})}}
+const sl=ms=>new Promise(r=>setTimeout(r,ms));
+
+// VIETQR PAYMENT CARD GENERATOR
+function vietQR(amount,name,acct,bank,orderNo){
+  // Pseudo QR grid pattern
+  const cells=[];
+  const pattern=[1,1,1,1,1,1,1,0,1,0,1,1,0,0,0,0,1,0,0,1,0,1,0,1,1,1,0,1,0,1,0,1,1,0,1,0,0,0,1,0,0,1,1,1,0,0,0,0,1,0,1,1,0,1,1,1,1,1,1,1,0,1,0,1,0,0,0,0,0,0,0,0,1,0,1,1,0,1,0,0,1,1,0,0,0,1,0,1,0,1,0,1,1,0,0,0,1,0,1,0,0,0,0,0,1,1,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,1,1,0,0,0,0,1,0,0,1,0,1,0,1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,1,1,1,1,1,1,1,0,1,1,0];
+  for(let i=0;i<121;i++){
+    const on=pattern[i%pattern.length]^(i%7===0?1:0);
+    cells.push(`<div class="qr-cell" style="background:${on?'#1A1A1A':'#fff'}"></div>`);
+  }
+  return `<div class="zqr">
+    <div class="zqr-hdr">
+      <span style="font-size:13px;font-weight:900;letter-spacing:-.5px">VIET</span><span style="font-size:13px;font-weight:900;color:#FFD700;letter-spacing:-.5px">QR</span>
+      <span style="margin-left:auto;font-size:9px;opacity:.8">NAPAS 247</span>
+    </div>
+    <div class="zqr-body">
+      <div style="font-size:10px;font-weight:700;color:#1A1A1A;margin-bottom:2px">Quét mã để thanh toán</div>
+      <div class="qr-box"><div class="qr-grid">${cells.join('')}</div></div>
+      <div class="zqr-info">
+        <div><b>Số tiền:</b> <span style="color:#E30613;font-weight:800;font-size:11px">${amount}</span></div>
+        <div><b>Người nhận:</b> ${name}</div>
+        <div><b>STK:</b> ${acct} · ${bank}</div>
+        <div><b>Nội dung:</b> ${orderNo}</div>
+      </div>
+      <div class="zqr-banks">
+        <div class="qrb" style="background:#1F36C7">TCB</div>
+        <div class="qrb" style="background:#006A4D">VCB</div>
+        <div class="qrb" style="background:#E30613">TBK</div>
+        <div class="qrb" style="background:#00448A">BID</div>
+        <div class="qrb" style="background:#F7941D;color:#1A1A1A">VBA</div>
+      </div>
+      <div style="font-size:8px;color:#B0B5BD;margin-top:6px">Hỗ trợ tất cả ngân hàng qua VietQR / NAPAS 247</div>
+    </div>
+  </div>`;
+}
+
+// Meal interaction handlers
+let mealSelections={};
+function mealAll(id){
+  const el=document.getElementById(id);if(!el)return;
+  el.querySelectorAll('.mi-chk').forEach(c=>{c.checked=true;c.disabled=true;});
+  el.querySelector('.mact').innerHTML='<div style="text-align:center;font-size:9px;color:#27AE60;font-weight:700;padding:2px 0">Đã chọn cả combo</div>';
+  mealSelections[id]='all';
+}
+function mealPick(id){
+  const el=document.getElementById(id);if(!el)return;
+  el.querySelectorAll('.mi-chk').forEach(c=>{c.disabled=false;c.style.cursor='pointer';});
+  const data=JSON.parse(el.getAttribute('data-items')||'[]');
+  el.querySelector('.mact').innerHTML='<button class="ma-all" onclick="mealConfirmPick(\''+id+'\')">Xác nhận chọn</button>';
+  mealSelections[id]='picking';
+}
+function mealConfirmPick(id){
+  const el=document.getElementById(id);if(!el)return;
+  const checked=el.querySelectorAll('.mi-chk:checked');
+  el.querySelectorAll('.mi-chk').forEach(c=>c.disabled=true);
+  el.querySelector('.mact').innerHTML='<div style="text-align:center;font-size:9px;color:#27AE60;font-weight:700;padding:2px 0">Đã chọn '+checked.length+' món</div>';
+  mealSelections[id]='picked_'+checked.length;
+}
+
+const b1=mkBot('c1',AV1),cd1=mkCard('c1',AV1),ch1=mkChips('c1'),ml1=mkMeal('c1',AV1);
+const b2=mkBot('c2',AV2,incGT),cd2=mkCard('c2',AV2,incGT),ch2=mkChips('c2'),ml2=mkMeal('c2',AV2,incGT);
+
+// ====== FLOW 1: MT WINMART — MEAL OCCASION FIRST ======
+async function flow1(){
+  document.getElementById('c1').innerHTML='';
+  document.querySelectorAll('[id^="mt-"]').forEach(e=>e.classList.remove('on'));
+
+  act(['mt-crm','mt-meal','mt-region']);
+  await b1('Chị Linh ơi, WinMart Thảo Điền đây ạ!');
+  await sl(200);
+
+  act(['mt-pos']);
+  await b1('Tối nay nhà mình ăn gì chưa Chị? Em thấy tuần này Chị chưa nấu sườn kho, món nhà mình hay ăn đó.');
+  await sl(200);
+
+  await b1('Thời tiết hôm nay nóng, em gợi ý thêm món canh chua cá mát mát cho cả nhà nha:');
+  await sl(150);
+
+  // MEAL COMBO CARD — interactive with individual item selection
+  const mid1=await ml1({
+    title: 'Bữa cơm tối 3 người, 129.000đ',
+    image: 'https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=600&auto=format',
+    items: [
+      {name: 'Sườn non MEATDeli 400g', note: 'tươi sáng nay', priceLabel: '44.000đ', price: 44000},
+      {name: 'Cá basa phi lê 300g', note: 'MEATDeli', priceLabel: '35.000đ', price: 35000},
+      {name: 'Rau muống + me + cà chua', note: 'WinEco', priceLabel: '22.000đ', price: 22000},
+      {name: 'Nước mắm Chin-Su', note: 'MCH', priceLabel: '28.000đ', price: 28000},
+    ],
+    serves: 'Đủ cho 3 người',
+    price: '129.000đ',
+    save: 'Tiết kiệm 35.000đ so với mua lẻ'
+  });
+
+  await sl(200);
+  act(['mt-promo']);
+  await b1('Sườn non MEATDeli hôm nay giảm 25% cho hội viên Gold như Chị, lô mổ lúc 4h sáng, tươi lắm ạ.');
+
+  await sl(250);
+  act(['mt-sponsor']);
+  await b1('À tiện đây, Vinamilk đang có ưu đãi riêng cho Chị. Chị đang 2/4 hộp cho ly sứ, mua thêm 2 hộp là đủ bộ:');
+  await cd1(`<div class="zcard"><img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format"/><div class="zbd"><div class="zti">Sữa tươi Vinamilk 1L x2 <span class="ztg" style="background:#005BAA">-10%</span></div><div class="zme">Thêm 2 hộp là đủ ly sứ <span class="zsp">SPONSORED</span></div><div><span class="zpr">63.000đ</span><span class="zst">70.000đ</span></div></div></div>`);
+
+  let a=await ch1([{label:'Lấy combo bữa cơm',value:'meal'},{label:'Thêm sữa Vinamilk',value:'both'},{label:'Hôm nay bận rồi',value:'busy',red:true}]);
+
+  if(a==='busy'){
+    await b1('Dạ, em giữ giá combo đến 8h tối mai nha Chị. Ngày mai em gợi ý bữa khác!');
+    return;
+  }
+
+  if(a==='both'){
+    await b1('Tuyệt vời, em gộp combo bữa cơm và sữa Vinamilk luôn nha!');
+  } else {
+    await b1('Hay quá, bữa tối nay ngon rồi đó Chị!');
+  }
+
+  await sl(150);
+  act(['mt-logistics','mt-meat']);
+  await b1('Chị đang ở đâu ạ? Em tìm cửa hàng gần nhất để Chị tiện ghé.');
+  let loc=await ch1([{label:'Thảo Điền Q2',value:'q2'},{label:'Quận 1',value:'q1'},{label:'Bình Thạnh',value:'bt'}]);
+  const s1={q2:'WinMart+ Thảo Điền, 0,4km',q1:'WinMart Vincom ĐK, 0,8km',bt:'WinMart+ ĐBP, 0,6km'};
+  await b1(`Có liền, gần Chị lắm:<div class="zmap"><b>${s1[loc]}</b> (${loc==='q2'?'đi bộ 5 phút':'xe máy 8 phút'})</div>`);
+  await sl(150);
+  await b1('Chị ghé lấy hay em giao tới nhà?');
+  let ship=await ch1([{label:'Chị ghé lấy',value:'p'},{label:'Giao tới nhà',value:'d'}]);
+
+  // Build order based on meal selection
+  let lines='';let tot=0;
+  const sel=mealSelections[mid1];
+  const mealEl=document.getElementById(mid1);
+  if(sel&&sel.startsWith('picked_')&&mealEl){
+    mealEl.querySelectorAll('.mi-chk').forEach(c=>{
+      if(c.checked){
+        const row=c.closest('.mitm');
+        const name=row.querySelector('.mi-name').textContent.trim();
+        const price=row.querySelector('.mi-price').textContent;
+        lines+=`<div class="zln"><span>${name.split(' ')[0]+' '+name.split(' ').slice(1,3).join(' ')}</span><span>${price}</span></div>`;
+        tot+=parseInt(c.getAttribute('data-price'))||0;
+      }
+    });
+  } else {
+    lines='<div class="zln"><span>Sườn non MEATDeli 400g</span><span>44.000đ</span></div>';
+    lines+='<div class="zln"><span>Cá basa phi lê 300g</span><span>35.000đ</span></div>';
+    lines+='<div class="zln"><span>Rau muống + me + cà chua</span><span>22.000đ</span></div>';
+    lines+='<div class="zln"><span>Nước mắm Chin-Su 250ml</span><span>28.000đ</span></div>';
+    tot=129000;
+  }
+  if(a==='both'){lines+='<div class="zln"><span>Sữa Vinamilk 1L x2</span><span>63.000đ</span></div>';tot+=63000;}
+  if(ship==='d'){lines+='<div class="zln"><span>Phí giao hàng</span><span>15.000đ</span></div>';tot+=15000;}
+  lines+=`<div class="zln"><span>Tổng cộng</span><span>${tot.toLocaleString('vi-VN')}đ</span></div>`;
+  await cd1(`<div class="zord"><h4>Đơn #MT100426</h4>${lines}</div>`);
+
+  await ch1([{label:'Thanh toán luôn',value:'pay'}]);
+  await b1('Chị quét mã VietQR bên dưới để thanh toán nha:');
+  await cd1(vietQR(tot.toLocaleString('vi-VN')+'đ','WINMART+ - MSN RETAIL','1019 8765 4321','Techcombank (TCB)','MT100426'));
+  await sl(800);
+  await b1('Thanh toán thành công! +42 điểm WIN. Chúc cả nhà ngon miệng tối nay nha! 🎉');
+}
+
+// ====== FLOW 2: GT TẠP HOÁ CÔ LAN — MEAL OCCASION ======
+async function flow2(){
+  document.getElementById('c2').innerHTML='';gtMsg=0;document.getElementById('gt-msg').textContent='0';
+  document.getElementById('tcbPopup').style.display='none';
+  document.querySelectorAll('[id^="gt-"]').forEach(e=>{if(e.classList)e.classList.remove('on')});
+
+  await sl(700);
+  act(['gt-owner','gt-customer','gt-zalo','gt-meal']);
+
+  await b2('Chị Hương ơi, Cô Lan tạp hoá Trương Định đây ạ!');
+  await sl(250);
+
+  await b2('Tối nay nhà mình ăn gì chưa Chị? Cô thấy tuần này Chị hay mua ba chỉ với trứng, chắc nhà mình thích thịt kho trứng lắm nhỉ.');
+  await sl(200);
+
+  act(['gt-chinsu']);
+  await b2('Cô gợi ý bữa cơm tối cho 4 người nhà Chị nè, hàng Cô có sẵn hết:');
+
+  const mid2=await ml2({
+    title: 'Bữa cơm tối 4 người, 95.000đ',
+    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format',
+    items: [
+      {name: 'Ba chỉ heo 500g', note: 'hàng chợ sáng nay', priceLabel: '45.000đ', price: 45000},
+      {name: 'Trứng gà 6 quả', note: '', priceLabel: '18.000đ', price: 18000},
+      {name: 'Rau muống 1 bó', note: '', priceLabel: '7.000đ', price: 7000},
+      {name: 'Nước mắm Chin-Su 250ml', note: 'giảm 20%', priceLabel: '25.000đ', price: 25000},
+    ],
+    serves: 'Đủ cho 4 người',
+    price: '95.000đ',
+    save: 'Rẻ hơn siêu thị ~20.000đ'
+  });
+
+  await sl(250);
+  act(['gt-unilever']);
+  await b2('À tiện đây, Cô vừa nhập lô Omo Matic mới, Unilever đang hỗ trợ giảm 15% cho khách quen. Chị cần không?');
+  await cd2(`<div class="zcard"><img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=600&auto=format"/><div class="zbd"><div class="zti">Omo Matic 2.7kg <span class="ztg" style="background:#1F36C7">-15%</span></div><div class="zme">Giá tốt nhất khu <span class="zsp">UNILEVER TÀI TRỢ</span></div><div><span class="zpr">75.650đ</span><span class="zst">89.000đ</span></div></div></div>`);
+
+  let b=await ch2([{label:'Lấy combo bữa cơm',value:'meal'},{label:'Thêm Omo luôn',value:'both'},{label:'Để em suy nghĩ',value:'wait',red:true}]);
+  if(b==='wait'){await b2('Dạ Chị, Cô giữ giá đến chiều mai nha. Chị ghé Cô bất cứ lúc nào.');return;}
+
+  if(b==='both'){
+    await b2('Hay quá, Cô ghi đơn cho Chị liền nha!');
+  } else {
+    await b2('Dạ, Cô chuẩn bị sẵn bữa cơm cho Chị liền!');
+  }
+
+  await sl(150);
+  await b2('Chị ghé tạp hoá Cô ở 156 Trương Định lấy luôn hay để Cô gửi người mang tới?');
+  let ful=await ch2([{label:'Em ghé lấy',value:'p'},{label:'Giao tới nhà em',value:'d'}]);
+
+  const fee=ful==='d'?10000:0;
+  let tot=0;let lines='';
+  const sel2=mealSelections[mid2];
+  const mealEl2=document.getElementById(mid2);
+  if(sel2&&sel2.startsWith('picked_')&&mealEl2){
+    mealEl2.querySelectorAll('.mi-chk').forEach(c=>{
+      if(c.checked){
+        const row=c.closest('.mitm');
+        const name=row.querySelector('.mi-name').textContent.trim().split('  ')[0];
+        const price=row.querySelector('.mi-price').textContent;
+        lines+=`<div class="zln"><span>${name}</span><span>${price}</span></div>`;
+        tot+=parseInt(c.getAttribute('data-price'))||0;
+      }
+    });
+  } else {
+    lines='<div class="zln"><span>Ba chỉ heo 500g</span><span>45.000đ</span></div>';
+    lines+='<div class="zln"><span>Trứng gà 6 quả</span><span>18.000đ</span></div>';
+    lines+='<div class="zln"><span>Rau muống 1 bó</span><span>7.000đ</span></div>';
+    lines+='<div class="zln"><span>Chin-Su 250ml (-20%)</span><span>25.000đ</span></div>';
+    tot=95000;
+  }
+  if(b==='both'){lines+='<div class="zln"><span>Omo Matic 2.7kg</span><span>75.650đ</span></div>';tot+=75650;}
+  if(fee){lines+='<div class="zln"><span>Giao hàng</span><span>10.000đ</span></div>';tot+=fee;}
+  lines+=`<div class="zln"><span>Tổng cộng</span><span>${tot.toLocaleString('vi-VN')}đ</span></div>`;
+
+  await cd2(`<div class="zord"><h4>Đơn #GT2604108</h4>${lines}</div>`);
+
+  if(ful==='d'){
+    await b2('Cô gửi người mang tới nhà Chị ở tầng 5 nhà 12, tầm 20 phút nha.');
+  } else {
+    await b2('Dạ, Cô chuẩn bị sẵn rồi. Chị ghé lúc nào cũng được ạ.');
+  }
+
+  await sl(150);
+  await ch2([{label:'Thanh toán',value:'pay'}]);
+  await b2('Chị quét mã VietQR để chuyển khoản cho Cô nha:');
+  await cd2(vietQR(tot.toLocaleString('vi-VN')+'đ','NGUYỄN THỊ LAN - TẠP HOÁ CÔ LAN','0901 234 567','Techcombank (TCB)','GT2604108'));
+  await sl(800);
+  await b2('Đã nhận tiền rồi Chị Hương! Tối nay nấu thịt kho trứng ngon lắm đó. Hẹn gặp Chị! 🎉');
+
+  await sl(300);
+  act(['gt-tcb']);
+  document.getElementById('tcbPopup').style.display='flex';
+  await sl(400);
+
+  await b2('Chị ơi, Techcombank đang có gói thấu chi 10 triệu cho khách thân thiết quanh đây, lãi rất thấp. Chị muốn tìm hiểu không?');
+  await ch2([{label:'Để sale gọi em',value:'y'},{label:'Thôi Cô ơi',value:'n',red:true}]);
+  await b2('Dạ, cảm ơn Chị Hương. Cô chờ Chị ghé nha!');
+}
+
+function resetAll(){
+  document.getElementById('tcbPopup').style.display='none';
+  mealSelections={};
+  enterPOS();
+  flow1();flow2();
+}
+posHistory=['dash'];
+flow1();flow2();
+</script>
+</body>
+</html>
