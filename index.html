@@ -442,6 +442,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <div class="dl">Tên: <span class="text-white/70 font-medium">Trần Thị Hương</span></div>
       <div class="dl">Hộ gia đình: <span class="text-white/70 font-medium">4 người</span></div>
       <div class="dl">Món thường nấu: <span class="text-orange-300 font-medium">thịt kho, canh rau</span></div>
+      <div class="dl">Mua gần nhất: <span class="text-yellow-400 font-medium">Omo 2.7kg — 21/3 (20 ngày)</span></div>
     </div>
     <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="gt-meal">
       <div class="pulse-dot"></div>
@@ -1745,9 +1746,12 @@ async function flow2(){
     save: 'Rẻ hơn siêu thị ~20.000đ'
   });
 
-  await sl(250);
+  await sl(400);
+  await b2('À Chị Hương ơi, Cô nhớ ra — lần trước Chị mua nước giặt là ngày 21/3, cũng gần 3 tuần rồi. Nhà 4 người chắc sắp hết rồi đúng không ạ? 🧺');
+  await sl(300);
+
   act(['gt-unilever']);
-  await b2('À tiện đây, Cô vừa nhập lô Omo Matic mới, Unilever đang hỗ trợ giảm 15% cho khách quen. Chị cần không?');
+  await b2('Tiện đây, Cô vừa nhập lô Omo Matic mới, Unilever đang hỗ trợ giảm 15% cho khách quen. Chị lấy luôn tiện thể nha!');
   await cd2(`<div class="zcard"><img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=600&auto=format"/><div class="zbd"><div class="zti">Omo Matic 2.7kg <span class="ztg" style="background:#1F36C7">-15%</span></div><div class="zme">Giá tốt nhất khu <span class="zsp">UNILEVER TÀI TRỢ</span></div><div><span class="zpr">75.650đ</span><span class="zst">89.000đ</span></div></div></div>`);
 
   let b=await ch2([{label:'Lấy combo bữa cơm',value:'meal'},{label:'Thêm Omo luôn',value:'both'},{label:'Để em suy nghĩ',value:'wait',red:true}]);
