@@ -499,7 +499,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 
 <!-- ======= PANE 3: ZALO MINI-APP POS ======= -->
 <div style="width:400px;flex-shrink:0">
-  <div class="zma" style="height:calc(640px + 300px + 44px)">
+  <div class="zma" style="height:calc(640px + 300px + 44px);position:relative">
     <!-- ZALO CHROME -->
     <div class="zma-hdr">
       <div class="zma-back" onclick="posBack()">&#8249;</div>
@@ -596,6 +596,24 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           <div class="pr"><span>Omachi thùng: Giảm 8%</span><span class="pbdg bg-green-100 text-green-700">Đang chạy</span></div>
           <div class="pr"><span>WinEco rau sạch: Giảm 15%</span><span class="pbdg bg-blue-100 text-blue-700">Từ 12/4</span></div>
         </div>
+        <div class="pc" style="border-color:rgba(255,140,40,.3);background:linear-gradient(135deg,rgba(255,150,50,.04),#fff)">
+          <h3 style="color:#FF8C28"><span style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;margin-right:4px">W</span>WinX Financial</h3>
+          <div style="display:flex;gap:6px;margin-bottom:6px">
+            <div style="flex:1;background:linear-gradient(135deg,rgba(255,140,40,.08),rgba(255,140,40,.02));border:1px solid rgba(255,140,40,.15);border-radius:7px;padding:6px;text-align:center">
+              <div style="font-size:14px;font-weight:800;color:#FF8C28">1,82tr</div>
+              <div style="font-size:8px;color:#999">Số dư sinh lời</div>
+              <div style="font-size:7px;color:#27AE60;font-weight:700;margin-top:1px">+3,5%/năm TCB</div>
+            </div>
+            <div style="flex:1;background:rgba(255,255,255,1);border:1px solid #E5E8EC;border-radius:7px;padding:6px;text-align:center">
+              <div style="font-size:14px;font-weight:800;color:#1B2A4A">10tr</div>
+              <div style="font-size:8px;color:#999">Hạn mức thấu chi</div>
+              <div style="font-size:7px;color:#0068FF;font-weight:700;margin-top:1px">Còn 7,8tr khả dụng</div>
+            </div>
+          </div>
+          <div class="pr" style="border-color:rgba(255,140,40,.1)"><span style="font-size:10px">Tự động gửi tiết kiệm sau mỗi đơn</span><span class="pbdg" style="background:rgba(39,174,96,.1);color:#27AE60">Bật</span></div>
+          <div class="pr" style="border-color:rgba(255,140,40,.1)"><span style="font-size:10px">Pay Later — Vốn lưu động</span><span class="pbdg" style="background:rgba(255,140,40,.1);color:#FF8C28">Đang dùng</span></div>
+          <div class="pr" style="border-bottom:none"><span style="font-size:10px">Bảo hiểm hàng tồn kho</span><span class="pbdg" style="background:rgba(0,104,255,.1);color:#0068FF">Mới</span></div>
+        </div>
         <div class="pc"><h3>Khách hàng thân thiết</h3>
           <div class="pr"><span>Chị Hương (tầng 5, nhà 12)<br/><span class="text-[9px] text-gray-400">Ghé 4 lần/tuần, giỏ TB 78k</span></span><span class="pbdg bg-purple-100 text-purple-600">VIP</span></div>
           <div class="pr"><span>Anh Hùng (nhà 42)<br/><span class="text-[9px] text-gray-400">Ghé 3 lần/tuần, giỏ TB 55k</span></span><span class="pbdg bg-blue-100 text-blue-600">Thường</span></div>
@@ -623,6 +641,16 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           <div id="cartI"></div>
           <div class="flex justify-between items-center mt-2 pt-2 border-t border-gray-100"><span class="font-bold text-xs text-gray-800">Tổng:</span><span class="font-bold text-xs text-red-600" id="cartT">0đ</span></div>
           <div class="flex gap-2 mt-2"><button class="pbtn pbtn-o flex-1" onclick="clrC()">Huỷ</button><button class="pbtn pbtn-r flex-1" onclick="payC()">Thanh toán</button></div>
+          <div style="margin-top:6px;padding:6px 8px;background:linear-gradient(135deg,rgba(255,150,50,.06),rgba(255,120,20,.03));border:1px solid rgba(255,140,40,.2);border-radius:8px;cursor:pointer" onclick="payC()">
+            <div style="display:flex;align-items:center;gap:5px">
+              <div style="width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:#fff">W</div>
+              <div style="flex:1">
+                <div style="font-size:9px;font-weight:700;color:#FF8C28">Pay Later — Vốn lưu động</div>
+                <div style="font-size:8px;color:#999">WinX Financial • Trả sau 30 ngày, 0% lãi đơn đầu</div>
+              </div>
+              <span style="font-size:10px;color:rgba(255,140,40,.5)">&#x276F;</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -635,6 +663,14 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
             <div class="pr"><span>Tương ớt Chin-Su 250g (thùng 24)<br/><span class="text-[9px] text-gray-400">Tồn: 2 chai, bán TB: 1,5/ngày</span></span><button class="pbtn pbtn-p" onclick="this.textContent='Đã thêm';this.disabled=true">Thêm</button></div>
             <div class="pr"><span>Kokomi đại 90g (thùng 30)<br/><span class="text-[9px] text-gray-400">Tồn: 8 gói, bán TB: 4/ngày</span></span><button class="pbtn pbtn-p" onclick="this.textContent='Đã thêm';this.disabled=true">Thêm</button></div>
             <div class="pr"><span>Omachi thùng 30 gói<br/><span class="text-[9px] text-gray-400">Tồn: 12 gói, bán TB: 3,6/ngày</span></span><button class="pbtn pbtn-p" onclick="this.textContent='Đã thêm';this.disabled=true">Thêm</button></div>
+            <div style="margin-top:6px;padding:7px 8px;background:linear-gradient(135deg,rgba(255,150,50,.06),rgba(255,120,20,.02));border:1px solid rgba(255,140,40,.18);border-radius:8px">
+              <div style="display:flex;align-items:center;gap:5px;margin-bottom:4px">
+                <div style="width:16px;height:16px;border-radius:4px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#fff">W</div>
+                <span style="font-size:9px;font-weight:700;color:#FF8C28">WinX Financial — Pay Later</span>
+              </div>
+              <div style="font-size:8.5px;color:#666;line-height:1.4">Đặt hàng ngay, trả sau 30 ngày. Hạn mức <b style="color:#FF8C28">7,8 triệu</b> khả dụng. Lãi 0% đơn đầu tiên.</div>
+              <button class="pbtn w-full mt-1.5" style="background:linear-gradient(135deg,#FF8C28,#FF6B00);color:#fff;font-size:9px;padding:5px" onclick="this.textContent='✓ Đã bật Pay Later cho đơn này';this.disabled=true;this.style.background='#27AE60'">Bật Pay Later cho đơn này</button>
+            </div>
           </div>
           <div id="oc-npp" style="display:none">
             <div class="pr"><span>NPP Hoàng Long (HBT)<br/><span class="text-[9px] text-gray-400">Giao trong 4h, MOQ: 500k</span></span><button class="pbtn pbtn-o">Gọi ngay</button></div>
@@ -663,11 +699,17 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           <div class="pr"><span>Bác Tâm (đầu ngõ)<br/><span class="text-[9px] text-gray-400">Nợ từ 5/4</span></span><div class="flex items-center gap-1"><span class="font-bold text-orange-500">45.000đ</span><button class="pbtn pbtn-o" style="font-size:9px;padding:3px 8px" onclick="this.textContent='Đã nhắc'">Nhắc</button></div></div>
           <div class="flex justify-between items-center mt-2 pt-2 border-t border-gray-100"><span class="font-bold text-[10px] text-gray-600">Tổng nợ:</span><span class="font-bold text-xs text-red-600">292.000đ</span></div>
         </div>
-        <div class="pc"><h3>Tài chính cửa hàng</h3>
+        <div class="pc" style="border-color:rgba(255,140,40,.25);background:linear-gradient(135deg,rgba(255,150,50,.03),#fff)">
+          <h3 style="color:#FF8C28"><span style="width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:#fff;margin-right:3px">W</span>WinX Financial — Tài chính cửa hàng</h3>
           <div class="pr"><span>Doanh thu tháng 4</span><span class="font-bold text-green-600">18,7 triệu</span></div>
           <div class="pr"><span>Chi phí nhập hàng</span><span class="font-bold">14,2 triệu</span></div>
           <div class="pr"><span>Lợi nhuận gộp</span><span class="font-bold text-green-600">4,5 triệu (24%)</span></div>
-          <div class="pr"><span>Thấu chi TCB</span><span class="font-bold text-blue-600">10 triệu</span></div>
+          <div class="pr" style="border-color:rgba(255,140,40,.12)"><span style="color:#FF8C28;font-weight:600">Thấu chi WinX Financial</span><span class="font-bold" style="color:#FF8C28">10 triệu</span></div>
+          <div class="pr" style="border-color:rgba(255,140,40,.12)"><span style="color:#FF8C28;font-weight:600">Số dư sinh lời TCB</span><span class="font-bold" style="color:#FF8C28">1,82 triệu</span></div>
+          <div class="pr" style="border-bottom:none"><span style="color:#FF8C28;font-weight:600">Lãi tích luỹ tháng 4</span><span class="font-bold" style="color:#27AE60">+5.300đ</span></div>
+          <div style="margin-top:6px;padding:6px;background:linear-gradient(135deg,rgba(255,140,40,.06),rgba(255,140,40,.02));border:1px dashed rgba(255,140,40,.2);border-radius:6px;font-size:8px;color:#999;text-align:center">
+            <span style="color:#FF8C28;font-weight:700">POS data → Credit score 782</span> · Mỗi giao dịch tăng hạn mức & giảm lãi suất
+          </div>
         </div>
       </div>
 
@@ -711,6 +753,11 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <button onclick="showPV('order',this)"><span style="font-size:14px">&#x1F4E6;</span><span>Đặt hàng</span></button>
       <button onclick="showPV('debt',this)"><span style="font-size:14px">&#x1F4D2;</span><span>Sổ nợ</span></button>
       <button onclick="showPV('rpt',this)"><span style="font-size:14px">&#x1F4C8;</span><span>Báo cáo</span></button>
+    </div>
+    <div style="position:absolute;bottom:38px;left:8px;right:8px;padding:5px 8px;background:linear-gradient(135deg,rgba(255,150,50,.95),rgba(255,107,0,.95));border-radius:8px 8px 0 0;display:flex;align-items:center;gap:6px;box-shadow:0 -2px 12px rgba(255,140,40,.2)" id="winxFinBar">
+      <div style="width:16px;height:16px;border-radius:4px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#fff">W</div>
+      <div style="flex:1;font-size:8px;color:#fff"><b>WinX Financial</b> · +2.400.000đ vừa gửi sinh lời TCB</div>
+      <span style="font-size:10px;color:rgba(255,255,255,.6);cursor:pointer" onclick="document.getElementById('winxFinBar').style.display='none'">&#x2715;</span>
     </div>
   </div>
 </div>
@@ -1471,7 +1518,7 @@ function addC(n,p){const x=cart.find(c=>c.n===n);if(x)x.q++;else cart.push({n,p,
 function rC(){document.getElementById('cartC').style.display='block';document.getElementById('cartI').innerHTML=cart.map((c,i)=>`<div class="pr"><span>${c.n} x${c.q}</span><div class="flex items-center gap-1"><span class="font-bold">${(c.p*c.q).toLocaleString('vi-VN')}đ</span><button onclick="rmC(${i})" class="text-red-400 text-[10px] font-bold">X</button></div></div>`).join('');document.getElementById('cartT').textContent=cart.reduce((s,c)=>s+c.p*c.q,0).toLocaleString('vi-VN')+'đ';}
 function rmC(i){cart.splice(i,1);if(!cart.length)document.getElementById('cartC').style.display='none';else rC();}
 function clrC(){cart=[];document.getElementById('cartC').style.display='none';}
-function payC(){const t=cart.reduce((s,c)=>s+c.p*c.q,0);alert('Thanh toán thành công!\nTổng: '+t.toLocaleString('vi-VN')+'đ\nĐã in hoá đơn.');clrC();}
+function payC(){const t=cart.reduce((s,c)=>s+c.p*c.q,0);alert('Thanh toán thành công!\nTổng: '+t.toLocaleString('vi-VN')+'đ\nĐã in hoá đơn.\n\n💰 WinX Financial: +'+t.toLocaleString('vi-VN')+'đ tự động chuyển vào tài khoản sinh lời TCB.\nLãi suất qua đêm: 3,5%/năm');clrC();}
 
 // SYSTEM ACTIVATION
 function act(ids){ids.forEach(id=>{const e=document.getElementById(id);if(e)e.classList.add('on')});}
