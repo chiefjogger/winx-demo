@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Masan Omni-Channel Demo v2: Meal-Occasion + Zalo Mini-App POS</title>
+<title>Masan Omni-Channel Demo v3: Meal-Occasion + Zalo Mini-App POS + WinX Financial</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{masan:'#1B2A4A','masan-red':'#E30613','zalo-blue':'#0068FF'}}}}</script>
 <style>
@@ -17,10 +17,10 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 .blob-3{width:500px;height:500px;background:#27AE60;top:20%;right:0;animation-delay:8s}
 @keyframes drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(25px,-15px) scale(1.04)}100%{transform:translate(-15px,20px) scale(.97)}}
 .glass{background:rgba(255,255,255,.04);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:14px;transition:border-color .2s,box-shadow .2s}
-.glass:hover{border-color:rgba(255,255,255,.12)}
+.glass:hover{border-color:rgba(255,255,255,.14);box-shadow:0 0 20px rgba(0,104,255,.04)}
 
 /* PHONE */
-.phone{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4);display:flex;flex-direction:column;height:640px;width:100%}
+.phone{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.05);display:flex;flex-direction:column;height:640px;width:100%}
 .zhdr{display:flex;align-items:center;gap:8px;padding:10px 12px;color:#fff}
 .zav{width:32px;height:32px;border-radius:50%;background-size:cover;background-position:center;flex-shrink:0;border:2px solid rgba(255,255,255,.4)}
 .zwho{flex:1}.zwho .zn{font-weight:700;font-size:11.5px}.zwho .zs{font-size:9px;opacity:.75;display:flex;align-items:center;gap:3px}
@@ -98,7 +98,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 .gap-card{background:linear-gradient(135deg,rgba(227,6,19,.08),rgba(227,6,19,.02));border:1.5px dashed #E30613;border-radius:14px;padding:12px;position:relative}
 
 /* ZALO MINI-APP POS */
-.zma{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4);display:flex;flex-direction:column;height:100%;width:100%}
+.zma{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.05);display:flex;flex-direction:column;height:100%;width:100%}
 .zma-hdr{background:#0068FF;padding:8px 12px;display:flex;align-items:center;gap:8px}
 .zma-hdr .zma-back{color:#fff;font-size:18px;opacity:.8;cursor:pointer;line-height:1;transition:opacity .12s}
 .zma-hdr .zma-back:hover{opacity:1}
@@ -275,7 +275,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <div class="relative z-10">
 
 <!-- TOP VIEW SWITCHER -->
-<div class="flex items-center gap-2 px-5 pt-3 pb-1">
+<div class="flex items-center gap-2 px-5 pt-3 pb-2" style="border-bottom:1px solid rgba(255,255,255,.06)">
   <button id="tab-demo" onclick="switchView('demo')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff">Omni-Channel Demo</button>
   <button id="tab-ads" onclick="switchView('ads')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">WinX Ads Portal — Góc nhìn nhà tài trợ</button>
   <button id="tab-intel" onclick="switchView('intel')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">Real-Time Intelligence</button>
@@ -285,7 +285,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <div id="view-demo" class="flex flex-col" style="min-width:1700px">
 
 <!-- HEADER -->
-<div class="flex items-center justify-between px-5 py-3">
+<div class="flex items-center justify-between px-5 py-3" style="border-bottom:1px solid rgba(255,255,255,.04)">
   <div class="flex items-center gap-8">
     <div><div class="text-[9px] font-bold tracking-widest text-blue-400 uppercase">Cột 1: Kênh MT</div><div class="text-sm font-bold text-white/90">WinMart Zalo OA, "Hôm nay ăn gì?"</div></div>
     <div><div class="text-[9px] font-bold tracking-widest text-orange-400 uppercase">Cột 2: Kênh GT</div><div class="text-sm font-bold text-white/90">Tạp Hoá Cô Lan, bữa cơm gia đình</div></div>
@@ -314,7 +314,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     <div class="popup-overlay" id="tcbPopupMT" style="display:none">
       <div class="popup">
         <div class="flex items-center gap-2 mb-2">
-          <div class="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white font-black text-[8px]">TCB</div>
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:#fff;border:1px solid #eee;padding:2px"><svg viewBox="0 0 40 40" style="width:100%;height:100%"><path d="M15 2L28 15L15 28L2 15Z" fill="#E30613"/><path d="M25 12L38 25L25 38L12 25Z" fill="#E30613"/><rect x="14" y="14" width="12" height="12" transform="rotate(45 20 20)" fill="#fff"/></svg></div>
           <div><div class="font-bold text-xs">Techcombank cho bạn</div><div class="text-[9px] text-gray-500">Ưu đãi riêng cho khách hàng WinMart</div></div>
         </div>
         <div class="bg-red-50 rounded-lg p-2 mb-2">
@@ -411,7 +411,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     <div class="popup-overlay" id="tcbPopup" style="display:none">
       <div class="popup">
         <div class="flex items-center gap-2 mb-2">
-          <div class="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white font-black text-[8px]">TCB</div>
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:#fff;border:1px solid #eee;padding:2px"><svg viewBox="0 0 40 40" style="width:100%;height:100%"><path d="M15 2L28 15L15 28L2 15Z" fill="#E30613"/><path d="M25 12L38 25L25 38L12 25Z" fill="#E30613"/><rect x="14" y="14" width="12" height="12" transform="rotate(45 20 20)" fill="#fff"/></svg></div>
           <div><div class="font-bold text-xs">Techcombank cho Cô Lan</div><div class="text-[9px] text-gray-500">Ưu đãi riêng cho chủ tạp hoá Masan</div></div>
         </div>
         <div class="bg-red-50 rounded-lg p-2 mb-2">
@@ -776,7 +776,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <div class="adp-sidebar">
   <div class="sb-brand">
     <div style="display:flex;align-items:center;gap:10px">
-      <div class="sb-logo" style="padding:0;overflow:hidden"><img src="https://logo.clearbit.com/masangroup.com" style="width:100%;height:100%;object-fit:contain" onerror="this.parentNode.textContent='W'"/></div>
+      <div class="sb-logo" style="padding:0;overflow:hidden;background:#fff"><img id="masanLogoAds" style="width:100%;height:100%;object-fit:contain;padding:2px" onerror="this.parentNode.textContent='W'"/></div>
       <div>
         <div style="font-size:13px;font-weight:800;color:#fff;letter-spacing:-.2px">WinX Ads Manager</div>
         <div style="font-size:9px;color:rgba(255,255,255,.4);margin-top:1px">Traditional Trade Media Platform</div>
@@ -1100,7 +1100,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 
 <!-- HEADER -->
 <div class="intel-hdr">
-  <h2><span style="font-size:22px">&#x1F9E0;</span> Real-Time Intelligence Dashboard</h2>
+  <h2><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 280 100" style="height:20px" fill="none"><rect x="168" y="0" width="36" height="36" fill="#4A7BAD"/><rect x="186" y="18" width="36" height="36" fill="#6B9BC4"/><rect x="204" y="0" width="36" height="36" fill="#8AADC4"/><text x="0" y="62" font-family="Arial,sans-serif" font-weight="900" font-size="42" fill="#fff" letter-spacing="6">MASAN</text><text x="28" y="88" font-family="Arial,sans-serif" font-weight="400" font-size="28" fill="rgba(255,255,255,.5)" letter-spacing="8">GROUP</text></svg></span> Real-Time Intelligence Dashboard</h2>
   <div class="flex items-center gap-3">
     <select class="store-select" id="storeSelect">
       <option>Tạp Hoá Cô Lan — 156 Trương Định, HBT, Hà Nội</option>
@@ -1177,9 +1177,9 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <div class="grid grid-cols-2 gap-4 mb-4">
   <div class="glass p-4 rounded-xl">
     <div class="text-xs font-bold text-white/80 mb-3">Báo cáo Lãi/Lỗ hôm nay</div>
-    <div class="credit-metric"><span class="cm-label">Tổng doanh thu</span><span class="cm-val" style="color:#27AE60">2.400.000d</span></div>
-    <div class="credit-metric"><span class="cm-label">Giá vốn hàng bán (COGS)</span><span class="cm-val">1.824.000d</span></div>
-    <div class="credit-metric"><span class="cm-label">Lợi nhuận gộp</span><span class="cm-val cm-good">576.000d</span></div>
+    <div class="credit-metric"><span class="cm-label">Tổng doanh thu</span><span class="cm-val" style="color:#27AE60">2.400.000đ</span></div>
+    <div class="credit-metric"><span class="cm-label">Giá vốn hàng bán (COGS)</span><span class="cm-val">1.824.000đ</span></div>
+    <div class="credit-metric"><span class="cm-label">Lợi nhuận gộp</span><span class="cm-val cm-good">576.000đ</span></div>
     <div class="credit-metric"><span class="cm-label">Tỷ suất LN gộp</span><span class="cm-val cm-good">24,0%</span></div>
     <div class="credit-metric"><span class="cm-label">So với TB 7 ngày</span><span class="cm-val cm-good">+8,2%</span></div>
     <div style="margin-top:12px;padding:8px;background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.15);border-radius:8px">
@@ -1197,7 +1197,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
   <!-- LOAN UNDERWRITING -->
   <div class="glass p-4 rounded-xl">
     <div class="flex items-center gap-2 mb-3">
-      <img src="https://logo.clearbit.com/techcombank.com.vn" style="width:20px;height:20px;border-radius:4px" onerror="this.style.display='none'"/>
+      <div style="width:20px;height:20px;flex-shrink:0"><svg viewBox="0 0 40 40" style="width:100%;height:100%"><path d="M15 2L28 15L15 28L2 15Z" fill="#E30613"/><path d="M25 12L38 25L25 38L12 25Z" fill="#E30613"/><rect x="14" y="14" width="12" height="12" transform="rotate(45 20 20)" fill="#fff"/></svg></div>
       <div class="text-xs font-bold text-white/80">Loan Underwriting — Chấm điểm tín dụng từ POS</div>
     </div>
     <div class="credit-metric"><span class="cm-label">Tần suất giao dịch</span><span class="cm-val cm-good">37 đơn/ngày <span style="font-size:8px;color:#27AE60">(CAO)</span></span></div>
@@ -1414,6 +1414,14 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 </div><!-- /relative z-10 -->
 
 <script>
+// BRAND LOGOS (inline SVG)
+const MASAN_LOGO=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 100" fill="none"><rect x="168" y="0" width="36" height="36" fill="#1B3A5C"/><rect x="186" y="18" width="36" height="36" fill="#4A7BAD"/><rect x="204" y="0" width="36" height="36" fill="#8AADC4"/><text x="0" y="62" font-family="Arial,sans-serif" font-weight="900" font-size="42" fill="#1B2A4A" letter-spacing="6">MASAN</text><text x="28" y="88" font-family="Arial,sans-serif" font-weight="400" font-size="28" fill="#1B2A4A" letter-spacing="8">GROUP</text></svg>`;
+const MASAN_LOGO_URI='data:image/svg+xml,'+encodeURIComponent(MASAN_LOGO);
+const TCB_LOGO=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" fill="none"><g transform="translate(60,2) scale(0.55)"><path d="M35 0L70 35L35 70L0 35Z" fill="#E30613"/><path d="M55 20L90 55L55 90L20 55Z" fill="#E30613"/><path d="M35 35L55 55L35 35L55 35Z" fill="#fff"/><rect x="30" y="30" width="30" height="30" transform="rotate(45 45 45)" fill="#fff"/></g><text x="0" y="72" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#1A1A1A">TECHCOM</text><text x="130" y="72" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#E30613">BANK</text></svg>`;
+const TCB_LOGO_URI='data:image/svg+xml,'+encodeURIComponent(TCB_LOGO);
+const WINX_FIN_LOGO=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 28" fill="none"><rect width="28" height="28" rx="7" fill="url(#wg)"/><defs><linearGradient id="wg" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#FF8C28"/><stop offset="1" stop-color="#FF6B00"/></linearGradient></defs><text x="8" y="20" font-family="Arial,sans-serif" font-weight="900" font-size="16" fill="#fff">W</text><text x="34" y="14" font-family="Inter,sans-serif" font-weight="800" font-size="11" fill="#FF8C28">WinX</text><text x="34" y="25" font-family="Inter,sans-serif" font-weight="600" font-size="9" fill="#999">Financial</text></svg>`;
+const WINX_FIN_URI='data:image/svg+xml,'+encodeURIComponent(WINX_FIN_LOGO);
+
 // VIEW SWITCHER
 function switchView(v){
   const views=['demo','ads','intel'];
@@ -1431,6 +1439,10 @@ function switchView(v){
   });
   document.body.style.overflowX=v==='demo'?'auto':'hidden';
 }
+// Set logo sources after DOM ready
+document.addEventListener('DOMContentLoaded',function(){
+  if(document.getElementById('masanLogoAds'))document.getElementById('masanLogoAds').src=MASAN_LOGO_URI;
+});
 
 // WEBGL SUBTLE GLOW
 (function(){
