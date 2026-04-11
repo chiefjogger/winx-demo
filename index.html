@@ -7,7 +7,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{masan:'#1B2A4A','masan-red':'#E30613','zalo-blue':'#0068FF'}}}}</script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 *{box-sizing:border-box;margin:0}
 body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100vh;overflow-x:auto}
 .blob-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
@@ -16,7 +16,8 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 .blob-2{width:500px;height:500px;background:#E30613;bottom:-10%;left:30%;animation-delay:4s}
 .blob-3{width:500px;height:500px;background:#27AE60;top:20%;right:0;animation-delay:8s}
 @keyframes drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(25px,-15px) scale(1.04)}100%{transform:translate(-15px,20px) scale(.97)}}
-.glass{background:rgba(255,255,255,.04);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:14px}
+.glass{background:rgba(255,255,255,.04);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:14px;transition:border-color .2s,box-shadow .2s}
+.glass:hover{border-color:rgba(255,255,255,.12)}
 
 /* PHONE */
 .phone{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4);display:flex;flex-direction:column;height:640px;width:100%}
@@ -29,9 +30,9 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 .zrow{display:flex;gap:5px;align-items:flex-end;animation:zf .3s ease}.zrow.zu{justify-content:flex-end}
 @keyframes zf{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 .zm{width:20px;height:20px;border-radius:50%;background-size:cover;background-position:center;flex-shrink:0}
-.zb{max-width:82%;padding:7px 9px;border-radius:11px;font-size:11px;line-height:1.45;word-wrap:break-word}
-.zbot .zb{background:#fff;color:#1A1A1A;border-bottom-left-radius:2px;box-shadow:0 1px 1px rgba(0,0,0,.04)}
-.zu .zb{background:#D5F1FF;color:#1A1A1A;border-bottom-right-radius:2px}
+.zb{max-width:78%;padding:8px 12px;border-radius:18px;font-size:12px;line-height:1.45;word-wrap:break-word}
+.zbot .zb{background:#fff;color:#1A1A1A;border-bottom-left-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.zu .zb{background:#E5EFFF;color:#1A1A1A;border-bottom-right-radius:4px}
 .zt{font-size:7.5px;color:#8C939D;margin-top:1px}
 .zcard{background:#fff;border:1px solid #E5E8EC;border-radius:10px;max-width:82%;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
 .zcard img{width:100%;display:block;height:90px;object-fit:cover}
@@ -203,10 +204,73 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 .zalo-home .zh-app:hover{border-color:#0068FF;background:#F0F6FF;transform:translateY(-1px)}
 .zalo-home .zh-app .zha-ico{font-size:22px;margin-bottom:4px}
 .zalo-home .zh-app .zha-name{font-size:9px;font-weight:700;color:#333}
+
+/* INTEL DASHBOARD */
+.intel-section{padding:20px 24px;max-width:1400px;margin:0 auto}
+.intel-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.intel-hdr h2{font-size:18px;font-weight:800;color:#fff;display:flex;align-items:center;gap:10px}
+.intel-hdr .store-select{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:8px 14px;color:#fff;font-size:12px;font-weight:600;outline:none;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:30px}
+.intel-hdr .store-select option{background:#1B2A4A;color:#fff}
+.intel-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.intel-kpi .ik{text-align:center;padding:16px 12px}
+.intel-kpi .ik .iv{font-size:24px;font-weight:800;margin-bottom:2px}
+.intel-kpi .ik .il{font-size:10px;color:rgba(255,255,255,.5);font-weight:600}
+.intel-table{width:100%;border-collapse:collapse;font-size:11px}
+.intel-table th{text-align:left;padding:9px 10px;font-size:9px;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02)}
+.intel-table td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.04);color:rgba(255,255,255,.8)}
+.intel-table tr:hover td{background:rgba(255,255,255,.03)}
+.intel-table .brand-pill{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:8px;font-size:8px;font-weight:700}
+.intel-table .brand-pill img{width:12px;height:12px;border-radius:2px;object-fit:contain}
+.intel-table .stock-low{color:#E30613;font-weight:700}
+.intel-table .stock-warn{color:#F59E0B;font-weight:700}
+.intel-table .stock-ok{color:#27AE60;font-weight:700}
+.intel-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:28px 0}
+.credit-gauge{height:14px;background:linear-gradient(90deg,#E30613 0%,#F59E0B 40%,#27AE60 70%,#0068FF 100%);border-radius:7px;position:relative;overflow:visible}
+.credit-gauge .marker{position:absolute;top:-3px;width:4px;height:20px;background:#fff;border-radius:2px;box-shadow:0 0 8px rgba(255,255,255,.6)}
+.credit-metric{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:11px}
+.credit-metric:last-child{border-bottom:none}
+.credit-metric .cm-label{color:rgba(255,255,255,.5)}
+.credit-metric .cm-val{font-weight:700;color:rgba(255,255,255,.9)}
+.credit-metric .cm-good{color:#27AE60}
+.credit-metric .cm-warn{color:#F59E0B}
+
+/* HEATMAP */
+.heatmap-wrap{overflow-x:auto;margin-bottom:16px}
+.heatmap-grid{display:grid;gap:3px;font-size:8px}
+.heatmap-cell{border-radius:6px;padding:6px 4px;text-align:center;font-weight:600;transition:all .15s;cursor:pointer;position:relative;min-width:60px}
+.heatmap-cell:hover{transform:scale(1.08);z-index:1;box-shadow:0 0 12px rgba(0,0,0,.4)}
+.heatmap-cell .hm-val{font-size:11px;font-weight:800}
+.heatmap-cell .hm-lbl{font-size:7px;opacity:.7;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.heatmap-label{font-size:9px;font-weight:700;color:rgba(255,255,255,.4);padding:6px 4px;text-align:center;display:flex;align-items:center;justify-content:center;min-width:60px}
+.hm-high{background:rgba(39,174,96,.5);color:#fff}
+.hm-med{background:rgba(0,104,255,.35);color:rgba(255,255,255,.9)}
+.hm-low{background:rgba(255,255,255,.06);color:rgba(255,255,255,.4)}
+.hm-self{background:rgba(255,255,255,.02);color:rgba(255,255,255,.15)}
+
+.seg-card{padding:12px}
+.seg-card h4{font-size:10px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.seg-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:10px;color:rgba(255,255,255,.7)}
+.seg-row:last-child{border-bottom:none}
+.seg-bar{height:6px;border-radius:3px;background:rgba(255,255,255,.06);flex:1;margin:0 8px;max-width:80px}
+.seg-bar-fill{height:100%;border-radius:3px}
+
+.rec-funnel{display:flex;align-items:center;gap:4px;margin-top:12px}
+.rec-step{flex:1;text-align:center;padding:8px 4px;border-radius:8px;font-size:9px;font-weight:700;position:relative}
+.rec-arrow{color:rgba(255,255,255,.2);font-size:14px;flex-shrink:0}
+
+/* ENHANCED ZALO */
+.zalo-actions{display:flex;gap:8px;align-items:center;margin-left:auto}
+.zalo-actions span{font-size:15px;opacity:.7;cursor:pointer;transition:opacity .12s}
+.zalo-actions span:hover{opacity:1}
+
+/* VIEW TRANSITIONS */
+.view-enter{animation:viewFade .35s ease}
+@keyframes viewFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 <div class="blob-bg"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+<canvas id="glowCanvas" style="position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.25"></canvas>
 
 <div class="relative z-10">
 
@@ -214,6 +278,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <div class="flex items-center gap-2 px-5 pt-3 pb-1">
   <button id="tab-demo" onclick="switchView('demo')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff">Omni-Channel Demo</button>
   <button id="tab-ads" onclick="switchView('ads')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">WinX Ads Portal — Góc nhìn nhà tài trợ</button>
+  <button id="tab-intel" onclick="switchView('intel')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">Real-Time Intelligence</button>
 </div>
 
 <!-- ============ VIEW 1: OMNI-CHANNEL DEMO ============ -->
@@ -238,13 +303,14 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <!-- ======= PANE 1: WINMART MT — MEAL OCCASION ======= -->
 <div class="flex flex-col gap-3" style="width:400px;flex-shrink:0">
   <div class="phone" id="p1">
-    <div class="zhdr" style="background:#0068FF">
-      <span class="text-lg opacity-80">&#8249;</span>
+    <div class="zhdr" style="background:#0084FF">
+      <span class="text-lg opacity-80 cursor-pointer">&#8249;</span>
       <div class="zav" id="av1"></div>
       <div class="zwho"><div class="zn">WinMart+ Thảo Điền</div><div class="zs"><span class="zdot"></span> Đang hoạt động</div></div>
+      <div class="zalo-actions"><span>&#128222;</span><span>&#127909;</span><span>&#8942;</span></div>
     </div>
     <div class="zchat" id="c1"></div>
-    <div class="zin"><div class="zbx">Nhập tin nhắn...</div></div>
+    <div class="zin"><span style="font-size:14px;cursor:pointer">&#128522;</span><div class="zbx">Tin nhắn</div><span style="font-size:13px;cursor:pointer;opacity:.5">&#128247;</span><span style="font-size:13px;cursor:pointer;opacity:.5">&#128444;&#65039;</span><span style="font-size:13px;cursor:pointer;opacity:.5">&#127908;</span></div>
   </div>
   <!-- MT INTERNAL PANEL -->
   <div class="text-[9px] font-bold tracking-widest text-blue-400 uppercase mb-1">Bảng điều khiển nội bộ MT</div>
@@ -312,12 +378,13 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <div class="flex flex-col gap-3" style="width:400px;flex-shrink:0">
   <div class="phone" id="p2" style="position:relative">
     <div class="zhdr" style="background:#FF6B00">
-      <span class="text-lg opacity-80">&#8249;</span>
+      <span class="text-lg opacity-80 cursor-pointer">&#8249;</span>
       <div class="zav" id="av2"></div>
       <div class="zwho"><div class="zn">Tạp Hoá Cô Lan, Trương Định</div><div class="zs"><span class="zdot"></span> Đang hoạt động</div></div>
+      <div class="zalo-actions"><span>&#128222;</span><span>&#127909;</span><span>&#8942;</span></div>
     </div>
     <div class="zchat" id="c2"></div>
-    <div class="zin"><div class="zbx">Nhập tin nhắn...</div></div>
+    <div class="zin"><span style="font-size:14px;cursor:pointer">&#128522;</span><div class="zbx">Tin nhắn</div><span style="font-size:13px;cursor:pointer;opacity:.5">&#128247;</span><span style="font-size:13px;cursor:pointer;opacity:.5">&#128444;&#65039;</span><span style="font-size:13px;cursor:pointer;opacity:.5">&#127908;</span></div>
     <div class="popup-overlay" id="tcbPopup" style="display:none">
       <div class="popup">
         <div class="flex items-center gap-2 mb-2">
@@ -639,7 +706,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <div class="adp-sidebar">
   <div class="sb-brand">
     <div style="display:flex;align-items:center;gap:10px">
-      <div class="sb-logo">W</div>
+      <div class="sb-logo" style="padding:0;overflow:hidden"><img src="https://logo.clearbit.com/masangroup.com" style="width:100%;height:100%;object-fit:contain" onerror="this.parentNode.textContent='W'"/></div>
       <div>
         <div style="font-size:13px;font-weight:800;color:#fff;letter-spacing:-.2px">WinX Ads Manager</div>
         <div style="font-size:9px;color:rgba(255,255,255,.4);margin-top:1px">Traditional Trade Media Platform</div>
@@ -661,7 +728,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     <div class="sb-item"><span class="sb-ico">⚙️</span> Cài đặt</div>
   </div>
   <div class="sb-acct">
-    <div class="sb-avatar">UNI</div>
+    <div class="sb-avatar" style="padding:0;overflow:hidden"><img src="https://logo.clearbit.com/unilever.com" style="width:100%;height:100%;object-fit:contain;border-radius:8px" onerror="this.parentNode.textContent='UNI'"/></div>
     <div>
       <div style="font-size:11px;font-weight:700;color:#fff">Unilever Vietnam</div>
       <div style="font-size:9px;color:rgba(255,255,255,.4)">Trade Marketing Team</div>
@@ -957,24 +1024,374 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 </div><!-- /flex layout -->
 </div><!-- /view-ads -->
 
+<!-- ============ VIEW 3: REAL-TIME INTELLIGENCE ============ -->
+<div id="view-intel" class="view-enter" style="display:none">
+<div class="intel-section">
+
+<!-- HEADER -->
+<div class="intel-hdr">
+  <h2><span style="font-size:22px">&#x1F9E0;</span> Real-Time Intelligence Dashboard</h2>
+  <div class="flex items-center gap-3">
+    <select class="store-select" id="storeSelect">
+      <option>Tap Hoa Co Lan — 156 Truong Dinh, HBT, Ha Noi</option>
+      <option>Tap Hoa Anh Tu — 42 Le Dai Hanh, HBT, Ha Noi</option>
+      <option>Tap Hoa Chi Mai — 78 Nguyen Trai, Thanh Xuan, Ha Noi</option>
+    </select>
+    <div class="glass px-3 py-2 text-xs font-semibold" style="color:rgba(255,255,255,.6)">11/04/2026 <span class="zdot" style="margin-left:4px"></span> Dang mo cua</div>
+  </div>
+</div>
+
+<!-- SECTION A: GT RETAILER SKU TRACKER -->
+<div class="text-[9px] font-bold tracking-widest text-blue-400 uppercase mb-3">A. GT Retailer Daily SKU Movement — All Brands</div>
+
+<!-- KPI ROW -->
+<div class="intel-kpi">
+  <div class="glass ik"><div class="iv text-green-400">2,4tr</div><div class="il">Doanh thu hom nay</div></div>
+  <div class="glass ik"><div class="iv text-blue-400">37</div><div class="il">So don hang</div></div>
+  <div class="glass ik"><div class="iv text-orange-400">64,8k</div><div class="il">Gio trung binh</div></div>
+  <div class="glass ik"><div class="iv text-emerald-400">576k <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.4)">(24%)</span></div><div class="il">Loi nhuan gop hom nay</div></div>
+</div>
+
+<!-- SKU TABLE -->
+<div class="glass p-4 rounded-xl mb-4" style="overflow-x:auto">
+  <div class="flex items-center justify-between mb-3">
+    <div class="text-xs font-bold text-white/80">SKU Movement — 11/04/2026</div>
+    <div class="flex items-center gap-2 text-[9px]">
+      <span class="inline-block w-2 h-2 rounded-full bg-red-500"></span><span class="text-white/40">Masan/MCH</span>
+      <span class="inline-block w-2 h-2 rounded-full bg-blue-500"></span><span class="text-white/40">Unilever</span>
+      <span class="inline-block w-2 h-2 rounded-full bg-green-500"></span><span class="text-white/40">Vinamilk</span>
+      <span class="inline-block w-2 h-2 rounded-full bg-orange-500"></span><span class="text-white/40">P&G</span>
+      <span class="inline-block w-2 h-2 rounded-full bg-yellow-500"></span><span class="text-white/40">Sabeco</span>
+    </div>
+  </div>
+  <table class="intel-table">
+    <thead>
+      <tr>
+        <th>SKU</th>
+        <th>Thuong hieu</th>
+        <th style="text-align:right">Ban hom nay</th>
+        <th style="text-align:right">TB 7 ngay</th>
+        <th style="text-align:right">Ton kho</th>
+        <th style="text-align:right">Bien LN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Nuoc mam Chin-Su 500ml</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">23</td><td style="text-align:right">18.4</td><td style="text-align:right" class="stock-ok">14</td><td style="text-align:right">22%</td></tr>
+      <tr><td>Mi Omachi tom chua cay</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">18</td><td style="text-align:right">15.2</td><td style="text-align:right" class="stock-ok">42</td><td style="text-align:right">18%</td></tr>
+      <tr><td>Sua tuoi Vinamilk 180ml</td><td><span class="brand-pill" style="background:rgba(39,174,96,.15);color:#27AE60"><img src="https://logo.clearbit.com/vinamilk.com.vn" onerror="this.style.display='none'"/>Vinamilk</span></td><td style="text-align:right;font-weight:700">15</td><td style="text-align:right">13.1</td><td style="text-align:right" class="stock-ok">28</td><td style="text-align:right">12%</td></tr>
+      <tr><td>Bia Sai Gon lon 330ml</td><td><span class="brand-pill" style="background:rgba(245,158,11,.15);color:#F59E0B"><img src="https://logo.clearbit.com/sabeco.com.vn" onerror="this.style.display='none'"/>Sabeco</span></td><td style="text-align:right;font-weight:700">12</td><td style="text-align:right">10.8</td><td style="text-align:right" class="stock-ok">20</td><td style="text-align:right">15%</td></tr>
+      <tr><td>Xuc xich Ponnie goi 5</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">10</td><td style="text-align:right">7.8</td><td style="text-align:right" class="stock-ok">12</td><td style="text-align:right">24%</td></tr>
+      <tr><td>Sua chua Vinamilk 4 hop</td><td><span class="brand-pill" style="background:rgba(39,174,96,.15);color:#27AE60"><img src="https://logo.clearbit.com/vinamilk.com.vn" onerror="this.style.display='none'"/>Vinamilk</span></td><td style="text-align:right;font-weight:700">10</td><td style="text-align:right">8.7</td><td style="text-align:right" class="stock-ok">15</td><td style="text-align:right">14%</td></tr>
+      <tr><td>Omo Matic 2.7kg</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">8</td><td style="text-align:right">6.5</td><td style="text-align:right" class="stock-warn">5</td><td style="text-align:right">20%</td></tr>
+      <tr><td>Dau an Neptune 1L</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">6</td><td style="text-align:right">5.3</td><td style="text-align:right" class="stock-ok">9</td><td style="text-align:right">16%</td></tr>
+      <tr><td>Nuoc rua chen Sunlight 750ml</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">5</td><td style="text-align:right">4.3</td><td style="text-align:right" class="stock-ok">9</td><td style="text-align:right">15%</td></tr>
+      <tr><td>Bot giat Ariel 2.4kg</td><td><span class="brand-pill" style="background:rgba(255,107,0,.15);color:#FF6B00"><img src="https://logo.clearbit.com/pg.com" onerror="this.style.display='none'"/>P&G</span></td><td style="text-align:right;font-weight:700">5</td><td style="text-align:right">4.1</td><td style="text-align:right" class="stock-ok">8</td><td style="text-align:right">18%</td></tr>
+      <tr><td>Comfort dam dac 1.8L</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">4</td><td style="text-align:right">3.2</td><td style="text-align:right" class="stock-warn">7</td><td style="text-align:right">19%</td></tr>
+      <tr><td>Bot giat Tide 2.7kg</td><td><span class="brand-pill" style="background:rgba(255,107,0,.15);color:#FF6B00"><img src="https://logo.clearbit.com/pg.com" onerror="this.style.display='none'"/>P&G</span></td><td style="text-align:right;font-weight:700">4</td><td style="text-align:right">3.5</td><td style="text-align:right" class="stock-warn">6</td><td style="text-align:right">17%</td></tr>
+      <tr><td>Nuoc xa vai Downy 1.8L</td><td><span class="brand-pill" style="background:rgba(255,107,0,.15);color:#FF6B00"><img src="https://logo.clearbit.com/pg.com" onerror="this.style.display='none'"/>P&G</span></td><td style="text-align:right;font-weight:700">3</td><td style="text-align:right">2.6</td><td style="text-align:right" class="stock-warn">6</td><td style="text-align:right">17%</td></tr>
+      <tr><td>Dau goi Clear 650ml</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">3</td><td style="text-align:right">2.8</td><td style="text-align:right" class="stock-ok">11</td><td style="text-align:right">21%</td></tr>
+      <tr><td>Tuong ot Chin-Su 250g</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">3</td><td style="text-align:right">2.4</td><td style="text-align:right" class="stock-low">2</td><td style="text-align:right">23%</td></tr>
+      <tr><td>Kem danh rang P/S 230g</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">2</td><td style="text-align:right">1.9</td><td style="text-align:right" class="stock-ok">14</td><td style="text-align:right">23%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- DAILY P&L -->
+<div class="grid grid-cols-2 gap-4 mb-4">
+  <div class="glass p-4 rounded-xl">
+    <div class="text-xs font-bold text-white/80 mb-3">Bao cao Lai/Lo hom nay</div>
+    <div class="credit-metric"><span class="cm-label">Tong doanh thu</span><span class="cm-val" style="color:#27AE60">2.400.000d</span></div>
+    <div class="credit-metric"><span class="cm-label">Gia von hang ban (COGS)</span><span class="cm-val">1.824.000d</span></div>
+    <div class="credit-metric"><span class="cm-label">Loi nhuan gop</span><span class="cm-val cm-good">576.000d</span></div>
+    <div class="credit-metric"><span class="cm-label">Ty suat LN gop</span><span class="cm-val cm-good">24,0%</span></div>
+    <div class="credit-metric"><span class="cm-label">So voi TB 7 ngay</span><span class="cm-val cm-good">+8,2%</span></div>
+    <div style="margin-top:12px;padding:8px;background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.15);border-radius:8px">
+      <div style="font-size:9px;color:#27AE60;font-weight:700">BRAND P&L BREAKDOWN</div>
+      <div style="display:flex;gap:8px;margin-top:6px;font-size:9px">
+        <div style="flex:1;text-align:center"><div style="font-weight:800;color:#E30613">43%</div><div style="color:rgba(255,255,255,.4)">Masan/MCH</div></div>
+        <div style="flex:1;text-align:center"><div style="font-weight:800;color:#0068FF">22%</div><div style="color:rgba(255,255,255,.4)">Unilever</div></div>
+        <div style="flex:1;text-align:center"><div style="font-weight:800;color:#27AE60">18%</div><div style="color:rgba(255,255,255,.4)">Vinamilk</div></div>
+        <div style="flex:1;text-align:center"><div style="font-weight:800;color:#FF6B00">11%</div><div style="color:rgba(255,255,255,.4)">P&G</div></div>
+        <div style="flex:1;text-align:center"><div style="font-weight:800;color:#F59E0B">6%</div><div style="color:rgba(255,255,255,.4)">Sabeco</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOAN UNDERWRITING -->
+  <div class="glass p-4 rounded-xl">
+    <div class="flex items-center gap-2 mb-3">
+      <img src="https://logo.clearbit.com/techcombank.com.vn" style="width:20px;height:20px;border-radius:4px" onerror="this.style.display='none'"/>
+      <div class="text-xs font-bold text-white/80">Loan Underwriting — POS-Powered Credit Score</div>
+    </div>
+    <div class="credit-metric"><span class="cm-label">Tan suat giao dich</span><span class="cm-val cm-good">37 don/ngay <span style="font-size:8px;color:#27AE60">(CAO)</span></span></div>
+    <div class="credit-metric"><span class="cm-label">Do on dinh doanh thu</span><span class="cm-val cm-good">+/- 8% <span style="font-size:8px;color:#27AE60">(ON DINH)</span></span></div>
+    <div class="credit-metric"><span class="cm-label">Vong quay ton kho</span><span class="cm-val cm-good">4.2x/thang <span style="font-size:8px;color:#27AE60">(TOT)</span></span></div>
+    <div class="credit-metric"><span class="cm-label">Thanh toan dung han</span><span class="cm-val cm-good">98% <span style="font-size:8px;color:#27AE60">(RAT TOT)</span></span></div>
+    <div class="credit-metric"><span class="cm-label">Da dang thuong hieu</span><span class="cm-val">15 brands</span></div>
+    <div class="credit-metric"><span class="cm-label">Thoi gian hoat dong</span><span class="cm-val">4,5 nam</span></div>
+    <div style="margin-top:14px;padding:10px;background:rgba(0,104,255,.06);border:1px solid rgba(0,104,255,.15);border-radius:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span style="font-size:10px;color:rgba(255,255,255,.5);font-weight:600">CREDIT SCORE</span>
+        <span style="font-size:20px;font-weight:900;color:#0068FF">782 <span style="font-size:10px;color:rgba(255,255,255,.3);font-weight:600">/ 900</span></span>
+      </div>
+      <div class="credit-gauge"><div class="marker" style="left:87%"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:7px;color:rgba(255,255,255,.25);margin-top:3px"><span>300</span><span>500</span><span>700</span><span>900</span></div>
+      <div style="margin-top:10px;padding:8px;background:rgba(39,174,96,.1);border-radius:6px;font-size:10px;color:#27AE60;font-weight:700;text-align:center">
+        Du dieu kien: Thau chi 10 trieu — Lai 0,8%/thang — Giai ngan 24h
+      </div>
+      <div style="margin-top:6px;padding:6px;background:rgba(227,6,19,.06);border-radius:6px;font-size:9px;color:rgba(255,255,255,.4);text-align:center">
+        <span style="color:#E30613;font-weight:700">Truoc khi co POS data:</span> Khong the dinh gia tin dung GT — 0% retailer duoc cap von
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="intel-divider"></div>
+
+<!-- SECTION B: CROSS-CORRELATION -->
+<div class="text-[9px] font-bold tracking-widest text-blue-400 uppercase mb-3">B. Cross-Correlation & Recommendation Intelligence</div>
+
+<div class="glass p-4 rounded-xl mb-4">
+  <div class="flex items-center justify-between mb-3">
+    <div class="text-xs font-bold text-white/80">Ma tran tuong quan — Khi goi y san pham A cung san pham B, ty le chuyen doi la bao nhieu?</div>
+    <div class="flex items-center gap-2 text-[8px]">
+      <span class="inline-block px-2 py-0.5 rounded hm-high" style="font-size:8px">&gt;25% CVR</span>
+      <span class="inline-block px-2 py-0.5 rounded hm-med" style="font-size:8px">15-25%</span>
+      <span class="inline-block px-2 py-0.5 rounded hm-low" style="font-size:8px">&lt;15%</span>
+    </div>
+  </div>
+  <div class="heatmap-wrap">
+    <div class="heatmap-grid" style="grid-template-columns:80px repeat(8,1fr);grid-template-rows:auto repeat(8,1fr)">
+      <!-- Header row -->
+      <div class="heatmap-label"></div>
+      <div class="heatmap-label">Vinamilk Sua</div>
+      <div class="heatmap-label">Omachi</div>
+      <div class="heatmap-label">Chin-Su</div>
+      <div class="heatmap-label">MEATDeli</div>
+      <div class="heatmap-label">Omo</div>
+      <div class="heatmap-label">Bia SG</div>
+      <div class="heatmap-label">Ponnie</div>
+      <div class="heatmap-label">Ariel</div>
+      <!-- Row 1: Vinamilk -->
+      <div class="heatmap-label" style="text-align:right">Vinamilk Sua</div>
+      <div class="heatmap-cell hm-self"><div class="hm-val">—</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">34%</div><div class="hm-lbl">Bua sang</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">19%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">12%</div><div class="hm-lbl">Thap</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">8%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">11%</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">22%</div><div class="hm-lbl">An vat</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">7%</div></div>
+      <!-- Row 2: Omachi -->
+      <div class="heatmap-label" style="text-align:right">Omachi</div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">34%</div></div>
+      <div class="heatmap-cell hm-self"><div class="hm-val">—</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">31%</div><div class="hm-lbl">Mi + nuoc mam</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">18%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">9%</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">24%</div><div class="hm-lbl">Bia + mi</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">20%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">8%</div></div>
+      <!-- Row 3: Chin-Su -->
+      <div class="heatmap-label" style="text-align:right">Chin-Su</div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">19%</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">31%</div></div>
+      <div class="heatmap-cell hm-self"><div class="hm-val">—</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">42%</div><div class="hm-lbl">Bua com</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">10%</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">16%</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">25%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">9%</div></div>
+      <!-- Row 4: MEATDeli -->
+      <div class="heatmap-label" style="text-align:right">MEATDeli</div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">12%</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">18%</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">42%</div></div>
+      <div class="heatmap-cell hm-self"><div class="hm-val">—</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">7%</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">29%</div><div class="hm-lbl">Bia + thit</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">33%</div><div class="hm-lbl">Protein</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">6%</div></div>
+      <!-- Row 5: Omo -->
+      <div class="heatmap-label" style="text-align:right">Omo</div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">8%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">9%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">10%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">7%</div></div>
+      <div class="heatmap-cell hm-self"><div class="hm-val">—</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">6%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">5%</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">38%</div><div class="hm-lbl">Giat + giat</div></div>
+      <!-- Row 6: Bia SG -->
+      <div class="heatmap-label" style="text-align:right">Bia SG</div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">11%</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">24%</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">16%</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">29%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">6%</div></div>
+      <div class="heatmap-cell hm-self"><div class="hm-val">—</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">28%</div><div class="hm-lbl">Bia + snack</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">5%</div></div>
+      <!-- Row 7: Ponnie -->
+      <div class="heatmap-label" style="text-align:right">Ponnie</div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">22%</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">20%</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">25%</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">33%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">5%</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">28%</div></div>
+      <div class="heatmap-cell hm-self"><div class="hm-val">—</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">7%</div></div>
+      <!-- Row 8: Ariel -->
+      <div class="heatmap-label" style="text-align:right">Ariel</div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">7%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">8%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">9%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">6%</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">38%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">5%</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">7%</div></div>
+      <div class="heatmap-cell hm-self"><div class="hm-val">—</div></div>
+    </div>
+  </div>
+  <!-- KEY INSIGHTS -->
+  <div class="grid grid-cols-3 gap-3 mt-3">
+    <div style="padding:8px;background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.15);border-radius:8px">
+      <div style="font-size:8px;color:#27AE60;font-weight:700;margin-bottom:4px">TOP PAIRING</div>
+      <div style="font-size:11px;font-weight:800;color:#fff">Chin-Su + MEATDeli</div>
+      <div style="font-size:10px;color:#27AE60;font-weight:700">42% CVR</div>
+      <div style="font-size:8px;color:rgba(255,255,255,.4);margin-top:2px">Meal-occasion pattern: nuoc mam + thit tuoi = bua com gia dinh</div>
+    </div>
+    <div style="padding:8px;background:rgba(0,104,255,.08);border:1px solid rgba(0,104,255,.15);border-radius:8px">
+      <div style="font-size:8px;color:#0068FF;font-weight:700;margin-bottom:4px">HIGH CROSS-SELL</div>
+      <div style="font-size:11px;font-weight:800;color:#fff">Vinamilk + Omachi</div>
+      <div style="font-size:10px;color:#0068FF;font-weight:700">34% CVR</div>
+      <div style="font-size:8px;color:rgba(255,255,255,.4);margin-top:2px">Breakfast bundle: sua + mi an sang — pho bien segment gia dinh tre</div>
+    </div>
+    <div style="padding:8px;background:rgba(227,6,19,.08);border:1px solid rgba(227,6,19,.15);border-radius:8px">
+      <div style="font-size:8px;color:#E30613;font-weight:700;margin-bottom:4px">LOW SIGNAL</div>
+      <div style="font-size:11px;font-weight:800;color:#fff">Vinamilk + MEATDeli</div>
+      <div style="font-size:10px;color:#E30613;font-weight:700">12% CVR</div>
+      <div style="font-size:8px;color:rgba(255,255,255,.4);margin-top:2px">Khac occasion: sua = sang/an vat, thit = bua chinh. Khong nen goi y cung nhau.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SEGMENT BREAKDOWN -->
+<div class="grid grid-cols-3 gap-4 mb-4">
+  <div class="glass rounded-xl seg-card">
+    <h4>&#x1F4CD; Theo vung mien</h4>
+    <div class="seg-row"><span>HCM</span><div class="seg-bar"><div class="seg-bar-fill" style="width:90%;background:#E30613"></div></div><span style="font-weight:700;color:#E30613">Chin-Su+MEAT 42%</span></div>
+    <div class="seg-row"><span>Ha Noi</span><div class="seg-bar"><div class="seg-bar-fill" style="width:80%;background:#0068FF"></div></div><span style="font-weight:700;color:#0068FF">Omachi+Vinamilk 38%</span></div>
+    <div class="seg-row"><span>Mekong</span><div class="seg-bar"><div class="seg-bar-fill" style="width:72%;background:#27AE60"></div></div><span style="font-weight:700;color:#27AE60">Chin-Su+Ca 35%</span></div>
+    <div class="seg-row"><span>Mien Trung</span><div class="seg-bar"><div class="seg-bar-fill" style="width:68%;background:#F59E0B"></div></div><span style="font-weight:700;color:#F59E0B">Omachi+Chin-Su 33%</span></div>
+  </div>
+  <div class="glass rounded-xl seg-card">
+    <h4>&#x1F46A; Theo quy mo ho</h4>
+    <div class="seg-row"><span>2 nguoi</span><div class="seg-bar"><div class="seg-bar-fill" style="width:65%;background:#6366F1"></div></div><span style="font-weight:700;color:#6366F1">Compact combo</span></div>
+    <div class="seg-row"><span>3-4 nguoi</span><div class="seg-bar"><div class="seg-bar-fill" style="width:95%;background:#0068FF"></div></div><span style="font-weight:700;color:#0068FF">Meal combo #1</span></div>
+    <div class="seg-row"><span>5+ nguoi</span><div class="seg-bar"><div class="seg-bar-fill" style="width:78%;background:#27AE60"></div></div><span style="font-weight:700;color:#27AE60">Bulk + Omachi thung</span></div>
+  </div>
+  <div class="glass rounded-xl seg-card">
+    <h4>&#x1F4B0; Theo thu nhap</h4>
+    <div class="seg-row"><span>&lt;5tr/th</span><div class="seg-bar"><div class="seg-bar-fill" style="width:88%;background:#E30613"></div></div><span style="font-weight:700;color:#E30613">Masan dominant</span></div>
+    <div class="seg-row"><span>5-15tr</span><div class="seg-bar"><div class="seg-bar-fill" style="width:75%;background:#0068FF"></div></div><span style="font-weight:700;color:#0068FF">Mix Masan+UL</span></div>
+    <div class="seg-row"><span>&gt;15tr</span><div class="seg-bar"><div class="seg-bar-fill" style="width:60%;background:#27AE60"></div></div><span style="font-weight:700;color:#27AE60">MEAT+Vinamilk org.</span></div>
+  </div>
+</div>
+
+<!-- AI RECOMMENDATION ENGINE -->
+<div class="glass p-4 rounded-xl mb-4">
+  <div class="text-xs font-bold text-white/80 mb-3">&#x1F916; AI Recommendation Engine Performance</div>
+  <div class="grid grid-cols-3 gap-4 mb-3">
+    <div class="text-center">
+      <div style="font-size:28px;font-weight:900;color:#0068FF">34%</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.4)">Cross-sell acceptance rate</div>
+      <div style="font-size:8px;color:#27AE60;font-weight:700;margin-top:2px">vs 8% industry avg (+325%)</div>
+    </div>
+    <div class="text-center">
+      <div style="font-size:28px;font-weight:900;color:#27AE60">+1.4</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.4)">Items per basket uplift</div>
+      <div style="font-size:8px;color:#27AE60;font-weight:700;margin-top:2px">Tu 3.2 len 4.6 items/don</div>
+    </div>
+    <div class="text-center">
+      <div style="font-size:28px;font-weight:900;color:#F59E0B">28,5k</div>
+      <div style="font-size:9px;color:rgba(255,255,255,.4)">Revenue per recommendation</div>
+      <div style="font-size:8px;color:#27AE60;font-weight:700;margin-top:2px">LTV uplift 42% in 90 days</div>
+    </div>
+  </div>
+  <div class="rec-funnel">
+    <div class="rec-step" style="background:rgba(0,104,255,.2);color:#0068FF">Goi y gui<br><span style="font-size:14px;font-weight:900">100%</span><br><span style="font-size:8px;opacity:.7">245.000</span></div>
+    <div class="rec-arrow">&#x279C;</div>
+    <div class="rec-step" style="background:rgba(99,102,241,.2);color:#6366F1">Khach xem<br><span style="font-size:14px;font-weight:900">72%</span><br><span style="font-size:8px;opacity:.7">176.400</span></div>
+    <div class="rec-arrow">&#x279C;</div>
+    <div class="rec-step" style="background:rgba(245,158,11,.2);color:#F59E0B">Them vao gio<br><span style="font-size:14px;font-weight:900">41%</span><br><span style="font-size:8px;opacity:.7">100.450</span></div>
+    <div class="rec-arrow">&#x279C;</div>
+    <div class="rec-step" style="background:rgba(39,174,96,.2);color:#27AE60">Thanh toan<br><span style="font-size:14px;font-weight:900">34%</span><br><span style="font-size:8px;opacity:.7">83.300</span></div>
+  </div>
+</div>
+
+</div><!-- /intel-section -->
+</div><!-- /view-intel -->
+
 </div><!-- /relative z-10 -->
 
 <script>
 // VIEW SWITCHER
 function switchView(v){
-  document.getElementById('view-demo').style.display=v==='demo'?'flex':'none';
-  document.getElementById('view-ads').style.display=v==='ads'?'block':'none';
-  const td=document.getElementById('tab-demo'),ta=document.getElementById('tab-ads');
-  if(v==='demo'){
-    td.style.background='rgba(255,255,255,.12)';td.style.borderColor='rgba(255,255,255,.2)';td.style.color='#fff';
-    ta.style.background='transparent';ta.style.borderColor='rgba(255,255,255,.08)';ta.style.color='rgba(255,255,255,.5)';
-    document.body.style.overflowX='auto';
-  } else {
-    ta.style.background='rgba(255,255,255,.12)';ta.style.borderColor='rgba(255,255,255,.2)';ta.style.color='#fff';
-    td.style.background='transparent';td.style.borderColor='rgba(255,255,255,.08)';td.style.color='rgba(255,255,255,.5)';
-    document.body.style.overflowX='hidden';
-  }
+  const views=['demo','ads','intel'];
+  const displays={demo:'flex',ads:'block',intel:'block'};
+  views.forEach(id=>{
+    const el=document.getElementById('view-'+id);
+    if(el){el.style.display=id===v?displays[id]:'none';if(id===v)el.classList.add('view-enter');}
+  });
+  views.forEach(id=>{
+    const tab=document.getElementById('tab-'+id);
+    if(tab){
+      if(id===v){tab.style.background='rgba(255,255,255,.12)';tab.style.borderColor='rgba(255,255,255,.2)';tab.style.color='#fff';}
+      else{tab.style.background='transparent';tab.style.borderColor='rgba(255,255,255,.08)';tab.style.color='rgba(255,255,255,.5)';}
+    }
+  });
+  document.body.style.overflowX=v==='demo'?'auto':'hidden';
 }
+
+// WEBGL SUBTLE GLOW
+(function(){
+  const c=document.getElementById('glowCanvas');
+  if(!c)return;
+  const gl=c.getContext('webgl');
+  if(!gl){c.style.display='none';return;}
+  function resize(){c.width=window.innerWidth;c.height=window.innerHeight;gl.viewport(0,0,c.width,c.height);}
+  resize();window.addEventListener('resize',resize);
+  const vs=`attribute vec2 p;void main(){gl_Position=vec4(p,0,1);}`;
+  const fs=`precision mediump float;
+uniform float t;uniform vec2 r;
+void main(){
+  vec2 u=gl_FragCoord.xy/r;
+  float g=0.0;
+  g+=0.12*exp(-8.0*length(u-vec2(0.2+0.1*sin(t*0.3),0.7+0.05*cos(t*0.4))));
+  g+=0.10*exp(-6.0*length(u-vec2(0.7+0.08*cos(t*0.25),0.3+0.06*sin(t*0.35))));
+  g+=0.08*exp(-7.0*length(u-vec2(0.5+0.12*sin(t*0.2),0.5+0.08*cos(t*0.28))));
+  vec3 col=vec3(0.0,0.4,1.0)*g+vec3(1.0)*g*0.3;
+  gl_FragColor=vec4(col,g*0.6);
+}`;
+  function compile(src,type){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);return s;}
+  const prog=gl.createProgram();
+  gl.attachShader(prog,compile(vs,gl.VERTEX_SHADER));
+  gl.attachShader(prog,compile(fs,gl.FRAGMENT_SHADER));
+  gl.linkProgram(prog);gl.useProgram(prog);
+  const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+  gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+  const p=gl.getAttribLocation(prog,'p');gl.enableVertexAttribArray(p);gl.vertexAttribPointer(p,2,gl.FLOAT,false,0,0);
+  const tU=gl.getUniformLocation(prog,'t'),rU=gl.getUniformLocation(prog,'r');
+  gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);
+  function draw(now){
+    gl.uniform1f(tU,now*0.001);gl.uniform2f(rU,c.width,c.height);
+    gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
 
 // POS NAVIGATION
 let posHistory=[];
@@ -1032,8 +1449,8 @@ let gtMsg=0;
 function incGT(){gtMsg++;document.getElementById('gt-msg').textContent=gtMsg;}
 
 // CHAT ENGINES
-const AV1='https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=faces';
-const AV2='https://images.unsplash.com/photo-1548142813-c348350df52b?w=200&h=200&fit=crop&crop=faces';
+const AV1='https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&h=200&fit=crop&crop=faces';
+const AV2='https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=200&h=200&fit=crop&crop=faces';
 document.getElementById('av1').style.backgroundImage=`url(${AV1})`;
 document.getElementById('av2').style.backgroundImage=`url(${AV2})`;
 const now=()=>{const d=new Date();return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0')};
