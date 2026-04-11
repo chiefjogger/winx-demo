@@ -302,7 +302,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 
 <!-- ======= PANE 1: WINMART MT — MEAL OCCASION ======= -->
 <div class="flex flex-col gap-3" style="width:400px;flex-shrink:0">
-  <div class="phone" id="p1">
+  <div class="phone" id="p1" style="position:relative">
     <div class="zhdr" style="background:#0084FF">
       <span class="text-lg opacity-80 cursor-pointer">&#8249;</span>
       <div class="zav" id="av1"></div>
@@ -311,6 +311,22 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     </div>
     <div class="zchat" id="c1"></div>
     <div class="zin"><span style="font-size:14px;cursor:pointer">&#128522;</span><div class="zbx">Tin nhắn</div><span style="font-size:13px;cursor:pointer;opacity:.5">&#128247;</span><span style="font-size:13px;cursor:pointer;opacity:.5">&#128444;&#65039;</span><span style="font-size:13px;cursor:pointer;opacity:.5">&#127908;</span></div>
+    <div class="popup-overlay" id="tcbPopupMT" style="display:none">
+      <div class="popup">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white font-black text-[8px]">TCB</div>
+          <div><div class="font-bold text-xs">Techcombank cho bạn</div><div class="text-[9px] text-gray-500">Ưu đãi riêng cho khách hàng WinMart</div></div>
+        </div>
+        <div class="bg-red-50 rounded-lg p-2 mb-2">
+          <div class="text-red-700 font-bold text-xs mb-0.5">Trả góp 0% lãi suất — Đơn từ 500.000đ</div>
+          <div class="text-[9px] text-gray-600">Chia 3 kỳ. Duyệt tự động qua WinMart app. Dựa trên lịch sử mua sắm tại WinMart.</div>
+        </div>
+        <div class="flex gap-2">
+          <button class="pbtn pbtn-r flex-1" onclick="document.getElementById('tcbPopupMT').style.display='none'">Đăng ký ngay</button>
+          <button class="pbtn pbtn-o flex-1" onclick="document.getElementById('tcbPopupMT').style.display='none'">Để sau</button>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- MT INTERNAL PANEL -->
   <div class="text-[9px] font-bold tracking-widest text-blue-400 uppercase mb-1">Bảng điều khiển nội bộ MT</div>
@@ -370,6 +386,13 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <div class="dl">Gần nhất: <span class="text-white/70 font-medium">Thảo Điền 0,4km</span></div>
       <div class="dl">Tài xế: <span class="text-white/70 font-medium">3 người sẵn</span></div>
       <div class="dl">ETA: <span class="text-white/70 font-medium">42 phút</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="mt-tcb">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">TECHCOMBANK API</div></div>
+      <div class="dl">Trả góp: <span class="text-blue-300 font-medium">0% lãi, 3 kỳ</span></div>
+      <div class="dl">Đơn tối thiểu: <span class="text-white/70 font-medium">500.000đ</span></div>
+      <div class="dl">Dựa trên: <span class="text-white/70 font-medium">Lịch sử WinMart</span></div>
     </div>
   </div>
 </div>
@@ -1033,29 +1056,29 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
   <h2><span style="font-size:22px">&#x1F9E0;</span> Real-Time Intelligence Dashboard</h2>
   <div class="flex items-center gap-3">
     <select class="store-select" id="storeSelect">
-      <option>Tap Hoa Co Lan — 156 Truong Dinh, HBT, Ha Noi</option>
-      <option>Tap Hoa Anh Tu — 42 Le Dai Hanh, HBT, Ha Noi</option>
-      <option>Tap Hoa Chi Mai — 78 Nguyen Trai, Thanh Xuan, Ha Noi</option>
+      <option>Tạp Hoá Cô Lan — 156 Trương Định, HBT, Hà Nội</option>
+      <option>Tạp Hoá Anh Tú — 42 Lê Đại Hành, HBT, Hà Nội</option>
+      <option>Tạp Hoá Chị Mai — 78 Nguyễn Trãi, Thanh Xuân, Hà Nội</option>
     </select>
-    <div class="glass px-3 py-2 text-xs font-semibold" style="color:rgba(255,255,255,.6)">11/04/2026 <span class="zdot" style="margin-left:4px"></span> Dang mo cua</div>
+    <div class="glass px-3 py-2 text-xs font-semibold" style="color:rgba(255,255,255,.6)">11/04/2026 <span class="zdot" style="margin-left:4px"></span> Đang mở cửa</div>
   </div>
 </div>
 
 <!-- SECTION A: GT RETAILER SKU TRACKER -->
-<div class="text-[9px] font-bold tracking-widest text-blue-400 uppercase mb-3">A. GT Retailer Daily SKU Movement — All Brands</div>
+<div class="text-[9px] font-bold tracking-widest text-blue-400 uppercase mb-3">A. Theo dõi SKU hàng ngày — Tất cả thương hiệu</div>
 
 <!-- KPI ROW -->
 <div class="intel-kpi">
-  <div class="glass ik"><div class="iv text-green-400">2,4tr</div><div class="il">Doanh thu hom nay</div></div>
-  <div class="glass ik"><div class="iv text-blue-400">37</div><div class="il">So don hang</div></div>
-  <div class="glass ik"><div class="iv text-orange-400">64,8k</div><div class="il">Gio trung binh</div></div>
-  <div class="glass ik"><div class="iv text-emerald-400">576k <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.4)">(24%)</span></div><div class="il">Loi nhuan gop hom nay</div></div>
+  <div class="glass ik"><div class="iv text-green-400">2,4tr</div><div class="il">Doanh thu hôm nay</div></div>
+  <div class="glass ik"><div class="iv text-blue-400">37</div><div class="il">Số đơn hàng</div></div>
+  <div class="glass ik"><div class="iv text-orange-400">64,8k</div><div class="il">Giỏ trung bình</div></div>
+  <div class="glass ik"><div class="iv text-emerald-400">576k <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.4)">(24%)</span></div><div class="il">Lợi nhuận gộp hôm nay</div></div>
 </div>
 
 <!-- SKU TABLE -->
 <div class="glass p-4 rounded-xl mb-4" style="overflow-x:auto">
   <div class="flex items-center justify-between mb-3">
-    <div class="text-xs font-bold text-white/80">SKU Movement — 11/04/2026</div>
+    <div class="text-xs font-bold text-white/80">Biến động SKU — 11/04/2026</div>
     <div class="flex items-center gap-2 text-[9px]">
       <span class="inline-block w-2 h-2 rounded-full bg-red-500"></span><span class="text-white/40">Masan/MCH</span>
       <span class="inline-block w-2 h-2 rounded-full bg-blue-500"></span><span class="text-white/40">Unilever</span>
@@ -1068,30 +1091,30 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     <thead>
       <tr>
         <th>SKU</th>
-        <th>Thuong hieu</th>
-        <th style="text-align:right">Ban hom nay</th>
-        <th style="text-align:right">TB 7 ngay</th>
-        <th style="text-align:right">Ton kho</th>
-        <th style="text-align:right">Bien LN</th>
+        <th>Thương hiệu</th>
+        <th style="text-align:right">Bán hôm nay</th>
+        <th style="text-align:right">TB 7 ngày</th>
+        <th style="text-align:right">Tồn kho</th>
+        <th style="text-align:right">Biên LN</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>Nuoc mam Chin-Su 500ml</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">23</td><td style="text-align:right">18.4</td><td style="text-align:right" class="stock-ok">14</td><td style="text-align:right">22%</td></tr>
-      <tr><td>Mi Omachi tom chua cay</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">18</td><td style="text-align:right">15.2</td><td style="text-align:right" class="stock-ok">42</td><td style="text-align:right">18%</td></tr>
-      <tr><td>Sua tuoi Vinamilk 180ml</td><td><span class="brand-pill" style="background:rgba(39,174,96,.15);color:#27AE60"><img src="https://logo.clearbit.com/vinamilk.com.vn" onerror="this.style.display='none'"/>Vinamilk</span></td><td style="text-align:right;font-weight:700">15</td><td style="text-align:right">13.1</td><td style="text-align:right" class="stock-ok">28</td><td style="text-align:right">12%</td></tr>
-      <tr><td>Bia Sai Gon lon 330ml</td><td><span class="brand-pill" style="background:rgba(245,158,11,.15);color:#F59E0B"><img src="https://logo.clearbit.com/sabeco.com.vn" onerror="this.style.display='none'"/>Sabeco</span></td><td style="text-align:right;font-weight:700">12</td><td style="text-align:right">10.8</td><td style="text-align:right" class="stock-ok">20</td><td style="text-align:right">15%</td></tr>
-      <tr><td>Xuc xich Ponnie goi 5</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">10</td><td style="text-align:right">7.8</td><td style="text-align:right" class="stock-ok">12</td><td style="text-align:right">24%</td></tr>
-      <tr><td>Sua chua Vinamilk 4 hop</td><td><span class="brand-pill" style="background:rgba(39,174,96,.15);color:#27AE60"><img src="https://logo.clearbit.com/vinamilk.com.vn" onerror="this.style.display='none'"/>Vinamilk</span></td><td style="text-align:right;font-weight:700">10</td><td style="text-align:right">8.7</td><td style="text-align:right" class="stock-ok">15</td><td style="text-align:right">14%</td></tr>
+      <tr><td>Nước mắm Chin-Su 500ml</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">23</td><td style="text-align:right">18.4</td><td style="text-align:right" class="stock-ok">14</td><td style="text-align:right">22%</td></tr>
+      <tr><td>Mì Omachi tôm chua cay</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">18</td><td style="text-align:right">15.2</td><td style="text-align:right" class="stock-ok">42</td><td style="text-align:right">18%</td></tr>
+      <tr><td>Sữa tươi Vinamilk 180ml</td><td><span class="brand-pill" style="background:rgba(39,174,96,.15);color:#27AE60"><img src="https://logo.clearbit.com/vinamilk.com.vn" onerror="this.style.display='none'"/>Vinamilk</span></td><td style="text-align:right;font-weight:700">15</td><td style="text-align:right">13.1</td><td style="text-align:right" class="stock-ok">28</td><td style="text-align:right">12%</td></tr>
+      <tr><td>Bia Sài Gòn lon 330ml</td><td><span class="brand-pill" style="background:rgba(245,158,11,.15);color:#F59E0B"><img src="https://logo.clearbit.com/sabeco.com.vn" onerror="this.style.display='none'"/>Sabeco</span></td><td style="text-align:right;font-weight:700">12</td><td style="text-align:right">10.8</td><td style="text-align:right" class="stock-ok">20</td><td style="text-align:right">15%</td></tr>
+      <tr><td>Xúc xích Ponnie gói 5</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">10</td><td style="text-align:right">7.8</td><td style="text-align:right" class="stock-ok">12</td><td style="text-align:right">24%</td></tr>
+      <tr><td>Sữa chua Vinamilk 4 hộp</td><td><span class="brand-pill" style="background:rgba(39,174,96,.15);color:#27AE60"><img src="https://logo.clearbit.com/vinamilk.com.vn" onerror="this.style.display='none'"/>Vinamilk</span></td><td style="text-align:right;font-weight:700">10</td><td style="text-align:right">8.7</td><td style="text-align:right" class="stock-ok">15</td><td style="text-align:right">14%</td></tr>
       <tr><td>Omo Matic 2.7kg</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">8</td><td style="text-align:right">6.5</td><td style="text-align:right" class="stock-warn">5</td><td style="text-align:right">20%</td></tr>
-      <tr><td>Dau an Neptune 1L</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">6</td><td style="text-align:right">5.3</td><td style="text-align:right" class="stock-ok">9</td><td style="text-align:right">16%</td></tr>
-      <tr><td>Nuoc rua chen Sunlight 750ml</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">5</td><td style="text-align:right">4.3</td><td style="text-align:right" class="stock-ok">9</td><td style="text-align:right">15%</td></tr>
-      <tr><td>Bot giat Ariel 2.4kg</td><td><span class="brand-pill" style="background:rgba(255,107,0,.15);color:#FF6B00"><img src="https://logo.clearbit.com/pg.com" onerror="this.style.display='none'"/>P&G</span></td><td style="text-align:right;font-weight:700">5</td><td style="text-align:right">4.1</td><td style="text-align:right" class="stock-ok">8</td><td style="text-align:right">18%</td></tr>
-      <tr><td>Comfort dam dac 1.8L</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">4</td><td style="text-align:right">3.2</td><td style="text-align:right" class="stock-warn">7</td><td style="text-align:right">19%</td></tr>
-      <tr><td>Bot giat Tide 2.7kg</td><td><span class="brand-pill" style="background:rgba(255,107,0,.15);color:#FF6B00"><img src="https://logo.clearbit.com/pg.com" onerror="this.style.display='none'"/>P&G</span></td><td style="text-align:right;font-weight:700">4</td><td style="text-align:right">3.5</td><td style="text-align:right" class="stock-warn">6</td><td style="text-align:right">17%</td></tr>
-      <tr><td>Nuoc xa vai Downy 1.8L</td><td><span class="brand-pill" style="background:rgba(255,107,0,.15);color:#FF6B00"><img src="https://logo.clearbit.com/pg.com" onerror="this.style.display='none'"/>P&G</span></td><td style="text-align:right;font-weight:700">3</td><td style="text-align:right">2.6</td><td style="text-align:right" class="stock-warn">6</td><td style="text-align:right">17%</td></tr>
-      <tr><td>Dau goi Clear 650ml</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">3</td><td style="text-align:right">2.8</td><td style="text-align:right" class="stock-ok">11</td><td style="text-align:right">21%</td></tr>
-      <tr><td>Tuong ot Chin-Su 250g</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">3</td><td style="text-align:right">2.4</td><td style="text-align:right" class="stock-low">2</td><td style="text-align:right">23%</td></tr>
-      <tr><td>Kem danh rang P/S 230g</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">2</td><td style="text-align:right">1.9</td><td style="text-align:right" class="stock-ok">14</td><td style="text-align:right">23%</td></tr>
+      <tr><td>Dầu ăn Neptune 1L</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">6</td><td style="text-align:right">5.3</td><td style="text-align:right" class="stock-ok">9</td><td style="text-align:right">16%</td></tr>
+      <tr><td>Nước rửa chén Sunlight 750ml</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">5</td><td style="text-align:right">4.3</td><td style="text-align:right" class="stock-ok">9</td><td style="text-align:right">15%</td></tr>
+      <tr><td>Bột giặt Ariel 2.4kg</td><td><span class="brand-pill" style="background:rgba(255,107,0,.15);color:#FF6B00"><img src="https://logo.clearbit.com/pg.com" onerror="this.style.display='none'"/>P&G</span></td><td style="text-align:right;font-weight:700">5</td><td style="text-align:right">4.1</td><td style="text-align:right" class="stock-ok">8</td><td style="text-align:right">18%</td></tr>
+      <tr><td>Comfort đậm đặc 1.8L</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">4</td><td style="text-align:right">3.2</td><td style="text-align:right" class="stock-warn">7</td><td style="text-align:right">19%</td></tr>
+      <tr><td>Bột giặt Tide 2.7kg</td><td><span class="brand-pill" style="background:rgba(255,107,0,.15);color:#FF6B00"><img src="https://logo.clearbit.com/pg.com" onerror="this.style.display='none'"/>P&G</span></td><td style="text-align:right;font-weight:700">4</td><td style="text-align:right">3.5</td><td style="text-align:right" class="stock-warn">6</td><td style="text-align:right">17%</td></tr>
+      <tr><td>Nước xả vải Downy 1.8L</td><td><span class="brand-pill" style="background:rgba(255,107,0,.15);color:#FF6B00"><img src="https://logo.clearbit.com/pg.com" onerror="this.style.display='none'"/>P&G</span></td><td style="text-align:right;font-weight:700">3</td><td style="text-align:right">2.6</td><td style="text-align:right" class="stock-warn">6</td><td style="text-align:right">17%</td></tr>
+      <tr><td>Dầu gội Clear 650ml</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">3</td><td style="text-align:right">2.8</td><td style="text-align:right" class="stock-ok">11</td><td style="text-align:right">21%</td></tr>
+      <tr><td>Tương ớt Chin-Su 250g</td><td><span class="brand-pill" style="background:rgba(227,6,19,.15);color:#E30613"><img src="https://logo.clearbit.com/masangroup.com" onerror="this.style.display='none'"/>MCH</span></td><td style="text-align:right;font-weight:700">3</td><td style="text-align:right">2.4</td><td style="text-align:right" class="stock-low">2</td><td style="text-align:right">23%</td></tr>
+      <tr><td>Kem đánh răng P/S 230g</td><td><span class="brand-pill" style="background:rgba(0,104,255,.15);color:#0068FF"><img src="https://logo.clearbit.com/unilever.com" onerror="this.style.display='none'"/>Unilever</span></td><td style="text-align:right;font-weight:700">2</td><td style="text-align:right">1.9</td><td style="text-align:right" class="stock-ok">14</td><td style="text-align:right">23%</td></tr>
     </tbody>
   </table>
 </div>
@@ -1099,12 +1122,12 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <!-- DAILY P&L -->
 <div class="grid grid-cols-2 gap-4 mb-4">
   <div class="glass p-4 rounded-xl">
-    <div class="text-xs font-bold text-white/80 mb-3">Bao cao Lai/Lo hom nay</div>
-    <div class="credit-metric"><span class="cm-label">Tong doanh thu</span><span class="cm-val" style="color:#27AE60">2.400.000d</span></div>
-    <div class="credit-metric"><span class="cm-label">Gia von hang ban (COGS)</span><span class="cm-val">1.824.000d</span></div>
-    <div class="credit-metric"><span class="cm-label">Loi nhuan gop</span><span class="cm-val cm-good">576.000d</span></div>
-    <div class="credit-metric"><span class="cm-label">Ty suat LN gop</span><span class="cm-val cm-good">24,0%</span></div>
-    <div class="credit-metric"><span class="cm-label">So voi TB 7 ngay</span><span class="cm-val cm-good">+8,2%</span></div>
+    <div class="text-xs font-bold text-white/80 mb-3">Báo cáo Lãi/Lỗ hôm nay</div>
+    <div class="credit-metric"><span class="cm-label">Tổng doanh thu</span><span class="cm-val" style="color:#27AE60">2.400.000d</span></div>
+    <div class="credit-metric"><span class="cm-label">Giá vốn hàng bán (COGS)</span><span class="cm-val">1.824.000d</span></div>
+    <div class="credit-metric"><span class="cm-label">Lợi nhuận gộp</span><span class="cm-val cm-good">576.000d</span></div>
+    <div class="credit-metric"><span class="cm-label">Tỷ suất LN gộp</span><span class="cm-val cm-good">24,0%</span></div>
+    <div class="credit-metric"><span class="cm-label">So với TB 7 ngày</span><span class="cm-val cm-good">+8,2%</span></div>
     <div style="margin-top:12px;padding:8px;background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.15);border-radius:8px">
       <div style="font-size:9px;color:#27AE60;font-weight:700">BRAND P&L BREAKDOWN</div>
       <div style="display:flex;gap:8px;margin-top:6px;font-size:9px">
@@ -1121,14 +1144,14 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
   <div class="glass p-4 rounded-xl">
     <div class="flex items-center gap-2 mb-3">
       <img src="https://logo.clearbit.com/techcombank.com.vn" style="width:20px;height:20px;border-radius:4px" onerror="this.style.display='none'"/>
-      <div class="text-xs font-bold text-white/80">Loan Underwriting — POS-Powered Credit Score</div>
+      <div class="text-xs font-bold text-white/80">Loan Underwriting — Chấm điểm tín dụng từ POS</div>
     </div>
-    <div class="credit-metric"><span class="cm-label">Tan suat giao dich</span><span class="cm-val cm-good">37 don/ngay <span style="font-size:8px;color:#27AE60">(CAO)</span></span></div>
-    <div class="credit-metric"><span class="cm-label">Do on dinh doanh thu</span><span class="cm-val cm-good">+/- 8% <span style="font-size:8px;color:#27AE60">(ON DINH)</span></span></div>
-    <div class="credit-metric"><span class="cm-label">Vong quay ton kho</span><span class="cm-val cm-good">4.2x/thang <span style="font-size:8px;color:#27AE60">(TOT)</span></span></div>
-    <div class="credit-metric"><span class="cm-label">Thanh toan dung han</span><span class="cm-val cm-good">98% <span style="font-size:8px;color:#27AE60">(RAT TOT)</span></span></div>
-    <div class="credit-metric"><span class="cm-label">Da dang thuong hieu</span><span class="cm-val">15 brands</span></div>
-    <div class="credit-metric"><span class="cm-label">Thoi gian hoat dong</span><span class="cm-val">4,5 nam</span></div>
+    <div class="credit-metric"><span class="cm-label">Tần suất giao dịch</span><span class="cm-val cm-good">37 đơn/ngày <span style="font-size:8px;color:#27AE60">(CAO)</span></span></div>
+    <div class="credit-metric"><span class="cm-label">Độ ổn định doanh thu</span><span class="cm-val cm-good">+/- 8% <span style="font-size:8px;color:#27AE60">(ỔN ĐỊNH)</span></span></div>
+    <div class="credit-metric"><span class="cm-label">Vòng quay tồn kho</span><span class="cm-val cm-good">4.2x/tháng <span style="font-size:8px;color:#27AE60">(TỐT)</span></span></div>
+    <div class="credit-metric"><span class="cm-label">Thanh toán đúng hạn</span><span class="cm-val cm-good">98% <span style="font-size:8px;color:#27AE60">(RẤT TỐT)</span></span></div>
+    <div class="credit-metric"><span class="cm-label">Đa dạng thương hiệu</span><span class="cm-val">15 brands</span></div>
+    <div class="credit-metric"><span class="cm-label">Thời gian hoạt động</span><span class="cm-val">4,5 năm</span></div>
     <div style="margin-top:14px;padding:10px;background:rgba(0,104,255,.06);border:1px solid rgba(0,104,255,.15);border-radius:10px">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
         <span style="font-size:10px;color:rgba(255,255,255,.5);font-weight:600">CREDIT SCORE</span>
@@ -1137,10 +1160,10 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <div class="credit-gauge"><div class="marker" style="left:87%"></div></div>
       <div style="display:flex;justify-content:space-between;font-size:7px;color:rgba(255,255,255,.25);margin-top:3px"><span>300</span><span>500</span><span>700</span><span>900</span></div>
       <div style="margin-top:10px;padding:8px;background:rgba(39,174,96,.1);border-radius:6px;font-size:10px;color:#27AE60;font-weight:700;text-align:center">
-        Du dieu kien: Thau chi 10 trieu — Lai 0,8%/thang — Giai ngan 24h
+        Đủ điều kiện: Thấu chi 10 triệu — Lãi 0,8%/tháng — Giải ngân 24h
       </div>
       <div style="margin-top:6px;padding:6px;background:rgba(227,6,19,.06);border-radius:6px;font-size:9px;color:rgba(255,255,255,.4);text-align:center">
-        <span style="color:#E30613;font-weight:700">Truoc khi co POS data:</span> Khong the dinh gia tin dung GT — 0% retailer duoc cap von
+        <span style="color:#E30613;font-weight:700">Trước khi có POS data:</span> Không thể định giá tín dụng GT — 0% retailer được cấp vốn
       </div>
     </div>
   </div>
@@ -1153,7 +1176,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 
 <div class="glass p-4 rounded-xl mb-4">
   <div class="flex items-center justify-between mb-3">
-    <div class="text-xs font-bold text-white/80">Ma tran tuong quan — Khi goi y san pham A cung san pham B, ty le chuyen doi la bao nhieu?</div>
+    <div class="text-xs font-bold text-white/80">Ma trận tương quan — Khi gợi ý sản phẩm A cùng sản phẩm B, tỷ lệ chuyển đổi là bao nhiêu?</div>
     <div class="flex items-center gap-2 text-[8px]">
       <span class="inline-block px-2 py-0.5 rounded hm-high" style="font-size:8px">&gt;25% CVR</span>
       <span class="inline-block px-2 py-0.5 rounded hm-med" style="font-size:8px">15-25%</span>
@@ -1175,21 +1198,21 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <!-- Row 1: Vinamilk -->
       <div class="heatmap-label" style="text-align:right">Vinamilk Sua</div>
       <div class="heatmap-cell hm-self"><div class="hm-val">—</div></div>
-      <div class="heatmap-cell hm-high"><div class="hm-val">34%</div><div class="hm-lbl">Bua sang</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">34%</div><div class="hm-lbl">Bữa sáng</div></div>
       <div class="heatmap-cell hm-med"><div class="hm-val">19%</div></div>
-      <div class="heatmap-cell hm-low"><div class="hm-val">12%</div><div class="hm-lbl">Thap</div></div>
+      <div class="heatmap-cell hm-low"><div class="hm-val">12%</div><div class="hm-lbl">Thấp</div></div>
       <div class="heatmap-cell hm-low"><div class="hm-val">8%</div></div>
       <div class="heatmap-cell hm-low"><div class="hm-val">11%</div></div>
-      <div class="heatmap-cell hm-med"><div class="hm-val">22%</div><div class="hm-lbl">An vat</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">22%</div><div class="hm-lbl">Ăn vặt</div></div>
       <div class="heatmap-cell hm-low"><div class="hm-val">7%</div></div>
       <!-- Row 2: Omachi -->
       <div class="heatmap-label" style="text-align:right">Omachi</div>
       <div class="heatmap-cell hm-high"><div class="hm-val">34%</div></div>
       <div class="heatmap-cell hm-self"><div class="hm-val">—</div></div>
-      <div class="heatmap-cell hm-high"><div class="hm-val">31%</div><div class="hm-lbl">Mi + nuoc mam</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">31%</div><div class="hm-lbl">Mì + nước mắm</div></div>
       <div class="heatmap-cell hm-med"><div class="hm-val">18%</div></div>
       <div class="heatmap-cell hm-low"><div class="hm-val">9%</div></div>
-      <div class="heatmap-cell hm-med"><div class="hm-val">24%</div><div class="hm-lbl">Bia + mi</div></div>
+      <div class="heatmap-cell hm-med"><div class="hm-val">24%</div><div class="hm-lbl">Bia + mì</div></div>
       <div class="heatmap-cell hm-med"><div class="hm-val">20%</div></div>
       <div class="heatmap-cell hm-low"><div class="hm-val">8%</div></div>
       <!-- Row 3: Chin-Su -->
@@ -1197,7 +1220,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <div class="heatmap-cell hm-med"><div class="hm-val">19%</div></div>
       <div class="heatmap-cell hm-high"><div class="hm-val">31%</div></div>
       <div class="heatmap-cell hm-self"><div class="hm-val">—</div></div>
-      <div class="heatmap-cell hm-high"><div class="hm-val">42%</div><div class="hm-lbl">Bua com</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">42%</div><div class="hm-lbl">Bữa cơm</div></div>
       <div class="heatmap-cell hm-low"><div class="hm-val">10%</div></div>
       <div class="heatmap-cell hm-med"><div class="hm-val">16%</div></div>
       <div class="heatmap-cell hm-med"><div class="hm-val">25%</div></div>
@@ -1209,7 +1232,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <div class="heatmap-cell hm-high"><div class="hm-val">42%</div></div>
       <div class="heatmap-cell hm-self"><div class="hm-val">—</div></div>
       <div class="heatmap-cell hm-low"><div class="hm-val">7%</div></div>
-      <div class="heatmap-cell hm-high"><div class="hm-val">29%</div><div class="hm-lbl">Bia + thit</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">29%</div><div class="hm-lbl">Bia + thịt</div></div>
       <div class="heatmap-cell hm-high"><div class="hm-val">33%</div><div class="hm-lbl">Protein</div></div>
       <div class="heatmap-cell hm-low"><div class="hm-val">6%</div></div>
       <!-- Row 5: Omo -->
@@ -1221,7 +1244,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <div class="heatmap-cell hm-self"><div class="hm-val">—</div></div>
       <div class="heatmap-cell hm-low"><div class="hm-val">6%</div></div>
       <div class="heatmap-cell hm-low"><div class="hm-val">5%</div></div>
-      <div class="heatmap-cell hm-high"><div class="hm-val">38%</div><div class="hm-lbl">Giat + giat</div></div>
+      <div class="heatmap-cell hm-high"><div class="hm-val">38%</div><div class="hm-lbl">Giặt + giặt</div></div>
       <!-- Row 6: Bia SG -->
       <div class="heatmap-label" style="text-align:right">Bia SG</div>
       <div class="heatmap-cell hm-low"><div class="hm-val">11%</div></div>
@@ -1260,19 +1283,19 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <div style="font-size:8px;color:#27AE60;font-weight:700;margin-bottom:4px">TOP PAIRING</div>
       <div style="font-size:11px;font-weight:800;color:#fff">Chin-Su + MEATDeli</div>
       <div style="font-size:10px;color:#27AE60;font-weight:700">42% CVR</div>
-      <div style="font-size:8px;color:rgba(255,255,255,.4);margin-top:2px">Meal-occasion pattern: nuoc mam + thit tuoi = bua com gia dinh</div>
+      <div style="font-size:8px;color:rgba(255,255,255,.4);margin-top:2px">Meal-occasion pattern: nước mắm + thịt tươi = bữa cơm gia đình</div>
     </div>
     <div style="padding:8px;background:rgba(0,104,255,.08);border:1px solid rgba(0,104,255,.15);border-radius:8px">
       <div style="font-size:8px;color:#0068FF;font-weight:700;margin-bottom:4px">HIGH CROSS-SELL</div>
       <div style="font-size:11px;font-weight:800;color:#fff">Vinamilk + Omachi</div>
       <div style="font-size:10px;color:#0068FF;font-weight:700">34% CVR</div>
-      <div style="font-size:8px;color:rgba(255,255,255,.4);margin-top:2px">Breakfast bundle: sua + mi an sang — pho bien segment gia dinh tre</div>
+      <div style="font-size:8px;color:rgba(255,255,255,.4);margin-top:2px">Breakfast bundle: sữa + mì ăn sáng — phổ biến segment gia đình trẻ</div>
     </div>
     <div style="padding:8px;background:rgba(227,6,19,.08);border:1px solid rgba(227,6,19,.15);border-radius:8px">
       <div style="font-size:8px;color:#E30613;font-weight:700;margin-bottom:4px">LOW SIGNAL</div>
       <div style="font-size:11px;font-weight:800;color:#fff">Vinamilk + MEATDeli</div>
       <div style="font-size:10px;color:#E30613;font-weight:700">12% CVR</div>
-      <div style="font-size:8px;color:rgba(255,255,255,.4);margin-top:2px">Khac occasion: sua = sang/an vat, thit = bua chinh. Khong nen goi y cung nhau.</div>
+      <div style="font-size:8px;color:rgba(255,255,255,.4);margin-top:2px">Khác occasion: sữa = sáng/ăn vặt, thịt = bữa chính. Không nên gợi ý cùng nhau.</div>
     </div>
   </div>
 </div>
@@ -1280,20 +1303,20 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <!-- SEGMENT BREAKDOWN -->
 <div class="grid grid-cols-3 gap-4 mb-4">
   <div class="glass rounded-xl seg-card">
-    <h4>&#x1F4CD; Theo vung mien</h4>
+    <h4>&#x1F4CD; Theo vùng miền</h4>
     <div class="seg-row"><span>HCM</span><div class="seg-bar"><div class="seg-bar-fill" style="width:90%;background:#E30613"></div></div><span style="font-weight:700;color:#E30613">Chin-Su+MEAT 42%</span></div>
-    <div class="seg-row"><span>Ha Noi</span><div class="seg-bar"><div class="seg-bar-fill" style="width:80%;background:#0068FF"></div></div><span style="font-weight:700;color:#0068FF">Omachi+Vinamilk 38%</span></div>
-    <div class="seg-row"><span>Mekong</span><div class="seg-bar"><div class="seg-bar-fill" style="width:72%;background:#27AE60"></div></div><span style="font-weight:700;color:#27AE60">Chin-Su+Ca 35%</span></div>
-    <div class="seg-row"><span>Mien Trung</span><div class="seg-bar"><div class="seg-bar-fill" style="width:68%;background:#F59E0B"></div></div><span style="font-weight:700;color:#F59E0B">Omachi+Chin-Su 33%</span></div>
+    <div class="seg-row"><span>Hà Nội</span><div class="seg-bar"><div class="seg-bar-fill" style="width:80%;background:#0068FF"></div></div><span style="font-weight:700;color:#0068FF">Omachi+Vinamilk 38%</span></div>
+    <div class="seg-row"><span>Mekong</span><div class="seg-bar"><div class="seg-bar-fill" style="width:72%;background:#27AE60"></div></div><span style="font-weight:700;color:#27AE60">Chin-Su+Cá 35%</span></div>
+    <div class="seg-row"><span>Miền Trung</span><div class="seg-bar"><div class="seg-bar-fill" style="width:68%;background:#F59E0B"></div></div><span style="font-weight:700;color:#F59E0B">Omachi+Chin-Su 33%</span></div>
   </div>
   <div class="glass rounded-xl seg-card">
-    <h4>&#x1F46A; Theo quy mo ho</h4>
-    <div class="seg-row"><span>2 nguoi</span><div class="seg-bar"><div class="seg-bar-fill" style="width:65%;background:#6366F1"></div></div><span style="font-weight:700;color:#6366F1">Compact combo</span></div>
-    <div class="seg-row"><span>3-4 nguoi</span><div class="seg-bar"><div class="seg-bar-fill" style="width:95%;background:#0068FF"></div></div><span style="font-weight:700;color:#0068FF">Meal combo #1</span></div>
-    <div class="seg-row"><span>5+ nguoi</span><div class="seg-bar"><div class="seg-bar-fill" style="width:78%;background:#27AE60"></div></div><span style="font-weight:700;color:#27AE60">Bulk + Omachi thung</span></div>
+    <h4>&#x1F46A; Theo quy mô hộ</h4>
+    <div class="seg-row"><span>2 người</span><div class="seg-bar"><div class="seg-bar-fill" style="width:65%;background:#6366F1"></div></div><span style="font-weight:700;color:#6366F1">Compact combo</span></div>
+    <div class="seg-row"><span>3-4 người</span><div class="seg-bar"><div class="seg-bar-fill" style="width:95%;background:#0068FF"></div></div><span style="font-weight:700;color:#0068FF">Meal combo #1</span></div>
+    <div class="seg-row"><span>5+ người</span><div class="seg-bar"><div class="seg-bar-fill" style="width:78%;background:#27AE60"></div></div><span style="font-weight:700;color:#27AE60">Bulk + Omachi thùng</span></div>
   </div>
   <div class="glass rounded-xl seg-card">
-    <h4>&#x1F4B0; Theo thu nhap</h4>
+    <h4>&#x1F4B0; Theo thu nhập</h4>
     <div class="seg-row"><span>&lt;5tr/th</span><div class="seg-bar"><div class="seg-bar-fill" style="width:88%;background:#E30613"></div></div><span style="font-weight:700;color:#E30613">Masan dominant</span></div>
     <div class="seg-row"><span>5-15tr</span><div class="seg-bar"><div class="seg-bar-fill" style="width:75%;background:#0068FF"></div></div><span style="font-weight:700;color:#0068FF">Mix Masan+UL</span></div>
     <div class="seg-row"><span>&gt;15tr</span><div class="seg-bar"><div class="seg-bar-fill" style="width:60%;background:#27AE60"></div></div><span style="font-weight:700;color:#27AE60">MEAT+Vinamilk org.</span></div>
@@ -1312,7 +1335,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     <div class="text-center">
       <div style="font-size:28px;font-weight:900;color:#27AE60">+1.4</div>
       <div style="font-size:9px;color:rgba(255,255,255,.4)">Items per basket uplift</div>
-      <div style="font-size:8px;color:#27AE60;font-weight:700;margin-top:2px">Tu 3.2 len 4.6 items/don</div>
+      <div style="font-size:8px;color:#27AE60;font-weight:700;margin-top:2px">Từ 3.2 lên 4.6 items/đơn</div>
     </div>
     <div class="text-center">
       <div style="font-size:28px;font-weight:900;color:#F59E0B">28,5k</div>
@@ -1321,13 +1344,13 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     </div>
   </div>
   <div class="rec-funnel">
-    <div class="rec-step" style="background:rgba(0,104,255,.2);color:#0068FF">Goi y gui<br><span style="font-size:14px;font-weight:900">100%</span><br><span style="font-size:8px;opacity:.7">245.000</span></div>
+    <div class="rec-step" style="background:rgba(0,104,255,.2);color:#0068FF">Gợi ý gửi<br><span style="font-size:14px;font-weight:900">100%</span><br><span style="font-size:8px;opacity:.7">245.000</span></div>
     <div class="rec-arrow">&#x279C;</div>
-    <div class="rec-step" style="background:rgba(99,102,241,.2);color:#6366F1">Khach xem<br><span style="font-size:14px;font-weight:900">72%</span><br><span style="font-size:8px;opacity:.7">176.400</span></div>
+    <div class="rec-step" style="background:rgba(99,102,241,.2);color:#6366F1">Khách xem<br><span style="font-size:14px;font-weight:900">72%</span><br><span style="font-size:8px;opacity:.7">176.400</span></div>
     <div class="rec-arrow">&#x279C;</div>
-    <div class="rec-step" style="background:rgba(245,158,11,.2);color:#F59E0B">Them vao gio<br><span style="font-size:14px;font-weight:900">41%</span><br><span style="font-size:8px;opacity:.7">100.450</span></div>
+    <div class="rec-step" style="background:rgba(245,158,11,.2);color:#F59E0B">Thêm vào giỏ<br><span style="font-size:14px;font-weight:900">41%</span><br><span style="font-size:8px;opacity:.7">100.450</span></div>
     <div class="rec-arrow">&#x279C;</div>
-    <div class="rec-step" style="background:rgba(39,174,96,.2);color:#27AE60">Thanh toan<br><span style="font-size:14px;font-weight:900">34%</span><br><span style="font-size:8px;opacity:.7">83.300</span></div>
+    <div class="rec-step" style="background:rgba(39,174,96,.2);color:#27AE60">Thanh toán<br><span style="font-size:14px;font-weight:900">34%</span><br><span style="font-size:8px;opacity:.7">83.300</span></div>
   </div>
 </div>
 
@@ -1449,8 +1472,8 @@ let gtMsg=0;
 function incGT(){gtMsg++;document.getElementById('gt-msg').textContent=gtMsg;}
 
 // CHAT ENGINES
-const AV1='https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&h=200&fit=crop&crop=faces';
-const AV2='https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=200&h=200&fit=crop&crop=faces';
+const AV1='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=faces';
+const AV2='https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=faces';
 document.getElementById('av1').style.backgroundImage=`url(${AV1})`;
 document.getElementById('av2').style.backgroundImage=`url(${AV2})`;
 const now=()=>{const d=new Date();return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0')};
@@ -1617,6 +1640,11 @@ async function flow1(){
   await cd1(vietQR(tot.toLocaleString('vi-VN')+'đ','WINMART+ - MSN RETAIL','1019 8765 4321','Techcombank (TCB)','MT100426'));
   await sl(800);
   await b1('Thanh toán thành công! +42 điểm WIN. Chúc cả nhà ngon miệng tối nay nha! 🎉');
+
+  act(['mt-tcb']);
+  await sl(1500);
+  document.getElementById('tcbPopupMT').style.display='flex';
+  await b1('Techcombank gửi bạn ưu đãi trả góp 0% cho đơn hàng WinMart từ 500.000đ! Chia 3 kỳ, duyệt tự động.');
 }
 
 // ====== FLOW 2: GT TẠP HOÁ CÔ LAN — MEAL OCCASION ======
@@ -1721,6 +1749,7 @@ async function flow2(){
 
 function resetAll(){
   document.getElementById('tcbPopup').style.display='none';
+  document.getElementById('tcbPopupMT').style.display='none';
   mealSelections={};
   enterPOS();
   flow1();flow2();
