@@ -682,6 +682,20 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
         <div class="pc" id="cartC" style="display:none"><h3>Đơn hàng hiện tại</h3>
           <div id="cartI"></div>
           <div class="flex justify-between items-center mt-2 pt-2 border-t border-gray-100"><span class="font-bold text-xs text-gray-800">Tổng:</span><span class="font-bold text-xs text-red-600" id="cartT">0đ</span></div>
+          <!-- WiN MEMBER SIGNUP AT CHECKOUT -->
+          <div id="winSignup" style="margin-top:8px;padding:8px;background:linear-gradient(135deg,#FFFBF0,#FFF8E8);border:1.5px solid #F59E0B;border-radius:8px">
+            <label style="display:flex;align-items:flex-start;gap:6px;cursor:pointer">
+              <input type="checkbox" checked style="accent-color:#F59E0B;margin-top:2px;width:14px;height:14px;flex-shrink:0"/>
+              <div>
+                <div style="font-size:10px;font-weight:800;color:#92400E">Khách đăng ký WiN Member — Giảm 100.000đ ngay</div>
+                <div style="font-size:8px;color:#B45309;margin-top:2px">Tài trợ bởi Masan. Khách quét QR → đăng ký WiN → nhận giảm giá tự động trên đơn này.</div>
+                <div style="display:flex;align-items:center;gap:6px;margin-top:4px">
+                  <div style="font-size:8px;color:#D97706;font-weight:700;background:rgba(245,158,11,.1);padding:2px 6px;border-radius:4px">-100.000đ</div>
+                  <div style="font-size:7px;color:#999">Chi phí: Masan • Không ảnh hưởng doanh thu Cô Lan</div>
+                </div>
+              </div>
+            </label>
+          </div>
           <div class="flex gap-2 mt-2"><button class="pbtn pbtn-o flex-1" onclick="clrC()">Huỷ</button><button class="pbtn pbtn-r flex-1" onclick="payC()">Thanh toán</button></div>
           <div style="margin-top:6px;padding:6px 8px;background:linear-gradient(135deg,rgba(255,150,50,.06),rgba(255,120,20,.03));border:1px solid rgba(255,140,40,.2);border-radius:8px;cursor:pointer" onclick="payC()">
             <div style="display:flex;align-items:center;gap:5px">
@@ -1261,6 +1275,46 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <div style="margin-top:6px;padding:6px;background:rgba(227,6,19,.06);border-radius:6px;font-size:9px;color:rgba(255,255,255,.4);text-align:center">
         <span style="color:#E30613;font-weight:700">Trước khi có POS data:</span> Không thể định giá tín dụng GT — 0% retailer được cấp vốn
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- MEMBERSHIP ACQUISITION FROM THIS RETAILER -->
+<div class="glass p-4 rounded-xl mb-4" style="border-color:rgba(245,158,11,.2)">
+  <div class="flex items-center justify-between mb-3">
+    <div class="text-xs font-bold text-white/80">&#x1F4C8; WiN Member — Lượt đăng ký từ Tạp Hoá Cô Lan</div>
+    <div style="font-size:8px;font-weight:700;background:rgba(245,158,11,.15);color:#F59E0B;padding:2px 8px;border-radius:6px">ACQUISITION CHANNEL</div>
+  </div>
+  <div class="grid grid-cols-4 gap-3 mb-3">
+    <div class="text-center" style="padding:8px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.12);border-radius:8px">
+      <div style="font-size:20px;font-weight:900;color:#F59E0B">127</div>
+      <div style="font-size:8px;color:rgba(255,255,255,.4)">Thành viên mới (tháng 4)</div>
+    </div>
+    <div class="text-center" style="padding:8px;background:rgba(39,174,96,.06);border:1px solid rgba(39,174,96,.12);border-radius:8px">
+      <div style="font-size:20px;font-weight:900;color:#27AE60">68%</div>
+      <div style="font-size:8px;color:rgba(255,255,255,.4)">Tỷ lệ đồng ý đăng ký</div>
+    </div>
+    <div class="text-center" style="padding:8px;background:rgba(0,104,255,.06);border:1px solid rgba(0,104,255,.12);border-radius:8px">
+      <div style="font-size:20px;font-weight:900;color:#0068FF">3,4x</div>
+      <div style="font-size:8px;color:rgba(255,255,255,.4)">Quay lại/tháng (member vs non)</div>
+    </div>
+    <div class="text-center" style="padding:8px;background:rgba(227,6,19,.06);border:1px solid rgba(227,6,19,.12);border-radius:8px">
+      <div style="font-size:20px;font-weight:900;color:#E30613">12,7tr</div>
+      <div style="font-size:8px;color:rgba(255,255,255,.4)">LTV/member từ GT này</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;font-size:9px">
+    <div style="flex:1;padding:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px">
+      <div style="color:rgba(255,255,255,.4);font-weight:600;margin-bottom:4px">CHI PHÍ THU HỘI VIÊN</div>
+      <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="color:rgba(255,255,255,.5)">Giảm giá đăng ký (100k/người)</span><span style="font-weight:700;color:#F59E0B">12.700.000đ</span></div>
+      <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="color:rgba(255,255,255,.5)">Tài trợ bởi</span><span style="font-weight:700;color:#E30613">Masan (MCH budget)</span></div>
+      <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="color:rgba(255,255,255,.5)">CAC / member</span><span style="font-weight:700;color:#27AE60">100.000đ <span style="color:rgba(255,255,255,.3);font-weight:400">vs FB 350k, Grab 280k</span></span></div>
+    </div>
+    <div style="flex:1;padding:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px">
+      <div style="color:rgba(255,255,255,.4);font-weight:600;margin-bottom:4px">HÀNH TRÌNH SAU ĐĂNG KÝ</div>
+      <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="color:rgba(255,255,255,.5)">Nhận gợi ý Zalo OA</span><span style="font-weight:700;color:#27AE60">89% opt-in</span></div>
+      <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="color:rgba(255,255,255,.5)">Mua lại trong 7 ngày</span><span style="font-weight:700;color:#0068FF">72%</span></div>
+      <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="color:rgba(255,255,255,.5)">Cross-shop WinMart</span><span style="font-weight:700;color:#6366F1">23% trong 30 ngày</span></div>
     </div>
   </div>
 </div>
