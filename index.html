@@ -439,10 +439,10 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="gt-customer">
       <div class="pulse-dot"></div>
       <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">HỒ SƠ KHÁCH MUA</div></div>
-      <div class="dl">Tên: <span class="text-white/70 font-medium">Trần Thị Hương</span></div>
-      <div class="dl">Hộ gia đình: <span class="text-white/70 font-medium">4 người</span></div>
-      <div class="dl">Món thường nấu: <span class="text-orange-300 font-medium">thịt kho, canh rau</span></div>
-      <div class="dl">Mua gần nhất: <span class="text-yellow-400 font-medium">Omo 2.7kg — 21/3 (20 ngày)</span></div>
+      <div class="dl">Tên: <span class="text-white/70 font-medium">Trần Thị Hương (tầng 5, nhà 12)</span></div>
+      <div class="dl">Tần suất ghé: <span class="text-white/70 font-medium">4 lần/tuần, giỏ TB 78k</span></div>
+      <div class="dl">Hay mua: <span class="text-orange-300 font-medium">ba chỉ, trứng, rau, Chin-Su</span></div>
+      <div class="dl">Chu kỳ Omo: <span class="text-yellow-400 font-medium">~3 tuần/lần (lần cuối 21/3)</span></div>
     </div>
     <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="gt-meal">
       <div class="pulse-dot"></div>
@@ -1788,7 +1788,7 @@ async function flow2(){
   });
 
   await sl(400);
-  await b2('À Chị Hương ơi, Cô nhớ ra — lần trước Chị mua nước giặt là ngày 21/3, cũng gần 3 tuần rồi. Nhà 4 người chắc sắp hết rồi đúng không ạ? 🧺');
+  await b2('À Chị Hương ơi, Cô nhớ ra — lần trước Chị mua nước giặt là ngày 21/3, mà Chị hay mua khoảng 3 tuần 1 lần. Chắc sắp hết rồi đúng không ạ? 🧺');
   await sl(300);
 
   act(['gt-unilever']);
