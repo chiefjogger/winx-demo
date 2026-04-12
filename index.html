@@ -266,6 +266,23 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 /* VIEW TRANSITIONS */
 .view-enter{animation:viewFade .35s ease}
 @keyframes viewFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ARCHITECTURE DIAGRAM */
+.arch-section{padding:24px;max-width:1400px;margin:0 auto}
+.arch-cluster{border-radius:14px;padding:14px;position:relative}
+.arch-cluster-title{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.arch-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 10px;font-size:10px;font-weight:600;color:rgba(255,255,255,.8);text-align:center;transition:all .15s;cursor:default}
+.arch-box:hover{border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.1)}
+.arch-box .ab-sub{font-size:7.5px;color:rgba(255,255,255,.35);font-weight:400;margin-top:2px}
+.arch-box.ab-existing{border-style:dashed;border-color:rgba(255,255,255,.15)}
+.arch-box.ab-new{border-color:rgba(0,104,255,.4);background:rgba(0,104,255,.06)}
+.arch-box.ab-new:hover{border-color:rgba(0,104,255,.6);background:rgba(0,104,255,.12)}
+.arch-arrow{display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.15);font-size:18px;padding:0 4px}
+.arch-arrow-down{display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.15);font-size:16px;padding:4px 0}
+.arch-connector{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);margin:2px 0}
+.arch-legend{display:flex;gap:16px;font-size:9px;color:rgba(255,255,255,.4);align-items:center;flex-wrap:wrap}
+.arch-legend-item{display:flex;align-items:center;gap:4px}
+.arch-legend-dot{width:10px;height:10px;border-radius:3px;border:1.5px solid}
 </style>
 </head>
 <body>
@@ -279,6 +296,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
   <button id="tab-demo" onclick="switchView('demo')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff">Omni-Channel Demo</button>
   <button id="tab-ads" onclick="switchView('ads')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">WinX Ads Portal — Góc nhìn nhà tài trợ</button>
   <button id="tab-intel" onclick="switchView('intel')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">Real-Time Intelligence</button>
+  <button id="tab-arch" onclick="switchView('arch')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">Platform Architecture</button>
 </div>
 
 <!-- ============ VIEW 1: OMNI-CHANNEL DEMO ============ -->
@@ -1507,6 +1525,165 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 </div><!-- /intel-section -->
 </div><!-- /view-intel -->
 
+<!-- ============ VIEW 4: PLATFORM ARCHITECTURE ============ -->
+<div id="view-arch" class="view-enter" style="display:none">
+<div class="arch-section">
+
+<!-- HEADER -->
+<div class="flex items-center justify-between mb-5">
+  <div>
+    <div class="text-lg font-bold text-white">Platform Architecture</div>
+    <div class="text-xs text-white/40">Masan Omni-Channel Consumer-Retail-Fintech Platform</div>
+  </div>
+  <div class="arch-legend">
+    <div class="arch-legend-item"><div class="arch-legend-dot" style="border-color:rgba(0,104,255,.5);background:rgba(0,104,255,.1)"></div> Cần xây mới</div>
+    <div class="arch-legend-item"><div class="arch-legend-dot" style="border-color:rgba(255,255,255,.2);border-style:dashed"></div> Đã có (tích hợp)</div>
+    <div class="arch-legend-item"><div class="arch-legend-dot" style="border-color:rgba(255,140,40,.4);background:rgba(255,140,40,.1)"></div> Đối tác bên ngoài</div>
+  </div>
+</div>
+
+<!-- ROW 1: CONSUMER TOUCHPOINTS → API LAYER -->
+<div class="grid gap-4" style="grid-template-columns:280px 60px 1fr 60px 280px">
+
+  <!-- COL 1: Consumer Touchpoints -->
+  <div class="arch-cluster" style="background:rgba(0,104,255,.04);border:1px solid rgba(0,104,255,.1)">
+    <div class="arch-cluster-title" style="color:#0068FF">&#x1F4F1; Consumer Touchpoints</div>
+    <div class="flex flex-col gap-2">
+      <div class="arch-box ab-existing">WiN App (iOS/Android)<div class="ab-sub">Đã có — 10M members</div></div>
+      <div class="arch-box ab-new">Zalo OA Chatbot<div class="ab-sub">Cần xây — Conversational AI</div></div>
+      <div class="arch-box ab-new">Zalo Mini App — GT POS<div class="ab-sub">Cần xây — POS cho tạp hoá</div></div>
+      <div class="arch-box ab-existing">WinMart In-Store POS<div class="ab-sub">Đã có — WIN AI Smart POS</div></div>
+    </div>
+  </div>
+
+  <!-- ARROW -->
+  <div class="arch-arrow" style="font-size:24px">&#x2192;</div>
+
+  <!-- COL 2: Core Platform -->
+  <div class="arch-cluster" style="background:rgba(99,102,241,.04);border:1px solid rgba(99,102,241,.12)">
+    <div class="arch-cluster-title" style="color:#6366F1">&#x2699;&#xFE0F; Core Platform Services</div>
+    <div class="grid grid-cols-3 gap-2">
+      <div class="arch-box ab-new">API Gateway<div class="ab-sub">Routing, Auth, Rate Limit</div></div>
+      <div class="arch-box ab-new">Member Service<div class="ab-sub">WiN signup, profile, points</div></div>
+      <div class="arch-box ab-new">Recommendation Engine<div class="ab-sub">Meal AI + Cross-sell</div></div>
+      <div class="arch-box ab-new">Promotion Engine<div class="ab-sub">Sponsor campaigns, coupons</div></div>
+      <div class="arch-box ab-new">Order Management<div class="ab-sub">MT + GT unified orders</div></div>
+      <div class="arch-box ab-new">Customer 360 / CDP<div class="ab-sub">Unified shopper profile</div></div>
+      <div class="arch-box ab-new">Notification Service<div class="ab-sub">Zalo push, SMS, in-app</div></div>
+      <div class="arch-box ab-new">WinX Ads Engine<div class="ab-sub">Campaign mgmt, attribution</div></div>
+      <div class="arch-box ab-new">WinX Financial<div class="ab-sub">Lending, savings, BNPL</div></div>
+    </div>
+    <div class="arch-connector" style="margin:10px 0 6px"></div>
+    <div class="grid grid-cols-2 gap-2">
+      <div class="arch-box ab-new" style="border-color:rgba(39,174,96,.3);background:rgba(39,174,96,.05)">Event Streaming (Kafka)<div class="ab-sub">Real-time POS events, order events</div></div>
+      <div class="arch-box ab-new" style="border-color:rgba(39,174,96,.3);background:rgba(39,174,96,.05)">Data Warehouse<div class="ab-sub">Cross-brand analytics, BI</div></div>
+    </div>
+  </div>
+
+  <!-- ARROW -->
+  <div class="arch-arrow" style="font-size:24px">&#x2192;</div>
+
+  <!-- COL 3: Backend / Existing -->
+  <div class="arch-cluster" style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08)">
+    <div class="arch-cluster-title" style="color:rgba(255,255,255,.5)">&#x1F3E2; Backend (Đã có)</div>
+    <div class="flex flex-col gap-2">
+      <div class="arch-box ab-existing">WCM POS System<div class="ab-sub">Đã có — 3.828 stores</div></div>
+      <div class="arch-box ab-existing">MCH Retail Supreme<div class="ab-sub">Đã có — 420K outlets</div></div>
+      <div class="arch-box ab-existing">MCH Product Catalog<div class="ab-sub">Đã có — SKU master</div></div>
+      <div class="arch-box ab-existing">Supra Logistics / TMS<div class="ab-sub">Đã có — 10 warehouses</div></div>
+      <div class="arch-box ab-existing">MEATDeli Cold Chain<div class="ab-sub">Đã có — Batch tracking</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ROW 2: EXTERNAL INTEGRATIONS -->
+<div class="flex items-center justify-center py-2">
+  <div class="arch-arrow-down" style="font-size:20px">&#x2191; &#x2193;</div>
+</div>
+
+<div class="grid grid-cols-3 gap-4 mb-4">
+  <div class="arch-cluster" style="background:rgba(255,140,40,.04);border:1px solid rgba(255,140,40,.12)">
+    <div class="arch-cluster-title" style="color:#FF8C28">&#x1F3E6; Techcombank Integration</div>
+    <div class="flex flex-col gap-2">
+      <div class="arch-box" style="border-color:rgba(255,140,40,.3)">T-Pay API<div class="ab-sub">Đã có — Thanh toán không tiền mặt</div></div>
+      <div class="arch-box ab-new" style="border-color:rgba(255,140,40,.3)">Credit Scoring API<div class="ab-sub">Cần xây — POS data → score</div></div>
+      <div class="arch-box ab-new" style="border-color:rgba(255,140,40,.3)">Lending API<div class="ab-sub">Cần xây — Thấu chi, BNPL</div></div>
+      <div class="arch-box" style="border-color:rgba(255,140,40,.3)">Banking Agent API<div class="ab-sub">Đã có — Nạp/rút tại WinMart</div></div>
+    </div>
+  </div>
+
+  <div class="arch-cluster" style="background:rgba(0,104,255,.04);border:1px solid rgba(0,104,255,.12)">
+    <div class="arch-cluster-title" style="color:#0084FF">&#x1F4AC; Zalo Platform</div>
+    <div class="flex flex-col gap-2">
+      <div class="arch-box ab-existing" style="border-color:rgba(0,132,255,.3)">Zalo OA API<div class="ab-sub">Đã có — Gửi tin nhắn, follower</div></div>
+      <div class="arch-box ab-new" style="border-color:rgba(0,132,255,.3)">Zalo Mini App SDK<div class="ab-sub">Cần xây — GT POS framework</div></div>
+      <div class="arch-box ab-new" style="border-color:rgba(0,132,255,.3)">Zalo Notification API<div class="ab-sub">Cần xây — Gợi ý cá nhân hoá</div></div>
+      <div class="arch-box ab-new" style="border-color:rgba(0,132,255,.3)">ZaloPay Gateway<div class="ab-sub">Cần tích hợp — Thanh toán</div></div>
+    </div>
+  </div>
+
+  <div class="arch-cluster" style="background:rgba(39,174,96,.04);border:1px solid rgba(39,174,96,.12)">
+    <div class="arch-cluster-title" style="color:#27AE60">&#x1F3ED; Brand / Supplier APIs</div>
+    <div class="flex flex-col gap-2">
+      <div class="arch-box ab-new" style="border-color:rgba(39,174,96,.3)">Sponsor Campaign API<div class="ab-sub">Cần xây — Brand self-serve</div></div>
+      <div class="arch-box ab-new" style="border-color:rgba(39,174,96,.3)">Attribution Webhook<div class="ab-sub">Cần xây — POS sell-through proof</div></div>
+      <div class="arch-box ab-new" style="border-color:rgba(39,174,96,.3)">Non-MCH Ordering<div class="ab-sub">Cần xây — UL, P&G, Vinamilk feed</div></div>
+      <div class="arch-box" style="border-color:rgba(39,174,96,.3);border-style:dashed">VietQR / NAPAS<div class="ab-sub">Đã có — QR payment standard</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- KEY DATA FLOWS -->
+<div class="glass p-4 rounded-xl mb-4">
+  <div class="text-xs font-bold text-white/80 mb-3">&#x1F504; Luồng dữ liệu chính (Key Data Flows)</div>
+  <div class="grid grid-cols-2 gap-x-8 gap-y-2" style="font-size:10px">
+    <div style="display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+      <span style="background:#0068FF;color:#fff;font-size:8px;font-weight:800;padding:2px 6px;border-radius:4px;flex-shrink:0">1</span>
+      <div><span style="color:rgba(255,255,255,.7);font-weight:600">GT POS → Kafka → Data Warehouse</span><div style="font-size:8px;color:rgba(255,255,255,.3);margin-top:1px">Mỗi giao dịch tại tạp hoá stream real-time vào data lake. Tất cả brand, không chỉ MCH.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+      <span style="background:#6366F1;color:#fff;font-size:8px;font-weight:800;padding:2px 6px;border-radius:4px;flex-shrink:0">2</span>
+      <div><span style="color:rgba(255,255,255,.7);font-weight:600">Data Warehouse → Recommendation Engine</span><div style="font-size:8px;color:rgba(255,255,255,.3);margin-top:1px">ML model train trên purchase history + regional patterns → gợi ý bữa cơm cá nhân hoá.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+      <span style="background:#27AE60;color:#fff;font-size:8px;font-weight:800;padding:2px 6px;border-radius:4px;flex-shrink:0">3</span>
+      <div><span style="color:rgba(255,255,255,.7);font-weight:600">Reco Engine → Zalo OA API → Khách hàng</span><div style="font-size:8px;color:rgba(255,255,255,.3);margin-top:1px">Gợi ý gửi qua Zalo OA tin nhắn. Cần consent opt-in khi đăng ký WiN Member.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+      <span style="background:#E30613;color:#fff;font-size:8px;font-weight:800;padding:2px 6px;border-radius:4px;flex-shrink:0">4</span>
+      <div><span style="color:rgba(255,255,255,.7);font-weight:600">GT POS signup → Member Service → Zalo OA follow</span><div style="font-size:8px;color:rgba(255,255,255,.3);margin-top:1px">Khách đăng ký WiN tại tạp hoá → auto-follow Zalo OA → nhận gợi ý. Đây là acquisition loop.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+      <span style="background:#F59E0B;color:#fff;font-size:8px;font-weight:800;padding:2px 6px;border-radius:4px;flex-shrink:0">5</span>
+      <div><span style="color:rgba(255,255,255,.7);font-weight:600">WinX Ads Engine → Promotion Engine → POS</span><div style="font-size:8px;color:rgba(255,255,255,.3);margin-top:1px">Brand tạo campaign → inject vào recommendation → đo attribution bằng POS sell-through.</div></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:8px;padding:6px 0">
+      <span style="background:#FF6B00;color:#fff;font-size:8px;font-weight:800;padding:2px 6px;border-radius:4px;flex-shrink:0">6</span>
+      <div><span style="color:rgba(255,255,255,.7);font-weight:600">GT POS data → Credit Scoring → TCB Lending API</span><div style="font-size:8px;color:rgba(255,255,255,.3);margin-top:1px">Purchase frequency + revenue stability → credit score → TCB auto-approve thấu chi.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BUILD vs BUY SUMMARY -->
+<div class="grid grid-cols-3 gap-4">
+  <div class="glass p-3 rounded-xl">
+    <div style="font-size:9px;font-weight:700;color:#0068FF;margin-bottom:6px">CẦN XÂY MỚI (16 modules)</div>
+    <div style="font-size:9px;color:rgba(255,255,255,.5);line-height:1.6">API Gateway, Member Service, Recommendation Engine, Promotion Engine, Order Mgmt, Customer 360, Notification Service, WinX Ads Engine, WinX Financial, Event Streaming, Data Warehouse, Zalo Chatbot, GT POS Mini App, Credit Scoring, Lending Logic, Attribution</div>
+  </div>
+  <div class="glass p-3 rounded-xl">
+    <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:6px">ĐÃ CÓ — TÍCH HỢP (9 modules)</div>
+    <div style="font-size:9px;color:rgba(255,255,255,.5);line-height:1.6">WiN App, WinMart POS (WIN AI), WCM POS System, MCH Retail Supreme, MCH Product Catalog, Supra Logistics, MEATDeli Cold Chain, Zalo OA API, T-Pay, Banking Agent, VietQR</div>
+  </div>
+  <div class="glass p-3 rounded-xl">
+    <div style="font-size:9px;font-weight:700;color:#FF8C28;margin-bottom:6px">ĐỐI TÁC BÊN NGOÀI (4 integrations)</div>
+    <div style="font-size:9px;color:rgba(255,255,255,.5);line-height:1.6">Techcombank (lending, payments, banking agent), Zalo Platform (OA, Mini App, ZaloPay), Brand APIs (Unilever, P&G — campaign + ordering), NAPAS/VietQR (payment rails)</div>
+  </div>
+</div>
+
+</div><!-- /arch-section -->
+</div><!-- /view-arch -->
+
 </div><!-- /relative z-10 -->
 
 <script>
@@ -1520,8 +1697,8 @@ const WINX_FIN_URI='data:image/svg+xml,'+encodeURIComponent(WINX_FIN_LOGO);
 
 // VIEW SWITCHER
 function switchView(v){
-  const views=['demo','ads','intel'];
-  const displays={demo:'flex',ads:'block',intel:'block'};
+  const views=['demo','ads','intel','arch'];
+  const displays={demo:'flex',ads:'block',intel:'block',arch:'block'};
   views.forEach(id=>{
     const el=document.getElementById('view-'+id);
     if(el){el.style.display=id===v?displays[id]:'none';if(id===v)el.classList.add('view-enter');}
