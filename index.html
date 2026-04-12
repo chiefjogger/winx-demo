@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Masan Omni-Channel Demo v3: Meal-Occasion + Quản lý tạp hoá + WinX Financial</title>
+<title>WinX Platform Demo — Masan Omni-Channel Consumer-Retail-Fintech</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{colors:{masan:'#1B2A4A','masan-red':'#E30613','zalo-blue':'#0068FF'}}}}</script>
 <style>
@@ -291,12 +291,24 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 
 <div class="relative z-10">
 
+<!-- WINX MASTHEAD -->
+<div class="flex items-center justify-between px-5 pt-4 pb-1">
+  <div class="flex items-center gap-2">
+    <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#0068FF,#00C2FF);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;box-shadow:0 2px 8px rgba(0,104,255,.3)">W</div>
+    <div>
+      <div style="font-size:15px;font-weight:900;color:#fff;letter-spacing:-.3px">WinX</div>
+      <div style="font-size:7px;color:rgba(255,255,255,.3);font-weight:600;letter-spacing:1px;text-transform:uppercase">Consumer-Retail Platform</div>
+    </div>
+  </div>
+  <div style="font-size:8px;color:rgba(255,255,255,.2);font-weight:500">Powered by Masan Group</div>
+</div>
+
 <!-- TOP VIEW SWITCHER -->
 <div class="flex items-center gap-2 px-5 pt-3 pb-2" style="border-bottom:1px solid rgba(255,255,255,.06)">
-  <button id="tab-demo" onclick="switchView('demo')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff">Omni-Channel Demo</button>
+  <button id="tab-demo" onclick="switchView('demo')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff">WinX Demo — Omni-Channel</button>
   <button id="tab-ads" onclick="switchView('ads')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">WinX Ads Portal — Góc nhìn nhà tài trợ</button>
-  <button id="tab-intel" onclick="switchView('intel')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">Real-Time Intelligence</button>
-  <button id="tab-arch" onclick="switchView('arch')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">Platform Architecture</button>
+  <button id="tab-intel" onclick="switchView('intel')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">WinX Intelligence</button>
+  <button id="tab-arch" onclick="switchView('arch')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">WinX Architecture</button>
 </div>
 
 <!-- ============ VIEW 1: OMNI-CHANNEL DEMO ============ -->
@@ -305,13 +317,13 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <!-- HEADER -->
 <div class="flex items-center justify-between px-5 py-3" style="border-bottom:1px solid rgba(255,255,255,.04)">
   <div class="flex items-center gap-8">
-    <div><div class="text-[9px] font-bold tracking-widest text-blue-400 uppercase">Cột 1: Kênh MT</div><div class="text-sm font-bold text-white/90">WinMart Zalo OA, "Hôm nay ăn gì?"</div></div>
-    <div><div class="text-[9px] font-bold tracking-widest text-orange-400 uppercase">Cột 2: Kênh GT</div><div class="text-sm font-bold text-white/90">Tạp Hoá Cô Lan, bữa cơm gia đình</div></div>
+    <div><div class="text-[9px] font-bold tracking-widest text-blue-400 uppercase">Cột 1: WinX MT</div><div class="text-sm font-bold text-white/90">WinMart Zalo OA, "Hôm nay ăn gì?"</div></div>
+    <div><div class="text-[9px] font-bold tracking-widest text-orange-400 uppercase">Cột 2: WinX GT</div><div class="text-sm font-bold text-white/90">Tạp Hoá Cô Lan, bữa cơm gia đình</div></div>
   </div>
   <div class="flex items-center gap-3">
     <button onclick="resetAll()" class="px-3 py-1.5 bg-white/10 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-semibold transition">Chơi lại</button>
     <div class="w-px h-6 bg-white/10"></div>
-    <div class="text-right"><div class="text-[9px] font-bold tracking-widest text-green-400 uppercase">Cột 3: Quản lý tạp hoá</div><div class="text-sm font-bold text-white/90">Zalo Mini-App — Quản lý tạp hoá</div></div>
+    <div class="text-right"><div class="text-[9px] font-bold tracking-widest text-green-400 uppercase">Cột 3: WinX Shop</div><div class="text-sm font-bold text-white/90">WinX Shop — Quản lý tạp hoá</div></div>
   </div>
 </div>
 
@@ -501,7 +513,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
         </div>
         <div class="glass px-2 py-1.5 text-center flex-1" style="border-color:rgba(0,104,255,.3)">
           <div class="text-[8px] text-white/30 uppercase font-bold">Phương án 2</div>
-          <div class="text-[9.5px] text-blue-400 font-bold mt-0.5">Zalo Mini-App — Quản lý tạp hoá</div>
+          <div class="text-[9.5px] text-blue-400 font-bold mt-0.5">WinX Shop</div>
           <div class="text-[8px] text-white/40">Xem cột 3</div>
         </div>
       </div>
@@ -523,14 +535,14 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     <div class="zma-hdr">
       <div class="zma-back" onclick="posBack()">&#8249;</div>
       <div class="flex-1">
-        <div class="zma-title" id="posTitle">Quản lý tạp hoá</div>
-        <div class="zma-sub" id="posSub">Mini App, Masan</div>
+        <div class="zma-title" id="posTitle">WinX Shop</div>
+        <div class="zma-sub" id="posSub">Quản lý tạp hoá · Masan</div>
       </div>
       <div class="zma-dots">&#8943;</div>
     </div>
     <div class="zma-bar">
       <div class="zma-lock">&#x1F512;</div>
-      <div class="zma-url" id="posUrl">miniapp.zalo.me/masan-pos</div>
+      <div class="zma-url" id="posUrl">miniapp.zalo.me/winx-shop</div>
     </div>
     <!-- POS CONTENT -->
     <div class="zma-body" id="posBody">
@@ -544,7 +556,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           <div class="zh-apps">
             <div class="zh-app" onclick="enterPOS()" style="border-color:#0068FF;background:#F0F6FF">
               <div class="zha-ico">&#x1F6D2;</div>
-              <div class="zha-name" style="color:#0068FF">Masan POS</div>
+              <div class="zha-name" style="color:#0068FF">WinX Shop</div>
             </div>
             <div class="zh-app">
               <div class="zha-ico">&#x1F3E6;</div>
@@ -575,7 +587,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
         <div class="pc !mb-3 !p-0 overflow-hidden" style="border-color:#0068FF;background:linear-gradient(135deg,#F0F6FF,#fff)">
           <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&auto=format" style="width:100%;height:60px;object-fit:cover;opacity:.85"/>
           <div style="padding:8px 10px">
-            <div style="font-size:12px;font-weight:800;color:#1B2A4A;margin-bottom:2px">Tạp hoá Cô Lan</div>
+            <div style="font-size:12px;font-weight:800;color:#1B2A4A;margin-bottom:2px"><span style="font-size:7px;background:linear-gradient(135deg,#0068FF,#00C2FF);color:#fff;padding:1.5px 5px;border-radius:4px;font-weight:700;margin-right:4px;vertical-align:middle">WinX Shop</span>Tạp hoá Cô Lan</div>
             <div style="font-size:10px;color:#6B7280">156 Trương Định, Hai Bà Trưng, Hà Nội</div>
             <div style="font-size:9px;color:#0068FF;margin-top:2px;font-weight:600">10/04/2026, đang mở cửa</div>
           </div>
@@ -1149,7 +1161,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           <div style="position:relative;padding:6px 0 12px 16px">
             <div style="position:absolute;left:-16px;top:8px;width:12px;height:12px;border-radius:50%;background:#137333;border:2px solid #fff"></div>
             <div style="font-size:11px;font-weight:700;color:#1C2B33">Thanh toán tại POS</div>
-            <div style="font-size:9px;color:#65676B">Đơn hàng ghi nhận trên Zalo Mini-App POS</div>
+            <div style="font-size:9px;color:#65676B">Đơn hàng ghi nhận trên WinX Shop</div>
           </div>
           <div style="position:relative;padding:6px 0 0 16px">
             <div style="position:absolute;left:-16px;top:8px;width:12px;height:12px;border-radius:50%;background:#F59E0B;border:2px solid #fff"></div>
@@ -1174,7 +1186,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 
 <!-- HEADER -->
 <div class="intel-hdr">
-  <h2><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 280 100" style="height:20px" fill="none"><rect x="168" y="0" width="36" height="36" fill="#4A7BAD"/><rect x="186" y="18" width="36" height="36" fill="#6B9BC4"/><rect x="204" y="0" width="36" height="36" fill="#8AADC4"/><text x="0" y="62" font-family="Arial,sans-serif" font-weight="900" font-size="42" fill="#fff" letter-spacing="6">MASAN</text><text x="28" y="88" font-family="Arial,sans-serif" font-weight="400" font-size="28" fill="rgba(255,255,255,.5)" letter-spacing="8">GROUP</text></svg></span> Real-Time Intelligence Dashboard</h2>
+  <h2><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 280 100" style="height:20px" fill="none"><rect x="168" y="0" width="36" height="36" fill="#4A7BAD"/><rect x="186" y="18" width="36" height="36" fill="#6B9BC4"/><rect x="204" y="0" width="36" height="36" fill="#8AADC4"/><text x="0" y="62" font-family="Arial,sans-serif" font-weight="900" font-size="42" fill="#fff" letter-spacing="6">MASAN</text><text x="28" y="88" font-family="Arial,sans-serif" font-weight="400" font-size="28" fill="rgba(255,255,255,.5)" letter-spacing="8">GROUP</text></svg></span> WinX Intelligence Dashboard</h2>
   <div class="flex items-center gap-3">
     <select class="store-select" id="storeSelect">
       <option>Tạp Hoá Cô Lan — 156 Trương Định, HBT, Hà Nội</option>
@@ -1532,7 +1544,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <!-- HEADER -->
 <div class="flex items-center justify-between mb-5">
   <div>
-    <div class="text-lg font-bold text-white">Platform Architecture</div>
+    <div class="text-lg font-bold text-white">WinX Platform Architecture</div>
     <div class="text-xs text-white/40">Masan Omni-Channel Consumer-Retail-Fintech Platform</div>
   </div>
   <div class="arch-legend">
@@ -1790,9 +1802,9 @@ function enterPOS(){
   inPOS=true;
   posHistory=['dash'];
   document.getElementById('posNav').style.display='flex';
-  document.getElementById('posTitle').textContent='Quản lý tạp hoá';
-  document.getElementById('posSub').textContent='Mini App, Masan';
-  document.getElementById('posUrl').textContent='miniapp.zalo.me/masan-pos';
+  document.getElementById('posTitle').textContent='WinX Shop';
+  document.getElementById('posSub').textContent='Quản lý tạp hoá · Masan';
+  document.getElementById('posUrl').textContent='miniapp.zalo.me/winx-shop';
   showPV('dash');
 }
 
