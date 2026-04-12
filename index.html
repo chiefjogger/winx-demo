@@ -321,6 +321,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     <div><div class="text-[9px] font-bold tracking-widest text-orange-400 uppercase">Cột 2: WinX GT</div><div class="text-sm font-bold text-white/90">Tạp Hoá Cô Lan, bữa cơm gia đình</div></div>
   </div>
   <div class="flex items-center gap-3">
+    <button id="pauseBtn" onclick="togglePause()" class="px-3 py-1.5 bg-white/10 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-semibold transition">&#x23F8; Tạm dừng</button>
     <button onclick="resetAll()" class="px-3 py-1.5 bg-white/10 hover:bg-white/15 border border-white/10 rounded-lg text-xs font-semibold transition">Chơi lại</button>
     <div class="w-px h-6 bg-white/10"></div>
     <div class="text-right"><div class="text-[9px] font-bold tracking-widest text-green-400 uppercase">Cột 3: WinX Shop</div><div class="text-sm font-bold text-white/90">WinX Shop — Quản lý tạp hoá</div></div>
@@ -400,13 +401,13 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <div class="pulse-dot"></div>
       <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">PROMO + SPONSOR</div></div>
       <div class="dl">Combo bữa cơm: <span class="text-red-400 font-medium">129k/3 người</span></div>
-      <div class="dl">Vinamilk sponsor: <span class="text-blue-300 font-medium">Ly sứ Q2</span></div>
+      <div class="dl">Nestlé sponsor: <span class="text-blue-300 font-medium">Milo Back-to-School</span></div>
       <div class="dl">Budget: <span class="text-white/70 font-medium">1.247/5.000</span></div>
     </div>
     <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="mt-sponsor">
       <div class="pulse-dot"></div>
-      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">VINAMILK SPONSOR</div></div>
-      <div class="dl">Chiến dịch: <span class="text-blue-300 font-medium">Ly sứ Q2</span></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">NESTLÉ SPONSOR</div></div>
+      <div class="dl">Chiến dịch: <span class="text-blue-300 font-medium">Milo Back-to-School</span></div>
       <div class="dl">Tiến độ KH: <span class="text-yellow-400 font-medium">2/4 hộp</span></div>
       <div class="dl">CPM: <span class="text-white/70 font-medium">85.000đ</span></div>
     </div>
@@ -669,7 +670,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           <div class="pr"><span>WinEco rau sạch: Giảm 15%</span><span class="pbdg bg-blue-100 text-blue-700">Từ 12/4</span></div>
         </div>
         <div class="pc" style="border-color:rgba(255,140,40,.3);background:linear-gradient(135deg,rgba(255,150,50,.04),#fff)">
-          <h3 style="color:#FF8C28"><span style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;margin-right:4px">W</span>WinX Financial</h3>
+          <h3 style="color:#FF8C28"><span style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;margin-right:4px">NE</span>New Era</h3>
           <div style="display:flex;gap:6px;margin-bottom:6px">
             <div style="flex:1;background:linear-gradient(135deg,rgba(255,140,40,.08),rgba(255,140,40,.02));border:1px solid rgba(255,140,40,.15);border-radius:7px;padding:6px;text-align:center">
               <div style="font-size:14px;font-weight:800;color:#FF8C28">1,82tr</div>
@@ -729,10 +730,10 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           <div class="flex gap-2 mt-2"><button class="pbtn pbtn-o flex-1" onclick="clrC()">Huỷ</button><button class="pbtn pbtn-r flex-1" onclick="payC()">Thanh toán</button></div>
           <div style="margin-top:6px;padding:6px 8px;background:linear-gradient(135deg,rgba(255,150,50,.06),rgba(255,120,20,.03));border:1px solid rgba(255,140,40,.2);border-radius:8px;cursor:pointer" onclick="payC()">
             <div style="display:flex;align-items:center;gap:5px">
-              <div style="width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:#fff">W</div>
+              <div style="width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:#fff">NE</div>
               <div style="flex:1">
                 <div style="font-size:9px;font-weight:700;color:#FF8C28">Pay Later — Vốn lưu động</div>
-                <div style="font-size:8px;color:#999">WinX Financial • Trả sau 30 ngày, 0% lãi đơn đầu</div>
+                <div style="font-size:8px;color:#999">New Era • Trả sau 30 ngày, 0% lãi đơn đầu</div>
               </div>
               <span style="font-size:10px;color:rgba(255,140,40,.5)">&#x276F;</span>
             </div>
@@ -751,8 +752,8 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
             <div class="pr"><span>Omachi thùng 30 gói<br/><span class="text-[9px] text-gray-400">Tồn: 12 gói, bán TB: 3,6/ngày</span></span><button class="pbtn pbtn-p" onclick="this.textContent='Đã thêm';this.disabled=true">Thêm</button></div>
             <div style="margin-top:6px;padding:7px 8px;background:linear-gradient(135deg,rgba(255,150,50,.06),rgba(255,120,20,.02));border:1px solid rgba(255,140,40,.18);border-radius:8px">
               <div style="display:flex;align-items:center;gap:5px;margin-bottom:4px">
-                <div style="width:16px;height:16px;border-radius:4px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#fff">W</div>
-                <span style="font-size:9px;font-weight:700;color:#FF8C28">WinX Financial — Pay Later</span>
+                <div style="width:16px;height:16px;border-radius:4px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#fff">NE</div>
+                <span style="font-size:9px;font-weight:700;color:#FF8C28">New Era — Pay Later</span>
               </div>
               <div style="font-size:8.5px;color:#666;line-height:1.4">Đặt hàng ngay, trả sau 30 ngày. Hạn mức <b style="color:#FF8C28">7,8 triệu</b> khả dụng. Lãi 0% đơn đầu tiên.</div>
               <button class="pbtn w-full mt-1.5" style="background:linear-gradient(135deg,#FF8C28,#FF6B00);color:#fff;font-size:9px;padding:5px" onclick="this.textContent='✓ Đã bật Pay Later cho đơn này';this.disabled=true;this.style.background='#27AE60'">Bật Pay Later cho đơn này</button>
@@ -786,11 +787,11 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           <div class="flex justify-between items-center mt-2 pt-2 border-t border-gray-100"><span class="font-bold text-[10px] text-gray-600">Tổng nợ:</span><span class="font-bold text-xs text-red-600">292.000đ</span></div>
         </div>
         <div class="pc" style="border-color:rgba(255,140,40,.25);background:linear-gradient(135deg,rgba(255,150,50,.03),#fff)">
-          <h3 style="color:#FF8C28"><span style="width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:#fff;margin-right:3px">W</span>WinX Financial — Tài chính cửa hàng</h3>
+          <h3 style="color:#FF8C28"><span style="width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:#fff;margin-right:3px">NE</span>New Era — Tài chính cửa hàng</h3>
           <div class="pr"><span>Doanh thu tháng 4</span><span class="font-bold text-green-600">18,7 triệu</span></div>
           <div class="pr"><span>Chi phí nhập hàng</span><span class="font-bold">14,2 triệu</span></div>
           <div class="pr"><span>Lợi nhuận gộp</span><span class="font-bold text-green-600">4,5 triệu (24%)</span></div>
-          <div class="pr" style="border-color:rgba(255,140,40,.12)"><span style="color:#FF8C28;font-weight:600">Thấu chi WinX Financial</span><span class="font-bold" style="color:#FF8C28">10 triệu</span></div>
+          <div class="pr" style="border-color:rgba(255,140,40,.12)"><span style="color:#FF8C28;font-weight:600">Thấu chi New Era</span><span class="font-bold" style="color:#FF8C28">10 triệu</span></div>
           <div class="pr" style="border-color:rgba(255,140,40,.12)"><span style="color:#FF8C28;font-weight:600">Số dư sinh lời TCB</span><span class="font-bold" style="color:#FF8C28">1,82 triệu</span></div>
           <div class="pr" style="border-bottom:none"><span style="color:#FF8C28;font-weight:600">Lãi tích luỹ tháng 4</span><span class="font-bold" style="color:#27AE60">+5.300đ</span></div>
           <div style="margin-top:6px;padding:6px;background:linear-gradient(135deg,rgba(255,140,40,.06),rgba(255,140,40,.02));border:1px dashed rgba(255,140,40,.2);border-radius:6px;font-size:8px;color:#999;text-align:center">
@@ -841,8 +842,8 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <button onclick="showPV('rpt',this)"><span style="font-size:14px">&#x1F4C8;</span><span>Báo cáo</span></button>
     </div>
     <div style="position:absolute;bottom:38px;left:8px;right:8px;padding:5px 8px;background:linear-gradient(135deg,rgba(255,150,50,.95),rgba(255,107,0,.95));border-radius:8px 8px 0 0;display:flex;align-items:center;gap:6px;box-shadow:0 -2px 12px rgba(255,140,40,.2)" id="winxFinBar">
-      <div style="width:16px;height:16px;border-radius:4px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#fff">W</div>
-      <div style="flex:1;font-size:8px;color:#fff"><b>WinX Financial</b> · +2.400.000đ vừa gửi sinh lời TCB</div>
+      <div style="width:16px;height:16px;border-radius:4px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#fff">NE</div>
+      <div style="flex:1;font-size:8px;color:#fff"><b>New Era</b> · +2.400.000đ vừa gửi sinh lời TCB</div>
       <span style="font-size:10px;color:rgba(255,255,255,.6);cursor:pointer" onclick="document.getElementById('winxFinBar').style.display='none'">&#x2715;</span>
     </div>
   </div>
@@ -899,7 +900,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
   <div class="adp-topbar">
     <div style="flex:1">
       <div style="font-size:16px;font-weight:800;color:#1C2B33">Chiến dịch Truyền Thống (GT) — Q2 2026</div>
-      <div style="font-size:11px;color:#65676B;margin-top:1px">Media buy cho kênh Traditional Trade · 12.847 điểm bán · Omo + Comfort</div>
+      <div style="font-size:11px;color:#65676B;margin-top:1px">Media buy cho kênh Traditional Trade · 5.000 điểm bán · Omo + Comfort</div>
     </div>
     <div style="display:flex;align-items:center;gap:8px">
       <span style="background:#E6F4EA;color:#137333;padding:4px 12px;border-radius:16px;font-size:10px;font-weight:700">● Đang chạy</span>
@@ -915,7 +916,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#0068FF,#6366F1);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🏪</div>
       <div style="flex:1">
         <div style="font-size:12px;font-weight:700;color:#1C2B33">Chương trình Media Buy — Kênh Truyền Thống (Traditional Trade)</div>
-        <div style="font-size:10px;color:#65676B;margin-top:2px">Quảng cáo cá nhân hoá qua mạng lưới 12.847 tạp hoá GT của WinCommerce. Sản phẩm được gợi ý trực tiếp trong bữa cơm gia đình khi khách đến mua hàng — closed-loop attribution từ impression đến từng đơn hàng tại POS.</div>
+        <div style="font-size:10px;color:#65676B;margin-top:2px">Quảng cáo cá nhân hoá qua mạng lưới 5.000 tạp hoá GT của WinCommerce. Sản phẩm được gợi ý trực tiếp trong bữa cơm gia đình khi khách đến mua hàng — closed-loop attribution từ impression đến từng đơn hàng tại POS.</div>
       </div>
       <div style="text-align:right;flex-shrink:0">
         <div style="font-size:9px;color:#65676B">Managed by</div>
@@ -932,24 +933,24 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
         <div class="kd" style="color:#137333">▲ +1,7x vs Facebook Ads</div>
       </div>
       <div class="adp-kpi">
-        <div class="kv" style="color:#1C2B33">245.000</div>
+        <div class="kv" style="color:#1C2B33">125.000</div>
         <div class="kl">Impressions</div>
         <div class="kd" style="color:#137333">▲ +34% vs tháng 3</div>
       </div>
       <div class="adp-kpi">
-        <div class="kv" style="color:#1C2B33">41.200</div>
+        <div class="kv" style="color:#1C2B33">21.000</div>
         <div class="kl">Đơn hàng chuyển đổi</div>
         <div class="kd" style="color:#137333">CVR 16,8%</div>
       </div>
       <div class="adp-kpi">
-        <div class="kv" style="color:#137333">3,72 tỷ</div>
+        <div class="kv" style="color:#137333">1,37 tỷ</div>
         <div class="kl">Doanh thu attributed</div>
         <div class="kd" style="color:#65676B">Budget: 980tr</div>
       </div>
       <div class="adp-kpi">
-        <div class="kv" style="color:#1C2B33">12.847</div>
+        <div class="kv" style="color:#1C2B33">5.000</div>
         <div class="kl">Điểm bán GT active</div>
-        <div class="kd" style="color:#137333">▲ +2.100 vs Q1</div>
+        <div class="kd" style="color:#137333">▲ +800 vs Q1</div>
       </div>
     </div>
 
@@ -963,10 +964,10 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           <div class="adp-funnel-num" style="background:#0068FF">1</div>
           <div style="flex:1">
             <div style="font-size:12px;font-weight:700;color:#1C2B33">Hiển thị tại Zalo OA + POS</div>
-            <div style="font-size:10px;color:#65676B">Gợi ý Omo trong combo bữa cơm tại 12.847 tạp hoá</div>
+            <div style="font-size:10px;color:#65676B">Gợi ý Omo trong combo bữa cơm tại 5.000 tạp hoá</div>
           </div>
           <div style="text-align:right">
-            <div style="font-size:16px;font-weight:800;color:#1C2B33">245.000</div>
+            <div style="font-size:16px;font-weight:800;color:#1C2B33">125.000</div>
             <div style="font-size:9px;color:#65676B">impressions</div>
           </div>
         </div>
@@ -977,7 +978,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
             <div style="font-size:10px;color:#65676B">Mở tin nhắn hoặc hỏi chủ tiệm về Omo</div>
           </div>
           <div style="text-align:right">
-            <div style="font-size:16px;font-weight:800;color:#1C2B33">176.400</div>
+            <div style="font-size:16px;font-weight:800;color:#1C2B33">90.000</div>
             <div style="font-size:9px;color:#0068FF;font-weight:600">72% engagement</div>
           </div>
         </div>
@@ -988,7 +989,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
             <div style="font-size:10px;color:#65676B">Chủ tiệm cross-sell hoặc khách tự chọn</div>
           </div>
           <div style="text-align:right">
-            <div style="font-size:16px;font-weight:800;color:#1C2B33">58.800</div>
+            <div style="font-size:16px;font-weight:800;color:#1C2B33">30.000</div>
             <div style="font-size:9px;color:#6366F1;font-weight:600">24% add-to-cart</div>
           </div>
         </div>
@@ -999,7 +1000,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
             <div style="font-size:10px;color:#65676B">Tracked qua POS — mỗi đơn gắn ad touchpoint</div>
           </div>
           <div style="text-align:right">
-            <div style="font-size:16px;font-weight:800;color:#137333">41.200</div>
+            <div style="font-size:16px;font-weight:800;color:#137333">21.000</div>
             <div style="font-size:9px;color:#137333;font-weight:600">16,8% conversion</div>
           </div>
         </div>
@@ -1013,7 +1014,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
         <h3>Attribution theo kênh <span class="badge">Real-time</span></h3>
         <div class="adp-bar-row">
           <div class="adp-bar-label" style="font-weight:700;color:#1C2B33">GT POS cross-sell</div>
-          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:61%;background:linear-gradient(90deg,#0068FF,#1877F2)">61% · 25.132 đơn</div></div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:61%;background:linear-gradient(90deg,#0068FF,#1877F2)">61% · 12.810 đơn</div></div>
         </div>
         <div class="adp-bar-row">
           <div class="adp-bar-label">Zalo OA meal push</div>
@@ -1054,22 +1055,22 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           <tbody>
             <tr>
               <td><b>Omo Matic 2.7kg</b></td>
-              <td>28.400</td>
-              <td>2,13 tỷ</td>
+              <td>14.700</td>
+              <td>1,10 tỷ</td>
               <td><span class="adp-tag adp-tag-green">4,2x</span></td>
               <td style="font-size:10px;color:#65676B">GT POS (68%)</td>
             </tr>
             <tr>
               <td><b>Omo Matic 4.5kg</b></td>
-              <td>8.900</td>
-              <td>1,07 tỷ</td>
+              <td>4.600</td>
+              <td>550tr</td>
               <td><span class="adp-tag adp-tag-green">3,6x</span></td>
               <td style="font-size:10px;color:#65676B">GT POS (54%)</td>
             </tr>
             <tr>
               <td><b>Comfort Đậm Đặc 1.8L</b></td>
-              <td>3.900</td>
-              <td>520tr</td>
+              <td>2.000</td>
+              <td>270tr</td>
               <td><span class="adp-tag adp-tag-amber">2,8x</span></td>
               <td style="font-size:10px;color:#65676B">Zalo OA (61%)</td>
             </tr>
@@ -1118,7 +1119,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
               <span style="font-size:14px">🏪</span>
               <span style="font-size:10px;color:#65676B;font-weight:600">Kênh GT (Tạp hoá)</span>
             </div>
-            <div style="font-size:22px;font-weight:800;color:#1C2B33">25.400 <span style="font-size:11px;color:#65676B;font-weight:400">đơn</span></div>
+            <div style="font-size:22px;font-weight:800;color:#1C2B33">13.100 <span style="font-size:11px;color:#65676B;font-weight:400">đơn</span></div>
             <div style="font-size:10px;color:#137333;font-weight:700;margin-top:4px">ROAS 3,6x</div>
             <div style="font-size:9px;color:#65676B;margin-top:2px">Cross-sell tại quầy POS bởi chủ tiệm</div>
             <div style="margin-top:8px;height:6px;background:#E4E6EB;border-radius:3px"><div style="height:100%;width:62%;background:#0068FF;border-radius:3px"></div></div>
@@ -1129,7 +1130,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
               <span style="font-size:14px">🛒</span>
               <span style="font-size:10px;color:#65676B;font-weight:600">Kênh MT (WinMart)</span>
             </div>
-            <div style="font-size:22px;font-weight:800;color:#1C2B33">15.800 <span style="font-size:11px;color:#65676B;font-weight:400">đơn</span></div>
+            <div style="font-size:22px;font-weight:800;color:#1C2B33">7.900 <span style="font-size:11px;color:#65676B;font-weight:400">đơn</span></div>
             <div style="font-size:10px;color:#137333;font-weight:700;margin-top:4px">ROAS 4,1x</div>
             <div style="font-size:9px;color:#65676B;margin-top:2px">Upsell trong combo bữa cơm qua Zalo</div>
             <div style="margin-top:8px;height:6px;background:#E4E6EB;border-radius:3px"><div style="height:100%;width:38%;background:#6366F1;border-radius:3px"></div></div>
@@ -1170,7 +1171,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           </div>
         </div>
         <div style="margin-top:14px;background:#FEF3E2;border:1px solid #FBD38D;border-radius:8px;padding:10px;font-size:10px;color:#7C5C00;line-height:1.5">
-          <b>Điểm đặc biệt:</b> Không nền tảng nào ở Việt Nam có thể cung cấp closed-loop attribution cho kênh Traditional Trade. WinX là hạ tầng duy nhất kết nối được từ ad impression → POS transaction tại 12.847 điểm bán GT.
+          <b>Điểm đặc biệt:</b> Không nền tảng nào ở Việt Nam có thể cung cấp closed-loop attribution cho kênh Traditional Trade. WinX là hạ tầng duy nhất kết nối được từ ad impression → POS transaction tại 5.000 điểm bán GT.
         </div>
       </div>
     </div>
@@ -1338,7 +1339,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <div style="color:rgba(255,255,255,.4);font-weight:600;margin-bottom:4px">CHI PHÍ THU HỘI VIÊN</div>
       <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="color:rgba(255,255,255,.5)">Giảm giá đăng ký (100k/người)</span><span style="font-weight:700;color:#F59E0B">12.700.000đ</span></div>
       <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="color:rgba(255,255,255,.5)">Tài trợ bởi</span><span style="font-weight:700;color:#E30613">Masan (MCH budget)</span></div>
-      <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="color:rgba(255,255,255,.5)">CAC / member</span><span style="font-weight:700;color:#27AE60">100.000đ <span style="color:rgba(255,255,255,.3);font-weight:400">vs FB 350k, Grab 280k</span></span></div>
+      <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="color:rgba(255,255,255,.5)">Đăng ký mới</span><span style="font-weight:700;color:#27AE60">127 members (tháng 4)</span></div>
     </div>
     <div style="flex:1;padding:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px">
       <div style="color:rgba(255,255,255,.4);font-weight:600;margin-bottom:4px">HÀNH TRÌNH SAU ĐĂNG KÝ</div>
@@ -1524,9 +1525,9 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     </div>
   </div>
   <div class="rec-funnel">
-    <div class="rec-step" style="background:rgba(0,104,255,.2);color:#0068FF">Gợi ý gửi<br><span style="font-size:14px;font-weight:900">100%</span><br><span style="font-size:8px;opacity:.7">245.000</span></div>
+    <div class="rec-step" style="background:rgba(0,104,255,.2);color:#0068FF">Gợi ý gửi<br><span style="font-size:14px;font-weight:900">100%</span><br><span style="font-size:8px;opacity:.7">125.000</span></div>
     <div class="rec-arrow">&#x279C;</div>
-    <div class="rec-step" style="background:rgba(99,102,241,.2);color:#6366F1">Khách xem<br><span style="font-size:14px;font-weight:900">72%</span><br><span style="font-size:8px;opacity:.7">176.400</span></div>
+    <div class="rec-step" style="background:rgba(99,102,241,.2);color:#6366F1">Khách xem<br><span style="font-size:14px;font-weight:900">72%</span><br><span style="font-size:8px;opacity:.7">90.000</span></div>
     <div class="rec-arrow">&#x279C;</div>
     <div class="rec-step" style="background:rgba(245,158,11,.2);color:#F59E0B">Thêm vào giỏ<br><span style="font-size:14px;font-weight:900">41%</span><br><span style="font-size:8px;opacity:.7">100.450</span></div>
     <div class="rec-arrow">&#x279C;</div>
@@ -1583,7 +1584,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       <div class="arch-box ab-new">Customer 360 / CDP<div class="ab-sub">Unified shopper profile</div></div>
       <div class="arch-box ab-new">Notification Service<div class="ab-sub">Zalo push, SMS, in-app</div></div>
       <div class="arch-box ab-new">WinX Ads Engine<div class="ab-sub">Campaign mgmt, attribution</div></div>
-      <div class="arch-box ab-new">WinX Financial<div class="ab-sub">Lending, savings, BNPL</div></div>
+      <div class="arch-box ab-new">New Era<div class="ab-sub">Lending, savings, BNPL</div></div>
     </div>
     <div class="arch-connector" style="margin:10px 0 6px"></div>
     <div class="grid grid-cols-2 gap-2">
@@ -1681,7 +1682,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <div class="grid grid-cols-3 gap-4">
   <div class="glass p-3 rounded-xl">
     <div style="font-size:9px;font-weight:700;color:#0068FF;margin-bottom:6px">CẦN XÂY MỚI (16 modules)</div>
-    <div style="font-size:9px;color:rgba(255,255,255,.5);line-height:1.6">API Gateway, Member Service, Recommendation Engine, Promotion Engine, Order Mgmt, Customer 360, Notification Service, WinX Ads Engine, WinX Financial, Event Streaming, Data Warehouse, Zalo Chatbot, GT POS Mini App, Credit Scoring, Lending Logic, Attribution</div>
+    <div style="font-size:9px;color:rgba(255,255,255,.5);line-height:1.6">API Gateway, Member Service, Recommendation Engine, Promotion Engine, Order Mgmt, Customer 360, Notification Service, WinX Ads Engine, New Era, Event Streaming, Data Warehouse, Zalo Chatbot, GT POS Mini App, Credit Scoring, Lending Logic, Attribution</div>
   </div>
   <div class="glass p-3 rounded-xl">
     <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:6px">ĐÃ CÓ — TÍCH HỢP (9 modules)</div>
@@ -1704,8 +1705,10 @@ const MASAN_LOGO=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 100" 
 const MASAN_LOGO_URI='data:image/svg+xml,'+encodeURIComponent(MASAN_LOGO);
 const TCB_LOGO=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" fill="none"><g transform="translate(60,2) scale(0.55)"><path d="M35 0L70 35L35 70L0 35Z" fill="#E30613"/><path d="M55 20L90 55L55 90L20 55Z" fill="#E30613"/><path d="M35 35L55 55L35 35L55 35Z" fill="#fff"/><rect x="30" y="30" width="30" height="30" transform="rotate(45 45 45)" fill="#fff"/></g><text x="0" y="72" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#1A1A1A">TECHCOM</text><text x="130" y="72" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#E30613">BANK</text></svg>`;
 const TCB_LOGO_URI='data:image/svg+xml,'+encodeURIComponent(TCB_LOGO);
-const WINX_FIN_LOGO=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 28" fill="none"><rect width="28" height="28" rx="7" fill="url(#wg)"/><defs><linearGradient id="wg" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#FF8C28"/><stop offset="1" stop-color="#FF6B00"/></linearGradient></defs><text x="8" y="20" font-family="Arial,sans-serif" font-weight="900" font-size="16" fill="#fff">W</text><text x="34" y="14" font-family="Inter,sans-serif" font-weight="800" font-size="11" fill="#FF8C28">WinX</text><text x="34" y="25" font-family="Inter,sans-serif" font-weight="600" font-size="9" fill="#999">Financial</text></svg>`;
+const WINX_FIN_LOGO=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 28" fill="none"><rect width="28" height="28" rx="7" fill="url(#wg)"/><defs><linearGradient id="wg" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#FF8C28"/><stop offset="1" stop-color="#FF6B00"/></linearGradient></defs><text x="5" y="20" font-family="Arial,sans-serif" font-weight="900" font-size="14" fill="#fff">NE</text><text x="34" y="14" font-family="Inter,sans-serif" font-weight="800" font-size="11" fill="#FF8C28">New</text><text x="34" y="25" font-family="Inter,sans-serif" font-weight="600" font-size="9" fill="#999">Era</text></svg>`;
 const WINX_FIN_URI='data:image/svg+xml,'+encodeURIComponent(WINX_FIN_LOGO);
+
+let demoPaused=false;
 
 // VIEW SWITCHER
 function switchView(v){
@@ -1815,7 +1818,7 @@ function addC(n,p){const x=cart.find(c=>c.n===n);if(x)x.q++;else cart.push({n,p,
 function rC(){document.getElementById('cartC').style.display='block';document.getElementById('cartI').innerHTML=cart.map((c,i)=>`<div class="pr"><span>${c.n} x${c.q}</span><div class="flex items-center gap-1"><span class="font-bold">${(c.p*c.q).toLocaleString('vi-VN')}đ</span><button onclick="rmC(${i})" class="text-red-400 text-[10px] font-bold">X</button></div></div>`).join('');document.getElementById('cartT').textContent=cart.reduce((s,c)=>s+c.p*c.q,0).toLocaleString('vi-VN')+'đ';}
 function rmC(i){cart.splice(i,1);if(!cart.length)document.getElementById('cartC').style.display='none';else rC();}
 function clrC(){cart=[];document.getElementById('cartC').style.display='none';}
-function payC(){const t=cart.reduce((s,c)=>s+c.p*c.q,0);alert('Thanh toán thành công!\nTổng: '+t.toLocaleString('vi-VN')+'đ\nĐã in hoá đơn.\n\n💰 WinX Financial: +'+t.toLocaleString('vi-VN')+'đ tự động chuyển vào tài khoản sinh lời TCB.\nLãi suất qua đêm: 3,5%/năm');clrC();}
+function payC(){const t=cart.reduce((s,c)=>s+c.p*c.q,0);alert('Thanh toán thành công!\nTổng: '+t.toLocaleString('vi-VN')+'đ\nĐã in hoá đơn.\n\n💰 New Era: +'+t.toLocaleString('vi-VN')+'đ tự động chuyển vào tài khoản sinh lời TCB.\nLãi suất qua đêm: 3,5%/năm');clrC();}
 
 // SYSTEM ACTIVATION
 function act(ids){ids.forEach(id=>{const e=document.getElementById(id);if(e)e.classList.add('on')});}
@@ -1834,7 +1837,17 @@ function mkUser(cid){return function(t){const c=document.getElementById(cid),r=d
 function mkChips(cid){return function(opts){return new Promise(r=>{const c=document.getElementById(cid),box=document.createElement('div');box.className='zq';opts.forEach(o=>{const b=document.createElement('button');b.className='zch'+(o.red?' zr':'')+(o.green?' zg':'');b.textContent=o.label;b.onclick=()=>{mkUser(cid)(o.label);box.remove();r(o.value);};box.appendChild(b);});c.appendChild(box);c.scrollTop=c.scrollHeight;});}}
 // MEAL COMBO CARD — with interactive item picking
 function mkMeal(cid,av,onSend){return function(data,d=500){return new Promise(r=>{if(onSend)onSend();const c=document.getElementById(cid),t=document.createElement('div');t.className='zrow zbot';t.innerHTML=`<div class="zm" style="background-image:url(${av})"></div><div class="zty"><span></span><span></span><span></span></div>`;c.appendChild(t);c.scrollTop=c.scrollHeight;setTimeout(()=>{let items=data.items.map((i,idx)=>`<div class="mitm"><input type="checkbox" class="mi-chk" checked data-idx="${idx}" data-price="${i.price||0}"/><span class="mi-name">${i.name} <span style="color:#999;font-size:8px">${i.note||''}</span></span><span class="mi-price">${i.priceLabel||''}</span></div>`).join('');let imgHtml=data.image?`<img class="mimg" src="${data.image}"/>`:'';let saveHtml=data.save?`<div class="msave">${data.save}</div>`:'';const mealId='meal_'+Date.now();t.innerHTML=`<div class="zm" style="background-image:url(${av})"></div><div class="zmeal" id="${mealId}">${imgHtml}<div class="mhdr">${data.title}</div><div class="mbdy">${items}<div class="mtot"><span>${data.serves}</span><span class="meal-total">${data.price}</span></div></div>${saveHtml}<div class="mact"><button class="ma-all" onclick="mealAll('${mealId}')">Lấy cả combo</button><button class="ma-pick" onclick="mealPick('${mealId}')">Chọn từng món</button></div></div>`;c.scrollTop=c.scrollHeight;t._mealId=mealId;t._mealData=data;r(mealId);},d);})}}
-const sl=ms=>new Promise(r=>setTimeout(r,ms));
+function sl(ms){return new Promise(r=>{const check=()=>{if(demoPaused){setTimeout(check,100)}else{setTimeout(r,ms)}};check();})}
+
+function togglePause(){
+  demoPaused=!demoPaused;
+  const btn=document.getElementById('pauseBtn');
+  if(btn){
+    btn.innerHTML=demoPaused?'&#x25B6; Tiếp tục':'&#x23F8; Tạm dừng';
+    btn.style.background=demoPaused?'rgba(39,174,96,.2)':'rgba(255,255,255,.1)';
+    btn.style.borderColor=demoPaused?'rgba(39,174,96,.3)':'rgba(255,255,255,.1)';
+  }
+}
 
 // VIETQR PAYMENT CARD GENERATOR
 function vietQR(amount,name,acct,bank,orderNo){
@@ -1934,10 +1947,10 @@ async function flow1(){
 
   await sl(250);
   act(['mt-sponsor']);
-  await b1('À tiện đây, Vinamilk đang có ưu đãi riêng cho Chị. Chị đang 2/4 hộp cho ly sứ, mua thêm 2 hộp là đủ bộ:');
-  await cd1(`<div class="zcard"><img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=600&auto=format"/><div class="zbd"><div class="zti">Sữa tươi Vinamilk 1L x2 <span class="ztg" style="background:#005BAA">-10%</span></div><div class="zme">Thêm 2 hộp là đủ ly sứ <span class="zsp">SPONSORED</span></div><div><span class="zpr">63.000đ</span><span class="zst">70.000đ</span></div></div></div>`);
+  await b1('À tiện đây, Nestlé đang có ưu đãi riêng cho Chị. Chị đang 2/4 hộp cho chương trình Milo Back-to-School, mua thêm 2 hộp là đủ bộ:');
+  await cd1(`<div class="zcard"><img src="https://images.unsplash.com/photo-1577003811926-53b099a67950?w=600&auto=format"/><div class="zbd"><div class="zti">Nestlé Milo 1L x2 <span class="ztg" style="background:#005BAA">-10%</span></div><div class="zme">Thêm 2 hộp là đủ bộ Milo Back-to-School <span class="zsp">SPONSORED</span></div><div><span class="zpr">63.000đ</span><span class="zst">70.000đ</span></div></div></div>`);
 
-  let a=await ch1([{label:'Lấy combo bữa cơm',value:'meal'},{label:'Thêm sữa Vinamilk',value:'both'},{label:'Hôm nay bận rồi',value:'busy',red:true}]);
+  let a=await ch1([{label:'Lấy combo bữa cơm',value:'meal'},{label:'Thêm Milo Nestlé',value:'both'},{label:'Hôm nay bận rồi',value:'busy',red:true}]);
 
   if(a==='busy'){
     await b1('Dạ, em giữ giá combo đến 8h tối mai nha Chị. Ngày mai em gợi ý bữa khác!');
@@ -1945,7 +1958,7 @@ async function flow1(){
   }
 
   if(a==='both'){
-    await b1('Tuyệt vời, em gộp combo bữa cơm và sữa Vinamilk luôn nha!');
+    await b1('Tuyệt vời, em gộp combo bữa cơm và Milo Nestlé luôn nha!');
   } else {
     await b1('Hay quá, bữa tối nay ngon rồi đó Chị!');
   }
@@ -1981,7 +1994,7 @@ async function flow1(){
     lines+='<div class="zln"><span>Nước mắm Chin-Su 250ml</span><span>28.000đ</span></div>';
     tot=129000;
   }
-  if(a==='both'){lines+='<div class="zln"><span>Sữa Vinamilk 1L x2</span><span>63.000đ</span></div>';tot+=63000;}
+  if(a==='both'){lines+='<div class="zln"><span>Nestlé Milo 1L x2</span><span>63.000đ</span></div>';tot+=63000;}
   if(ship==='d'){lines+='<div class="zln"><span>Phí giao hàng</span><span>15.000đ</span></div>';tot+=15000;}
   lines+=`<div class="zln"><span>Tổng cộng</span><span>${tot.toLocaleString('vi-VN')}đ</span></div>`;
   await cd1(`<div class="zord"><h4>Đơn #MT100426</h4>${lines}</div>`);
@@ -2102,6 +2115,8 @@ async function flow2(){
 }
 
 function resetAll(){
+  demoPaused=false;
+  const pb=document.getElementById('pauseBtn');if(pb){pb.innerHTML='&#x23F8; Tạm dừng';pb.style.background='rgba(255,255,255,.1)';pb.style.borderColor='rgba(255,255,255,.1)';}
   document.getElementById('tcbPopup').style.display='none';
   document.getElementById('tcbPopupMT').style.display='none';
   mealSelections={};
