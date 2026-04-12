@@ -1604,12 +1604,12 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 
 <div class="grid grid-cols-3 gap-4 mb-4">
   <div class="arch-cluster" style="background:rgba(255,140,40,.04);border:1px solid rgba(255,140,40,.12)">
-    <div class="arch-cluster-title" style="color:#FF8C28">&#x1F3E6; Techcombank Integration</div>
+    <div class="arch-cluster-title" style="color:#FF8C28">&#x1F3E6; Bank Partnership Layer <span style="font-size:7px;opacity:.5;font-weight:400;text-transform:none;letter-spacing:0">(multi-bank architecture)</span></div>
     <div class="flex flex-col gap-2">
-      <div class="arch-box" style="border-color:rgba(255,140,40,.3)">T-Pay API<div class="ab-sub">Đã có — Thanh toán không tiền mặt</div></div>
-      <div class="arch-box ab-new" style="border-color:rgba(255,140,40,.3)">Credit Scoring API<div class="ab-sub">Cần xây — POS data → score</div></div>
-      <div class="arch-box ab-new" style="border-color:rgba(255,140,40,.3)">Lending API<div class="ab-sub">Cần xây — Thấu chi, BNPL</div></div>
-      <div class="arch-box" style="border-color:rgba(255,140,40,.3)">Banking Agent API<div class="ab-sub">Đã có — Nạp/rút tại WinMart</div></div>
+      <div class="arch-box ab-new" style="border-color:rgba(255,140,40,.3)">Credit Scoring API<div class="ab-sub">Cần xây — POS data → score → bank</div></div>
+      <div class="arch-box ab-new" style="border-color:rgba(255,140,40,.3)">Lending API<div class="ab-sub">Cần xây — Thấu chi, BNPL, multi-bank</div></div>
+      <div class="arch-box" style="border-color:rgba(255,140,40,.3)">Banking Agent API<div class="ab-sub">Đã có — Nạp/rút tại WinMart (Circular 07/2024)</div></div>
+      <div class="arch-box ab-new" style="border-color:rgba(255,140,40,.3)">Open Banking Adapter<div class="ab-sub">Cần xây — Kết nối nhiều ngân hàng đối tác</div></div>
     </div>
   </div>
 
@@ -1617,8 +1617,8 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     <div class="arch-cluster-title" style="color:#0084FF">&#x1F4AC; Zalo Platform</div>
     <div class="flex flex-col gap-2">
       <div class="arch-box ab-existing" style="border-color:rgba(0,132,255,.3)">Zalo OA API<div class="ab-sub">Đã có — Gửi tin nhắn, follower</div></div>
-      <div class="arch-box ab-new" style="border-color:rgba(0,132,255,.3)">Zalo Mini App SDK<div class="ab-sub">Cần xây — GT POS framework</div></div>
-      <div class="arch-box ab-new" style="border-color:rgba(0,132,255,.3)">Zalo Notification API<div class="ab-sub">Cần xây — Gợi ý cá nhân hoá</div></div>
+      <div class="arch-box ab-new" style="border-color:rgba(0,132,255,.3)">Zalo Mini App SDK<div class="ab-sub">Cần xây — GT app (⚠️ no offline, 10MB limit)</div></div>
+      <div class="arch-box ab-new" style="border-color:rgba(0,132,255,.3)">ZNS (Notification Service)<div class="ab-sub">Cần tích hợp — Template msg, ~200-300đ/msg</div></div>
       <div class="arch-box ab-new" style="border-color:rgba(0,132,255,.3)">ZaloPay Gateway<div class="ab-sub">Cần tích hợp — Thanh toán</div></div>
     </div>
   </div>
@@ -1660,7 +1660,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     </div>
     <div style="display:flex;align-items:flex-start;gap:8px;padding:6px 0">
       <span style="background:#FF6B00;color:#fff;font-size:8px;font-weight:800;padding:2px 6px;border-radius:4px;flex-shrink:0">6</span>
-      <div><span style="color:rgba(255,255,255,.7);font-weight:600">GT POS data → Credit Scoring → TCB Lending API</span><div style="font-size:8px;color:rgba(255,255,255,.3);margin-top:1px">Purchase frequency + revenue stability → credit score → TCB auto-approve thấu chi.</div></div>
+      <div><span style="color:rgba(255,255,255,.7);font-weight:600">GT POS data → Credit Scoring → Bank Lending API</span><div style="font-size:8px;color:rgba(255,255,255,.3);margin-top:1px">Purchase frequency + revenue stability → credit score → ngân hàng đối tác auto-approve thấu chi.</div></div>
     </div>
   </div>
 </div>
@@ -1673,11 +1673,11 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
   </div>
   <div class="glass p-3 rounded-xl">
     <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:6px">ĐÃ CÓ — TÍCH HỢP (9 modules)</div>
-    <div style="font-size:9px;color:rgba(255,255,255,.5);line-height:1.6">WiN App, WinMart POS (WIN AI), WCM POS System, MCH Retail Supreme, MCH Product Catalog, Supra Logistics, MEATDeli Cold Chain, Zalo OA API, T-Pay, Banking Agent, VietQR</div>
+    <div style="font-size:9px;color:rgba(255,255,255,.5);line-height:1.6">WiN App, WinMart POS, WCM POS System, MCH Retail Supreme, MCH Product Catalog, Supra Logistics (SFT/STT), MEATDeli Cold Chain, Zalo OA API, Banking Agent, VietQR/NAPAS</div>
   </div>
   <div class="glass p-3 rounded-xl">
     <div style="font-size:9px;font-weight:700;color:#FF8C28;margin-bottom:6px">ĐỐI TÁC BÊN NGOÀI (4 integrations)</div>
-    <div style="font-size:9px;color:rgba(255,255,255,.5);line-height:1.6">Techcombank (lending, payments, banking agent), Zalo Platform (OA, Mini App, ZaloPay), Brand APIs (Unilever, P&G — campaign + ordering), NAPAS/VietQR (payment rails)</div>
+    <div style="font-size:9px;color:rgba(255,255,255,.5);line-height:1.6">Bank Partners (lending, BNPL, banking agent — multi-bank), Zalo Platform (OA API, Mini App SDK, ZNS, ZaloPay), Brand APIs (Unilever, P&G — campaign + ordering), NAPAS/VietQR (open payment rails)</div>
   </div>
 </div>
 
