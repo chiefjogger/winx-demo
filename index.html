@@ -427,6 +427,251 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="search"]:focus{o
 .gt-explain ul li::before{content:'→';position:absolute;left:0;top:3px;color:#F59E0B;font-weight:900}
 .gt-explain .ge-kpi{display:inline-flex;align-items:center;gap:4px;background:rgba(245,158,11,.15);padding:2px 8px;border-radius:10px;font-weight:800;color:#B45309;font-size:10px;margin-top:6px}
 
+/* =================== ALPHA: GT STOREFRONT VIEW =================== */
+.alpha-view{padding:24px 28px;max-width:1680px;margin:0 auto}
+.alpha-hero{background:linear-gradient(135deg,rgba(249,115,22,.08),rgba(245,158,11,.04));border:1px solid rgba(249,115,22,.2);border-radius:14px;padding:16px 22px;margin-bottom:20px;display:flex;align-items:center;gap:18px;position:relative;overflow:hidden}
+.alpha-hero::before{content:'';position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(249,115,22,.15),transparent 70%)}
+.alpha-hero .ah-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#F59E0B,#F97316);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;box-shadow:0 6px 20px rgba(249,115,22,.3);position:relative;z-index:1}
+.alpha-hero h2{font-size:18px;font-weight:800;color:#fff;letter-spacing:-.3px;margin-bottom:3px;display:flex;align-items:center;gap:10px}
+.alpha-hero h2 .alpha-pill{background:linear-gradient(135deg,#F59E0B,#F97316);color:#fff;font-size:9px;font-weight:900;padding:3px 10px;border-radius:8px;letter-spacing:.5px;box-shadow:0 2px 8px rgba(249,115,22,.3)}
+.alpha-hero .ah-sub{font-size:11px;color:rgba(255,255,255,.6);line-height:1.5;max-width:820px}
+
+.alpha-sec{display:inline-flex;align-items:center;gap:8px;font-size:9px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:18px 0 10px;padding:0 2px}
+.alpha-sec .sn{background:linear-gradient(135deg,#F59E0B,#F97316);color:#fff;width:18px;height:18px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:900}
+
+/* 3-column layout */
+.alpha-3col{display:grid;grid-template-columns:1fr 420px 420px;gap:16px;align-items:start}
+
+/* GT ADMIN PANEL */
+.gtadmin{background:linear-gradient(180deg,#fff,#FAFBFC);border-radius:16px;overflow:hidden;color:#1C2B33;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.gtadmin-hdr{background:linear-gradient(135deg,#1B2A4A,#2A4A6A);padding:14px 18px;color:#fff;display:flex;align-items:center;gap:12px}
+.gtadmin-hdr .gta-logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#F59E0B,#F97316);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;box-shadow:0 3px 10px rgba(249,115,22,.3)}
+.gtadmin-hdr .gta-title{font-size:14px;font-weight:800;letter-spacing:-.2px}
+.gtadmin-hdr .gta-sub{font-size:10px;opacity:.7}
+.gtadmin-hdr .gta-status{margin-left:auto;display:flex;align-items:center;gap:6px;background:rgba(39,174,96,.2);padding:4px 10px;border-radius:20px;border:1px solid rgba(94,243,140,.3)}
+.gtadmin-hdr .gta-status .sdot{width:6px;height:6px;border-radius:50%;background:#5EF38C;box-shadow:0 0 6px #5EF38C;animation:zbb 1.4s infinite}
+.gtadmin-hdr .gta-status span{font-size:9px;color:#5EF38C;font-weight:700;letter-spacing:.3px}
+
+.gtadmin-tabs{display:flex;gap:0;background:#F0F2F5;padding:0;border-bottom:1px solid #E4E6EB}
+.gtadmin-tabs button{flex:1;padding:12px 10px;font-size:10.5px;font-weight:700;border:none;cursor:pointer;background:transparent;color:#65676B;transition:all .15s;border-bottom:2px solid transparent}
+.gtadmin-tabs button:hover{color:#1C2B33;background:rgba(255,255,255,.5)}
+.gtadmin-tabs button.active{color:#F97316;background:#fff;border-bottom-color:#F97316}
+
+.gtadmin-body{padding:18px;min-height:640px}
+
+.gta-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.gta-kpi{background:linear-gradient(135deg,#FFF7ED,#FFFFFF);border:1px solid #FED7AA;border-radius:10px;padding:10px 12px;position:relative;overflow:hidden}
+.gta-kpi .gkv{font-size:18px;font-weight:800;color:#1C2B33;line-height:1.1;letter-spacing:-.3px}
+.gta-kpi .gkl{font-size:9px;color:#65676B;margin-top:3px;font-weight:600}
+.gta-kpi .gkd{font-size:9px;color:#137333;font-weight:700;margin-top:3px}
+.gta-kpi .gki{position:absolute;top:8px;right:8px;font-size:14px;opacity:.7}
+
+.gta-card{background:#fff;border:1px solid #E4E6EB;border-radius:10px;padding:14px;margin-bottom:12px}
+.gta-card h3{font-size:12px;font-weight:800;color:#1C2B33;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.gta-card h3 .gta-hicon{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#FEF3C7,#FDE68A);color:#B45309;display:flex;align-items:center;justify-content:center;font-size:11px}
+
+/* SKU row */
+.sku-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #F3F4F6;font-size:11px}
+.sku-row:last-child{border-bottom:none}
+.sku-row .sr-img{width:42px;height:42px;border-radius:8px;object-fit:cover;background:#F3F4F6;flex-shrink:0}
+.sku-row .sr-info{flex:1;min-width:0}
+.sku-row .sr-name{font-weight:700;color:#1C2B33;margin-bottom:2px;font-size:11px}
+.sku-row .sr-meta{font-size:9px;color:#65676B}
+.sku-row .sr-price{font-weight:800;color:#F97316;font-size:12px}
+.sku-row .sr-pill{background:#D1FAE5;color:#065F46;font-size:8px;font-weight:700;padding:2px 7px;border-radius:8px;margin-left:6px}
+
+/* Upload widget */
+.upload-widget{border:2px dashed #FBBF24;background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border-radius:10px;padding:16px;text-align:center;cursor:pointer;transition:all .2s}
+.upload-widget:hover{background:linear-gradient(135deg,#FEF3C7,#FDE68A);border-color:#F97316}
+.upload-widget .uw-ico{width:36px;height:36px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;margin:0 auto 6px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.upload-widget .uw-title{font-size:11px;font-weight:800;color:#B45309}
+.upload-widget .uw-sub{font-size:9px;color:#92400E;margin-top:2px}
+.upload-widget .uw-ai{display:inline-flex;align-items:center;gap:4px;margin-top:6px;background:rgba(245,158,11,.15);padding:3px 8px;border-radius:10px;font-size:8px;font-weight:700;color:#B45309}
+
+/* AI campaign card */
+.ai-camp{background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border:1px solid #93C5FD;border-radius:10px;padding:12px;margin-bottom:8px;position:relative}
+.ai-camp .ac-hdr{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.ai-camp .ac-ico{width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#6366F1,#8B5CF6);display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
+.ai-camp .ac-title{font-size:11px;font-weight:800;color:#1E3A8A;flex:1}
+.ai-camp .ac-live{background:rgba(39,174,96,.15);color:#065F46;font-size:8px;font-weight:800;padding:2px 7px;border-radius:10px;display:inline-flex;align-items:center;gap:3px}
+.ai-camp .ac-live::before{content:'';width:4px;height:4px;border-radius:50%;background:#27AE60;animation:zbb 1.4s infinite}
+.ai-camp .ac-body{font-size:10px;color:#1E40AF;line-height:1.5;margin-bottom:8px}
+.ai-camp .ac-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding-top:8px;border-top:1px dashed #93C5FD}
+.ai-camp .ac-metric{text-align:center}
+.ai-camp .ac-metric .am-v{font-size:13px;font-weight:800;color:#1E3A8A}
+.ai-camp .ac-metric .am-l{font-size:8px;color:#1E40AF;font-weight:600;margin-top:1px}
+
+/* Orders row */
+.ord-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #F3F4F6;font-size:11px}
+.ord-row:last-child{border-bottom:none}
+.ord-row .or-ava{width:32px;height:32px;border-radius:50%;background-size:cover;background-position:center;flex-shrink:0;border:2px solid #FED7AA}
+.ord-row .or-info{flex:1;min-width:0}
+.ord-row .or-info .or-cust{font-weight:700;color:#1C2B33;font-size:11px}
+.ord-row .or-info .or-items{font-size:9px;color:#65676B;margin-top:1px}
+.ord-row .or-price{font-weight:800;color:#F97316;font-size:12px}
+.ord-row .or-status{font-size:8px;font-weight:800;padding:2px 7px;border-radius:8px;margin-left:6px}
+.or-st-wait{background:#FEF3C7;color:#92400E}
+.or-st-ready{background:#DBEAFE;color:#1E40AF}
+.or-st-done{background:#D1FAE5;color:#065F46}
+
+/* ======= STOREFRONT (customer view inside Zalo mini-app) ======= */
+.sf-phone{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06);display:flex;flex-direction:column;max-height:860px;position:relative}
+.sf-chrome{background:#0068FF;padding:6px 12px;display:flex;align-items:center;gap:8px;color:#fff}
+.sf-chrome .sc-back{font-size:17px;opacity:.85;cursor:pointer}
+.sf-chrome .sc-title{font-size:11px;font-weight:700;flex:1}
+.sf-chrome .sc-sub{font-size:7.5px;opacity:.75}
+.sf-chrome .sc-menu{font-size:14px;opacity:.7}
+.sf-url{background:#F0F6FF;padding:4px 10px;font-size:8.5px;color:#4B5563;border-bottom:1px solid #D6E4F0;display:flex;align-items:center;gap:5px}
+.sf-url .sfu-lock{color:#059669;font-size:8px}
+
+.sf-body{flex:1;overflow-y:auto;background:#F9FAFB;scroll-behavior:smooth}
+.sf-body::-webkit-scrollbar{width:3px}
+.sf-body::-webkit-scrollbar-thumb{background:#D1D5DB;border-radius:2px}
+
+/* Storefront header (looks like winmart.vn) */
+.sf-store-hdr{background:linear-gradient(135deg,#F97316 0%,#FB923C 100%);padding:12px;color:#fff;position:relative;overflow:hidden}
+.sf-store-hdr::before{content:'';position:absolute;right:-20px;top:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.1)}
+.sf-store-hdr .sh-flex{display:flex;align-items:center;gap:10px;position:relative;z-index:1}
+.sf-store-hdr .sh-ava{width:42px;height:42px;border-radius:10px;background-size:cover;background-position:center;border:2px solid rgba(255,255,255,.6);flex-shrink:0}
+.sf-store-hdr .sh-name{font-size:13px;font-weight:800;letter-spacing:-.2px;line-height:1.1}
+.sf-store-hdr .sh-verify{display:inline-flex;align-items:center;gap:3px;background:rgba(255,255,255,.2);padding:2px 7px;border-radius:10px;font-size:8px;font-weight:700;margin-top:4px}
+.sf-store-hdr .sh-loc{font-size:9px;opacity:.9;margin-top:4px}
+.sf-store-hdr .sh-stats{display:flex;gap:12px;margin-top:8px;font-size:8.5px}
+.sf-store-hdr .sh-stats b{font-weight:800}
+
+.sf-search{background:#fff;padding:8px 10px;position:sticky;top:0;z-index:10;border-bottom:1px solid #F3F4F6;display:flex;gap:6px;align-items:center}
+.sf-search .sfs-box{flex:1;background:#F3F4F6;border-radius:18px;padding:6px 12px;font-size:10px;color:#9CA3AF;display:flex;align-items:center;gap:6px}
+.sf-search .sfs-cart{position:relative;cursor:pointer}
+.sf-search .sfs-cart .sfs-bag{font-size:18px}
+.sf-search .sfs-cart .sfs-cnt{position:absolute;top:-4px;right:-4px;background:#E30613;color:#fff;font-size:7px;font-weight:900;padding:1px 4px;border-radius:8px;min-width:14px;text-align:center}
+
+/* Hero banner (like winmart.vn flash sale) */
+.sf-banner{margin:10px;background:linear-gradient(135deg,#FEE2E2,#FECACA);border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:8px;position:relative;overflow:hidden}
+.sf-banner .sfb-ico{font-size:22px;flex-shrink:0}
+.sf-banner .sfb-title{font-size:11px;font-weight:800;color:#991B1B}
+.sf-banner .sfb-sub{font-size:9px;color:#7F1D1D;margin-top:2px}
+.sf-banner .sfb-timer{margin-left:auto;background:#DC2626;color:#fff;font-size:10px;font-weight:800;padding:4px 8px;border-radius:7px;font-family:ui-monospace,monospace}
+
+/* Category strip */
+.sf-cat-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:6px 10px 10px}
+.sf-cat{text-align:center;padding:8px 2px;background:#fff;border-radius:10px;cursor:pointer;transition:all .12s;border:1px solid transparent}
+.sf-cat:hover{border-color:#F97316;background:#FFF7ED}
+.sf-cat .sfc-ico{font-size:20px;margin-bottom:3px}
+.sf-cat .sfc-name{font-size:8.5px;font-weight:700;color:#1C2B33;line-height:1.1}
+
+/* Section heading */
+.sf-sec{padding:12px 10px 6px;display:flex;align-items:center;justify-content:space-between}
+.sf-sec .sfsh-title{font-size:12px;font-weight:800;color:#1C2B33}
+.sf-sec .sfsh-more{font-size:9px;color:#F97316;font-weight:700}
+
+/* Product grid — winmart/sendo style */
+.sf-prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 10px 12px}
+.sf-prod{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #F3F4F6;cursor:pointer;transition:all .15s;position:relative}
+.sf-prod:hover{box-shadow:0 4px 12px rgba(249,115,22,.15);border-color:#FED7AA}
+.sf-prod .sfp-img{width:100%;height:96px;object-fit:cover;display:block;background:#F9FAFB}
+.sf-prod .sfp-bdg{position:absolute;top:4px;left:4px;background:#DC2626;color:#fff;font-size:8px;font-weight:800;padding:2px 6px;border-radius:5px}
+.sf-prod .sfp-sponsor{position:absolute;top:4px;right:4px;background:rgba(99,102,241,.9);color:#fff;font-size:7px;font-weight:800;padding:2px 5px;border-radius:4px;letter-spacing:.3px}
+.sf-prod .sfp-body{padding:7px 8px 8px}
+.sf-prod .sfp-name{font-size:10px;font-weight:600;color:#1C2B33;line-height:1.3;min-height:26px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sf-prod .sfp-price-row{display:flex;align-items:center;gap:4px;margin-top:4px}
+.sf-prod .sfp-price{font-size:12px;font-weight:800;color:#DC2626;letter-spacing:-.2px}
+.sf-prod .sfp-strike{font-size:9px;color:#9CA3AF;text-decoration:line-through}
+.sf-prod .sfp-unit{font-size:8px;color:#6B7280;margin-top:2px}
+.sf-prod .sfp-add{position:absolute;bottom:8px;right:8px;width:22px;height:22px;border-radius:50%;background:#F97316;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;border:none;cursor:pointer;box-shadow:0 2px 6px rgba(249,115,22,.4);transition:all .12s}
+.sf-prod .sfp-add:hover{transform:scale(1.1);background:#EA580C}
+.sf-prod .sfp-sold{font-size:8px;color:#6B7280;margin-top:2px;display:flex;align-items:center;gap:3px}
+
+/* Checkout bar */
+.sf-checkout-bar{background:linear-gradient(135deg,#F97316,#EA580C);padding:8px 14px;display:flex;align-items:center;gap:10px;color:#fff;margin:0 10px 10px;border-radius:10px;box-shadow:0 4px 12px rgba(249,115,22,.3);cursor:pointer}
+.sf-checkout-bar .scb-cnt{background:#fff;color:#F97316;font-size:11px;font-weight:900;padding:2px 8px;border-radius:10px}
+.sf-checkout-bar .scb-mid{flex:1;font-size:11px;font-weight:700}
+.sf-checkout-bar .scb-mid .scb-sub{font-size:8px;opacity:.9;font-weight:500;margin-top:1px}
+.sf-checkout-bar .scb-go{font-size:11px;font-weight:800}
+
+/* Pickup notice */
+.sf-pickup{background:#ECFDF5;border:1px dashed #86EFAC;border-radius:10px;margin:0 10px 10px;padding:8px 10px;display:flex;align-items:center;gap:8px}
+.sf-pickup .sfpk-ico{font-size:16px;flex-shrink:0}
+.sf-pickup .sfpk-body{font-size:9.5px;color:#065F46;line-height:1.4}
+.sf-pickup .sfpk-body b{font-weight:800}
+
+/* Bottom tab nav (zalo style) */
+.sf-tabnav{display:flex;border-top:1px solid #E4E6EB;background:#fff}
+.sf-tabnav button{flex:1;padding:8px 2px;font-size:8px;font-weight:700;border:none;cursor:pointer;background:#fff;color:#6B7280;display:flex;flex-direction:column;align-items:center;gap:2px}
+.sf-tabnav button.active{color:#F97316}
+.sf-tabnav button span:first-child{font-size:16px}
+
+/* ======= AI OUTREACH CHAT (phone mockup) ======= */
+.ai-phone{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06);display:flex;flex-direction:column;max-height:860px;position:relative}
+.ai-hdr{background:#F97316;padding:10px 12px;display:flex;align-items:center;gap:8px;color:#fff}
+.ai-hdr .ah-back{font-size:17px;opacity:.85;cursor:pointer}
+.ai-hdr .ah-ava{width:32px;height:32px;border-radius:50%;background-size:cover;background-position:center;border:2px solid rgba(255,255,255,.4);flex-shrink:0}
+.ai-hdr .ah-who{flex:1}
+.ai-hdr .ah-who .ah-n{font-size:12px;font-weight:800;display:flex;align-items:center;gap:5px}
+.ai-hdr .ah-who .ah-v{background:rgba(255,255,255,.2);font-size:7.5px;font-weight:800;padding:1.5px 5px;border-radius:5px}
+.ai-hdr .ah-who .ah-s{font-size:9px;opacity:.8;display:flex;align-items:center;gap:4px}
+.ai-hdr .ah-who .ah-s .sd{width:5px;height:5px;border-radius:50%;background:#5EF38C}
+.ai-hdr .ah-actions{display:flex;gap:10px;opacity:.7}
+
+.ai-chat{flex:1;overflow-y:auto;padding:10px;background:#F3F4F6;display:flex;flex-direction:column;gap:6px}
+.ai-chat::-webkit-scrollbar{width:3px}
+.ai-chat::-webkit-scrollbar-thumb{background:#D1D5DB;border-radius:2px}
+.ai-row{display:flex;gap:6px;align-items:flex-end}
+.ai-row.ai-u{justify-content:flex-end}
+.ai-m{width:22px;height:22px;border-radius:50%;background-size:cover;background-position:center;flex-shrink:0}
+.ai-b{max-width:78%;padding:8px 12px;border-radius:16px;font-size:11px;line-height:1.45}
+.ai-row.ai-bot .ai-b{background:#fff;color:#1F2937;border-bottom-left-radius:5px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.ai-row.ai-u .ai-b{background:#FFE8D6;color:#1F2937;border-bottom-right-radius:5px}
+.ai-t{font-size:8px;color:#9CA3AF;margin-top:2px}
+
+/* Product recommendation card in AI chat */
+.ai-reco{background:#fff;border-radius:12px;overflow:hidden;max-width:86%;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ai-reco .ar-hdr{background:linear-gradient(135deg,#F97316,#FB923C);padding:6px 10px;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;gap:5px}
+.ai-reco .ar-body{padding:8px}
+.ai-reco .ar-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.ai-reco .ar-item{background:#F9FAFB;border-radius:8px;padding:6px;border:1px solid #E5E7EB}
+.ai-reco .ar-item img{width:100%;height:60px;object-fit:cover;border-radius:5px;margin-bottom:3px}
+.ai-reco .ar-item .ari-n{font-size:9px;font-weight:700;color:#1F2937;line-height:1.2;margin-bottom:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:22px}
+.ai-reco .ar-item .ari-p{font-size:10px;font-weight:800;color:#F97316}
+.ai-reco .ar-cta{display:block;margin-top:8px;padding:8px;background:linear-gradient(135deg,#F97316,#EA580C);color:#fff;text-align:center;font-size:11px;font-weight:800;border-radius:8px;border:none;cursor:pointer;width:100%}
+.ai-reco .ar-cta:hover{opacity:.95}
+
+/* AI order confirmation card */
+.ai-conf{background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:10px;padding:10px;max-width:86%;font-size:10px;color:#065F46}
+.ai-conf h4{font-size:11px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.ai-conf .acl{display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px dashed #BBF7D0;font-size:9.5px}
+.ai-conf .acl:last-of-type{border-bottom:1.5px solid #86EFAC}
+.ai-conf .acl-total{font-weight:800;color:#065F46;padding-top:4px}
+.ai-conf .ac-pickup{margin-top:6px;background:rgba(39,174,96,.12);padding:6px 8px;border-radius:6px;font-size:9px;color:#047857;font-weight:700;display:flex;align-items:center;gap:5px}
+
+/* AI input bar */
+.ai-input{padding:6px 10px;border-top:1px solid #E5E7EB;background:#fff;display:flex;gap:6px;align-items:center;color:#6B7280;font-size:10px}
+.ai-input .aii-box{flex:1;background:#F3F4F6;border-radius:14px;padding:6px 10px;color:#9CA3AF;font-size:9.5px}
+
+/* Click chips for AI chat */
+.ai-chips{display:flex;flex-wrap:wrap;gap:4px;padding:4px 0 2px;margin-left:26px}
+.ai-chips button{background:#fff;border:1.5px solid #F97316;color:#F97316;padding:5px 10px;border-radius:14px;font-size:10px;font-weight:700;cursor:pointer;transition:all .12s}
+.ai-chips button:hover{background:#F97316;color:#fff}
+
+/* How it fits together footer */
+.alpha-summary{background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(139,92,246,.04));border:1px solid rgba(99,102,241,.2);border-radius:14px;padding:18px 22px;margin-top:20px;color:rgba(255,255,255,.8)}
+.alpha-summary h3{font-size:13px;font-weight:800;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.alpha-summary .as-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:10px}
+.alpha-summary .as-item{padding:12px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px}
+.alpha-summary .as-item .as-num{font-size:22px;font-weight:900;color:#F97316;line-height:1}
+.alpha-summary .as-item .as-title{font-size:11px;font-weight:800;color:#fff;margin-top:6px}
+.alpha-summary .as-item .as-body{font-size:10px;color:rgba(255,255,255,.6);line-height:1.5;margin-top:4px}
+
+/* SKU upload modal */
+.sku-modal{background:linear-gradient(135deg,#FEF3C7,#FFFBEB);border:1.5px solid #F59E0B;border-radius:12px;padding:14px;margin-top:10px}
+.sku-modal .smh{font-size:11px;font-weight:800;color:#92400E;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.sku-modal .sm-steps{display:flex;gap:6px;margin-bottom:10px}
+.sku-modal .sm-step{flex:1;background:#fff;border-radius:8px;padding:8px;text-align:center;border:1px solid #FDE68A}
+.sku-modal .sm-step.done{background:linear-gradient(135deg,#D1FAE5,#fff);border-color:#86EFAC}
+.sku-modal .sm-step .sms-num{width:20px;height:20px;border-radius:50%;background:#F59E0B;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;margin:0 auto 4px}
+.sku-modal .sm-step.done .sms-num{background:#27AE60}
+.sku-modal .sm-step .sms-title{font-size:9px;font-weight:700;color:#1C2B33}
+.sku-modal .sm-step .sms-sub{font-size:8px;color:#65676B;margin-top:2px}
+
 /* Scan card (Chị Hương scans voucher from her phone) */
 .scan-view{background:linear-gradient(135deg,#0A1A2F,#1E293B);border-radius:10px;padding:10px;max-width:82%;border:1.5px solid rgba(31,54,199,.4);position:relative;overflow:hidden}
 .scan-view .sv-phone{background:rgba(0,0,0,.4);border-radius:8px;padding:8px;border:1.5px dashed rgba(255,255,255,.2);position:relative;overflow:hidden}
@@ -488,6 +733,7 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="search"]:focus{o
     <button id="tab-demo" onclick="switchView('demo')" class="active">🌐 Omni-Channel Demo</button>
     <button id="tab-ads" onclick="switchView('ads')">📊 WinX Ads Portal</button>
     <button id="tab-intel" onclick="switchView('intel')">🧠 Intelligence</button>
+    <button id="tab-alpha" onclick="switchView('alpha')" style="position:relative">🚀 GT Storefront <span style="position:absolute;top:-6px;right:-6px;background:linear-gradient(135deg,#F59E0B,#F97316);color:#fff;font-size:7px;font-weight:900;padding:2px 6px;border-radius:8px;letter-spacing:.3px;box-shadow:0 2px 6px rgba(249,115,22,.4)">ALPHA</span></button>
   </div>
   <div style="flex:1"></div>
   <div style="font-size:10px;color:rgba(255,255,255,.35);font-weight:600">Scroll horizontally to see all 4 channels →</div>
@@ -2240,6 +2486,466 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="search"]:focus{o
 </div><!-- /intel-section -->
 </div><!-- /view-intel -->
 
+<!-- ============ VIEW 4: ALPHA — GT STOREFRONT ============ -->
+<div id="view-alpha" style="display:none">
+<div class="alpha-view">
+
+<!-- HERO -->
+<div class="alpha-hero">
+  <div class="ah-icon">🚀</div>
+  <div style="flex:1;position:relative;z-index:1">
+    <h2>GT E-commerce Storefront <span class="alpha-pill">ALPHA</span> <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.3px">Super Early Concept</span></h2>
+    <div class="ah-sub">Mỗi tạp hoá = 1 shop online riêng trong Zalo mini-app. Masan xây nền tảng (giống Shopify cho GT), GT upload SKU + bán online (khách đến tiệm lấy hoặc ship). AI của WinX tự chủ động nhắn khách đã follow OA để convert. Brand sponsor có thể chạy ads ngay trong các storefront này.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:4px;align-items:flex-end;flex-shrink:0;position:relative;z-index:1">
+    <div style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;letter-spacing:.3px">MOCKUP STORE</div>
+    <div style="font-size:12px;font-weight:800;color:#fff">Tạp Hoá Bác Hải</div>
+    <div style="font-size:9px;color:rgba(255,255,255,.5)">78 Nguyễn Tri Phương, Q5 HCM</div>
+  </div>
+</div>
+
+<!-- SECTION LABEL -->
+<div class="alpha-sec"><span class="sn">1</span> Dòng chảy 3 bên · GT quản lý · Khách mua · AI chạy</div>
+
+<!-- 3 COLUMN MAIN LAYOUT -->
+<div class="alpha-3col">
+
+  <!-- =================== COLUMN 1: GT ADMIN =================== -->
+  <div class="gtadmin">
+    <div class="gtadmin-hdr">
+      <div class="gta-logo">🏪</div>
+      <div style="flex:1">
+        <div class="gta-title">WinX Retailer Hub <span style="font-size:8px;background:linear-gradient(135deg,#F59E0B,#F97316);padding:2px 7px;border-radius:6px;margin-left:4px;letter-spacing:.3px">ALPHA</span></div>
+        <div class="gta-sub">Bác Hải · Tạp Hoá 78 NTP Q5 · Đăng ký 10/04/2026</div>
+      </div>
+      <div class="gta-status">
+        <div class="sdot"></div>
+        <span>SHOP ONLINE</span>
+      </div>
+    </div>
+
+    <div class="gtadmin-tabs">
+      <button class="active" onclick="gtaTab(this,'dash')">📊 Tổng quan</button>
+      <button onclick="gtaTab(this,'skus')">📦 SKU của Bác</button>
+      <button onclick="gtaTab(this,'ai')">🤖 AI Campaign</button>
+      <button onclick="gtaTab(this,'orders')">🛍️ Đơn online</button>
+      <button onclick="gtaTab(this,'ads')">💰 Brand ads</button>
+    </div>
+
+    <div class="gtadmin-body">
+
+      <!-- DASHBOARD -->
+      <div id="gta-dash">
+        <div class="gta-kpi-row">
+          <div class="gta-kpi"><span class="gki">💰</span><div class="gkv">1,24tr</div><div class="gkl">DT online hôm nay</div><div class="gkd">▲ +32% vs hôm qua</div></div>
+          <div class="gta-kpi"><span class="gki">🛍️</span><div class="gkv">17</div><div class="gkl">Đơn online</div><div class="gkd">11 pickup · 6 ship</div></div>
+          <div class="gta-kpi"><span class="gki">👁️</span><div class="gkv">428</div><div class="gkl">Lượt xem tiệm</div><div class="gkd">CTR 14,2%</div></div>
+          <div class="gta-kpi"><span class="gki">💬</span><div class="gkv">1.847</div><div class="gkl">Khách follow OA</div><div class="gkd">+128 tuần này</div></div>
+        </div>
+
+        <!-- Upload widget -->
+        <div class="upload-widget" onclick="document.getElementById('skuModal').style.display='block';this.style.display='none'">
+          <div class="uw-ico">📸</div>
+          <div class="uw-title">Chụp SKU mới → AI tự viết title + mô tả + giá gợi ý</div>
+          <div class="uw-sub">Chỉ cần chụp 1 tấm ảnh sản phẩm là xong</div>
+          <div class="uw-ai">✨ AI-powered · 15 giây/SKU</div>
+        </div>
+
+        <!-- SKU Upload Modal (simulated) -->
+        <div class="sku-modal" id="skuModal" style="display:none">
+          <div class="smh">📸 Upload SKU mới · AI hỗ trợ</div>
+          <div class="sm-steps">
+            <div class="sm-step done"><div class="sms-num">1</div><div class="sms-title">Chụp ảnh</div><div class="sms-sub">✓ Xong</div></div>
+            <div class="sm-step done"><div class="sms-num">2</div><div class="sms-title">AI nhận diện</div><div class="sms-sub">✓ Omachi tôm</div></div>
+            <div class="sm-step"><div class="sms-num">3</div><div class="sms-title">Đặt giá</div><div class="sms-sub">Chờ Bác</div></div>
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:10px;display:flex;gap:10px;align-items:center">
+            <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=200&auto=format" style="width:54px;height:54px;border-radius:8px;object-fit:cover"/>
+            <div style="flex:1;font-size:10px">
+              <div style="font-weight:800;color:#1C2B33">Mì Omachi tôm chua cay (gói 80g)</div>
+              <div style="color:#65676B;margin-top:2px">AI gợi ý: <b style="color:#F97316">5.500đ</b> · Bán chạy nhất tuần tại GT khu Q5</div>
+              <div style="margin-top:6px;display:flex;gap:4px"><button style="background:#F97316;color:#fff;border:none;font-size:9px;font-weight:800;padding:5px 10px;border-radius:6px;cursor:pointer" onclick="document.getElementById('skuModal').style.display='none';document.querySelector('.upload-widget').style.display='block';alert('✓ Đã publish SKU lên storefront!')">✓ Publish giá này</button><button style="background:#F3F4F6;color:#65676B;border:1px solid #E5E7EB;font-size:9px;padding:5px 10px;border-radius:6px;cursor:pointer" onclick="document.getElementById('skuModal').style.display='none';document.querySelector('.upload-widget').style.display='block'">Huỷ</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active AI campaign mini card -->
+        <div class="gta-card">
+          <h3><span class="gta-hicon">🤖</span>Chiến dịch AI đang chạy</h3>
+          <div class="ai-camp">
+            <div class="ac-hdr">
+              <div class="ac-ico">🤖</div>
+              <div class="ac-title">Nhắc khách quen mua lại mì Omachi</div>
+              <div class="ac-live">LIVE</div>
+            </div>
+            <div class="ac-body">AI tự nhắn 47 khách đã mua Omachi 2-3 tuần trước · cá nhân hoá theo SKU yêu thích · push qua Zalo OA Bác Hải.</div>
+            <div class="ac-metrics">
+              <div class="ac-metric"><div class="am-v">47</div><div class="am-l">Khách được nhắn</div></div>
+              <div class="ac-metric"><div class="am-v">18</div><div class="am-l">Click vào shop</div></div>
+              <div class="ac-metric"><div class="am-v">11</div><div class="am-l">Đơn chốt ✓</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent online orders -->
+        <div class="gta-card">
+          <h3><span class="gta-hicon">🛍️</span>Đơn online gần đây</h3>
+          <div class="ord-row">
+            <div class="or-ava" style="background-image:url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces')"></div>
+            <div class="or-info">
+              <div class="or-cust">Chị Trang · 0912 345 678</div>
+              <div class="or-items">Omachi ×3 · Chin-Su ×1 · Sữa chua ×2</div>
+            </div>
+            <div style="text-align:right"><div class="or-price">148.000đ</div><span class="or-status or-st-ready">Sẵn sàng · Pickup</span></div>
+          </div>
+          <div class="ord-row">
+            <div class="or-ava" style="background-image:url('https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=faces')"></div>
+            <div class="or-info">
+              <div class="or-cust">Anh Phong · 0933 412 789</div>
+              <div class="or-items">Kokomi ×5 · Bia SG thùng ×1</div>
+            </div>
+            <div style="text-align:right"><div class="or-price">278.500đ</div><span class="or-status or-st-wait">Đang chuẩn bị</span></div>
+          </div>
+          <div class="ord-row">
+            <div class="or-ava" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces')"></div>
+            <div class="or-info">
+              <div class="or-cust">Bác Tư · 0903 887 651</div>
+              <div class="or-items">Neptune 1L ×2 · Trứng ×10 · Rau củ</div>
+            </div>
+            <div style="text-align:right"><div class="or-price">94.000đ</div><span class="or-status or-st-done">Đã giao ✓</span></div>
+          </div>
+        </div>
+
+        <!-- Brand ad revenue teaser -->
+        <div class="gta-card" style="border-color:#93C5FD;background:linear-gradient(135deg,#EFF6FF,#fff)">
+          <h3 style="color:#1E40AF"><span class="gta-hicon" style="background:linear-gradient(135deg,#DBEAFE,#BFDBFE);color:#1E40AF">💸</span>Chia doanh thu quảng cáo</h3>
+          <div style="font-size:10.5px;color:#1E40AF;margin-bottom:8px;line-height:1.5">Unilever, Masan, P&G mua ad placement trong storefront của Bác. <b>Bác nhận 40% revenue share</b>.</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+            <div style="background:#fff;border:1px solid #DBEAFE;border-radius:8px;padding:8px;text-align:center"><div style="font-size:15px;font-weight:800;color:#1E40AF">142k</div><div style="font-size:8.5px;color:#3B82F6;margin-top:2px">Ad revenue Q2</div></div>
+            <div style="background:#fff;border:1px solid #DBEAFE;border-radius:8px;padding:8px;text-align:center"><div style="font-size:15px;font-weight:800;color:#1E40AF">56,8k</div><div style="font-size:8.5px;color:#3B82F6;margin-top:2px">Bác nhận (40%)</div></div>
+            <div style="background:#fff;border:1px solid #DBEAFE;border-radius:8px;padding:8px;text-align:center"><div style="font-size:15px;font-weight:800;color:#1E40AF">6</div><div style="font-size:8.5px;color:#3B82F6;margin-top:2px">Slot hiển thị</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =================== COLUMN 2: ZALO MINI-APP STOREFRONT =================== -->
+  <div>
+    <div class="pane-label" style="margin-bottom:8px;color:#F97316;border-color:rgba(249,115,22,.3)"><span class="pd" style="background:#F97316"></span>Góc nhìn khách hàng · Zalo Mini-App</div>
+    <div class="sf-phone">
+      <div class="sf-chrome">
+        <span class="sc-back">‹</span>
+        <div style="flex:1">
+          <div class="sc-title">Tạp Hoá Bác Hải</div>
+          <div class="sc-sub">Shop online · Zalo mini-app</div>
+        </div>
+        <span class="sc-menu">⋯</span>
+      </div>
+      <div class="sf-url">
+        <span class="sfu-lock">🔒</span>
+        <span>miniapp.zalo.me/bac-hai-ntp</span>
+      </div>
+      <div class="sf-body" id="sfBody">
+
+        <!-- Store header -->
+        <div class="sf-store-hdr">
+          <div class="sh-flex">
+            <div class="sh-ava" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces')"></div>
+            <div style="flex:1;min-width:0">
+              <div class="sh-name">Tạp Hoá Bác Hải</div>
+              <div style="display:flex;gap:4px;align-items:center;margin-top:2px"><span class="sh-verify">✓ WinX Verified</span></div>
+              <div class="sh-loc">📍 78 Nguyễn Tri Phương, Q5, HCM · 0,8km</div>
+            </div>
+          </div>
+          <div class="sh-stats">
+            <span><b>4,8⭐</b> (128 đánh giá)</span>
+            <span><b>1.847</b> follow OA</span>
+            <span><b>~15p</b> chuẩn bị</span>
+          </div>
+        </div>
+
+        <!-- Search + cart -->
+        <div class="sf-search">
+          <div class="sfs-box"><span>🔍</span><span>Tìm sản phẩm, mã vạch...</span></div>
+          <div class="sfs-cart"><span class="sfs-bag">🛒</span><span class="sfs-cnt" id="sfCartCnt">2</span></div>
+        </div>
+
+        <!-- Flash sale banner -->
+        <div class="sf-banner">
+          <div class="sfb-ico">⚡</div>
+          <div style="flex:1">
+            <div class="sfb-title">Flash Sale trong ngõ</div>
+            <div class="sfb-sub">Bác Hải giảm 15% cho khách follow OA</div>
+          </div>
+          <div class="sfb-timer">02:47:12</div>
+        </div>
+
+        <!-- Categories -->
+        <div class="sf-cat-strip">
+          <div class="sf-cat"><div class="sfc-ico">🥬</div><div class="sfc-name">Rau củ</div></div>
+          <div class="sf-cat"><div class="sfc-ico">🥩</div><div class="sfc-name">Thịt cá</div></div>
+          <div class="sf-cat"><div class="sfc-ico">🍜</div><div class="sfc-name">Đồ khô</div></div>
+          <div class="sf-cat"><div class="sfc-ico">🥤</div><div class="sfc-name">Đồ uống</div></div>
+          <div class="sf-cat"><div class="sfc-ico">🧴</div><div class="sfc-name">Vệ sinh</div></div>
+        </div>
+
+        <!-- Pickup notice -->
+        <div class="sf-pickup">
+          <div class="sfpk-ico">🚶</div>
+          <div class="sfpk-body"><b>Ghé lấy tại tiệm Bác:</b> miễn phí, sẵn sau 15 phút. Hoặc <b>Bác giao tận ngõ 10k</b> trong bán kính 1km.</div>
+        </div>
+
+        <!-- Featured products section -->
+        <div class="sf-sec">
+          <div class="sfsh-title">🔥 Flash sale hôm nay</div>
+          <div class="sfsh-more">Xem tất cả ›</div>
+        </div>
+
+        <div class="sf-prod-grid">
+          <div class="sf-prod" onclick="sfAddToCart(this,'Omachi tôm chua cay',5500)">
+            <img class="sfp-img" src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=300&auto=format"/>
+            <span class="sfp-bdg">-15%</span>
+            <div class="sfp-body">
+              <div class="sfp-name">Mì Omachi tôm chua cay gói 80g</div>
+              <div class="sfp-price-row">
+                <span class="sfp-price">5.500đ</span>
+                <span class="sfp-strike">6.500đ</span>
+              </div>
+              <div class="sfp-sold">🔥 Đã bán 112 gói tuần này</div>
+            </div>
+            <button class="sfp-add">+</button>
+          </div>
+
+          <div class="sf-prod" onclick="sfAddToCart(this,'Chin-Su 500ml',27200)">
+            <img class="sfp-img" src="https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=300&auto=format"/>
+            <span class="sfp-bdg">-15%</span>
+            <span class="sfp-sponsor">SPONSORED</span>
+            <div class="sfp-body">
+              <div class="sfp-name">Nước mắm Chin-Su 500ml</div>
+              <div class="sfp-price-row">
+                <span class="sfp-price">27.200đ</span>
+                <span class="sfp-strike">32.000đ</span>
+              </div>
+              <div class="sfp-sold">🔥 Đã bán 34 chai</div>
+            </div>
+            <button class="sfp-add">+</button>
+          </div>
+
+          <div class="sf-prod" onclick="sfAddToCart(this,'Trứng gà 10 quả',30000)">
+            <img class="sfp-img" src="https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=300&auto=format"/>
+            <div class="sfp-body">
+              <div class="sfp-name">Trứng gà tươi 10 quả</div>
+              <div class="sfp-price-row">
+                <span class="sfp-price">30.000đ</span>
+              </div>
+              <div class="sfp-sold">🔥 Đã bán 27 hộp</div>
+            </div>
+            <button class="sfp-add">+</button>
+          </div>
+
+          <div class="sf-prod" onclick="sfAddToCart(this,'Vinamilk 180ml x4',28000)">
+            <img class="sfp-img" src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&auto=format"/>
+            <span class="sfp-bdg">-12%</span>
+            <div class="sfp-body">
+              <div class="sfp-name">Sữa Vinamilk 180ml (lốc 4)</div>
+              <div class="sfp-price-row">
+                <span class="sfp-price">28.000đ</span>
+                <span class="sfp-strike">32.000đ</span>
+              </div>
+              <div class="sfp-sold">🔥 Đã bán 18 lốc</div>
+            </div>
+            <button class="sfp-add">+</button>
+          </div>
+        </div>
+
+        <div class="sf-sec">
+          <div class="sfsh-title">🥬 Tươi sáng nay</div>
+          <div class="sfsh-more">Xem tất cả ›</div>
+        </div>
+
+        <div class="sf-prod-grid">
+          <div class="sf-prod" onclick="sfAddToCart(this,'Rau muống',7000)">
+            <img class="sfp-img" src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=300&auto=format"/>
+            <div class="sfp-body">
+              <div class="sfp-name">Rau muống 1 bó</div>
+              <div class="sfp-price-row"><span class="sfp-price">7.000đ</span></div>
+              <div class="sfp-sold">🌱 Chợ sáng nay</div>
+            </div>
+            <button class="sfp-add">+</button>
+          </div>
+
+          <div class="sf-prod" onclick="sfAddToCart(this,'Ba chỉ 500g',95000)">
+            <img class="sfp-img" src="https://images.unsplash.com/photo-1602470520998-f7a52a2e6fe5?w=300&auto=format"/>
+            <div class="sfp-body">
+              <div class="sfp-name">Ba chỉ heo 500g</div>
+              <div class="sfp-price-row"><span class="sfp-price">95.000đ</span></div>
+              <div class="sfp-sold">🥩 Mổ sáng · còn 8 phần</div>
+            </div>
+            <button class="sfp-add">+</button>
+          </div>
+        </div>
+
+        <!-- Checkout bar -->
+        <div class="sf-checkout-bar" id="sfCheckoutBar" onclick="sfCheckout()">
+          <span class="scb-cnt" id="sfCnt2">2</span>
+          <div class="scb-mid">Giỏ: <span id="sfTotal">32.700đ</span>
+            <div class="scb-sub">Ghé lấy lúc 10:30</div>
+          </div>
+          <span class="scb-go">Thanh toán →</span>
+        </div>
+
+      </div>
+
+      <!-- Zalo bottom tabs -->
+      <div class="sf-tabnav">
+        <button class="active"><span>🏪</span><span>Tiệm</span></button>
+        <button><span>🛒</span><span>Giỏ</span></button>
+        <button><span>🛍️</span><span>Đơn</span></button>
+        <button><span>💬</span><span>Chat</span></button>
+        <button><span>👤</span><span>Tôi</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================== COLUMN 3: AI OUTREACH CHAT =================== -->
+  <div>
+    <div class="pane-label" style="margin-bottom:8px;color:#6366F1;border-color:rgba(99,102,241,.3)"><span class="pd" style="background:#6366F1"></span>AI thay GT chăm khách · Zalo OA</div>
+    <div class="ai-phone">
+      <div class="ai-hdr">
+        <span class="ah-back">‹</span>
+        <div class="ah-ava" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces')"></div>
+        <div class="ah-who">
+          <div class="ah-n">Tạp Hoá Bác Hải <span class="ah-v">OA</span></div>
+          <div class="ah-s"><span class="sd"></span> Đang hoạt động · Trả lời tức thì</div>
+        </div>
+        <div class="ah-actions"><span>📞</span><span>📹</span><span>⋮</span></div>
+      </div>
+      <div class="ai-chat" id="aiChat">
+        <div style="text-align:center;font-size:8.5px;color:#9CA3AF;padding:6px 0">11:32 · Thứ Sáu, 11/04</div>
+
+        <!-- Greeting -->
+        <div class="ai-row ai-bot">
+          <div class="ai-m" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces')"></div>
+          <div>
+            <div class="ai-b">Chào Chị Trang! 🌸 Tiệm Bác Hải đây ạ. Con thấy Chị đã mua Omachi 3 tuần trước — chắc sắp hết rồi nhỉ? Con giữ giá sale cho Chị luôn nha!</div>
+            <div class="ai-t">11:32 · Gửi tự động qua WinX AI</div>
+          </div>
+        </div>
+
+        <!-- Product recommendation card -->
+        <div class="ai-row ai-bot">
+          <div class="ai-m" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces')"></div>
+          <div class="ai-reco">
+            <div class="ar-hdr">✨ Gợi ý cá nhân cho Chị Trang</div>
+            <div class="ar-body">
+              <div class="ar-grid">
+                <div class="ar-item">
+                  <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=200&auto=format"/>
+                  <div class="ari-n">Mì Omachi tôm</div>
+                  <div class="ari-p">5.500đ <span style="font-size:8px;color:#9CA3AF;text-decoration:line-through">6.500đ</span></div>
+                </div>
+                <div class="ar-item">
+                  <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=200&auto=format"/>
+                  <div class="ari-n">Vinamilk lốc 4</div>
+                  <div class="ari-p">28.000đ</div>
+                </div>
+                <div class="ar-item">
+                  <img src="https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=200&auto=format"/>
+                  <div class="ari-n">Chin-Su 500ml</div>
+                  <div class="ari-p">27.200đ</div>
+                </div>
+                <div class="ar-item">
+                  <img src="https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=200&auto=format"/>
+                  <div class="ari-n">Trứng gà 10q</div>
+                  <div class="ari-p">30.000đ</div>
+                </div>
+              </div>
+              <button class="ar-cta" onclick="aiShopNow()">🏪 Xem tiệm đầy đủ →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- User click simulated -->
+        <div class="ai-row ai-u">
+          <div>
+            <div class="ai-b">ồ có Omachi giảm giá hả. Để mình xem tiệm thử</div>
+            <div class="ai-t">11:33</div>
+          </div>
+        </div>
+
+        <!-- Bot response -->
+        <div class="ai-row ai-bot">
+          <div class="ai-m" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces')"></div>
+          <div>
+            <div class="ai-b">Dạ, Chị vào link này là thấy cả tiệm Bác liền. Flash sale còn 2h47p nữa thôi ạ 🔥</div>
+            <div class="ai-t">11:33</div>
+          </div>
+        </div>
+
+        <div class="ai-chips">
+          <button onclick="aiShopNow()">🏪 Mở mini-app</button>
+          <button>Hỏi món khác</button>
+        </div>
+
+        <!-- After checkout confirmation -->
+        <div class="ai-row ai-bot" id="aiPostCheckout" style="display:none">
+          <div class="ai-m" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces')"></div>
+          <div class="ai-conf">
+            <h4>✅ Đã nhận đơn #BH-2604-1147</h4>
+            <div class="acl"><span>Omachi tôm ×3</span><span>16.500đ</span></div>
+            <div class="acl"><span>Chin-Su 500ml ×1</span><span>27.200đ</span></div>
+            <div class="acl"><span>Vinamilk lốc 4 ×1</span><span>28.000đ</span></div>
+            <div class="acl acl-total"><span>Tổng</span><span>71.700đ</span></div>
+            <div class="ac-pickup">🚶 Ghé lấy tại <b>78 Nguyễn Tri Phương Q5</b> sau 15 phút · Bác Hải đang chuẩn bị</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="ai-input">
+        <span style="font-size:14px">😊</span>
+        <div class="aii-box">Nhập tin nhắn cho Bác Hải...</div>
+        <span>🎤</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /alpha-3col -->
+
+<!-- SECTION 2: How it fits together -->
+<div class="alpha-summary">
+  <h3>🧩 4 mảnh ghép · Vì sao GT retailer nên on-board ngay</h3>
+  <div class="as-grid">
+    <div class="as-item">
+      <div class="as-num">1</div>
+      <div class="as-title">GT = Shopify của tạp hoá</div>
+      <div class="as-body">Masan cung cấp storefront template + infra. GT chỉ cần chụp ảnh SKU, AI tự viết title/mô tả/gợi ý giá. 15 giây/SKU.</div>
+    </div>
+    <div class="as-item">
+      <div class="as-num">2</div>
+      <div class="as-title">Khách mua qua Zalo Mini-App</div>
+      <div class="as-body">Không cần cài app riêng. Khách bấm link → mini-app storefront → chọn hàng → pickup tại tiệm hoặc Bác giao tận ngõ (1km).</div>
+    </div>
+    <div class="as-item">
+      <div class="as-num">3</div>
+      <div class="as-title">AI chủ động kéo khách</div>
+      <div class="as-body">AI tự nhắn khách quen theo chu kỳ mua, cá nhân hoá SKU. GT không cần làm gì — AI thay GT chăm khách 24/7.</div>
+    </div>
+    <div class="as-item">
+      <div class="as-num">4</div>
+      <div class="as-title">Brand ads chia doanh thu</div>
+      <div class="as-body">Unilever, P&G trả tiền để hiển thị sản phẩm SPONSORED trong storefront. GT nhận 40% revenue share — thu nhập phụ hàng tháng.</div>
+    </div>
+  </div>
+  <div style="margin-top:14px;padding:12px 16px;background:rgba(249,115,22,.08);border:1px dashed rgba(249,115,22,.3);border-radius:10px;font-size:11px;color:rgba(255,255,255,.85);line-height:1.6">
+    <b style="color:#F97316">👉 Incentive cho GT:</b> Mỗi khách follow OA = WinCommerce trả GT thưởng <b>5.000đ/signup active</b>. Càng nhiều khách follow → AI càng hiệu quả → đơn online tăng → ad revenue tăng → Bác bán được nhiều hơn ở cả kênh online lẫn offline.
+  </div>
+</div>
+
+</div><!-- /alpha-view -->
+</div><!-- /view-alpha -->
+
 </div><!-- /relative z-10 -->
 
 <script>
@@ -2255,8 +2961,8 @@ let demoPaused=false;
 
 // VIEW SWITCHER
 function switchView(v){
-  const views=['demo','ads','intel'];
-  const displays={demo:'flex',ads:'block',intel:'block'};
+  const views=['demo','ads','intel','alpha'];
+  const displays={demo:'flex',ads:'block',intel:'block',alpha:'block'};
   views.forEach(id=>{
     const el=document.getElementById('view-'+id);
     if(el){el.style.display=id===v?displays[id]:'none';if(id===v)el.classList.add('view-enter');}
@@ -2453,6 +3159,69 @@ function setCampaign(btn,c){
   btn.classList.add('active');btn.style.color='#1C2B33';
   toast('Đã chuyển sang chiến dịch: '+btn.textContent.trim(),'good');
 }
+
+// ========= ALPHA: GT STOREFRONT =========
+
+// GT Admin tabs — toggle dash vs placeholder
+function gtaTab(btn,name){
+  btn.closest('.gtadmin-tabs').querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const dash=document.getElementById('gta-dash');
+  let placeholder=document.getElementById('gta-placeholder');
+  if(!placeholder){
+    placeholder=document.createElement('div');
+    placeholder.id='gta-placeholder';
+    dash.parentNode.appendChild(placeholder);
+  }
+  if(name==='dash'){
+    if(dash)dash.style.display='block';
+    placeholder.style.display='none';
+  } else {
+    const titles={skus:'📦 SKU của Bác',ai:'🤖 AI Campaign',orders:'🛍️ Đơn online',ads:'💰 Brand ads'};
+    const bodies={
+      skus:'Quản lý toàn bộ SKU: thêm/xoá/sửa giá · clone template từ Masan · bulk upload Excel · gắn category · đồng bộ tồn kho giữa online và offline.',
+      ai:'Chọn template campaign (nhắc mua lại, SKU mới, flash sale, birthday) · đặt target audience từ OA followers · xem A/B test · chi phí 0đ vì AI tự sinh nội dung.',
+      orders:'Lịch sử đơn online: filter theo ngày/khách/trạng thái · in hoá đơn · gán shipper cho delivery · export CSV · phân tích top khách hàng.',
+      ads:'Revenue share với brand: Unilever, P&G, Masan Consumer trả tiền để hiển thị SPONSORED trong storefront Bác · 40% về tay Bác · payout tháng qua TCB.'
+    };
+    placeholder.innerHTML=`<div style="padding:40px 20px;text-align:center;color:#9CA3AF"><div style="font-size:38px;margin-bottom:12px;opacity:.5">${(titles[name]||'').split(' ')[0]}</div><div style="font-size:13px;font-weight:800;color:#1C2B33;margin-bottom:8px">${(titles[name]||'').split(' ').slice(1).join(' ')}</div><div style="font-size:10.5px;line-height:1.6;max-width:340px;margin:0 auto;color:#65676B">${bodies[name]||''}</div><div style="margin-top:14px;display:inline-block;background:rgba(249,115,22,.08);border:1px dashed rgba(249,115,22,.3);border-radius:8px;padding:6px 14px;font-size:9px;color:#F97316;font-weight:700;letter-spacing:.3px">ALPHA · tab này đang trong design</div></div>`;
+    placeholder.style.display='block';
+    if(dash)dash.style.display='none';
+  }
+}
+
+// Cart for storefront
+let sfCart=[{n:'Omachi thùng 30',p:19500,q:1},{n:'Chin-Su 500ml',p:27200,q:1}];
+function sfRenderCart(){
+  const cnt=sfCart.reduce((s,c)=>s+c.q,0);
+  const tot=sfCart.reduce((s,c)=>s+c.p*c.q,0);
+  const cntEl=document.getElementById('sfCartCnt');if(cntEl)cntEl.textContent=cnt;
+  const cnt2=document.getElementById('sfCnt2');if(cnt2)cnt2.textContent=cnt;
+  const totEl=document.getElementById('sfTotal');if(totEl)totEl.textContent=tot.toLocaleString('vi-VN')+'đ';
+}
+function sfAddToCart(el,name,price){
+  const ex=sfCart.find(c=>c.n===name);
+  if(ex)ex.q++;else sfCart.push({n:name,p:price,q:1});
+  sfRenderCart();
+  // Pop animation on add button
+  const btn=el.querySelector('.sfp-add');if(btn){btn.textContent='✓';btn.style.background='#27AE60';setTimeout(()=>{btn.textContent='+';btn.style.background='#F97316';},800);}
+  toast('✓ Đã thêm: '+name,'good');
+}
+function sfCheckout(){
+  const tot=sfCart.reduce((s,c)=>s+c.p*c.q,0);
+  toast('✓ Đặt hàng #BH-2604-'+Math.floor(Math.random()*9000+1000)+' · '+tot.toLocaleString('vi-VN')+'đ · Ghé lấy trong 15 phút','good');
+  // Show the AI confirmation card if AI chat is visible
+  const conf=document.getElementById('aiPostCheckout');if(conf){conf.style.display='flex';conf.scrollIntoView({behavior:'smooth',block:'center'});}
+}
+
+// AI "shop now" - scroll to the storefront in the same view for emphasis
+function aiShopNow(){
+  const sf=document.querySelector('.sf-phone');if(sf){sf.scrollIntoView({behavior:'smooth',block:'center',inline:'center'});sf.animate([{boxShadow:'0 20px 50px rgba(0,0,0,.5),0 0 0 4px #F97316'},{boxShadow:'0 20px 50px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06)'}],{duration:1400});}
+  toast('🏪 Chị Trang vừa mở mini-app Bác Hải','good');
+}
+
+// Initialise storefront cart on load
+document.addEventListener('DOMContentLoaded',()=>{setTimeout(sfRenderCart,200);});
 
 // SYSTEM ACTIVATION
 function act(ids){ids.forEach(id=>{const e=document.getElementById(id);if(e)e.classList.add('on')});}
