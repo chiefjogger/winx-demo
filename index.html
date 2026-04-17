@@ -247,6 +247,146 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 .hm-low{background:rgba(255,255,255,.06);color:rgba(255,255,255,.4)}
 .hm-self{background:rgba(255,255,255,.02);color:rgba(255,255,255,.15)}
 
+/* =================== UX/UI POLISH LAYER v2 =================== */
+
+/* Smooth everywhere */
+*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+button,a,.zch,.psku,.zh-app,.sb-item,.pnav button{transition:all .18s cubic-bezier(.4,0,.2,1)}
+html{scroll-behavior:smooth}
+
+/* Modern tab switcher */
+.tabnav{display:inline-flex;gap:2px;padding:4px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:12px;backdrop-filter:blur(12px)}
+.tabnav button{padding:8px 16px;border-radius:9px;font-size:12px;font-weight:700;border:none;background:transparent;color:rgba(255,255,255,.55);cursor:pointer;transition:all .2s;letter-spacing:-.1px;white-space:nowrap}
+.tabnav button:hover{color:rgba(255,255,255,.85);background:rgba(255,255,255,.04)}
+.tabnav button.active{background:linear-gradient(135deg,#0068FF,#4A8FFF);color:#fff;box-shadow:0 2px 10px rgba(0,104,255,.3)}
+
+/* Phone frame refinement */
+.phone{position:relative;border-radius:22px;box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06),inset 0 1px 0 rgba(255,255,255,.1)}
+.phone::before{content:'';position:absolute;top:0;left:0;right:0;height:18px;background:linear-gradient(180deg,rgba(0,0,0,.04),transparent);pointer-events:none;z-index:5;border-radius:22px 22px 0 0}
+
+/* Panel cards */
+.sys.glass{border-radius:12px;transition:border-color .25s,box-shadow .25s,transform .2s}
+.sys.glass:hover{transform:translateY(-1px)}
+.sys.on{background:linear-gradient(135deg,rgba(0,104,255,.06),rgba(0,104,255,.02)) !important}
+
+/* Better chips */
+.zch{font-size:10px;padding:6px 12px;border-width:1.5px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.zch:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,104,255,.15)}
+
+/* Card rows */
+.pc{border-radius:12px;transition:box-shadow .2s,border-color .2s}
+.pc h3{font-size:12px;letter-spacing:-.1px}
+.psku{border-radius:10px}
+.psku:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,104,255,.12)}
+
+/* Pane label */
+.pane-label{display:inline-flex;align-items:center;gap:6px;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(8px)}
+.pane-label .pd{width:6px;height:6px;border-radius:50%;box-shadow:0 0 8px currentColor}
+
+/* Barcode scanner */
+.bc-scan{position:relative;margin:8px 0;background:linear-gradient(135deg,#0A1A2F,#0A2540);border-radius:10px;padding:10px 12px;overflow:hidden;border:1px solid rgba(0,104,255,.3);cursor:pointer}
+.bc-scan-view{height:64px;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,104,255,.15));border-radius:6px;border:1.5px dashed rgba(0,194,255,.5);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.bc-scan-line{position:absolute;left:8px;right:8px;top:50%;height:2px;background:linear-gradient(90deg,transparent,#00C2FF,transparent);box-shadow:0 0 10px #00C2FF;animation:scanLine 1.8s ease-in-out infinite}
+@keyframes scanLine{0%,100%{top:15%}50%{top:85%}}
+.bc-barcode{display:flex;gap:1px;height:28px;align-items:stretch;opacity:.85}
+.bc-barcode span{display:block;background:#fff}
+.bc-hint{font-size:9px;color:rgba(255,255,255,.6);font-weight:600;margin-top:6px;display:flex;align-items:center;justify-content:space-between}
+.bc-btn{font-size:9px;color:#00C2FF;font-weight:700;padding:3px 8px;border:1px solid rgba(0,194,255,.4);border-radius:4px;background:rgba(0,194,255,.08);cursor:pointer}
+.bc-btn:hover{background:rgba(0,194,255,.15)}
+
+/* Scanned item animation */
+@keyframes popScan{0%{transform:scale(.85);opacity:0;background:rgba(39,174,96,.25)}60%{transform:scale(1.02);background:rgba(39,174,96,.18)}100%{transform:scale(1);opacity:1;background:transparent}}
+.just-scanned{animation:popScan .55s ease}
+
+/* Goods Receipt */
+.gr-hero{background:linear-gradient(135deg,#6366F1,#818CF8);padding:12px 14px;border-radius:10px;color:#fff;margin-bottom:10px;position:relative;overflow:hidden}
+.gr-hero::before{content:'';position:absolute;right:-20px;top:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.08)}
+.gr-hero::after{content:'';position:absolute;right:-40px;bottom:-40px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.06)}
+.gr-hero .grh-title{font-size:13px;font-weight:800;margin-bottom:2px;position:relative;z-index:1}
+.gr-hero .grh-sub{font-size:10px;opacity:.85;position:relative;z-index:1;line-height:1.4}
+.gr-po{background:#fff;border:1.5px solid #6366F1;border-radius:10px;padding:10px;margin-bottom:8px;box-shadow:0 2px 8px rgba(99,102,241,.08)}
+.gr-po .pohdr{display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;padding-bottom:8px;border-bottom:1px dashed #E5E8EC}
+.gr-line{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:7px;background:#F8F9FA;margin-bottom:4px;font-size:10px}
+.gr-line .gl-name{flex:1;font-weight:600;color:#1B2A4A}
+.gr-line .gl-qty{font-weight:800;color:#137333}
+.gr-line .gl-status{font-size:8px;font-weight:700;padding:2px 6px;border-radius:4px}
+.gr-line .gl-status-ok{background:#D1FAE5;color:#065F46}
+.gr-line .gl-status-wait{background:#FEF3C7;color:#92400E}
+.gr-line .gl-status-short{background:#FEE2E2;color:#991B1B}
+
+/* Toast */
+.toast-bar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:100;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:rgba(20,30,50,.95);color:#fff;padding:10px 16px;border-radius:10px;font-size:12px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(16px);animation:tIn .3s ease,tOut .3s ease 2.3s forwards}
+@keyframes tIn{from{opacity:0;transform:translateY(20px)}to{opacity:1}}
+@keyframes tOut{to{opacity:0;transform:translateY(20px)}}
+
+/* Pane 4 richer styles */
+.lite-quick{display:flex;flex-wrap:wrap;gap:5px;padding:6px 8px 0}
+.lite-quick button{background:#F3F4F6;border:1px solid #E5E7EB;color:#374151;font-size:9px;font-weight:700;padding:5px 10px;border-radius:14px;cursor:pointer}
+.lite-quick button:hover{background:#EEF2FF;border-color:#6366F1;color:#6366F1}
+
+/* Ads Portal funnel buckets */
+.funnel-bucket{background:linear-gradient(135deg,#fff,#FAFBFC);border:1px solid #E4E6EB;border-radius:12px;padding:14px;position:relative;overflow:hidden}
+.funnel-bucket::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--ftype,#0068FF)}
+.fb-awareness{--ftype:linear-gradient(90deg,#F59E0B,#FBBF24)}
+.fb-consideration{--ftype:linear-gradient(90deg,#6366F1,#818CF8)}
+.fb-conversion{--ftype:linear-gradient(90deg,#0068FF,#00C2FF)}
+.fb-retention{--ftype:linear-gradient(90deg,#27AE60,#5EF38C)}
+.fb-label{display:inline-flex;align-items:center;gap:6px;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:10px;margin-bottom:10px}
+.fb-metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.fb-metric{background:#F8F9FA;border-radius:8px;padding:8px 10px}
+.fb-metric .fbv{font-size:16px;font-weight:800;color:#1C2B33;line-height:1.1}
+.fb-metric .fbl{font-size:9px;color:#65676B;margin-top:2px;font-weight:600}
+.fb-metric .fbc{font-size:9px;color:#137333;font-weight:700;margin-top:2px}
+.fb-metric .fbc-neutral{color:#65676B}
+.fb-metric .fbc-warn{color:#B06000}
+
+/* Verdict pill */
+.verdict{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:.02em}
+.verdict-good{background:#D1FAE5;color:#065F46;border:1px solid #86EFAC}
+.verdict-watch{background:#FEF3C7;color:#92400E;border:1px solid #FBBF24}
+.verdict-bad{background:#FEE2E2;color:#991B1B;border:1px solid #FCA5A5}
+
+/* Section header for ads portal */
+.ads-section-hdr{display:flex;align-items:center;justify-content:space-between;padding:0 2px;margin:22px 0 12px}
+.ads-section-hdr h2{font-size:13px;font-weight:800;color:#1C2B33;letter-spacing:-.2px;display:flex;align-items:center;gap:10px}
+.ads-section-hdr .ash-num{width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,#0068FF,#4A8FFF);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900}
+
+/* Enhanced scrollbar */
+.zma-body::-webkit-scrollbar{width:4px}
+.zma-body::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#D0D5DD,#B0B5BD);border-radius:2px}
+.zchat::-webkit-scrollbar{width:3px}
+.zchat::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#C0C8D0,#A0A8B0);border-radius:2px}
+
+/* Masthead polish */
+.masthead-logo{position:relative}
+.masthead-logo::after{content:'';position:absolute;inset:-4px;border-radius:12px;background:radial-gradient(circle,rgba(0,194,255,.3),transparent 70%);z-index:-1;filter:blur(8px);opacity:.6}
+
+/* Fade-in stagger */
+.stagger>*{animation:fadeUp .5s ease backwards}
+.stagger>*:nth-child(1){animation-delay:.05s}
+.stagger>*:nth-child(2){animation-delay:.1s}
+.stagger>*:nth-child(3){animation-delay:.15s}
+.stagger>*:nth-child(4){animation-delay:.2s}
+.stagger>*:nth-child(5){animation-delay:.25s}
+.stagger>*:nth-child(6){animation-delay:.3s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Improved ads KPIs */
+.adp-kpi{background:linear-gradient(135deg,#fff,#FAFBFC);border-radius:14px;position:relative;overflow:hidden}
+.adp-kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0068FF,#00C2FF);opacity:.7}
+.adp-kpi:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.06)}
+.adp-kpi .kv{letter-spacing:-.5px;line-height:1.1}
+.adp-kpi .kl{font-weight:600;margin-top:4px}
+
+/* Form polish */
+input[type="text"]:focus,input[type="number"]:focus,input[type="search"]:focus{outline:none;border-color:#0068FF !important;box-shadow:0 0 0 3px rgba(0,104,255,.1) !important}
+
+/* Divider label */
+.divider-label{display:flex;align-items:center;gap:10px;margin:16px 0 10px}
+.divider-label .dl-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent)}
+.divider-label .dl-text{font-size:9px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
 .seg-card{padding:12px}
 .seg-card h4{font-size:10px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
 .seg-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:10px;color:rgba(255,255,255,.7)}
@@ -276,22 +416,32 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 <div class="relative z-10">
 
 <!-- WINX MASTHEAD -->
-<div class="flex items-center justify-between px-5 pt-4 pb-1">
-  <div class="flex items-center gap-2">
-    <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#0068FF,#00C2FF);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;box-shadow:0 2px 8px rgba(0,104,255,.3)">W</div>
+<div class="flex items-center justify-between px-6 pt-5 pb-3">
+  <div class="flex items-center gap-3">
+    <div class="masthead-logo" style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#0068FF 0%,#00C2FF 60%,#4A8FFF 100%);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;box-shadow:0 4px 16px rgba(0,104,255,.4),inset 0 1px 0 rgba(255,255,255,.3)">W</div>
     <div>
-      <div style="font-size:15px;font-weight:900;color:#fff;letter-spacing:-.3px">WinX</div>
-      <div style="font-size:7px;color:rgba(255,255,255,.3);font-weight:600;letter-spacing:1px;text-transform:uppercase">Consumer-Retail Platform</div>
+      <div style="font-size:18px;font-weight:900;color:#fff;letter-spacing:-.4px;line-height:1">WinX</div>
+      <div style="font-size:8px;color:rgba(255,255,255,.45);font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-top:3px">Consumer · Retail · Fintech · Ads</div>
     </div>
   </div>
-  <div style="font-size:8px;color:rgba(255,255,255,.2);font-weight:500">Powered by Masan Group</div>
+  <div class="flex items-center gap-3">
+    <div style="display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.2)">
+      <span style="width:6px;height:6px;border-radius:50%;background:#5EF38C;box-shadow:0 0 6px #5EF38C;animation:zbb 1.4s infinite"></span>
+      <span style="font-size:9px;color:#5EF38C;font-weight:700;letter-spacing:.3px">LIVE DEMO</span>
+    </div>
+    <div style="font-size:9px;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:.5px">Powered by Masan Group</div>
+  </div>
 </div>
 
 <!-- TOP VIEW SWITCHER -->
-<div class="flex items-center gap-2 px-5 pt-3 pb-2" style="border-bottom:1px solid rgba(255,255,255,.06)">
-  <button id="tab-demo" onclick="switchView('demo')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff">WinX Demo — Omni-Channel</button>
-  <button id="tab-ads" onclick="switchView('ads')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">WinX Ads Portal — Góc nhìn nhà tài trợ</button>
-  <button id="tab-intel" onclick="switchView('intel')" class="px-4 py-2 rounded-lg text-xs font-bold transition border" style="background:transparent;border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.5)">WinX Intelligence</button>
+<div class="flex items-center gap-4 px-6 pt-1 pb-4" style="border-bottom:1px solid rgba(255,255,255,.05)">
+  <div class="tabnav">
+    <button id="tab-demo" onclick="switchView('demo')" class="active">🌐 Omni-Channel Demo</button>
+    <button id="tab-ads" onclick="switchView('ads')">📊 WinX Ads Portal</button>
+    <button id="tab-intel" onclick="switchView('intel')">🧠 Intelligence</button>
+  </div>
+  <div style="flex:1"></div>
+  <div style="font-size:10px;color:rgba(255,255,255,.35);font-weight:600">Scroll horizontally to see all 4 channels →</div>
 </div>
 
 <!-- ============ VIEW 1: OMNI-CHANNEL DEMO ============ -->
@@ -657,7 +807,7 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           <div class="pr"><span>WinEco rau sạch: Giảm 15%</span><span class="pbdg bg-blue-100 text-blue-700">Từ 12/4</span></div>
         </div>
         <div class="pc" style="border-color:rgba(255,140,40,.3);background:linear-gradient(135deg,rgba(255,150,50,.04),#fff)">
-          <h3 style="color:#FF8C28"><span style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;margin-right:4px">NE</span>New Era</h3>
+          <h3 style="color:#FF8C28"><span style="width:20px;height:20px;border-radius:6px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:inline-flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;margin-right:4px">EF</span>Embedded Financing</h3>
           <div style="display:flex;gap:6px;margin-bottom:6px">
             <div style="flex:1;background:linear-gradient(135deg,rgba(255,140,40,.08),rgba(255,140,40,.02));border:1px solid rgba(255,140,40,.15);border-radius:7px;padding:6px;text-align:center">
               <div style="font-size:14px;font-weight:800;color:#FF8C28">1,82tr</div>
@@ -684,12 +834,23 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
 
       <!-- BÁN HÀNG -->
       <div id="pv-sell" style="display:none">
-        <div class="pc"><h3>Bán hàng nhanh</h3>
-          <div style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);border-radius:6px;padding:4px 8px;margin-bottom:8px;display:flex;align-items:center;gap:4px">
-            <span style="font-size:8px;font-weight:700;color:#6366F1;background:rgba(99,102,241,.15);padding:1px 5px;border-radius:3px">TO INTEGRATE</span>
-            <span style="font-size:8px;color:rgba(99,102,241,.6)">Đặt đơn, nhập hàng, thanh toán: tích hợp với POS hardware & payment gateway</span>
+        <div class="pc"><h3>🛒 Bán hàng nhanh <span class="badge" style="font-size:8px;background:#E7F3FF;color:#0068FF;padding:2px 7px;border-radius:10px;margin-left:auto">POS Zalo Mini-App</span></h3>
+
+          <!-- BARCODE SCANNER -->
+          <div class="bc-scan" id="bcScanBox" onclick="simulateBarcode()">
+            <div class="bc-scan-view">
+              <div class="bc-scan-line"></div>
+              <div class="bc-barcode">
+                <span style="width:2px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:2px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:3px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:2px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:2px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:1px"></span><span style="width:2px"></span>
+              </div>
+            </div>
+            <div class="bc-hint">
+              <span>📷 Chạm để quét — Camera Zalo · kết nối máy quét USB/BT</span>
+              <span class="bc-btn" id="bcScanBtn">Quét ngay</span>
+            </div>
           </div>
-          <input type="text" placeholder="Quét mã vạch hoặc tìm sản phẩm..." class="w-full border border-gray-200 rounded-lg px-3 py-2 text-[10px] mb-2 outline-none focus:border-blue-400"/>
+
+          <input type="text" placeholder="🔍 Hoặc gõ tên/mã SKU..." class="w-full border border-gray-200 rounded-lg px-3 py-2 text-[10px] mb-2 outline-none focus:border-blue-400"/>
           <div class="pgrid">
             <div class="psku" onclick="addC('Chin-Su 500ml',32000)"><img src="https://images.unsplash.com/photo-1472476443507-c7a5948772fc?w=200&auto=format"/><div class="nm">Chin-Su 500ml</div><div class="pri">32.000đ</div></div>
             <div class="psku" onclick="addC('Omachi tôm',5500)"><img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=200&auto=format"/><div class="nm">Omachi tôm</div><div class="pri">5.500đ</div></div>
@@ -722,10 +883,10 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           <div class="flex gap-2 mt-2"><button class="pbtn pbtn-o flex-1" onclick="clrC()">Huỷ</button><button class="pbtn pbtn-r flex-1" onclick="payC()">Thanh toán</button></div>
           <div style="margin-top:6px;padding:6px 8px;background:linear-gradient(135deg,rgba(255,150,50,.06),rgba(255,120,20,.03));border:1px solid rgba(255,140,40,.2);border-radius:8px;cursor:pointer" onclick="payC()">
             <div style="display:flex;align-items:center;gap:5px">
-              <div style="width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:#fff">NE</div>
+              <div style="width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:#fff">EF</div>
               <div style="flex:1">
                 <div style="font-size:9px;font-weight:700;color:#FF8C28">Pay Later — Vốn lưu động</div>
-                <div style="font-size:8px;color:#999">New Era • Trả sau 30 ngày, 0% lãi đơn đầu</div>
+                <div style="font-size:8px;color:#999">Embedded Financing • Trả sau 30 ngày, 0% lãi đơn đầu</div>
                 <div style="font-size:6.5px;margin-top:2px"><span style="background:#E30613;color:#fff;font-weight:700;padding:1px 3px;border-radius:2px;font-size:5.5px;letter-spacing:.3px">SBV</span> <span style="color:#E30613;font-weight:600">eKYC review pending</span></div>
               </div>
               <span style="font-size:10px;color:rgba(255,140,40,.5)">&#x276F;</span>
@@ -749,8 +910,8 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
             <div class="pr"><span>Omachi thùng 30 gói<br/><span class="text-[9px] text-gray-400">Tồn: 12 gói, bán TB: 3,6/ngày</span></span><button class="pbtn pbtn-p" onclick="this.textContent='Đã thêm';this.disabled=true">Thêm</button></div>
             <div style="margin-top:6px;padding:7px 8px;background:linear-gradient(135deg,rgba(255,150,50,.06),rgba(255,120,20,.02));border:1px solid rgba(255,140,40,.18);border-radius:8px">
               <div style="display:flex;align-items:center;gap:5px;margin-bottom:4px">
-                <div style="width:16px;height:16px;border-radius:4px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#fff">NE</div>
-                <span style="font-size:9px;font-weight:700;color:#FF8C28">New Era — Pay Later</span>
+                <div style="width:16px;height:16px;border-radius:4px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#fff">EF</div>
+                <span style="font-size:9px;font-weight:700;color:#FF8C28">Embedded Financing — Pay Later</span>
               </div>
               <div style="font-size:8.5px;color:#666;line-height:1.4">Đặt hàng ngay, trả sau 30 ngày. Hạn mức <b style="color:#FF8C28">7,8 triệu</b> khả dụng. Lãi 0% đơn đầu tiên.</div>
               <button class="pbtn w-full mt-1.5" style="background:linear-gradient(135deg,#FF8C28,#FF6B00);color:#fff;font-size:9px;padding:5px" onclick="this.textContent='✓ Đã bật Pay Later cho đơn này';this.disabled=true;this.style.background='#27AE60'">Bật Pay Later cho đơn này</button>
@@ -775,6 +936,144 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
         </div>
       </div>
 
+      <!-- NHẬP KHO / GOODS RECEIPT -->
+      <div id="pv-receive" style="display:none">
+        <div class="gr-hero">
+          <div style="display:flex;align-items:start;gap:10px;position:relative;z-index:1">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📦</div>
+            <div style="flex:1">
+              <div class="grh-title">Nhập hàng vào kho</div>
+              <div class="grh-sub">Quét mã vạch lô hàng · đối chiếu đơn đặt · cập nhật tồn kho</div>
+            </div>
+            <div style="background:rgba(255,255,255,.2);color:#fff;font-size:8px;font-weight:800;padding:3px 8px;border-radius:6px;letter-spacing:.3px">LIVE</div>
+          </div>
+        </div>
+
+        <!-- Open POs to receive -->
+        <div class="pc"><h3>📋 Đơn đặt hàng chờ nhận</h3>
+
+          <div class="gr-po">
+            <div class="pohdr">
+              <div>
+                <div style="font-size:11px;font-weight:800;color:#1B2A4A">PO-#MS2604-0418</div>
+                <div style="font-size:9px;color:#65676B;margin-top:1px">Masan Retail Supreme · Đặt 09/04/2026</div>
+              </div>
+              <div style="text-align:right">
+                <div style="background:#FEF3C7;color:#92400E;font-size:8px;font-weight:800;padding:3px 8px;border-radius:6px;letter-spacing:.3px">ĐANG GIAO</div>
+                <div style="font-size:9px;color:#65676B;margin-top:2px">ETA: 10:30 sáng nay</div>
+              </div>
+            </div>
+            <div style="margin-bottom:6px;font-size:10px;color:#65676B;display:flex;justify-content:space-between">
+              <span>Giá trị đơn: <b style="color:#1B2A4A">1.847.000đ</b></span>
+              <span>7 SKU · 124 đơn vị</span>
+            </div>
+            <button class="pbtn pbtn-p w-full" onclick="startReceive('PO-#MS2604-0418')" style="font-size:10px;padding:8px">📷 Bắt đầu quét & nhận hàng</button>
+          </div>
+
+          <div class="gr-po" style="border-color:#E5E8EC;box-shadow:none;opacity:.75">
+            <div class="pohdr" style="border:none;padding:0;margin:0">
+              <div>
+                <div style="font-size:11px;font-weight:800;color:#1B2A4A">PO-#UNI2604-0402</div>
+                <div style="font-size:9px;color:#65676B;margin-top:1px">Unilever · Omo promo Q2 · Giao 12/04</div>
+              </div>
+              <div style="background:#F0F2F5;color:#65676B;font-size:8px;font-weight:800;padding:3px 8px;border-radius:6px">CHỜ GIAO</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active receiving session -->
+        <div class="pc" id="grSession" style="display:none;border-color:#6366F1">
+          <h3>🔍 Đang nhận <span id="grPO" style="font-size:9px;color:#6366F1;margin-left:auto"></span></h3>
+
+          <!-- Barcode scanner -->
+          <div class="bc-scan" style="background:linear-gradient(135deg,#1E1B4B,#312E81);border-color:rgba(129,140,248,.4)" onclick="simulateReceiveScan()">
+            <div class="bc-scan-view" style="border-color:rgba(129,140,248,.5)">
+              <div class="bc-scan-line" style="background:linear-gradient(90deg,transparent,#A5B4FC,transparent);box-shadow:0 0 10px #A5B4FC"></div>
+              <div class="bc-barcode">
+                <span style="width:3px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:2px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:3px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:2px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:2px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:3px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:1px"></span><span style="width:3px"></span>
+              </div>
+            </div>
+            <div class="bc-hint">
+              <span>📷 Quét mã thùng hàng từ Masan</span>
+              <span class="bc-btn" style="color:#A5B4FC;border-color:rgba(165,180,252,.4);background:rgba(165,180,252,.1)">Quét thùng tiếp</span>
+            </div>
+          </div>
+
+          <div style="margin-top:10px;font-size:10px;font-weight:700;color:#1B2A4A;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center">
+            <span>Đối chiếu với PO</span>
+            <span style="font-size:9px;color:#65676B"><span id="grMatchedCount">0</span>/7 SKU đã nhận</span>
+          </div>
+
+          <!-- PO lines for matching -->
+          <div id="grLines">
+            <div class="gr-line" data-sku="chinsu500">
+              <span class="gl-name">Chin-Su 500ml (thùng 12)</span>
+              <span class="gl-qty">×3 thùng</span>
+              <span class="gl-status gl-status-wait">Chờ quét</span>
+            </div>
+            <div class="gr-line" data-sku="omachi">
+              <span class="gl-name">Omachi tôm chua cay (thùng 30)</span>
+              <span class="gl-qty">×2 thùng</span>
+              <span class="gl-status gl-status-wait">Chờ quét</span>
+            </div>
+            <div class="gr-line" data-sku="kokomi">
+              <span class="gl-name">Kokomi đại 90g (thùng 30)</span>
+              <span class="gl-qty">×2 thùng</span>
+              <span class="gl-status gl-status-wait">Chờ quét</span>
+            </div>
+            <div class="gr-line" data-sku="chinsu-sauce">
+              <span class="gl-name">Tương ớt Chin-Su 250g (thùng 24)</span>
+              <span class="gl-qty">×2 thùng</span>
+              <span class="gl-status gl-status-wait">Chờ quét</span>
+            </div>
+            <div class="gr-line" data-sku="ponnie">
+              <span class="gl-name">Xúc xích Ponnie gói 5 (thùng 20)</span>
+              <span class="gl-qty">×3 thùng</span>
+              <span class="gl-status gl-status-wait">Chờ quét</span>
+            </div>
+            <div class="gr-line" data-sku="neptune">
+              <span class="gl-name">Dầu ăn Neptune 1L (thùng 12)</span>
+              <span class="gl-qty">×2 thùng</span>
+              <span class="gl-status gl-status-wait">Chờ quét</span>
+            </div>
+            <div class="gr-line" data-sku="milo">
+              <span class="gl-name">Milo hộp 180ml (thùng 48)</span>
+              <span class="gl-qty">×1 thùng</span>
+              <span class="gl-status gl-status-wait">Chờ quét</span>
+            </div>
+          </div>
+
+          <div style="margin-top:10px;padding:8px;background:linear-gradient(135deg,#F0F9FF,#E0F2FE);border:1px solid #BAE6FD;border-radius:8px;font-size:9px;color:#0C4A6E;line-height:1.4">
+            <b>💡 Tự động:</b> Sau khi quét đủ, hệ thống cập nhật tồn kho WinX Shop, tính credit score với TCB, và hiển thị số SKU bổ sung nên đặt tuần sau (AI forecast).
+          </div>
+
+          <div class="flex gap-2 mt-2">
+            <button class="pbtn pbtn-o flex-1" onclick="cancelReceive()" style="font-size:10px">Thoát</button>
+            <button class="pbtn pbtn-p flex-1" id="grFinishBtn" onclick="finishReceive()" disabled style="font-size:10px;opacity:.5">Xác nhận nhận đủ</button>
+          </div>
+        </div>
+
+        <!-- Manual entry fallback -->
+        <div class="pc" style="border-color:rgba(99,102,241,.2)">
+          <h3>✍️ Nhập thủ công (không có mã vạch)</h3>
+          <div style="font-size:9px;color:#65676B;margin-bottom:8px">Với hàng GT mua lẻ từ chợ đầu mối hoặc NPP chưa có barcode</div>
+          <input type="text" placeholder="Tên sản phẩm" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-[10px] mb-2 outline-none focus:border-indigo-400"/>
+          <div class="grid grid-cols-2 gap-2 mb-2">
+            <input type="number" placeholder="Số lượng" class="border border-gray-200 rounded-lg px-3 py-2 text-[10px] outline-none focus:border-indigo-400"/>
+            <input type="number" placeholder="Giá nhập (đ)" class="border border-gray-200 rounded-lg px-3 py-2 text-[10px] outline-none focus:border-indigo-400"/>
+          </div>
+          <button class="pbtn pbtn-o w-full" style="font-size:10px;padding:6px" onclick="this.textContent='✓ Đã thêm vào kho';this.style.background='#27AE60';this.style.color='#fff';this.style.borderColor='#27AE60'">+ Thêm vào kho</button>
+        </div>
+
+        <!-- Recent receipts -->
+        <div class="pc">
+          <h3>🕒 Lịch sử nhập gần đây</h3>
+          <div class="pr"><span>PO-#MS2604-0411<br/><span class="text-[9px] text-gray-400">Masan · 5 SKU · 93 đơn vị</span></span><span class="pbdg bg-green-100 text-green-700">✓ 11/04</span></div>
+          <div class="pr"><span>Hoàng Long NPP<br/><span class="text-[9px] text-gray-400">Omachi thùng · 8 thùng</span></span><span class="pbdg bg-green-100 text-green-700">✓ 09/04</span></div>
+          <div class="pr"><span>PO-#MS2604-0405<br/><span class="text-[9px] text-gray-400">Masan · 4 SKU · 71 đơn vị</span></span><span class="pbdg bg-green-100 text-green-700">✓ 05/04</span></div>
+        </div>
+      </div>
+
       <!-- SỔ NỢ -->
       <div id="pv-debt" style="display:none">
         <div class="pc"><h3>Sổ nợ khách hàng</h3>
@@ -784,11 +1083,11 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
           <div class="flex justify-between items-center mt-2 pt-2 border-t border-gray-100"><span class="font-bold text-[10px] text-gray-600">Tổng nợ:</span><span class="font-bold text-xs text-red-600">292.000đ</span></div>
         </div>
         <div class="pc" style="border-color:rgba(255,140,40,.25);background:linear-gradient(135deg,rgba(255,150,50,.03),#fff)">
-          <h3 style="color:#FF8C28"><span style="width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:#fff;margin-right:3px">NE</span>New Era — Tài chính cửa hàng</h3>
+          <h3 style="color:#FF8C28"><span style="width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,#FF8C28,#FF6B00);display:inline-flex;align-items:center;justify-content:center;font-size:8px;font-weight:900;color:#fff;margin-right:3px">EF</span>Embedded Financing — Tài chính cửa hàng</h3>
           <div class="pr"><span>Doanh thu tháng 4</span><span class="font-bold text-green-600">18,7 triệu</span></div>
           <div class="pr"><span>Chi phí nhập hàng</span><span class="font-bold">14,2 triệu</span></div>
           <div class="pr"><span>Lợi nhuận gộp</span><span class="font-bold text-green-600">4,5 triệu (24%)</span></div>
-          <div class="pr" style="border-color:rgba(255,140,40,.12)"><span style="color:#FF8C28;font-weight:600">Thấu chi New Era</span><span class="font-bold" style="color:#FF8C28">10 triệu</span></div>
+          <div class="pr" style="border-color:rgba(255,140,40,.12)"><span style="color:#FF8C28;font-weight:600">Thấu chi (Embedded Financing)</span><span class="font-bold" style="color:#FF8C28">10 triệu</span></div>
           <div class="pr" style="border-color:rgba(255,140,40,.12)"><span style="color:#FF8C28;font-weight:600">Số dư sinh lời TCB</span><span class="font-bold" style="color:#FF8C28">1,82 triệu</span></div>
           <div class="pr" style="border-bottom:none"><span style="color:#FF8C28;font-weight:600">Lãi tích luỹ tháng 4</span><span class="font-bold" style="color:#27AE60">+5.300đ</span></div>
           <div style="margin-top:6px;padding:6px;background:linear-gradient(135deg,rgba(255,140,40,.06),rgba(255,140,40,.02));border:1px dashed rgba(255,140,40,.2);border-radius:6px;font-size:8px;color:#999;text-align:center">
@@ -834,13 +1133,14 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
     <div class="pnav" id="posNav">
       <button class="active" onclick="showPV('dash',this)"><span style="font-size:14px">&#x1F3E0;</span><span>Tổng quan</span></button>
       <button onclick="showPV('sell',this)"><span style="font-size:14px">&#x1F6D2;</span><span>Bán hàng</span></button>
-      <button onclick="showPV('order',this)"><span style="font-size:14px">&#x1F4E6;</span><span>Đặt hàng</span></button>
+      <button onclick="showPV('receive',this)"><span style="font-size:14px">&#x1F4E6;</span><span>Nhập kho</span></button>
+      <button onclick="showPV('order',this)"><span style="font-size:14px">&#x1F4DD;</span><span>Đặt hàng</span></button>
       <button onclick="showPV('debt',this)"><span style="font-size:14px">&#x1F4D2;</span><span>Sổ nợ</span></button>
       <button onclick="showPV('rpt',this)"><span style="font-size:14px">&#x1F4C8;</span><span>Báo cáo</span></button>
     </div>
     <div style="position:absolute;bottom:38px;left:8px;right:8px;padding:5px 8px;background:linear-gradient(135deg,rgba(255,150,50,.95),rgba(255,107,0,.95));border-radius:8px 8px 0 0;display:flex;align-items:center;gap:6px;box-shadow:0 -2px 12px rgba(255,140,40,.2)" id="winxFinBar">
-      <div style="width:16px;height:16px;border-radius:4px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#fff">NE</div>
-      <div style="flex:1;font-size:8px;color:#fff"><b>New Era</b> · +2.400.000đ vừa gửi sinh lời TCB</div>
+      <div style="width:16px;height:16px;border-radius:4px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#fff">EF</div>
+      <div style="flex:1;font-size:8px;color:#fff"><b>Embedded Financing</b> · +2.400.000đ vừa gửi sinh lời TCB</div>
       <span style="font-size:10px;color:rgba(255,255,255,.6);cursor:pointer" onclick="document.getElementById('winxFinBar').style.display='none'">&#x2715;</span>
     </div>
   </div>
@@ -860,35 +1160,49 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
   </div>
 
   <!-- LITE INTERNAL PANEL -->
-  <div class="text-[9px] font-bold tracking-widest text-purple-400 uppercase mb-1">WinX Lite: Không cần cài app</div>
+  <div class="text-[9px] font-bold tracking-widest text-purple-400 uppercase mb-1">WinX Lite · POS qua Zalo chat, không cần cài app</div>
   <div class="grid grid-cols-2 gap-2">
     <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="lite-profile">
       <div class="pulse-dot"></div>
       <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">HỒ SƠ TIỆM</div></div>
-      <div class="dl">Bác Năm: <span class="text-white/70 font-medium">Tạp hoá 22 Nguyễn Công Trứ</span></div>
-      <div class="dl">Loại: <span class="text-purple-300 font-medium">Lite (chỉ Zalo chat)</span></div>
-      <div class="dl">Đặt hàng/tháng: <span class="text-white/70 font-medium">8 lần qua Zalo</span></div>
+      <div class="dl">Bác Năm: <span class="text-white/70 font-medium">Tạp hoá 22 NCT, Q1</span></div>
+      <div class="dl">Tuổi: <span class="text-white/70 font-medium">62 · Ngại app smartphone</span></div>
+      <div class="dl">Kênh: <span class="text-purple-300 font-medium">100% Zalo chat</span></div>
     </div>
     <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="lite-intent">
       <div class="pulse-dot"></div>
-      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">NLU / INTENT ENGINE</div></div>
-      <div class="dl">Input: <span class="text-white/70 font-medium">"nhập 10 thùng Omachi"</span></div>
-      <div class="dl">Intent: <span class="text-purple-300 font-medium">ORDER_STOCK</span></div>
-      <div class="dl">Entity: <span class="text-white/70 font-medium">Omachi, 10 thùng</span></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">NLU / INTENT</div></div>
+      <div class="dl">Last input: <span class="text-white/70 font-medium" id="liteLastInput">—</span></div>
+      <div class="dl">Intent: <span class="text-purple-300 font-medium" id="liteIntent">IDLE</span></div>
+      <div class="dl">Confidence: <span class="text-white/70 font-medium" id="liteConf">—</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="lite-pos">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">POS-OVER-CHAT</div></div>
+      <div class="dl">Giỏ hàng hiện tại: <span class="text-white/70 font-medium" id="liteCartSz">0 món</span></div>
+      <div class="dl">Tổng: <span class="text-yellow-400 font-medium" id="liteCartTot">0đ</span></div>
+      <div class="dl">Khách: <span class="text-white/70 font-medium" id="liteCust">—</span></div>
     </div>
     <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="lite-retail">
       <div class="pulse-dot"></div>
       <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">RETAIL SUPREME API</div></div>
-      <div class="dl">SKU match: <span class="text-white/70 font-medium">Omachi tôm chua cay, thùng 30</span></div>
-      <div class="dl">Giá NPP: <span class="text-green-400 font-medium">148.000đ/thùng</span></div>
-      <div class="dl">Tồn kho NPP: <span class="text-white/70 font-medium">Có sẵn</span></div>
+      <div class="dl">SKU match: <span class="text-white/70 font-medium" id="liteSku">—</span></div>
+      <div class="dl">Giá NPP: <span class="text-green-400 font-medium" id="litePrice">—</span></div>
+      <div class="dl">Tồn kho: <span class="text-white/70 font-medium" id="liteStock">—</span></div>
+    </div>
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="lite-debt">
+      <div class="pulse-dot"></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">SỔ NỢ QUA CHAT</div></div>
+      <div class="dl">Ghi nợ: <span class="text-orange-300 font-medium">Chị Bình (-85k)</span></div>
+      <div class="dl">Thu nợ tuần: <span class="text-green-400 font-medium">+220k</span></div>
+      <div class="dl">Nhắc tự động: <span class="text-white/70 font-medium">Zalo OA push</span></div>
     </div>
     <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="lite-value">
       <div class="pulse-dot"></div>
       <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">GIÁ TRỊ LITE</div></div>
-      <div class="dl">GT không cần app: <span class="text-purple-300 font-medium">100% qua Zalo</span></div>
-      <div class="dl">Onboard: <span class="text-white/70 font-medium">Chỉ cần follow OA</span></div>
-      <div class="dl">Upsell: <span class="text-white/70 font-medium">Lite → Full WinX Shop</span></div>
+      <div class="dl">Không cài app: <span class="text-purple-300 font-medium">100% qua Zalo</span></div>
+      <div class="dl">Onboard: <span class="text-white/70 font-medium">Follow OA là xong</span></div>
+      <div class="dl">Upsell: <span class="text-white/70 font-medium">Lite → WinX Shop</span></div>
     </div>
   </div>
 </div>
@@ -969,33 +1283,277 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       </div>
     </div>
 
+    <!-- CAMPAIGN SWITCHER -->
+    <div class="adp-card" style="padding:12px 16px;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="font-size:11px;color:#65676B;font-weight:700">Chiến dịch:</div>
+      <div class="tabnav" style="background:#F0F2F5;border-color:#E4E6EB">
+        <button class="active" style="color:#1C2B33" onclick="setCampaign(this,'omo')">🧺 Omo Matic (Conversion)</button>
+        <button style="color:#65676B" onclick="setCampaign(this,'omachi')">🍜 Omachi (Awareness + Signup)</button>
+        <button style="color:#65676B" onclick="setCampaign(this,'milo')">🥛 Milo (Brand push)</button>
+      </div>
+      <div style="flex:1"></div>
+      <div style="font-size:10px;color:#65676B">Tổng chi Q2: <b style="color:#1C2B33">2,14 tỷ</b> · Tổng revenue attributed: <b style="color:#137333">5,8 tỷ</b></div>
+    </div>
+
     <!-- KPI ROW -->
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px">
       <div class="adp-kpi">
         <div class="kv" style="color:#0068FF">3,8x</div>
-        <div class="kl">ROAS tổng</div>
-        <div class="kd" style="color:#137333">▲ +1,7x vs Facebook Ads</div>
+        <div class="kl">Blended ROAS</div>
+        <div class="kd" style="color:#137333">▲ +1,7x vs Meta</div>
       </div>
       <div class="adp-kpi">
-        <div class="kv" style="color:#1C2B33">125.000</div>
-        <div class="kl">Impressions</div>
-        <div class="kd" style="color:#137333">▲ +34% vs tháng 3</div>
+        <div class="kv" style="color:#F59E0B">4,2tr</div>
+        <div class="kl">Reach · 30d</div>
+        <div class="kd" style="color:#137333">Frequency 2,4x</div>
+      </div>
+      <div class="adp-kpi">
+        <div class="kv" style="color:#6366F1">18.420</div>
+        <div class="kl">Zalo OA signup mới</div>
+        <div class="kd" style="color:#137333">CPA 8.200đ · LTV 420k</div>
       </div>
       <div class="adp-kpi">
         <div class="kv" style="color:#1C2B33">21.000</div>
-        <div class="kl">Đơn hàng chuyển đổi</div>
+        <div class="kl">Đơn chuyển đổi</div>
         <div class="kd" style="color:#137333">CVR 16,8%</div>
       </div>
       <div class="adp-kpi">
         <div class="kv" style="color:#137333">1,37 tỷ</div>
-        <div class="kl">Doanh thu attributed</div>
+        <div class="kl">Revenue attributed</div>
         <div class="kd" style="color:#65676B">Budget: 980tr</div>
       </div>
-      <div class="adp-kpi">
-        <div class="kv" style="color:#1C2B33">5.000</div>
-        <div class="kl">Điểm bán GT active</div>
-        <div class="kd" style="color:#137333">▲ +800 vs Q1</div>
+    </div>
+
+    <!-- ============ FULL-FUNNEL VIEW: AWARENESS vs CONSIDERATION vs CONVERSION ============ -->
+    <div class="ads-section-hdr">
+      <h2><span class="ash-num">1</span> Full-Funnel Media · Góc nhìn tổng thể</h2>
+      <span style="font-size:10px;color:#65676B">ROAS tách theo mục tiêu chiến dịch — vì không phải dollar nào cũng để bán hàng ngay</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px">
+
+      <!-- AWARENESS BUCKET -->
+      <div class="funnel-bucket fb-awareness">
+        <span class="fb-label" style="background:rgba(245,158,11,.1);color:#B06000">⭐ Awareness</span>
+        <div style="font-size:11px;font-weight:800;color:#1C2B33">Brand push · Top-of-funnel</div>
+        <div style="font-size:9px;color:#65676B;margin-top:2px">Ví dụ: Omachi bắt sóng khách chưa biết đến SKU mới</div>
+        <div class="fb-metric-grid">
+          <div class="fb-metric"><div class="fbv">4,2tr</div><div class="fbl">Reach</div><div class="fbc">+28% vs Q1</div></div>
+          <div class="fb-metric"><div class="fbv">CPM 12k</div><div class="fbl">Cost/1.000 imp</div><div class="fbc">Meta: 35k</div></div>
+          <div class="fb-metric"><div class="fbv">28%</div><div class="fbl">Aided recall</div><div class="fbc">Pre: 19%</div></div>
+          <div class="fb-metric"><div class="fbv">2,4x</div><div class="fbl">Frequency</div><div class="fbc fbc-neutral">Sweet spot</div></div>
+        </div>
+        <div style="margin-top:10px;padding:8px;background:rgba(245,158,11,.06);border-radius:7px;font-size:9px;color:#7C5C00;line-height:1.4">
+          <b>Measurement:</b> Brand-lift study trong-app (Zalo OA survey) + Retail Supreme SKU-aware tracking qua thăm dò chủ tiệm.
+        </div>
       </div>
+
+      <!-- CONSIDERATION / SIGNUP BUCKET -->
+      <div class="funnel-bucket fb-consideration">
+        <span class="fb-label" style="background:rgba(99,102,241,.1);color:#6366F1">🧲 Consideration + Signup</span>
+        <div style="font-size:11px;font-weight:800;color:#1C2B33">Member acquisition</div>
+        <div style="font-size:9px;color:#65676B;margin-top:2px">Omachi → WinCommerce Zalo OA follow + WiN member signup</div>
+        <div class="fb-metric-grid">
+          <div class="fb-metric"><div class="fbv" style="color:#6366F1">18.420</div><div class="fbl">Signup mới</div><div class="fbc">+42% vs Q1</div></div>
+          <div class="fb-metric"><div class="fbv">8.200đ</div><div class="fbl">CPA signup</div><div class="fbc">Meta: 24k</div></div>
+          <div class="fb-metric"><div class="fbv">420k</div><div class="fbl">LTV 12m (est)</div><div class="fbc">51x CPA</div></div>
+          <div class="fb-metric"><div class="fbv">73%</div><div class="fbl">Active rate 30d</div><div class="fbc">Opened OA ≥1 lần</div></div>
+        </div>
+        <div style="margin-top:10px;padding:8px;background:rgba(99,102,241,.06);border-radius:7px;font-size:9px;color:#3730A3;line-height:1.4">
+          <b>💡 Là tốt?</b> <span class="verdict verdict-good" style="font-size:9px;padding:2px 6px">✓ RẤT TỐT</span> — Signup chỉ 8,2k VND, mà mỗi member chi ~420k/năm tại WinCommerce. Omachi không bán ngay, nhưng build audience cho future campaigns.
+        </div>
+      </div>
+
+      <!-- CONVERSION BUCKET -->
+      <div class="funnel-bucket fb-conversion">
+        <span class="fb-label" style="background:rgba(0,104,255,.1);color:#0068FF">🛒 Conversion</span>
+        <div style="font-size:11px;font-weight:800;color:#1C2B33">AI recommendation → sale</div>
+        <div style="font-size:9px;color:#65676B;margin-top:2px">Omo gợi ý trong combo bữa cơm → POS checkout</div>
+        <div class="fb-metric-grid">
+          <div class="fb-metric"><div class="fbv" style="color:#0068FF">21.000</div><div class="fbl">Đơn chuyển đổi</div><div class="fbc">CVR 16,8%</div></div>
+          <div class="fb-metric"><div class="fbv">4,2x</div><div class="fbl">ROAS</div><div class="fbc">Target: 3,0x</div></div>
+          <div class="fb-metric"><div class="fbv">65k</div><div class="fbl">AOV attributed</div><div class="fbc">Blended basket +22%</div></div>
+          <div class="fb-metric"><div class="fbv">1,37tỷ</div><div class="fbl">Revenue</div><div class="fbc">Budget: 980tr</div></div>
+        </div>
+        <div style="margin-top:10px;padding:8px;background:rgba(0,104,255,.06);border-radius:7px;font-size:9px;color:#1E40AF;line-height:1.4">
+          <b>Closed-loop:</b> Mỗi đơn tracked từ ad impression → POS transaction tại 5.000 điểm bán. SKU-level, không dark funnel.
+        </div>
+      </div>
+
+      <!-- RETENTION BUCKET -->
+      <div class="funnel-bucket fb-retention">
+        <span class="fb-label" style="background:rgba(39,174,96,.1);color:#137333">🔁 Retention</span>
+        <div style="font-size:11px;font-weight:800;color:#1C2B33">Reorder & loyalty</div>
+        <div style="font-size:9px;color:#65676B;margin-top:2px">Nhắc mua lại qua Zalo OA theo chu kỳ cá nhân</div>
+        <div class="fb-metric-grid">
+          <div class="fb-metric"><div class="fbv" style="color:#137333">58%</div><div class="fbl">Repeat 60d</div><div class="fbc">Cat avg: 34%</div></div>
+          <div class="fb-metric"><div class="fbv">7,2x</div><div class="fbl">ROAS (reorder)</div><div class="fbc">Highest tier</div></div>
+          <div class="fb-metric"><div class="fbv">+18%</div><div class="fbl">Basket lift</div><div class="fbc">vs non-member</div></div>
+          <div class="fb-metric"><div class="fbv">2,1x</div><div class="fbl">Purchase freq</div><div class="fbc">vs guest</div></div>
+        </div>
+        <div style="margin-top:10px;padding:8px;background:rgba(39,174,96,.06);border-radius:7px;font-size:9px;color:#065F46;line-height:1.4">
+          <b>Compounding:</b> Signup hôm nay trở thành retention revenue 6-12 tháng sau — đây là lý do awareness spend có giá trị.
+        </div>
+      </div>
+    </div>
+
+    <!-- BEYOND-AI-RECOMMENDATION SPEND -->
+    <div class="ads-section-hdr">
+      <h2><span class="ash-num">2</span> Spend ngoài AI recommendation</h2>
+      <span style="font-size:10px;color:#65676B">Brand còn chi ở đâu khác, và hiệu quả thế nào?</span>
+    </div>
+
+    <div class="adp-card" style="margin-bottom:18px">
+      <h3 style="margin-bottom:6px">Phân bổ ngân sách theo kênh <span class="badge">Q2 2026 · Omachi</span></h3>
+      <div style="font-size:10px;color:#65676B;margin-bottom:14px;line-height:1.5">Ví dụ Omachi (Masan Consumer): chi tổng <b style="color:#1C2B33">680tr</b> trong Q2 — không phải cho bán hàng ngay, mà để xây audience. Đây là cách đọc từng lát budget:</div>
+
+      <table class="adp-table">
+        <thead>
+          <tr>
+            <th>Kênh / Mục tiêu</th>
+            <th>Spend</th>
+            <th>Reach / Impressions</th>
+            <th>Outcome</th>
+            <th>Efficiency</th>
+            <th>Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <b>🧲 Zalo OA signup push</b><br/>
+              <span style="font-size:9px;color:#65676B">Omachi awareness → WinCommerce OA follow</span>
+            </td>
+            <td><b>150tr</b></td>
+            <td>2,1tr impressions</td>
+            <td><b style="color:#6366F1">18.420 signup</b><br/><span style="font-size:9px;color:#65676B">CPA 8.200đ</span></td>
+            <td>LTV 420k · 51x CPA<br/><span style="font-size:9px;color:#137333">73% active 30d</span></td>
+            <td><span class="verdict verdict-good">✓ Tốt</span></td>
+          </tr>
+          <tr>
+            <td>
+              <b>📺 Brand awareness — Zalo banner/video</b><br/>
+              <span style="font-size:9px;color:#65676B">SKU mới Omachi bò hầm → in-feed + story</span>
+            </td>
+            <td><b>220tr</b></td>
+            <td>4,2tr reach · 9,8tr imp</td>
+            <td><b>+9 pts aided recall</b><br/><span style="font-size:9px;color:#65676B">Brand study n=1.200</span></td>
+            <td>CPM 12k (Meta: 35k)<br/><span style="font-size:9px;color:#137333">Frequency 2,4x</span></td>
+            <td><span class="verdict verdict-good">✓ Tốt</span></td>
+          </tr>
+          <tr>
+            <td>
+              <b>🤖 AI recommendation engine</b><br/>
+              <span style="font-size:9px;color:#65676B">Gợi ý trực tiếp trong combo bữa cơm</span>
+            </td>
+            <td><b>180tr</b></td>
+            <td>125k impressions</td>
+            <td><b style="color:#137333">21.000 đơn · 1,37 tỷ DT</b></td>
+            <td>ROAS 7,6x<br/><span style="font-size:9px;color:#137333">CVR 16,8%</span></td>
+            <td><span class="verdict verdict-good">✓ Xuất sắc</span></td>
+          </tr>
+          <tr>
+            <td>
+              <b>🏪 GT trade display (kệ, poster)</b><br/>
+              <span style="font-size:9px;color:#65676B">5.000 tạp hoá · kệ cuối quầy</span>
+            </td>
+            <td><b>95tr</b></td>
+            <td>~8,4tr footfall impression</td>
+            <td><b>+14% velocity</b><br/><span style="font-size:9px;color:#65676B">POS data attribution</span></td>
+            <td>ROAS 2,8x<br/><span style="font-size:9px;color:#B06000">Slow burn</span></td>
+            <td><span class="verdict verdict-watch">⚠ Theo dõi</span></td>
+          </tr>
+          <tr>
+            <td>
+              <b>👪 Sampling in-store (WinMart)</b><br/>
+              <span style="font-size:9px;color:#65676B">Thử sản phẩm SKU mới — conversion builder</span>
+            </td>
+            <td><b>35tr</b></td>
+            <td>28k người thử</td>
+            <td><b>42% mua sau 7 ngày</b><br/><span style="font-size:9px;color:#65676B">Tracked qua WiN Member</span></td>
+            <td>ROAS 1,4x ngay<br/><span style="font-size:9px;color:#137333">Trial → 3,8x 90d</span></td>
+            <td><span class="verdict verdict-good">✓ Tốt</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:14px;padding:12px;background:linear-gradient(135deg,#EEF2FF,#F0F9FF);border:1px solid #C7D2FE;border-radius:10px;font-size:11px;color:#1C2B33;line-height:1.6">
+        <b style="color:#6366F1">💡 Câu trả lời thẳng: "Omachi chi vào signup Zalo OA có tốt không?"</b><br/>
+        <span class="verdict verdict-good" style="margin-top:4px">✓ RẤT TỐT</span> Chi 150tr → 18.420 member mới · CPA 8,2k · mỗi member LTV 420k qua 12 tháng. Tỷ lệ <b style="color:#137333">51x payback</b> — cao hơn bất kỳ kênh direct response nào. Lý do: khi có Zalo OA follow, Omachi có thể re-target khách mỗi khi launch SKU mới mà không cần trả phí Zalo/Meta lần nữa. <b>First-party data = compounding asset.</b>
+      </div>
+    </div>
+
+    <!-- AWARENESS vs CONVERSION ROAS COMPARISON -->
+    <div class="ads-section-hdr">
+      <h2><span class="ash-num">3</span> Benchmark — Awareness vs Conversion ROAS</h2>
+      <span style="font-size:10px;color:#65676B">Mỗi mục tiêu có thước đo riêng</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+
+      <!-- AWARENESS ROAS -->
+      <div class="adp-card">
+        <h3>Upper funnel · Brand effectiveness <span class="badge" style="background:rgba(245,158,11,.1);color:#B06000">Awareness</span></h3>
+        <div style="font-size:10px;color:#65676B;margin-bottom:14px">Thước đo: Cost per 1k impressions (CPM), aided recall lift, Zalo OA signup CPA</div>
+
+        <div class="adp-bar-row">
+          <div class="adp-bar-label" style="font-weight:800;color:#0068FF;font-size:12px">WinX Zalo OA Signup</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:90%;background:linear-gradient(90deg,#0068FF,#00C2FF);font-size:12px;font-weight:800">CPA 8,2k</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">Zalo Ads (raw)</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:48%;background:#CED0D4;color:#65676B">CPA 18k</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">Meta lead gen</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:35%;background:#CED0D4;color:#65676B">CPA 24k</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">TikTok reach</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:28%;background:#CED0D4;color:#65676B">CPA 31k</div></div>
+        </div>
+
+        <div style="margin-top:14px;padding:10px;background:#FEF3E2;border:1px solid #FBD38D;border-radius:8px;font-size:10px;color:#7C5C00;line-height:1.5">
+          <b>Lý do WinX rẻ:</b> Audience đã "warm" (đang trong context mua sắm/ăn uống qua Zalo OA), signup inline — không cần landing page riêng, không friction.
+        </div>
+      </div>
+
+      <!-- CONVERSION ROAS -->
+      <div class="adp-card">
+        <h3>Lower funnel · Direct response <span class="badge">Conversion</span></h3>
+        <div style="font-size:10px;color:#65676B;margin-bottom:14px">Thước đo: ROAS, CVR, revenue attributed tại POS</div>
+
+        <div class="adp-bar-row">
+          <div class="adp-bar-label" style="font-weight:800;color:#0068FF;font-size:12px">WinX AI Reco (combo)</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:95%;background:linear-gradient(90deg,#0068FF,#00C2FF);font-size:12px;font-weight:800">7,6x</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">WinX GT POS cross-sell</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:48%;background:linear-gradient(90deg,#6366F1,#818CF8);color:#fff">3,8x</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">Shopee Ads</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:25%;background:#CED0D4;color:#65676B">2,0x</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">Meta conversion</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:22%;background:#CED0D4;color:#65676B">1,8x</div></div>
+        </div>
+        <div class="adp-bar-row">
+          <div class="adp-bar-label">TikTok Shop</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:18%;background:#CED0D4;color:#65676B">1,5x</div></div>
+        </div>
+
+        <div style="margin-top:14px;padding:10px;background:#F0F7FF;border:1px solid #D0E2FF;border-radius:8px;font-size:10px;color:#1E40AF;line-height:1.5">
+          <b>Closed-loop:</b> Dữ liệu 1st-party từ CRM + POS + meal-pattern AI. SKU-level attribution, biết chính xác ai mua gì, khi nào, ở đâu.
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4 HEADER -->
+    <div class="ads-section-hdr">
+      <h2><span class="ash-num">4</span> Closed-loop conversion funnel</h2>
+      <span style="font-size:10px;color:#65676B">Chi tiết attribution từ impression → POS checkout</span>
     </div>
 
     <!-- TWO COLUMN -->
@@ -1080,6 +1638,12 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
       </div>
     </div>
 
+    <!-- SECTION 5 HEADER -->
+    <div class="ads-section-hdr">
+      <h2><span class="ash-num">5</span> SKU-level performance</h2>
+      <span style="font-size:10px;color:#65676B">Từng sản phẩm · từng kênh · từng touchpoint</span>
+    </div>
+
     <!-- SKU TABLE + BENCHMARKS -->
     <div style="display:grid;grid-template-columns:3fr 2fr;gap:16px;margin-bottom:16px">
 
@@ -1122,33 +1686,58 @@ body{font-family:'Inter',sans-serif;background:#080C16;color:#fff;min-height:100
         </table>
       </div>
 
-      <!-- ROAS BENCHMARK -->
+      <!-- SIGNUP QUALITY SCORECARD -->
       <div class="adp-card">
-        <h3>So sánh ROAS vs thị trường</h3>
+        <h3>Chất lượng signup Zalo OA <span class="badge" style="background:rgba(99,102,241,.1);color:#6366F1">Omachi → WinCommerce</span></h3>
+        <div style="font-size:10px;color:#65676B;margin-bottom:12px">Signup nào thực sự có giá trị? Không phải mọi follower đều bằng nhau.</div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+          <div style="background:linear-gradient(135deg,#F0FDF4,#fff);border:1px solid #86EFAC;border-radius:10px;padding:10px;text-align:center">
+            <div style="font-size:20px;font-weight:800;color:#137333">73%</div>
+            <div style="font-size:9px;color:#065F46;font-weight:700;margin-top:2px">Active 30d</div>
+            <div style="font-size:8px;color:#65676B;margin-top:1px">Mở OA ≥1 lần</div>
+          </div>
+          <div style="background:linear-gradient(135deg,#FEF3E2,#fff);border:1px solid #FBD38D;border-radius:10px;padding:10px;text-align:center">
+            <div style="font-size:20px;font-weight:800;color:#B06000">34%</div>
+            <div style="font-size:9px;color:#7C5C00;font-weight:700;margin-top:2px">Mua lần đầu 60d</div>
+            <div style="font-size:8px;color:#65676B;margin-top:1px">Qua bất kỳ SKU Masan</div>
+          </div>
+          <div style="background:linear-gradient(135deg,#EFF6FF,#fff);border:1px solid #93C5FD;border-radius:10px;padding:10px;text-align:center">
+            <div style="font-size:20px;font-weight:800;color:#1E40AF">420k</div>
+            <div style="font-size:9px;color:#1E3A8A;font-weight:700;margin-top:2px">LTV 12m</div>
+            <div style="font-size:8px;color:#65676B;margin-top:1px">Dự báo từ cohort Q1</div>
+          </div>
+          <div style="background:linear-gradient(135deg,#FDF2F8,#fff);border:1px solid #F9A8D4;border-radius:10px;padding:10px;text-align:center">
+            <div style="font-size:20px;font-weight:800;color:#BE185D">51x</div>
+            <div style="font-size:9px;color:#9D174D;font-weight:700;margin-top:2px">Payback</div>
+            <div style="font-size:8px;color:#65676B;margin-top:1px">LTV / CPA</div>
+          </div>
+        </div>
+
+        <div style="font-size:10px;font-weight:700;color:#1C2B33;margin-bottom:6px">Phân loại signup theo chất lượng:</div>
         <div class="adp-bar-row">
-          <div class="adp-bar-label" style="font-weight:800;color:#0068FF;font-size:12px">WinX GT Ads</div>
-          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:78%;background:linear-gradient(90deg,#0068FF,#00C2FF);font-size:12px;font-weight:800">3,8x</div></div>
+          <div class="adp-bar-label" style="font-size:10px">A — Mua trong 30d</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:22%;background:#137333">22%</div></div>
         </div>
         <div class="adp-bar-row">
-          <div class="adp-bar-label">Google Shopping</div>
-          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:47%;background:#CED0D4;color:#65676B">2,3x</div></div>
+          <div class="adp-bar-label" style="font-size:10px">B — Active, chưa mua</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:51%;background:#0068FF">51%</div></div>
         </div>
         <div class="adp-bar-row">
-          <div class="adp-bar-label">Shopee Ads</div>
-          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:41%;background:#CED0D4;color:#65676B">2,0x</div></div>
+          <div class="adp-bar-label" style="font-size:10px">C — Idle (chưa mở OA)</div>
+          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:27%;background:#CED0D4;color:#65676B">27%</div></div>
         </div>
-        <div class="adp-bar-row">
-          <div class="adp-bar-label">Facebook/Meta</div>
-          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:37%;background:#CED0D4;color:#65676B">1,8x</div></div>
-        </div>
-        <div class="adp-bar-row">
-          <div class="adp-bar-label">TikTok Shop</div>
-          <div class="adp-bar-track"><div class="adp-bar-fill" style="width:31%;background:#CED0D4;color:#65676B">1,5x</div></div>
-        </div>
-        <div style="margin-top:12px;background:#F0F7FF;border:1px solid #D0E2FF;border-radius:8px;padding:10px;font-size:10px;color:#1C2B33;line-height:1.5">
-          <b style="color:#0068FF">Lợi thế WinX:</b> Dữ liệu 1st-party từ CRM + POS + meal-pattern AI. Đo lường đến từng SKU, biết chính xác ai mua gì, khi nào, ở đâu. Không pixel, không cookie, không ước lượng.
+
+        <div style="margin-top:12px;background:#EEF2FF;border:1px solid #C7D2FE;border-radius:8px;padding:10px;font-size:10px;color:#3730A3;line-height:1.5">
+          <b>Take-away:</b> 73% audience "warm" từ Omachi signup → tiếp tục có thể re-target cho Chin-Su, Kokomi, Milo mà KHÔNG cần trả phí acquisition lần nữa. Compounding value.
         </div>
       </div>
+    </div>
+
+    <!-- SECTION 6 HEADER -->
+    <div class="ads-section-hdr">
+      <h2><span class="ash-num">6</span> Kênh phân phối & hành trình khách hàng</h2>
+      <span style="font-size:10px;color:#65676B">MT vs GT · Journey mapping</span>
     </div>
 
     <!-- BOTTOM: CHANNEL SPLIT + CUSTOMER JOURNEY -->
@@ -1610,7 +2199,7 @@ const MASAN_LOGO=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 100" 
 const MASAN_LOGO_URI='data:image/svg+xml,'+encodeURIComponent(MASAN_LOGO);
 const TCB_LOGO=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" fill="none"><g transform="translate(60,2) scale(0.55)"><path d="M35 0L70 35L35 70L0 35Z" fill="#E30613"/><path d="M55 20L90 55L55 90L20 55Z" fill="#E30613"/><path d="M35 35L55 55L35 35L55 35Z" fill="#fff"/><rect x="30" y="30" width="30" height="30" transform="rotate(45 45 45)" fill="#fff"/></g><text x="0" y="72" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#1A1A1A">TECHCOM</text><text x="130" y="72" font-family="Arial,sans-serif" font-weight="700" font-size="18" fill="#E30613">BANK</text></svg>`;
 const TCB_LOGO_URI='data:image/svg+xml,'+encodeURIComponent(TCB_LOGO);
-const WINX_FIN_LOGO=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 28" fill="none"><rect width="28" height="28" rx="7" fill="url(#wg)"/><defs><linearGradient id="wg" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#FF8C28"/><stop offset="1" stop-color="#FF6B00"/></linearGradient></defs><text x="5" y="20" font-family="Arial,sans-serif" font-weight="900" font-size="14" fill="#fff">NE</text><text x="34" y="14" font-family="Inter,sans-serif" font-weight="800" font-size="11" fill="#FF8C28">New</text><text x="34" y="25" font-family="Inter,sans-serif" font-weight="600" font-size="9" fill="#999">Era</text></svg>`;
+const WINX_FIN_LOGO=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 28" fill="none"><rect width="28" height="28" rx="7" fill="url(#wg)"/><defs><linearGradient id="wg" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#FF8C28"/><stop offset="1" stop-color="#FF6B00"/></linearGradient></defs><text x="7" y="20" font-family="Arial,sans-serif" font-weight="900" font-size="14" fill="#fff">EF</text><text x="34" y="14" font-family="Inter,sans-serif" font-weight="800" font-size="11" fill="#FF8C28">Embedded</text><text x="34" y="25" font-family="Inter,sans-serif" font-weight="600" font-size="9" fill="#999">Financing</text></svg>`;
 const WINX_FIN_URI='data:image/svg+xml,'+encodeURIComponent(WINX_FIN_LOGO);
 
 let demoPaused=false;
@@ -1625,10 +2214,7 @@ function switchView(v){
   });
   views.forEach(id=>{
     const tab=document.getElementById('tab-'+id);
-    if(tab){
-      if(id===v){tab.style.background='rgba(255,255,255,.12)';tab.style.borderColor='rgba(255,255,255,.2)';tab.style.color='#fff';}
-      else{tab.style.background='transparent';tab.style.borderColor='rgba(255,255,255,.08)';tab.style.color='rgba(255,255,255,.5)';}
-    }
+    if(tab){if(id===v)tab.classList.add('active');else tab.classList.remove('active');}
   });
   document.body.style.overflowX=v==='demo'?'auto':'hidden';
 }
@@ -1683,7 +2269,7 @@ function showPV(v,btn){
   const el=document.getElementById('pv-'+v);if(el)el.style.display='block';
   document.querySelectorAll('.pnav button').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');
-  else{const btns=document.querySelectorAll('.pnav button');const map={dash:0,sell:1,order:2,debt:3,rpt:4,ads:5};if(map[v]!==undefined&&btns[map[v]])btns[map[v]].classList.add('active');}
+  else{const btns=document.querySelectorAll('.pnav button');const map={dash:0,sell:1,receive:2,order:3,debt:4,rpt:5};if(map[v]!==undefined&&btns[map[v]])btns[map[v]].classList.add('active');}
   document.getElementById('posBody').scrollTop=0;
   if(inPOS)posHistory.push(v);
 }
@@ -1723,7 +2309,101 @@ function addC(n,p){const x=cart.find(c=>c.n===n);if(x)x.q++;else cart.push({n,p,
 function rC(){document.getElementById('cartC').style.display='block';document.getElementById('cartI').innerHTML=cart.map((c,i)=>`<div class="pr"><span>${c.n} x${c.q}</span><div class="flex items-center gap-1"><span class="font-bold">${(c.p*c.q).toLocaleString('vi-VN')}đ</span><button onclick="rmC(${i})" class="text-red-400 text-[10px] font-bold">X</button></div></div>`).join('');document.getElementById('cartT').textContent=cart.reduce((s,c)=>s+c.p*c.q,0).toLocaleString('vi-VN')+'đ';}
 function rmC(i){cart.splice(i,1);if(!cart.length)document.getElementById('cartC').style.display='none';else rC();}
 function clrC(){cart=[];document.getElementById('cartC').style.display='none';}
-function payC(){const t=cart.reduce((s,c)=>s+c.p*c.q,0);alert('Thanh toán thành công!\nTổng: '+t.toLocaleString('vi-VN')+'đ\nĐã in hoá đơn.\n\n💰 New Era: +'+t.toLocaleString('vi-VN')+'đ tự động chuyển vào tài khoản sinh lời TCB.\nLãi suất qua đêm: 3,5%/năm');clrC();}
+function payC(){const t=cart.reduce((s,c)=>s+c.p*c.q,0);toast('✓ Thanh toán thành công · '+t.toLocaleString('vi-VN')+'đ · +3,5%/năm TCB','good');clrC();}
+
+// TOAST helper (non-blocking feedback)
+function toast(msg,kind){
+  let bar=document.querySelector('.toast-bar');
+  if(!bar){bar=document.createElement('div');bar.className='toast-bar';document.body.appendChild(bar);}
+  const el=document.createElement('div');el.className='toast';
+  if(kind==='good')el.style.borderColor='rgba(39,174,96,.4)';
+  if(kind==='warn')el.style.borderColor='rgba(245,158,11,.4)';
+  el.textContent=msg;
+  bar.appendChild(el);
+  setTimeout(()=>el.remove(),2800);
+}
+
+// BARCODE SCANNER SIMULATION (for Sell view)
+const barcodeSKUs=[
+  {name:'Chin-Su 500ml',p:32000,code:'8934563621018'},
+  {name:'Omachi tôm',p:5500,code:'8934804039282'},
+  {name:'Vinamilk 180ml',p:7000,code:'8934673511062'},
+  {name:'Ponnie xúc xích',p:25000,code:'8935049501275'},
+  {name:'Kokomi đại',p:4000,code:'8934804021287'},
+  {name:'Bia SG lon',p:12000,code:'8934822101019'},
+];
+let bcIdx=0;
+function simulateBarcode(){
+  const sku=barcodeSKUs[bcIdx%barcodeSKUs.length];bcIdx++;
+  const btn=document.getElementById('bcScanBtn');
+  if(btn){btn.textContent='✓ '+sku.code;btn.style.color='#27AE60';btn.style.borderColor='rgba(39,174,96,.5)';btn.style.background='rgba(39,174,96,.1)';setTimeout(()=>{btn.textContent='Quét ngay';btn.style.color='#00C2FF';btn.style.borderColor='rgba(0,194,255,.4)';btn.style.background='rgba(0,194,255,.08)';},1200);}
+  addC(sku.name,sku.p);
+  toast('📷 Đã quét: '+sku.name,'good');
+  // Animate the newly scanned cart row
+  setTimeout(()=>{
+    const rows=document.querySelectorAll('#cartI .pr');
+    if(rows.length){rows[rows.length-1].classList.add('just-scanned');}
+  },50);
+}
+
+// GOODS RECEIPT FLOW
+let grSession={po:null,matched:0,total:7};
+function startReceive(po){
+  grSession={po,matched:0,total:7};
+  document.getElementById('grSession').style.display='block';
+  document.getElementById('grPO').textContent=po;
+  document.getElementById('grMatchedCount').textContent='0';
+  document.querySelectorAll('#grLines .gr-line').forEach(l=>{
+    const s=l.querySelector('.gl-status');
+    s.className='gl-status gl-status-wait';s.textContent='Chờ quét';
+    l.style.background='#F8F9FA';
+  });
+  const btn=document.getElementById('grFinishBtn');btn.disabled=true;btn.style.opacity='.5';
+  toast('Bắt đầu nhận '+po,'good');
+  setTimeout(()=>{document.getElementById('grSession').scrollIntoView({behavior:'smooth'});},50);
+}
+function simulateReceiveScan(){
+  const lines=document.querySelectorAll('#grLines .gr-line');
+  const unscanned=Array.from(lines).filter(l=>l.querySelector('.gl-status').classList.contains('gl-status-wait'));
+  if(!unscanned.length){toast('✓ Đã quét hết lô hàng','good');return;}
+  const line=unscanned[0];
+  const status=line.querySelector('.gl-status');
+  // Randomly short a qty once to show mismatch handling
+  const short=grSession.matched===3;
+  if(short){
+    status.className='gl-status gl-status-short';status.textContent='Thiếu 1';
+    line.style.background='#FEF2F2';
+    toast('⚠️ SKU này thiếu 1 thùng so với PO','warn');
+  } else {
+    status.className='gl-status gl-status-ok';status.textContent='✓ Khớp';
+    line.style.background='#F0FDF4';
+  }
+  line.classList.add('just-scanned');
+  grSession.matched++;
+  document.getElementById('grMatchedCount').textContent=grSession.matched;
+  if(grSession.matched>=grSession.total){
+    const btn=document.getElementById('grFinishBtn');btn.disabled=false;btn.style.opacity='1';
+  }
+}
+function finishReceive(){
+  toast('✓ Đã cập nhật tồn kho · AI forecast đã cập nhật','good');
+  setTimeout(()=>{
+    toast('💰 TCB Credit Score +4 điểm (782→786)','good');
+  },1400);
+  setTimeout(()=>{
+    document.getElementById('grSession').style.display='none';
+    showPV('dash');
+    document.querySelectorAll('.pnav button').forEach((b,i)=>{b.classList.remove('active');if(i===0)b.classList.add('active');});
+  },2200);
+}
+function cancelReceive(){document.getElementById('grSession').style.display='none';}
+
+// CAMPAIGN SWITCHER (ads portal)
+function setCampaign(btn,c){
+  btn.closest('.tabnav').querySelectorAll('button').forEach(b=>{b.classList.remove('active');b.style.color='#65676B';});
+  btn.classList.add('active');btn.style.color='#1C2B33';
+  toast('Đã chuyển sang chiến dịch: '+btn.textContent.trim(),'good');
+}
 
 // SYSTEM ACTIVATION
 function act(ids){ids.forEach(id=>{const e=document.getElementById(id);if(e)e.classList.add('on')});}
@@ -1814,9 +2494,33 @@ function mealConfirmPick(id){
 
 const b1=mkBot('c1',AV1),cd1=mkCard('c1',AV1),ch1=mkChips('c1'),ml1=mkMeal('c1',AV1);
 const b2=mkBot('c2',AV2,incGT),cd2=mkCard('c2',AV2,incGT),ch2=mkChips('c2'),ml2=mkMeal('c2',AV2,incGT);
-const b4=mkBot('c4','https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces');
+const AV4='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces';
+const b4=mkBot('c4',AV4);
+const cd4=mkCard('c4',AV4);
 const u4=mkUser('c4');
 const ch4=mkChips('c4');
+
+// Pane 4 side-panel updaters
+function liteSet(intent,conf,sku,price,stock,lastInput){
+  if(lastInput!==undefined)document.getElementById('liteLastInput').textContent='"'+lastInput+'"';
+  if(intent!==undefined)document.getElementById('liteIntent').textContent=intent;
+  if(conf!==undefined)document.getElementById('liteConf').textContent=conf;
+  if(sku!==undefined)document.getElementById('liteSku').textContent=sku;
+  if(price!==undefined)document.getElementById('litePrice').textContent=price;
+  if(stock!==undefined)document.getElementById('liteStock').textContent=stock;
+}
+let liteCart=[];
+function liteCartAdd(n,p,q){
+  const ex=liteCart.find(c=>c.n===n);
+  if(ex)ex.q+=q;else liteCart.push({n,p,q});
+  const sz=liteCart.reduce((s,c)=>s+c.q,0);
+  const tot=liteCart.reduce((s,c)=>s+c.p*c.q,0);
+  document.getElementById('liteCartSz').textContent=sz+' món';
+  document.getElementById('liteCartTot').textContent=tot.toLocaleString('vi-VN')+'đ';
+  return tot;
+}
+function liteCartClear(){liteCart=[];document.getElementById('liteCartSz').textContent='0 món';document.getElementById('liteCartTot').textContent='0đ';}
+function liteSetCust(c){document.getElementById('liteCust').textContent=c||'—';}
 
 // ====== FLOW 1: MT WINMART — MEAL OCCASION FIRST ======
 async function flow1(){
@@ -2022,50 +2726,130 @@ async function flow2(){
   await b2('Dạ, cảm ơn Chị Hương. Cô chờ Chị ghé nha!');
 }
 
-// ====== FLOW 4: WINX LITE — ZALO CHAT FOR LOW-TECH GT ======
+// ====== FLOW 4: WINX LITE — POS-OVER-CHAT (FULL OPERATIONS BY TEXT) ======
 async function flow4(){
   document.getElementById('c4').innerHTML='';
   document.querySelectorAll('[id^="lite-"]').forEach(e=>{if(e.classList)e.classList.remove('on')});
+  liteCartClear();liteSetCust('—');
+  liteSet('IDLE','—','—','—','—','—');
 
-  await sl(2500);
+  await sl(1400);
   act(['lite-profile']);
-
-  await b4('Chào Bác Năm! Con là trợ lý WinX. Bác cần đặt hàng hay kiểm tra gì không ạ?');
-  await sl(400);
-
-  u4('nhập 10 thùng Omachi cho Bác');
-  await sl(600);
-
-  act(['lite-intent','lite-retail']);
-  await b4('Dạ, Bác muốn nhập:');
-  await sl(200);
-
-  await b4('Mì Omachi tôm chua cay, thùng 30 gói\nSố lượng: 10 thùng\nGiá: 148.000đ/thùng\nTổng: 1.480.000đ\n\nGiao từ NPP Hoàng Long, sáng mai trước 8h. Bác xác nhận không ạ?');
-
-  let c=await ch4([{label:'OK đặt luôn',value:'yes'},{label:'Giảm còn 8 thùng',value:'less'},{label:'Thôi để hôm khác',value:'no',red:true}]);
-
-  if(c==='no'){
-    await b4('Dạ, Bác cần gì cứ nhắn con nha!');
-    return;
-  }
-
-  if(c==='less'){
-    await b4('Dạ, con sửa lại 8 thùng. Tổng: 1.184.000đ. Giao sáng mai. Xác nhận ạ?');
-    await ch4([{label:'OK xác nhận',value:'yes'}]);
-  }
-
-  act(['lite-value']);
-  await b4('Đã đặt đơn #RS-041326! NPP giao sáng mai trước 8h.\n\nBác muốn con nhắc gì thêm không?');
+  await b4('Chào Bác Năm! 👋 Con là trợ lý WinX. Bác nhắn con bất cứ lúc nào để bán hàng, nhập hàng, kiểm tra tồn, hoặc ghi sổ nợ nha.');
   await sl(300);
 
-  u4('xem tồn kho Chin-Su');
+  // Quick suggestions as chips
+  await b4(`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">
+    <span style="background:#EEF2FF;color:#6366F1;font-size:9px;font-weight:700;padding:3px 8px;border-radius:10px">Bán hàng</span>
+    <span style="background:#EEF2FF;color:#6366F1;font-size:9px;font-weight:700;padding:3px 8px;border-radius:10px">Nhập kho</span>
+    <span style="background:#EEF2FF;color:#6366F1;font-size:9px;font-weight:700;padding:3px 8px;border-radius:10px">Tồn kho</span>
+    <span style="background:#EEF2FF;color:#6366F1;font-size:9px;font-weight:700;padding:3px 8px;border-radius:10px">Sổ nợ</span>
+    <span style="background:#EEF2FF;color:#6366F1;font-size:9px;font-weight:700;padding:3px 8px;border-radius:10px">Báo cáo</span>
+  </div>`);
+  await sl(800);
+
+  // === PART 1: SERVE A WALK-IN CUSTOMER (POS-OVER-CHAT) ===
+  u4('chi hương vừa vào tiệm. bán dùm bác: 2 chai chinsu 500, 1 thùng omachi, 1 hộp sữa');
   await sl(500);
+  act(['lite-intent','lite-pos','lite-retail']);
+  liteSet('CHECKOUT_SALE','98%','Multi-SKU','—','—','bán 2 chinsu, 1 omachi, 1 sữa');
+  liteSetCust('Chị Hương');
+  await sl(200);
 
-  await b4('Chin-Su 500ml: Bác nhập lần cuối 5/4 (2 tuần trước), lần trước nhập 5 thùng.\n\nTheo chu kỳ bán, Bác nên nhập thêm khoảng 3-4 thùng tuần này. Bác muốn đặt luôn không?');
+  await b4('Dạ con hiểu! Đang lên đơn cho <b>Chị Hương</b> 👩:');
+  await sl(200);
 
-  await ch4([{label:'Đặt 4 thùng Chin-Su',value:'order',green:true},{label:'Để Bác tính',value:'wait'}]);
+  // Build the POS bill card
+  liteCartAdd('Chin-Su 500ml',32000,2);
+  liteCartAdd('Omachi thùng 30',165000,1);
+  liteCartAdd('Vinamilk 180ml',7000,1);
+  const sub=64000+165000+7000;
+  await cd4(`<div class="zmeal" style="border-color:#6366F1"><div class="mhdr" style="background:linear-gradient(135deg,#6366F1,#818CF8)">🧾 Đơn hàng — Chị Hương</div><div class="mbdy">
+    <div class="mitm"><span class="mi-name">Chin-Su 500ml ×2</span><span class="mi-price">64.000đ</span></div>
+    <div class="mitm"><span class="mi-name">Omachi thùng 30 gói ×1</span><span class="mi-price">165.000đ</span></div>
+    <div class="mitm"><span class="mi-name">Vinamilk 180ml ×1</span><span class="mi-price">7.000đ</span></div>
+    <div class="mtot" style="color:#6366F1"><span>Tạm tính</span><span>${sub.toLocaleString('vi-VN')}đ</span></div>
+  </div></div>`);
+  await sl(300);
 
-  await b4('Dạ! Bác cần gì cứ nhắn Zalo cho con bất cứ lúc nào nha. Chúc Bác buôn may bán đắt! 🙏');
+  act(['lite-value']);
+  await b4('Bác kiểm tra rồi chọn cách thanh toán giúp con nha:');
+  let pay=await ch4([{label:'💵 Tiền mặt',value:'cash',green:true},{label:'📱 VietQR',value:'qr'},{label:'📒 Ghi sổ nợ',value:'debt',red:true}]);
+
+  if(pay==='debt'){
+    await b4('Dạ, con ghi sổ nợ cho Chị Hương <b>'+sub.toLocaleString('vi-VN')+'đ</b>, mốc 11/04/2026. Con nhắc Zalo OA cho Chị sau 7 ngày.');
+    await sl(200);
+    act(['lite-debt']);
+    await b4('<span style="color:#E30613;font-weight:700">✓ Đã ghi sổ nợ · +'+sub.toLocaleString('vi-VN')+'đ</span>\nCòn điều gì nữa không Bác?');
+  } else if(pay==='qr'){
+    await b4('Dạ, con tạo mã VietQR cho Chị Hương liền:');
+    await cd4(vietQR(sub.toLocaleString('vi-VN')+'đ','BÁC NĂM - TẠP HOÁ 22 NCT','0912 345 678','Techcombank (TCB)','LITE-'+Date.now().toString().slice(-6)));
+    await sl(700);
+    await b4('<span style="color:#27AE60;font-weight:700">✓ Chị Hương đã chuyển khoản thành công</span>\n💰 Số tiền đã vào tài khoản sinh lời TCB (3,5%/năm).');
+  } else {
+    await b4('Dạ Bác nhận <b>'+sub.toLocaleString('vi-VN')+'đ</b> tiền mặt. Con ghi nhận đơn xong rồi ạ. Tuần này doanh thu của Bác đã tăng 8% so với tuần trước!');
+  }
+  liteCartClear();
+
+  await sl(800);
+
+  // === PART 2: QUICK INVENTORY CHECK ===
+  u4('còn bao nhiêu chinsu');
+  await sl(500);
+  liteSet('CHECK_STOCK','96%','Chin-Su 500ml','32.000đ','14 chai','còn bao nhiêu chinsu');
+  await b4('Dạ, tồn kho <b>Chin-Su 500ml</b> còn <b>14 chai</b> 📦\nTrung bình Bác bán ~3,3 chai/ngày → còn dùng được ~4 ngày.\n\nCon gợi ý Bác đặt thêm 1 thùng (12 chai) để không bị đứt hàng tuần sau. Đặt giúp Bác không?');
+  let st=await ch4([{label:'Đặt 1 thùng',value:'y',green:true},{label:'Đặt 2 thùng',value:'y2'},{label:'Để Bác tính',value:'n'}]);
+
+  // === PART 3: REORDER (PO) ===
+  if(st!=='n'){
+    const boxes=st==='y2'?2:1;
+    liteSet('CREATE_PO','99%','Chin-Su 500ml thùng 12','32.000đ/chai','Có sẵn','đặt '+boxes+' thùng');
+    await b4('Dạ! Con chốt đơn:');
+    const total=boxes*360000;
+    await cd4(`<div class="zord" style="border-color:#6366F1;max-width:84%"><h4 style="color:#6366F1">📝 PO-LITE-${Date.now().toString().slice(-6)}</h4>
+      <div class="zln"><span>Chin-Su 500ml thùng 12</span><span>×${boxes}</span></div>
+      <div class="zln"><span>Đơn giá NPP</span><span>360.000đ/thùng</span></div>
+      <div class="zln"><span>NPP</span><span>Masan Retail Supreme</span></div>
+      <div class="zln"><span>Giao</span><span>Sáng mai, trước 9h</span></div>
+      <div class="zln"><span>Tổng</span><span>${total.toLocaleString('vi-VN')}đ</span></div>
+    </div>`);
+    await sl(250);
+    await b4('Bác xác nhận đặt nha?');
+    await ch4([{label:'OK đặt luôn',value:'yes',green:true},{label:'Sửa số lượng',value:'edit'}]);
+    await b4('✓ Đã đặt! NPP sẽ giao sáng mai. Con nhắc Bác quét mã vạch khi nhận hàng để cập nhật tồn kho nha.');
+  } else {
+    await b4('Dạ, khi nào Bác cần con đặt giúp cứ nhắn nha.');
+  }
+
+  await sl(800);
+
+  // === PART 4: DEBT REMINDER ===
+  u4('chị bình hôm qua còn nợ bao nhiêu');
+  await sl(500);
+  liteSet('CHECK_DEBT','97%','—','—','—','chị bình còn nợ?');
+  await b4('Dạ, <b>Chị Bình</b> 📒:\n• Tổng nợ: <b style="color:#E30613">85.000đ</b>\n• Từ: 06/04/2026 (5 ngày)\n• Lần cuối mua: 09/04\n\nBác muốn con gửi Zalo OA nhắc nhẹ không ạ?');
+  await ch4([{label:'Gửi nhắc Zalo',value:'r',green:true},{label:'Để Bác tự nhắc',value:'s'}]);
+  await b4('✓ Con đã gửi nhắc qua Zalo OA cho Chị Bình rồi. Lời nhắn rất lịch sự, không làm phiền ạ 🙏');
+
+  await sl(800);
+
+  // === PART 5: DAILY REPORT ===
+  u4('hôm nay bác bán được bao nhiêu');
+  await sl(500);
+  liteSet('DAILY_REPORT','99%','—','—','—','doanh thu hôm nay?');
+  await cd4(`<div class="zord" style="border-color:#27AE60;max-width:84%;padding:8px"><h4 style="color:#27AE60;margin-bottom:4px">📊 Hôm nay — 11/04/2026</h4>
+    <div class="zln"><span>Doanh thu</span><span style="color:#27AE60;font-weight:700">1.847.000đ</span></div>
+    <div class="zln"><span>Số đơn</span><span>28 đơn</span></div>
+    <div class="zln"><span>Giỏ TB</span><span>66.000đ</span></div>
+    <div class="zln"><span>Khách quay lại</span><span>17/28 (61%)</span></div>
+    <div class="zln"><span>SP Masan</span><span style="color:#E30613">47% DT</span></div>
+    <div class="zln"><span>So hôm qua</span><span style="color:#27AE60">+12%</span></div>
+    <div class="zln"><span>Xu hướng tuần</span><span style="color:#27AE60">📈 Tăng đều</span></div>
+  </div>`);
+  await sl(250);
+  await b4('Hôm nay Bác bán tốt lắm! 🎉\n\nCon thấy Omachi & Chin-Su là 2 SKU chủ lực. Tuần sau Masan có khuyến mãi thùng Omachi giảm 8%, Bác có muốn con thông báo khi mở bán không?');
+  await ch4([{label:'Có, thông báo con',value:'y',green:true},{label:'Thôi',value:'n'}]);
+  await b4('Dạ! Con ghi nhớ rồi. Bác cần gì cứ nhắn Zalo cho con bất cứ lúc nào, 24/7 nha. Chúc Bác buôn may bán đắt! 🙏');
 }
 
 function resetAll(){
