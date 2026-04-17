@@ -387,6 +387,55 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="search"]:focus{o
 .divider-label .dl-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent)}
 .divider-label .dl-text{font-size:9px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4)}
 
+/* =================== VOUCHER + OA SIGNUP (Pane 4) =================== */
+.vch{background:#fff;border:2px solid #1F36C7;border-radius:12px;overflow:hidden;max-width:84%;box-shadow:0 2px 8px rgba(31,54,199,.12);position:relative}
+.vch::before{content:'';position:absolute;top:50%;left:-7px;width:14px;height:14px;border-radius:50%;background:#080C16;transform:translateY(-50%);border:2px solid #1F36C7;border-right:none;border-top:none;z-index:1}
+.vch::after{content:'';position:absolute;top:50%;right:-7px;width:14px;height:14px;border-radius:50%;background:#080C16;transform:translateY(-50%);border:2px solid #1F36C7;border-left:none;border-top:none;z-index:1}
+.vch-hdr{background:linear-gradient(135deg,#1F36C7,#4A5FDB);padding:7px 10px;color:#fff;display:flex;align-items:center;gap:6px;position:relative}
+.vch-hdr .vch-logo{width:22px;height:22px;border-radius:5px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#1F36C7;letter-spacing:-.3px}
+.vch-hdr .vch-brand{font-size:10px;font-weight:800;letter-spacing:-.2px}
+.vch-hdr .vch-sub{font-size:8px;opacity:.85;margin-left:auto}
+.vch-body{padding:10px;text-align:center;background:linear-gradient(180deg,#fff,#F8FAFF);border-top:1px dashed #C7D2FE}
+.vch-body .vch-title{font-size:11px;font-weight:800;color:#1F36C7;margin-bottom:2px}
+.vch-body .vch-amount{font-size:22px;font-weight:900;color:#1F36C7;letter-spacing:-.5px;line-height:1.1}
+.vch-body .vch-desc{font-size:9px;color:#65676B;margin:4px 0 8px;line-height:1.4}
+.vch-body .vch-code{display:inline-block;font-family:ui-monospace,monospace;font-size:10px;font-weight:800;background:#EFF2FF;color:#1F36C7;padding:3px 10px;border-radius:6px;letter-spacing:.5px;border:1px dashed #1F36C7}
+.vch-footer{background:#F0F4FF;padding:6px 10px;font-size:8.5px;color:#1F36C7;font-weight:700;display:flex;align-items:center;justify-content:space-between}
+
+/* Voucher redeemed stamp */
+.vch.redeemed::after, .vch.redeemed::before{background:#080C16}
+.vch-stamp{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-12deg);background:rgba(39,174,96,.95);color:#fff;font-size:14px;font-weight:900;padding:6px 20px;border-radius:6px;border:3px double #fff;letter-spacing:1px;z-index:2;box-shadow:0 4px 12px rgba(39,174,96,.4);text-transform:uppercase}
+
+/* Zalo OA signup card */
+.oa-card{background:#fff;border:1.5px solid #0068FF;border-radius:12px;overflow:hidden;max-width:84%;box-shadow:0 2px 8px rgba(0,104,255,.12)}
+.oa-card-hdr{background:linear-gradient(135deg,#0068FF,#00C2FF);padding:8px 12px;color:#fff;display:flex;align-items:center;gap:8px}
+.oa-card-hdr .oa-logo{width:26px;height:26px;border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#0068FF}
+.oa-card-hdr .oa-title{font-size:11px;font-weight:800}
+.oa-card-hdr .oa-sub{font-size:8.5px;opacity:.85}
+.oa-card-hdr .oa-badge{margin-left:auto;background:rgba(255,255,255,.2);padding:2px 8px;border-radius:10px;font-size:8px;font-weight:700}
+.oa-card-body{padding:10px;text-align:center}
+.oa-card-body .oa-perk{background:#F0F9FF;border:1px dashed #BAE6FD;border-radius:8px;padding:6px 8px;font-size:9px;color:#0C4A6E;margin-bottom:8px;font-weight:600}
+.oa-card-body .oa-perk b{color:#0068FF}
+.oa-card-body .oa-cta{background:linear-gradient(135deg,#0068FF,#4A8FFF);color:#fff;font-size:10px;font-weight:800;padding:6px 14px;border-radius:8px;border:none;cursor:pointer;width:100%;margin-top:4px}
+
+/* Retailer-value explainer callout (big "why this is good for you" moment) */
+.gt-explain{background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border:1.5px solid #F59E0B;border-radius:12px;padding:10px 12px;max-width:84%;font-size:10px;color:#78350F;line-height:1.5;box-shadow:0 2px 8px rgba(245,158,11,.1);position:relative}
+.gt-explain .ge-hdr{display:flex;align-items:center;gap:6px;font-weight:800;color:#B45309;font-size:11px;margin-bottom:6px}
+.gt-explain .ge-hdr .ge-ico{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#F59E0B,#FBBF24);display:inline-flex;align-items:center;justify-content:center;font-size:12px}
+.gt-explain ul{margin:4px 0 0 0;padding:0;list-style:none}
+.gt-explain ul li{padding:3px 0 3px 14px;position:relative}
+.gt-explain ul li::before{content:'→';position:absolute;left:0;top:3px;color:#F59E0B;font-weight:900}
+.gt-explain .ge-kpi{display:inline-flex;align-items:center;gap:4px;background:rgba(245,158,11,.15);padding:2px 8px;border-radius:10px;font-weight:800;color:#B45309;font-size:10px;margin-top:6px}
+
+/* Scan card (Chị Hương scans voucher from her phone) */
+.scan-view{background:linear-gradient(135deg,#0A1A2F,#1E293B);border-radius:10px;padding:10px;max-width:82%;border:1.5px solid rgba(31,54,199,.4);position:relative;overflow:hidden}
+.scan-view .sv-phone{background:rgba(0,0,0,.4);border-radius:8px;padding:8px;border:1.5px dashed rgba(255,255,255,.2);position:relative;overflow:hidden}
+.scan-view .sv-phone::before{content:'';position:absolute;left:10px;right:10px;top:0;height:2px;background:linear-gradient(90deg,transparent,#00C2FF,transparent);box-shadow:0 0 10px #00C2FF;animation:scanLine2 1.6s ease-in-out infinite}
+@keyframes scanLine2{0%,100%{top:20%}50%{top:80%}}
+.scan-view .sv-qr{width:70px;height:70px;margin:12px auto;background:repeating-conic-gradient(#fff 0% 25%,#1A1A1A 0% 50%) 50% / 6px 6px;border-radius:6px;border:2px solid rgba(255,255,255,.3)}
+.scan-view .sv-label{text-align:center;color:#A5B4FC;font-size:9px;font-weight:700;letter-spacing:.5px}
+.scan-view .sv-hint{text-align:center;color:rgba(255,255,255,.5);font-size:8px;margin-top:6px}
+
 .seg-card{padding:12px}
 .seg-card h4{font-size:10px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
 .seg-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:10px;color:rgba(255,255,255,.7)}
@@ -2726,17 +2775,17 @@ async function flow2(){
   await b2('Dạ, cảm ơn Chị Hương. Cô chờ Chị ghé nha!');
 }
 
-// ====== FLOW 4: WINX LITE — POS-OVER-CHAT (FULL OPERATIONS BY TEXT) ======
+// ====== FLOW 4: WINX LITE — POS-OVER-CHAT (TURN-BY-TURN, USER-PACED) ======
 async function flow4(){
   document.getElementById('c4').innerHTML='';
   document.querySelectorAll('[id^="lite-"]').forEach(e=>{if(e.classList)e.classList.remove('on')});
   liteCartClear();liteSetCust('—');
   liteSet('IDLE','—','—','—','—','—');
 
-  await sl(1400);
+  await sl(800);
   act(['lite-profile']);
   await b4('Chào Bác Năm! 👋 Con là trợ lý WinX. Bác nhắn con bất cứ lúc nào để bán hàng, nhập hàng, kiểm tra tồn, hoặc ghi sổ nợ nha.');
-  await sl(300);
+  await sl(200);
 
   // Quick suggestions as chips
   await b4(`<div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px">
@@ -2746,18 +2795,18 @@ async function flow4(){
     <span style="background:#EEF2FF;color:#6366F1;font-size:9px;font-weight:700;padding:3px 8px;border-radius:10px">Sổ nợ</span>
     <span style="background:#EEF2FF;color:#6366F1;font-size:9px;font-weight:700;padding:3px 8px;border-radius:10px">Báo cáo</span>
   </div>`);
-  await sl(800);
 
-  // === PART 1: SERVE A WALK-IN CUSTOMER (POS-OVER-CHAT) ===
+  // GATE 0: user clicks to start the walk-in scenario
+  await ch4([{label:'▶ Bắt đầu: Chị Hương vừa vào tiệm',value:'start',green:true}]);
+
+  // === PART 1: SERVE A WALK-IN CUSTOMER ===
   u4('chi hương vừa vào tiệm. bán dùm bác: 2 chai chinsu 500, 1 thùng omachi, 1 hộp sữa');
-  await sl(500);
+  await sl(400);
   act(['lite-intent','lite-pos','lite-retail']);
   liteSet('CHECKOUT_SALE','98%','Multi-SKU','—','—','bán 2 chinsu, 1 omachi, 1 sữa');
   liteSetCust('Chị Hương');
-  await sl(200);
 
   await b4('Dạ con hiểu! Đang lên đơn cho <b>Chị Hương</b> 👩:');
-  await sl(200);
 
   // Build the POS bill card
   liteCartAdd('Chin-Su 500ml',32000,2);
@@ -2770,32 +2819,154 @@ async function flow4(){
     <div class="mitm"><span class="mi-name">Vinamilk 180ml ×1</span><span class="mi-price">7.000đ</span></div>
     <div class="mtot" style="color:#6366F1"><span>Tạm tính</span><span>${sub.toLocaleString('vi-VN')}đ</span></div>
   </div></div>`);
-  await sl(300);
-
   act(['lite-value']);
-  await b4('Bác kiểm tra rồi chọn cách thanh toán giúp con nha:');
+
+  // ============================================================
+  // NEW: VOUCHER + OA SIGNUP + WiN MEMBER FLOW (before checkout)
+  // ============================================================
+
+  // GATE 1: user clicks to proceed to voucher offer
+  await ch4([{label:'Kiểm tra voucher trước khi thanh toán →',value:'voucher'}]);
+
+  await b4('À Bác ơi, WinX vừa thấy <b>Chị Hương</b> có 1 voucher từ <b>Unilever</b> tuần này. Con đẩy cho Chị quét liền nha:');
+
+  // Unilever voucher offer card
+  await cd4(`<div class="vch" id="vchCard">
+    <div class="vch-hdr">
+      <div class="vch-logo">UNI</div>
+      <div><div class="vch-brand">Unilever Vietnam</div></div>
+      <div class="vch-sub">HSD 20/04</div>
+    </div>
+    <div class="vch-body">
+      <div class="vch-title">Voucher GT Shopper</div>
+      <div class="vch-amount">-30.000đ</div>
+      <div class="vch-desc">Đơn từ 150k tại tạp hoá tham gia chương trình Unilever × WinX. Không cần sản phẩm Unilever nào.</div>
+      <div class="vch-code">UNI-GT-HUONG-0411</div>
+    </div>
+    <div class="vch-footer">
+      <span>📱 Quét từ Zalo của Chị Hương</span>
+      <span>✓ Đủ điều kiện</span>
+    </div>
+  </div>`);
+
+  // GATE 2: retailer hands phone / tells Chị Hương to scan
+  await ch4([{label:'Hướng dẫn Chị Hương quét voucher',value:'show',green:true}]);
+
+  // Scan animation card — Chị Hương's phone scanning the voucher
+  await b4('📱 <b>Chị Hương mở Zalo → "Ví voucher" → quét mã:</b>');
+  await cd4(`<div class="scan-view">
+    <div style="color:#A5B4FC;font-size:9px;font-weight:800;margin-bottom:6px;text-align:center;letter-spacing:.5px">📷 CAMERA ZALO CỦA CHỊ HƯƠNG</div>
+    <div class="sv-phone">
+      <div class="sv-qr"></div>
+      <div class="sv-label">Đang quét UNI-GT-HUONG-0411...</div>
+    </div>
+    <div class="sv-hint">Không cần cài app riêng · dùng camera Zalo sẵn có</div>
+  </div>`);
+
+  // GATE 3: scan complete
+  await ch4([{label:'✓ Đã quét xong',value:'scanned',green:true}]);
+
+  // Voucher redeemed
+  await b4('✅ <b>Voucher Unilever đã được áp dụng!</b>\n\nChị Hương được giảm <b>-30.000đ</b>. Đơn này từ <s>236.000đ</s> còn <b style="color:#27AE60">206.000đ</b>.');
+
+  // Show stamped voucher
+  await cd4(`<div class="vch redeemed" style="border-color:#27AE60;opacity:.95">
+    <div class="vch-hdr" style="background:linear-gradient(135deg,#065F46,#10B981)">
+      <div class="vch-logo" style="color:#065F46">UNI</div>
+      <div><div class="vch-brand">Unilever Vietnam</div></div>
+      <div class="vch-sub">Đã dùng</div>
+    </div>
+    <div class="vch-body" style="background:#F0FDF4">
+      <div class="vch-title" style="color:#065F46">Voucher GT Shopper</div>
+      <div class="vch-amount" style="color:#065F46">-30.000đ</div>
+      <div class="vch-desc">Áp dụng cho đơn #LITE-${Date.now().toString().slice(-6)} · Chị Hương</div>
+    </div>
+    <div class="vch-stamp">✓ REDEEMED</div>
+  </div>`);
+
+  // GATE 4: upsell — WiN member via WinCommerce Zalo OA
+  await ch4([{label:'Chị có thể ưu đãi thêm không?',value:'more'}]);
+
+  await b4('Có Bác! Chị Hương <b>chưa là WiN Member</b>. Chỉ cần follow <b>WinCommerce Zalo OA</b> là giảm thêm <b>-15.000đ</b> ngay đơn này, không mất phí, không cài app.');
+
+  // Zalo OA signup QR card
+  await cd4(`<div class="oa-card">
+    <div class="oa-card-hdr">
+      <div class="oa-logo">💬</div>
+      <div>
+        <div class="oa-title">WinCommerce Zalo OA</div>
+        <div class="oa-sub">Official Account · 847k người theo dõi</div>
+      </div>
+      <div class="oa-badge">✓ Chính chủ</div>
+    </div>
+    <div class="oa-card-body">
+      <div class="oa-perk">🎁 Follow OA nhận ngay <b>-15.000đ</b> đơn này + trở thành <b>WiN Member</b></div>
+      <div style="display:flex;gap:10px;align-items:center;margin:8px 0">
+        <div style="width:90px;height:90px;background:repeating-conic-gradient(#fff 0% 25%,#0068FF 0% 50%) 50% / 7px 7px;border-radius:8px;border:2px solid #0068FF;flex-shrink:0"></div>
+        <div style="text-align:left;flex:1">
+          <div style="font-size:10px;font-weight:800;color:#1B2A4A;margin-bottom:3px">Quét bằng Zalo</div>
+          <div style="font-size:8.5px;color:#65676B;line-height:1.5">1. Mở Zalo<br/>2. Quét mã<br/>3. Bấm "Quan tâm"<br/>4. Nhận mã WiN tự động</div>
+        </div>
+      </div>
+      <div style="font-size:8px;color:#65676B;font-style:italic">Không cần OTP · Tự động liên kết số Zalo</div>
+    </div>
+  </div>`);
+
+  // GATE 5: Chị Hương follows OA
+  await ch4([{label:'Chị Hương đã follow OA ✓',value:'followed',green:true}]);
+
+  await b4('🎉 <b>Chị Hương là WiN Member rồi!</b> Thêm <b>-15.000đ</b> nữa. Tổng đơn: <s>236.000đ</s> → <b style="color:#27AE60">191.000đ</b>.');
+
+  // ====== THE BIG "WHY THIS IS GOOD FOR YOU" MOMENT FOR BÁC NĂM ======
+  await sl(200);
+  await b4('Đợi con giải thích cho Bác <b>tại sao việc này tốt cho Bác</b> 👇');
+
+  await cd4(`<div class="gt-explain">
+    <div class="ge-hdr"><span class="ge-ico">🎯</span>Vì sao Bác nên giúp khách follow OA?</div>
+    <ul>
+      <li><b>Chị Hương giờ nhận được deal từ Bác hàng tuần</b> qua Zalo OA — những mặt hàng Bác nhập, Bác đang giảm giá, Bác đang có khuyến mãi.</li>
+      <li><b>Chị quay lại tiệm Bác thường xuyên hơn</b> — mỗi lần mở Zalo thấy deal là nhớ đến Bác.</li>
+      <li><b>Giỏ hàng lớn hơn</b> — vì Chị biết tiệm Bác có gì, giá tốt ra sao.</li>
+      <li><b>Bác không phải nhắn tin thủ công</b> — WinX gửi tự động, cá nhân hoá theo từng khách.</li>
+    </ul>
+    <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+      <span class="ge-kpi">📈 Khách quay lại +2,1×</span>
+      <span class="ge-kpi">🛒 Giỏ TB +18%</span>
+      <span class="ge-kpi">💰 Voucher do nhà tài trợ chi</span>
+    </div>
+  </div>`);
+
+  await sl(150);
+  await b4('Tóm lại: <b>Unilever chi tiền voucher, WinCommerce chi tiền signup, Bác không mất đồng nào</b> nhưng khách quay lại tiệm Bác mua nhiều hơn. Win-win 🤝');
+
+  // GATE 6: proceed to checkout
+  await ch4([{label:'Tuyệt! Thanh toán thôi →',value:'pay',green:true}]);
+
+  // ====== ORIGINAL PAYMENT FLOW — now at discounted total ======
+  const finalTotal=sub-30000-15000;
+  await b4('Bác chọn cách thanh toán cho Chị Hương nha (tổng đơn <b>'+finalTotal.toLocaleString('vi-VN')+'đ</b>):');
   let pay=await ch4([{label:'💵 Tiền mặt',value:'cash',green:true},{label:'📱 VietQR',value:'qr'},{label:'📒 Ghi sổ nợ',value:'debt',red:true}]);
 
   if(pay==='debt'){
-    await b4('Dạ, con ghi sổ nợ cho Chị Hương <b>'+sub.toLocaleString('vi-VN')+'đ</b>, mốc 11/04/2026. Con nhắc Zalo OA cho Chị sau 7 ngày.');
-    await sl(200);
+    await b4('Dạ, con ghi sổ nợ cho Chị Hương <b>'+finalTotal.toLocaleString('vi-VN')+'đ</b>, mốc 11/04/2026. Con nhắc Zalo OA cho Chị sau 7 ngày.');
     act(['lite-debt']);
-    await b4('<span style="color:#E30613;font-weight:700">✓ Đã ghi sổ nợ · +'+sub.toLocaleString('vi-VN')+'đ</span>\nCòn điều gì nữa không Bác?');
+    await b4('<span style="color:#E30613;font-weight:700">✓ Đã ghi sổ nợ · +'+finalTotal.toLocaleString('vi-VN')+'đ</span>');
   } else if(pay==='qr'){
     await b4('Dạ, con tạo mã VietQR cho Chị Hương liền:');
-    await cd4(vietQR(sub.toLocaleString('vi-VN')+'đ','BÁC NĂM - TẠP HOÁ 22 NCT','0912 345 678','Techcombank (TCB)','LITE-'+Date.now().toString().slice(-6)));
-    await sl(700);
+    await cd4(vietQR(finalTotal.toLocaleString('vi-VN')+'đ','BÁC NĂM - TẠP HOÁ 22 NCT','0912 345 678','Techcombank (TCB)','LITE-'+Date.now().toString().slice(-6)));
+    await sl(400);
     await b4('<span style="color:#27AE60;font-weight:700">✓ Chị Hương đã chuyển khoản thành công</span>\n💰 Số tiền đã vào tài khoản sinh lời TCB (3,5%/năm).');
   } else {
-    await b4('Dạ Bác nhận <b>'+sub.toLocaleString('vi-VN')+'đ</b> tiền mặt. Con ghi nhận đơn xong rồi ạ. Tuần này doanh thu của Bác đã tăng 8% so với tuần trước!');
+    await b4('Dạ Bác nhận <b>'+finalTotal.toLocaleString('vi-VN')+'đ</b> tiền mặt. Con ghi nhận đơn xong rồi ạ. 🎉');
   }
   liteCartClear();
 
-  await sl(800);
+  // GATE 7: next section
+  await ch4([{label:'Kiểm tra tồn Chin-Su →',value:'stock'}]);
 
   // === PART 2: QUICK INVENTORY CHECK ===
   u4('còn bao nhiêu chinsu');
-  await sl(500);
+  await sl(300);
   liteSet('CHECK_STOCK','96%','Chin-Su 500ml','32.000đ','14 chai','còn bao nhiêu chinsu');
   await b4('Dạ, tồn kho <b>Chin-Su 500ml</b> còn <b>14 chai</b> 📦\nTrung bình Bác bán ~3,3 chai/ngày → còn dùng được ~4 ngày.\n\nCon gợi ý Bác đặt thêm 1 thùng (12 chai) để không bị đứt hàng tuần sau. Đặt giúp Bác không?');
   let st=await ch4([{label:'Đặt 1 thùng',value:'y',green:true},{label:'Đặt 2 thùng',value:'y2'},{label:'Để Bác tính',value:'n'}]);
@@ -2813,7 +2984,6 @@ async function flow4(){
       <div class="zln"><span>Giao</span><span>Sáng mai, trước 9h</span></div>
       <div class="zln"><span>Tổng</span><span>${total.toLocaleString('vi-VN')}đ</span></div>
     </div>`);
-    await sl(250);
     await b4('Bác xác nhận đặt nha?');
     await ch4([{label:'OK đặt luôn',value:'yes',green:true},{label:'Sửa số lượng',value:'edit'}]);
     await b4('✓ Đã đặt! NPP sẽ giao sáng mai. Con nhắc Bác quét mã vạch khi nhận hàng để cập nhật tồn kho nha.');
@@ -2821,21 +2991,23 @@ async function flow4(){
     await b4('Dạ, khi nào Bác cần con đặt giúp cứ nhắn nha.');
   }
 
-  await sl(800);
+  // GATE 8: next section
+  await ch4([{label:'Xem sổ nợ Chị Bình →',value:'debt'}]);
 
   // === PART 4: DEBT REMINDER ===
   u4('chị bình hôm qua còn nợ bao nhiêu');
-  await sl(500);
+  await sl(300);
   liteSet('CHECK_DEBT','97%','—','—','—','chị bình còn nợ?');
   await b4('Dạ, <b>Chị Bình</b> 📒:\n• Tổng nợ: <b style="color:#E30613">85.000đ</b>\n• Từ: 06/04/2026 (5 ngày)\n• Lần cuối mua: 09/04\n\nBác muốn con gửi Zalo OA nhắc nhẹ không ạ?');
   await ch4([{label:'Gửi nhắc Zalo',value:'r',green:true},{label:'Để Bác tự nhắc',value:'s'}]);
   await b4('✓ Con đã gửi nhắc qua Zalo OA cho Chị Bình rồi. Lời nhắn rất lịch sự, không làm phiền ạ 🙏');
 
-  await sl(800);
+  // GATE 9: next section
+  await ch4([{label:'Xem báo cáo hôm nay →',value:'rpt'}]);
 
   // === PART 5: DAILY REPORT ===
   u4('hôm nay bác bán được bao nhiêu');
-  await sl(500);
+  await sl(300);
   liteSet('DAILY_REPORT','99%','—','—','—','doanh thu hôm nay?');
   await cd4(`<div class="zord" style="border-color:#27AE60;max-width:84%;padding:8px"><h4 style="color:#27AE60;margin-bottom:4px">📊 Hôm nay — 11/04/2026</h4>
     <div class="zln"><span>Doanh thu</span><span style="color:#27AE60;font-weight:700">1.847.000đ</span></div>
@@ -2846,7 +3018,6 @@ async function flow4(){
     <div class="zln"><span>So hôm qua</span><span style="color:#27AE60">+12%</span></div>
     <div class="zln"><span>Xu hướng tuần</span><span style="color:#27AE60">📈 Tăng đều</span></div>
   </div>`);
-  await sl(250);
   await b4('Hôm nay Bác bán tốt lắm! 🎉\n\nCon thấy Omachi & Chin-Su là 2 SKU chủ lực. Tuần sau Masan có khuyến mãi thùng Omachi giảm 8%, Bác có muốn con thông báo khi mở bán không?');
   await ch4([{label:'Có, thông báo con',value:'y',green:true},{label:'Thôi',value:'n'}]);
   await b4('Dạ! Con ghi nhớ rồi. Bác cần gì cứ nhắn Zalo cho con bất cứ lúc nào, 24/7 nha. Chúc Bác buôn may bán đắt! 🙏');
