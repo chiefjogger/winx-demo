@@ -427,6 +427,94 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="search"]:focus{o
 .gt-explain ul li::before{content:'→';position:absolute;left:0;top:3px;color:#F59E0B;font-weight:900}
 .gt-explain .ge-kpi{display:inline-flex;align-items:center;gap:4px;background:rgba(245,158,11,.15);padding:2px 8px;border-radius:10px;font-weight:800;color:#B45309;font-size:10px;margin-top:6px}
 
+/* =================== PANE 4 — NL RESTOCK + EMBEDDED FINANCING CARDS =================== */
+
+/* Multi-SKU stock-alert card */
+.stk-alert{background:#fff;border:1.5px solid #F59E0B;border-radius:12px;overflow:hidden;max-width:86%;box-shadow:0 2px 8px rgba(245,158,11,.12)}
+.stk-alert .sa-hdr{background:linear-gradient(135deg,#F59E0B,#FBBF24);color:#fff;padding:7px 10px;font-size:10.5px;font-weight:800;display:flex;align-items:center;gap:6px;letter-spacing:-.1px}
+.stk-alert .sa-body{padding:4px 0}
+.stk-alert .sa-row{display:grid;grid-template-columns:1fr 82px 44px;gap:6px;align-items:center;padding:7px 10px;border-bottom:1px dashed #F3F4F6;font-size:9.5px}
+.stk-alert .sa-row:last-child{border-bottom:none}
+.stk-alert .sa-row .sa-name{color:#1B2A4A;font-weight:700;line-height:1.3}
+.stk-alert .sa-row .sa-meta{font-size:8px;color:#9CA3AF;font-weight:500;display:block;margin-top:1px}
+.stk-alert .sa-row .sa-stk{font-size:9px;color:#6B7280;text-align:right;font-weight:600}
+.stk-alert .sa-row .sa-tag{font-size:7px;font-weight:900;padding:2px 5px;border-radius:4px;text-align:center;letter-spacing:.3px}
+.stk-alert .sa-row .sa-tag.mas{background:#FEE2E2;color:#B91C1C}
+.stk-alert .sa-row .sa-tag.wp{background:#D1FAE5;color:#065F46}
+.stk-alert .sa-row[data-sev="crit"] .sa-stk{color:#B91C1C;font-weight:800}
+.stk-alert .sa-row[data-sev="warn"] .sa-stk{color:#B45309;font-weight:700}
+.stk-alert .sa-foot{background:#FFFBEB;padding:6px 10px;font-size:8.5px;color:#92400E;display:flex;align-items:center;gap:6px;font-weight:600;border-top:1px solid #FEF3C7}
+
+/* Multi-line PO card (Masan Retail Supreme) */
+.po-multi{background:#fff;border:1.5px solid #6366F1;border-radius:12px;overflow:hidden;max-width:86%;box-shadow:0 2px 8px rgba(99,102,241,.12)}
+.po-multi .pom-hdr{background:linear-gradient(135deg,#4F46E5,#818CF8);color:#fff;padding:7px 10px;display:flex;align-items:center;gap:6px}
+.po-multi .pom-hdr .pom-logo{width:22px;height:22px;border-radius:5px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900}
+.po-multi .pom-hdr .pom-title{font-size:10.5px;font-weight:800;letter-spacing:-.1px}
+.po-multi .pom-hdr .pom-sub{font-size:8px;opacity:.85;margin-top:1px}
+.po-multi .pom-body{padding:4px 0}
+.po-multi .pom-row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:6px 10px;border-bottom:1px dashed #EEF2FF;font-size:9.5px}
+.po-multi .pom-row:last-child{border-bottom:none}
+.po-multi .pom-row .pom-name{color:#1B2A4A;font-weight:700;line-height:1.3}
+.po-multi .pom-row .pom-meta{font-size:8px;color:#9CA3AF;font-weight:500;display:block;margin-top:1px}
+.po-multi .pom-row .pom-pri{font-size:10px;color:#4F46E5;font-weight:800;white-space:nowrap}
+.po-multi .pom-sub-row{padding:6px 10px;border-top:1.5px dashed #C7D2FE;background:#F8FAFF;display:flex;justify-content:space-between;font-size:10px;color:#4F46E5;font-weight:800}
+.po-multi .pom-tot-row{padding:8px 10px;background:linear-gradient(135deg,#EEF2FF,#E0E7FF);display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:900;color:#312E81}
+.po-multi .pom-save{background:#F0FDF4;border-top:1px solid #BBF7D0;padding:6px 10px;font-size:9px;color:#065F46;font-weight:700;display:flex;align-items:center;gap:6px}
+
+/* Win+ Assortment card (3rd-party curated) */
+.winplus-card{background:#fff;border:1.5px solid #10B981;border-radius:12px;overflow:hidden;max-width:86%;box-shadow:0 2px 8px rgba(16,185,129,.12)}
+.winplus-card .wp-hdr{background:linear-gradient(135deg,#059669,#10B981);color:#fff;padding:7px 10px;display:flex;align-items:center;gap:8px}
+.winplus-card .wp-hdr .wp-logo{width:28px;height:28px;border-radius:6px;background:#fff;color:#065F46;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;letter-spacing:-.5px;flex-shrink:0}
+.winplus-card .wp-hdr .wp-title{font-size:10.5px;font-weight:800;letter-spacing:-.1px}
+.winplus-card .wp-hdr .wp-sub{font-size:8px;opacity:.85;margin-top:1px;line-height:1.3}
+.winplus-card .wp-body{padding:4px 0}
+.winplus-card .wp-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px dashed #D1FAE5;font-size:9.5px}
+.winplus-card .wp-row:last-child{border-bottom:none}
+.winplus-card .wp-row .wp-name{color:#1B2A4A;font-weight:700;line-height:1.3;flex:1}
+.winplus-card .wp-row .wp-brand{font-size:7px;font-weight:900;padding:1px 5px;border-radius:3px;margin-right:4px;letter-spacing:.3px;vertical-align:middle;color:#fff}
+.winplus-card .wp-row .wp-brand.coke{background:#DC2626}
+.winplus-card .wp-row .wp-brand.lavie{background:#0284C7}
+.winplus-card .wp-row .wp-pri{text-align:right;white-space:nowrap;flex-shrink:0}
+.winplus-card .wp-row .wp-now{font-size:10.5px;font-weight:800;color:#065F46;line-height:1.1}
+.winplus-card .wp-row .wp-old{font-size:7.5px;color:#9CA3AF;margin-top:2px}
+.winplus-card .wp-row .wp-old b{color:#059669;font-weight:800}
+.winplus-card .wp-tot{padding:7px 10px;background:linear-gradient(135deg,#D1FAE5,#A7F3D0);display:flex;justify-content:space-between;font-weight:800;font-size:11px;color:#065F46}
+.winplus-card .wp-foot{background:#F0FDF4;border-top:1px dashed #BBF7D0;padding:6px 10px;font-size:8.5px;color:#065F46;font-weight:600;line-height:1.4}
+
+/* Combined PO summary (both Masan + Win+ totals) */
+.po-combined{background:linear-gradient(135deg,#FAFAFA,#FFFFFF);border:1.5px solid #1B2A4A;border-radius:12px;overflow:hidden;max-width:86%;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+.po-combined .pc-hdr{background:linear-gradient(135deg,#1B2A4A,#334155);color:#fff;padding:7px 10px;font-size:10.5px;font-weight:800;display:flex;align-items:center;gap:6px}
+.po-combined .pc-row{padding:6px 10px;display:flex;justify-content:space-between;font-size:9.5px;border-bottom:1px dashed #F3F4F6}
+.po-combined .pc-row .pcl{color:#6B7280}
+.po-combined .pc-row .pcv{color:#1B2A4A;font-weight:700}
+.po-combined .pc-grand{padding:9px 10px;background:linear-gradient(135deg,#FEF3C7,#FDE68A);display:flex;justify-content:space-between;align-items:center;font-weight:900;font-size:13px;color:#78350F}
+
+/* Embedded Financing — WinX Pay Later card (inline in chat) */
+.ef-card{background:linear-gradient(180deg,#FFF7ED,#FFEDD5);border:1.5px solid #F97316;border-radius:12px;overflow:hidden;max-width:86%;box-shadow:0 3px 10px rgba(249,115,22,.15);position:relative}
+.ef-card .ef-hdr{background:linear-gradient(135deg,#EA580C,#F97316);color:#fff;padding:8px 10px;display:flex;align-items:center;gap:8px}
+.ef-card .ef-hdr .ef-logo{width:30px;height:30px;border-radius:7px;background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;letter-spacing:-.3px;flex-shrink:0}
+.ef-card .ef-hdr .ef-title{font-size:11px;font-weight:800;letter-spacing:-.1px}
+.ef-card .ef-hdr .ef-sub{font-size:8px;opacity:.9;margin-top:1px;line-height:1.3}
+.ef-card .ef-hdr .ef-pill{margin-left:auto;background:rgba(255,255,255,.25);padding:3px 8px;border-radius:10px;font-size:8px;font-weight:800;white-space:nowrap}
+.ef-card .ef-body{padding:4px 10px}
+.ef-card .ef-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:9.5px;border-bottom:1px dashed rgba(249,115,22,.2)}
+.ef-card .ef-row:last-child{border-bottom:none}
+.ef-card .ef-row .ef-l{color:#7C2D12;opacity:.8}
+.ef-card .ef-row .ef-v{color:#7C2D12;font-weight:800}
+.ef-card .ef-foot{background:rgba(254,202,202,.35);border-top:1px dashed rgba(249,115,22,.3);padding:6px 10px;font-size:7.5px;color:#991B1B;display:flex;align-items:center;gap:6px}
+.ef-sbv-pill{background:#E30613;color:#fff;font-weight:900;padding:1.5px 5px;border-radius:3px;font-size:7px;letter-spacing:.3px;flex-shrink:0}
+
+/* Payment options chooser (inside chat) */
+.pay-opts{background:#fff;border:1.5px solid #E5E7EB;border-radius:12px;overflow:hidden;max-width:86%;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.pay-opts .po-hdr{background:linear-gradient(135deg,#F9FAFB,#F3F4F6);color:#111827;padding:7px 10px;font-size:10px;font-weight:800;border-bottom:1px solid #E5E7EB}
+.pay-opts .po-opt{padding:8px 10px;display:flex;align-items:center;gap:8px;border-bottom:1px dashed #F3F4F6}
+.pay-opts .po-opt:last-child{border-bottom:none}
+.pay-opts .po-opt .po-ico{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.pay-opts .po-opt .po-txt{flex:1;font-size:9.5px;line-height:1.35}
+.pay-opts .po-opt .po-txt b{color:#1B2A4A;font-size:10px}
+.pay-opts .po-opt .po-txt .po-meta{color:#6B7280;font-size:8.5px;margin-top:1px;display:block}
+.pay-opts .po-opt .po-rec{background:#FEF3C7;color:#B45309;font-size:7px;font-weight:900;padding:2px 6px;border-radius:10px;letter-spacing:.3px}
+
 /* =================== ALPHA: GT STOREFRONT VIEW =================== */
 .alpha-view{padding:24px 28px;max-width:1680px;margin:0 auto}
 .alpha-hero{background:linear-gradient(135deg,rgba(249,115,22,.08),rgba(245,158,11,.04));border:1px solid rgba(249,115,22,.2);border-radius:14px;padding:16px 22px;margin-bottom:20px;display:flex;align-items:center;gap:18px;position:relative;overflow:hidden}
@@ -1492,12 +1580,12 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="search"]:focus{o
       <div class="dl">Thu nợ tuần: <span class="text-green-400 font-medium">+220k</span></div>
       <div class="dl">Nhắc tự động: <span class="text-white/70 font-medium">Zalo OA push</span></div>
     </div>
-    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="lite-value">
+    <div class="sys glass p-2.5 border border-white/5 rounded-xl" id="lite-finance">
       <div class="pulse-dot"></div>
-      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd"></div><div class="sl">GIÁ TRỊ LITE</div></div>
-      <div class="dl">Không cài app: <span class="text-purple-300 font-medium">100% qua Zalo</span></div>
-      <div class="dl">Onboard: <span class="text-white/70 font-medium">Follow OA là xong</span></div>
-      <div class="dl">Upsell: <span class="text-white/70 font-medium">Lite → WinX Shop</span></div>
+      <div class="flex items-center gap-1.5 mb-1.5"><div class="sd" style="background:#FF8C28;box-shadow:0 0 8px #FF8C28"></div><div class="sl" style="color:#FFB74D">EMBEDDED FINANCING</div></div>
+      <div class="dl">Pay Later: <span class="text-orange-300 font-medium" id="liteEFLimit">7,8tr khả dụng</span></div>
+      <div class="dl">Số dư TCB: <span class="text-green-400 font-medium" id="liteEFBal">4,8tr · 3,5%/năm</span></div>
+      <div class="dl">Credit score: <span class="text-white/70 font-medium" id="liteEFScore">782 · POS-driven</span></div>
     </div>
   </div>
 </div>
@@ -3339,6 +3427,11 @@ function liteCartAdd(n,p,q){
 }
 function liteCartClear(){liteCart=[];document.getElementById('liteCartSz').textContent='0 món';document.getElementById('liteCartTot').textContent='0đ';}
 function liteSetCust(c){document.getElementById('liteCust').textContent=c||'—';}
+function liteSetFin(limit,bal,score){
+  if(limit!==undefined)document.getElementById('liteEFLimit').textContent=limit;
+  if(bal!==undefined)document.getElementById('liteEFBal').textContent=bal;
+  if(score!==undefined)document.getElementById('liteEFScore').textContent=score;
+}
 
 // ====== FLOW 1: MT WINMART — MEAL OCCASION FIRST ======
 async function flow1(){
@@ -3730,37 +3823,218 @@ async function flow4(){
   }
   liteCartClear();
 
-  // GATE 7: next section
-  await ch4([{label:'Kiểm tra tồn Chin-Su →',value:'stock'}]);
+  // GATE 7: kick off end-of-day re-stock conversation
+  await ch4([{label:'Cuối ngày — Bác kiểm hàng & đặt thêm →',value:'stock'}]);
 
-  // === PART 2: QUICK INVENTORY CHECK ===
-  u4('còn bao nhiêu chinsu');
-  await sl(300);
-  liteSet('CHECK_STOCK','96%','Chin-Su 500ml','32.000đ','14 chai','còn bao nhiêu chinsu');
-  await b4('Dạ, tồn kho <b>Chin-Su 500ml</b> còn <b>14 chai</b> 📦\nTrung bình Bác bán ~3,3 chai/ngày → còn dùng được ~4 ngày.\n\nCon gợi ý Bác đặt thêm 1 thùng (12 chai) để không bị đứt hàng tuần sau. Đặt giúp Bác không?');
-  let st=await ch4([{label:'Đặt 1 thùng',value:'y',green:true},{label:'Đặt 2 thùng',value:'y2'},{label:'Để Bác tính',value:'n'}]);
+  // === PART 2: MULTI-SKU STOCK AUDIT (natural language) ===
+  u4('cuối ngày rồi, hàng nào sắp hết Bác cần đặt thêm?');
+  await sl(350);
+  act(['lite-intent','lite-retail']);
+  liteSet('STOCK_AUDIT · END_OF_DAY','97%','Multi-SKU (Masan + Win+)','—','5 SKU thấp','hàng nào sắp hết');
 
-  // === PART 3: REORDER (PO) ===
-  if(st!=='n'){
-    const boxes=st==='y2'?2:1;
-    liteSet('CREATE_PO','99%','Chin-Su 500ml thùng 12','32.000đ/chai','Có sẵn','đặt '+boxes+' thùng');
-    await b4('Dạ! Con chốt đơn:');
-    const total=boxes*360000;
-    await cd4(`<div class="zord" style="border-color:#6366F1;max-width:84%"><h4 style="color:#6366F1">📝 PO-LITE-${Date.now().toString().slice(-6)}</h4>
-      <div class="zln"><span>Chin-Su 500ml thùng 12</span><span>×${boxes}</span></div>
-      <div class="zln"><span>Đơn giá NPP</span><span>360.000đ/thùng</span></div>
-      <div class="zln"><span>NPP</span><span>Masan Retail Supreme</span></div>
-      <div class="zln"><span>Giao</span><span>Sáng mai, trước 9h</span></div>
-      <div class="zln"><span>Tổng</span><span>${total.toLocaleString('vi-VN')}đ</span></div>
+  await b4('Dạ con vừa quét tồn kho cuối ngày cho Bác. Có <b>5 SKU dưới ngưỡng an toàn</b>:');
+
+  await cd4(`<div class="stk-alert">
+    <div class="sa-hdr">⚠️ Hàng sắp hết — chốt sổ 11/04/2026</div>
+    <div class="sa-body">
+      <div class="sa-row" data-sev="warn">
+        <div><div class="sa-name">Chin-Su 500ml</div><div class="sa-meta">bán TB 3,3 chai/ngày</div></div>
+        <div class="sa-stk">14 chai · ~4 ngày</div>
+        <div class="sa-tag mas">MASAN</div>
+      </div>
+      <div class="sa-row" data-sev="crit">
+        <div><div class="sa-name">Tương ớt Chin-Su 250g</div><div class="sa-meta">bán TB 1,5 chai/ngày</div></div>
+        <div class="sa-stk">2 chai · ~1 ngày</div>
+        <div class="sa-tag mas">MASAN</div>
+      </div>
+      <div class="sa-row" data-sev="warn">
+        <div><div class="sa-name">Omachi tôm chua cay</div><div class="sa-meta">bán TB 4 gói/ngày</div></div>
+        <div class="sa-stk">8 gói · ~2 ngày</div>
+        <div class="sa-tag mas">MASAN</div>
+      </div>
+      <div class="sa-row" data-sev="crit">
+        <div><div class="sa-name">Coca-Cola lon 330ml</div><div class="sa-meta">bán TB 3 lon/ngày · non-Masan</div></div>
+        <div class="sa-stk">6 lon · ~2 ngày</div>
+        <div class="sa-tag wp">WIN+</div>
+      </div>
+      <div class="sa-row" data-sev="crit">
+        <div><div class="sa-name">Lavie 500ml</div><div class="sa-meta">bán TB 4 chai/ngày · non-Masan</div></div>
+        <div class="sa-stk">4 chai · ~1 ngày</div>
+        <div class="sa-tag wp">WIN+</div>
+      </div>
+    </div>
+    <div class="sa-foot">💡 Bác cứ nói tự nhiên — con sẽ chia đơn theo nguồn (Masan trực tiếp vs Win+ Assortment) để Bác trả tốt nhất.</div>
+  </div>`);
+
+  await sl(150);
+  await b4('Bác muốn đặt cả 5 SKU một lần, hay con tách ra cho Bác coi?');
+
+  // GATE 8: trigger NL re-stock — Masan SKUs first
+  await ch4([{label:'Đặt 3 SKU Masan trước nha',value:'mas',green:true}]);
+
+  // === PART 3: NL RE-STOCK — MASAN RETAIL SUPREME ===
+  u4('đặt giúp Bác 3 thùng Chin-Su 500ml, 2 thùng Omachi tôm, 1 thùng tương ớt 250g');
+  await sl(400);
+  liteSet('CREATE_PO · MASAN_RS','99%','3 SKU · 6 thùng','—','Có sẵn','3 thùng chinsu, 2 thùng omachi, 1 thùng tương ớt');
+  liteCartClear();
+  liteCartAdd('Chin-Su 500ml thùng 12',360000,3);
+  liteCartAdd('Omachi tôm thùng 30',165000,2);
+  liteCartAdd('Tương ớt Chin-Su 250g thùng 24',432000,1);
+
+  await b4('Dạ con hiểu! 3 SKU này đều của <b>Masan Consumer</b> — con đẩy thẳng qua <b>Retail Supreme</b> cho Bác (giá NPP gốc, không qua trung gian):');
+
+  await cd4(`<div class="po-multi">
+    <div class="pom-hdr">
+      <div class="pom-logo">RS</div>
+      <div>
+        <div class="pom-title">PO-MAS-${Date.now().toString().slice(-6)}</div>
+        <div class="pom-sub">Masan Retail Supreme · giao sáng mai trước 9h</div>
+      </div>
+    </div>
+    <div class="pom-body">
+      <div class="pom-row">
+        <div><div class="pom-name">Chin-Su 500ml (thùng 12) ×3</div><div class="pom-meta">36 chai · 30.000đ/chai NPP</div></div>
+        <div class="pom-pri">1.080.000đ</div>
+      </div>
+      <div class="pom-row">
+        <div><div class="pom-name">Omachi tôm chua cay (thùng 30) ×2</div><div class="pom-meta">60 gói · 5.500đ/gói NPP</div></div>
+        <div class="pom-pri">330.000đ</div>
+      </div>
+      <div class="pom-row">
+        <div><div class="pom-name">Tương ớt Chin-Su 250g (thùng 24) ×1</div><div class="pom-meta">24 chai · 18.000đ/chai NPP</div></div>
+        <div class="pom-pri">432.000đ</div>
+      </div>
+    </div>
+    <div class="pom-sub-row"><span>Tạm tính · 3 SKU Masan</span><span>1.842.000đ</span></div>
+    <div class="pom-save">💰 Tiết kiệm ~92.000đ vs NPP truyền thống (gom đơn từ Masan)</div>
+  </div>`);
+
+  await sl(200);
+  await b4('Còn 2 SKU non-Masan — Coca lon và Lavie. Bác có muốn con đặt luôn không, hay Bác tự gọi NPP nước ngọt như mọi khi?');
+
+  // GATE 9: re-stock Win+ assortment
+  await ch4([{label:'Coca + Lavie cũng đặt giúp Bác',value:'wp',green:true}]);
+
+  // === PART 4: NL RE-STOCK — WIN+ ASSORTMENT (3rd-party SKUs) ===
+  u4('Coca lon 330ml với Lavie cũng đang hết, đặt giúp Bác luôn');
+  await sl(400);
+  liteSet('CREATE_PO · WIN_PLUS','98%','2 SKU non-Masan','—','Có sẵn','coca + lavie qua win+ assortment');
+  liteCartAdd('Coca-Cola lon 330ml thùng 24',198000,2);
+  liteCartAdd('Lavie 500ml thùng 24',72000,2);
+
+  await b4('Dạ — 2 SKU này không phải hàng Masan, nhưng Bác <b>không cần gọi NPP riêng</b>. Masan có cái gọi là <b>Win+ Assortment</b>: catalog mở rộng gồm các SKU 3rd-party mà Masan đã đàm phán giá tốt hộ tạp hoá. Bác đặt cùng đơn Masan, giao 1 chuyến, giá rẻ hơn NPP truyền thống ~10%.');
+
+  await cd4(`<div class="winplus-card">
+    <div class="wp-hdr">
+      <div class="wp-logo">W+</div>
+      <div>
+        <div class="wp-title">Win+ Assortment</div>
+        <div class="wp-sub">Catalog 3rd-party · Masan-curated wholesale · gom cùng đơn Retail Supreme</div>
+      </div>
+    </div>
+    <div class="wp-body">
+      <div class="wp-row">
+        <div class="wp-name"><span class="wp-brand coke">COCA</span>Coca-Cola lon 330ml (thùng 24) ×2</div>
+        <div class="wp-pri"><div class="wp-now">396.000đ</div><div class="wp-old">vs NPP: 440k · <b>-10%</b></div></div>
+      </div>
+      <div class="wp-row">
+        <div class="wp-name"><span class="wp-brand lavie">LAVIE</span>Lavie 500ml (thùng 24) ×2</div>
+        <div class="wp-pri"><div class="wp-now">144.000đ</div><div class="wp-old">vs NPP: 160k · <b>-10%</b></div></div>
+      </div>
+    </div>
+    <div class="wp-tot"><span>Tạm tính · 2 SKU Win+</span><span>540.000đ</span></div>
+    <div class="wp-foot">💡 Bác tiết kiệm thêm 60.000đ vs NPP nước ngọt truyền thống. Giao cùng chuyến với đơn Masan sáng mai — không tốn công xếp 2 lần.</div>
+  </div>`);
+
+  // GATE 10: combined PO total + payment
+  await ch4([{label:'Gộp đơn — tổng bao nhiêu, trả thế nào?',value:'pay',green:true}]);
+
+  // === PART 5: COMBINED PO TOTAL + EMBEDDED FINANCING ===
+  u4('OK gộp 2 đơn lại, tổng bao nhiêu? Cách trả nào tốt nhất cho Bác?');
+  await sl(400);
+  liteSet('CHECKOUT_PO · EF_OFFER','99%','5 SKU · gộp đơn','2.382.000đ','—','tổng đơn, trả thế nào');
+
+  await b4('Dạ con gộp đơn cho Bác:');
+
+  await cd4(`<div class="po-combined">
+    <div class="pc-hdr">📦 Đơn nhập tổng — sáng mai 12/04, trước 9h</div>
+    <div class="pc-row"><span class="pcl">3 SKU Masan (Retail Supreme)</span><span class="pcv">1.842.000đ</span></div>
+    <div class="pc-row"><span class="pcl">2 SKU Win+ Assortment (Coca, Lavie)</span><span class="pcv">540.000đ</span></div>
+    <div class="pc-row"><span class="pcl">Phí giao hàng</span><span class="pcv" style="color:#27AE60">Miễn phí (gom đơn ≥1,5tr)</span></div>
+    <div class="pc-grand"><span>TỔNG ĐƠN NHẬP</span><span>2.382.000đ</span></div>
+  </div>`);
+
+  await sl(200);
+  await b4('Bác có 3 cách trả. Con phân tích nhanh giúp Bác:');
+
+  await cd4(`<div class="pay-opts">
+    <div class="po-hdr">Chọn cách thanh toán đơn nhập 2.382.000đ</div>
+    <div class="po-opt">
+      <div class="po-ico" style="background:#DCFCE7">💵</div>
+      <div class="po-txt"><b>Trừ thẳng tài khoản TCB</b><span class="po-meta">Số dư: 4,8tr · trả ngay, mất số dư sinh lời 3,5%/năm</span></div>
+    </div>
+    <div class="po-opt" style="background:linear-gradient(90deg,#FFF7ED,#fff)">
+      <div class="po-ico" style="background:linear-gradient(135deg,#FF8C28,#FF6B00);color:#fff;font-size:9px;font-weight:900">EF</div>
+      <div class="po-txt"><b>Pay Later — Embedded Financing</b><span class="po-meta">Trả sau 30 ngày · <b style="color:#27AE60">0% lãi đơn đầu Q2</b> · hạn mức còn 7,8tr</span></div>
+      <div class="po-rec">CON KHUYÊN</div>
+    </div>
+    <div class="po-opt">
+      <div class="po-ico" style="background:#DBEAFE">📱</div>
+      <div class="po-txt"><b>VietQR — chuyển từ NH khác</b><span class="po-meta">Quét QR · vào Masan Retail Supreme · 5 phút</span></div>
+    </div>
+  </div>`);
+
+  await sl(150);
+  await b4('Con khuyên Bác chọn <b>Pay Later</b> nha — giữ tiền mặt cho mua chợ và trả nợ sau khi bán hết hàng. Lãi 0% đơn này vì là đơn EF đầu tiên trong Q2. Sau 30 ngày con tự động trừ vào TCB cho Bác. Bác chốt nha?');
+
+  // GATE 11: pick Pay Later
+  let ef=await ch4([{label:'OK chọn Pay Later',value:'ef',green:true},{label:'Trừ TCB cho lành',value:'tcb'},{label:'Để Bác chuyển VietQR',value:'qr'}]);
+
+  if(ef==='ef'){
+    await sl(300);
+    liteSet('EF · PAY_LATER · APPROVED','99%','—','—','—','bật pay later cho đơn nhập');
+    await b4('🎉 <b>Pay Later đã kích hoạt</b> cho đơn này. Con vừa duyệt qua TCB, không cần Bác ký giấy gì cả — POS data của Bác đã chứng minh credit rồi.');
+
+    await cd4(`<div class="ef-card">
+      <div class="ef-hdr">
+        <div class="ef-logo">EF</div>
+        <div>
+          <div class="ef-title">WinX Pay Later</div>
+          <div class="ef-sub">Embedded Financing · Powered by Techcombank (TCB)</div>
+        </div>
+        <div class="ef-pill">✓ ĐÃ DUYỆT</div>
+      </div>
+      <div class="ef-body">
+        <div class="ef-row"><span class="ef-l">Số tiền tài trợ</span><span class="ef-v">2.382.000đ</span></div>
+        <div class="ef-row"><span class="ef-l">Hạn thanh toán</span><span class="ef-v">11/05/2026 · 30 ngày</span></div>
+        <div class="ef-row"><span class="ef-l">Lãi suất đơn này</span><span class="ef-v" style="color:#15803D">0% · đơn EF đầu Q2</span></div>
+        <div class="ef-row"><span class="ef-l">Hạn mức Pay Later</span><span class="ef-v">5.418.000đ còn / 7.800.000đ</span></div>
+        <div class="ef-row"><span class="ef-l">Credit score (POS-driven)</span><span class="ef-v">782 ↑ +4 sau đơn này</span></div>
+        <div class="ef-row"><span class="ef-l">Quyết định</span><span class="ef-v" style="color:#15803D">Tự động · không hồ sơ giấy</span></div>
+      </div>
+      <div class="ef-foot"><span class="ef-sbv-pill">SBV REVIEW</span><span>eKYC & rà soát quy định SBV cho embedded credit · pending production rollout</span></div>
     </div>`);
-    await b4('Bác xác nhận đặt nha?');
-    await ch4([{label:'OK đặt luôn',value:'yes',green:true},{label:'Sửa số lượng',value:'edit'}]);
-    await b4('✓ Đã đặt! NPP sẽ giao sáng mai. Con nhắc Bác quét mã vạch khi nhận hàng để cập nhật tồn kho nha.');
+
+    // Update side panel — limit drops, score bumps
+    liteSetFin('5,4tr khả dụng (-2,4tr)','4,8tr · 3,5%/năm','786 · POS-driven (+4)');
+
+    await sl(200);
+    await b4('Tóm lại cho Bác dễ nhớ:\n• Sáng mai NPP giao hàng — Bác chỉ cần quét mã vạch là tồn kho tự cập nhật.\n• Masan đã được TCB trả tiền hộ Bác — Bác không phải làm gì.\n• Bác trả khoản 2.382.000đ này vào <b>11/05/2026</b>, lãi 0%.\n• Tiền mặt trong tay Bác giữ nguyên để xoay vòng tuần này.');
+
+  } else if(ef==='tcb'){
+    await sl(300);
+    liteSet('CHECKOUT_PO · TCB_DEBIT','99%','—','—','—','trừ tcb');
+    await b4('Dạ, con trừ thẳng <b>2.382.000đ</b> vào tài khoản TCB của Bác. Số dư còn lại: <b>2.418.000đ</b>. Con vừa chuyển cho Masan Retail Supreme rồi.');
+    liteSetFin(undefined,'2,4tr · 3,5%/năm',undefined);
   } else {
-    await b4('Dạ, khi nào Bác cần con đặt giúp cứ nhắn nha.');
+    await sl(300);
+    liteSet('CHECKOUT_PO · VIETQR','99%','—','—','—','vietqr');
+    await cd4(vietQR('2.382.000đ','MASAN RETAIL SUPREME · PO-LITE-'+Date.now().toString().slice(-6),'1900 0668 8888','Techcombank (TCB)','PO-LITE-'+Date.now().toString().slice(-6)));
+    await sl(400);
+    await b4('✓ Bác chuyển khoản xong, Masan đã nhận tiền. Đơn nhập sáng mai sẽ được giao đúng giờ.');
   }
 
-  // GATE 8: next section
+  // GATE 12: close re-stock loop
   await ch4([{label:'Xem sổ nợ Chị Bình →',value:'debt'}]);
 
   // === PART 4: DEBT REMINDER ===
