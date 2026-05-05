@@ -515,6 +515,63 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="search"]:focus{o
 .pay-opts .po-opt .po-txt .po-meta{color:#6B7280;font-size:8.5px;margin-top:1px;display:block}
 .pay-opts .po-opt .po-rec{background:#FEF3C7;color:#B45309;font-size:7px;font-weight:900;padding:2px 6px;border-radius:10px;letter-spacing:.3px}
 
+/* =================== PANE 3 — E-INVOICE (NĐ 70/2025) + SPLIT PAYMENT =================== */
+
+/* Compliance pill (sell-screen header) */
+.einv-pill{display:inline-flex;align-items:center;gap:4px;background:#ECFDF5;color:#065F46;font-size:7px;font-weight:800;padding:2px 6px;border-radius:8px;margin-left:6px;letter-spacing:.2px;border:1px solid #A7F3D0;vertical-align:middle}
+.einv-pill::before{content:'';width:5px;height:5px;border-radius:50%;background:#10B981;box-shadow:0 0 6px #10B981;animation:zbb 1.5s infinite}
+
+/* Cart-level e-invoice toggle */
+.cart-einv{margin-top:8px;padding:8px;background:linear-gradient(135deg,#F0F9FF,#E0F2FE);border:1.5px solid #0EA5E9;border-radius:8px}
+.cart-einv .ce-row{display:flex;align-items:flex-start;gap:6px;cursor:pointer}
+.cart-einv .ce-row input[type=checkbox]{accent-color:#0EA5E9;margin-top:2px;width:14px;height:14px;flex-shrink:0}
+.cart-einv .ce-title{font-size:10px;font-weight:800;color:#075985;display:flex;align-items:center;gap:4px}
+.cart-einv .ce-tag{background:#FEE2E2;color:#991B1B;font-size:6.5px;font-weight:900;padding:1.5px 4px;border-radius:3px;letter-spacing:.3px}
+.cart-einv .ce-sub{font-size:8px;color:#0369A1;margin-top:2px;line-height:1.4}
+.cart-einv .ce-mode{display:flex;gap:6px;margin-top:6px;padding-top:6px;border-top:1px dashed #BAE6FD}
+.cart-einv .ce-mode label{flex:1;font-size:8.5px;color:#075985;display:flex;align-items:center;gap:4px;cursor:pointer;padding:3px 5px;background:rgba(255,255,255,.6);border:1px solid rgba(14,165,233,.2);border-radius:5px}
+.cart-einv .ce-mode label input{accent-color:#0EA5E9;width:11px;height:11px}
+.cart-einv .ce-mode label:has(input:checked){background:#fff;border-color:#0EA5E9;font-weight:700}
+
+/* Post-payment receipt drawer */
+.checkout-receipt{margin-top:8px;animation:slideUp .35s ease-out}
+@keyframes slideUp{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+.checkout-receipt .cr-success{background:linear-gradient(135deg,#10B981,#059669);color:#fff;padding:8px 10px;border-radius:8px 8px 0 0;font-size:10.5px;font-weight:800;display:flex;align-items:center;gap:6px}
+.checkout-receipt .cr-success .cr-amt{margin-left:auto;font-weight:900}
+
+/* E-invoice card (HĐĐT-MTT issued) */
+.einv-card{background:#fff;border:1.5px solid #0EA5E9;border-radius:8px;overflow:hidden;margin-top:6px;box-shadow:0 2px 6px rgba(14,165,233,.1)}
+.einv-card .ei-hdr{background:linear-gradient(135deg,#0284C7,#0EA5E9);color:#fff;padding:6px 8px;display:flex;align-items:center;gap:6px}
+.einv-card .ei-hdr .ei-ico{font-size:14px}
+.einv-card .ei-hdr .ei-tit{font-size:10px;font-weight:800;line-height:1.2}
+.einv-card .ei-hdr .ei-sub{font-size:7.5px;opacity:.9;margin-top:1px;line-height:1.3}
+.einv-card .ei-hdr .ei-pill{margin-left:auto;background:rgba(255,255,255,.25);padding:2px 6px;border-radius:8px;font-size:7px;font-weight:800;white-space:nowrap;display:inline-flex;align-items:center;gap:3px}
+.einv-card .ei-hdr .ei-pill::before{content:'';width:5px;height:5px;border-radius:50%;background:#86EFAC;box-shadow:0 0 6px #86EFAC;animation:zbb 1.2s infinite}
+.einv-card .ei-body{padding:4px 8px;background:#fff}
+.einv-card .ei-row{display:flex;justify-content:space-between;padding:3px 0;font-size:9px;border-bottom:1px dashed #E0F2FE}
+.einv-card .ei-row:last-child{border-bottom:none}
+.einv-card .ei-row .ei-l{color:#64748B}
+.einv-card .ei-row .ei-v{color:#075985;font-weight:700}
+.einv-card .ei-row .ei-v.ei-mono{font-family:ui-monospace,Menlo,monospace;font-size:8.5px;background:#EFF6FF;padding:1px 5px;border-radius:3px;letter-spacing:.3px}
+.einv-card .ei-foot{background:#F0F9FF;padding:5px 8px;font-size:7.5px;color:#075985;border-top:1px solid #E0F2FE;line-height:1.5;display:flex;align-items:center;gap:6px}
+.einv-card .ei-foot .ei-qr{width:22px;height:22px;background:repeating-conic-gradient(#fff 0% 25%,#0284C7 0% 50%) 50% / 4px 4px;border-radius:3px;border:1px solid #0284C7;flex-shrink:0}
+
+/* Split-payment card (2% auto-deduction for Pay Later) */
+.ef-split{background:linear-gradient(135deg,#FFF7ED,#FEF3C7);border:1.5px solid #F97316;border-radius:8px;margin-top:6px;padding:7px 9px;position:relative}
+.ef-split .es-hdr{font-size:9.5px;font-weight:800;color:#9A3412;margin-bottom:5px;display:flex;align-items:center;gap:5px}
+.ef-split .es-hdr .es-ef{background:linear-gradient(135deg,#FF8C28,#FF6B00);color:#fff;font-size:7px;font-weight:900;padding:1.5px 5px;border-radius:3px;letter-spacing:.3px}
+.ef-split .es-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:9px;color:#7C2D12}
+.ef-split .es-row .es-l{display:flex;align-items:center;gap:4px}
+.ef-split .es-gross{font-weight:800;color:#1B2A4A}
+.ef-split .es-out{color:#DC2626;font-weight:800}
+.ef-split .es-net{border-top:1.5px dashed rgba(249,115,22,.4);padding-top:5px;margin-top:3px;font-weight:800;font-size:9.5px}
+.ef-split .es-in{color:#15803D;font-weight:800}
+.ef-split .es-loan-tag{font-size:7px;background:rgba(255,140,40,.18);color:#9A3412;padding:1.5px 5px;border-radius:3px;font-weight:800;letter-spacing:.2px;font-family:ui-monospace,Menlo,monospace}
+.ef-split .es-progress{margin-top:6px;padding:4px 6px;background:rgba(255,255,255,.55);border:1px dashed rgba(249,115,22,.3);border-radius:5px;font-size:7.5px;color:#7C2D12;line-height:1.4}
+.ef-split .es-progress b{color:#9A3412}
+.ef-split .es-bar{height:3px;background:rgba(249,115,22,.15);border-radius:2px;margin-top:3px;overflow:hidden}
+.ef-split .es-bar-fill{height:100%;background:linear-gradient(90deg,#FF8C28,#FBBF24);border-radius:2px}
+
 /* =================== ALPHA: GT STOREFRONT VIEW =================== */
 .alpha-view{padding:24px 28px;max-width:1680px;margin:0 auto}
 .alpha-hero{background:linear-gradient(135deg,rgba(249,115,22,.08),rgba(245,158,11,.04));border:1px solid rgba(249,115,22,.2);border-radius:14px;padding:16px 22px;margin-bottom:20px;display:flex;align-items:center;gap:18px;position:relative;overflow:hidden}
@@ -1204,7 +1261,7 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="search"]:focus{o
             </div>
           </div>
           <div class="pr" style="border-color:rgba(255,140,40,.1)"><span style="font-size:10px">Tự động gửi tiết kiệm sau mỗi đơn</span><span class="pbdg" style="background:rgba(39,174,96,.1);color:#27AE60">Bật</span></div>
-          <div class="pr" style="border-color:rgba(255,140,40,.1)"><span style="font-size:10px">Pay Later — Vốn lưu động</span><span class="pbdg" style="background:rgba(255,140,40,.1);color:#FF8C28">Đang dùng</span></div>
+          <div class="pr" style="border-color:rgba(255,140,40,.1)"><span style="font-size:10px">Pay Later — Vốn lưu động<br/><span style="font-size:8px;color:#999">Auto trừ 2% mỗi đơn bán → trả nợ</span></span><span class="pbdg" style="background:rgba(255,140,40,.1);color:#FF8C28">Đang dùng</span></div>
           <div class="pr" style="border-bottom:none"><span style="font-size:10px">Bảo hiểm hàng tồn kho</span><span class="pbdg" style="background:rgba(0,104,255,.1);color:#0068FF">Mới</span></div>
           <div style="font-size:7px;padding:4px 0 0;text-align:right"><span style="background:#E30613;color:#fff;font-weight:700;padding:1px 4px;border-radius:3px;font-size:6px;letter-spacing:.3px">SBV REVIEW</span> <span style="color:#E30613;font-weight:600">eKYC & rà soát quy định SBV</span></div>
         </div>
@@ -1217,7 +1274,7 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="search"]:focus{o
 
       <!-- BÁN HÀNG -->
       <div id="pv-sell" style="display:none">
-        <div class="pc"><h3>🛒 Bán hàng nhanh <span class="badge" style="font-size:8px;background:#E7F3FF;color:#0068FF;padding:2px 7px;border-radius:10px;margin-left:auto">POS Zalo Mini-App</span></h3>
+        <div class="pc"><h3>🛒 Bán hàng nhanh <span class="badge" style="font-size:8px;background:#E7F3FF;color:#0068FF;padding:2px 7px;border-radius:10px;margin-left:auto">POS Zalo Mini-App</span><span class="einv-pill" title="Hoá đơn điện tử khởi tạo từ máy tính tiền — kết nối Tổng cục Thuế">HĐĐT-MTT · NĐ 70/2025</span></h3>
 
           <!-- BARCODE SCANNER -->
           <div class="bc-scan" id="bcScanBox" onclick="simulateBarcode()">
@@ -1249,6 +1306,22 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="search"]:focus{o
         <div class="pc" id="cartC" style="display:none"><h3>Đơn hàng hiện tại</h3>
           <div id="cartI"></div>
           <div class="flex justify-between items-center mt-2 pt-2 border-t border-gray-100"><span class="font-bold text-xs text-gray-800">Tổng:</span><span class="font-bold text-xs text-red-600" id="cartT">0đ</span></div>
+
+          <!-- HOÁ ĐƠN ĐIỆN TỬ KHỞI TẠO TỪ MÁY TÍNH TIỀN — Nghị định 70/2025/NĐ-CP -->
+          <div class="cart-einv">
+            <label class="ce-row">
+              <input type="checkbox" id="chkInvoice" checked/>
+              <div style="flex:1">
+                <div class="ce-title">🧾 Xuất hoá đơn điện tử cho khách <span class="ce-tag">BẮT BUỘC</span></div>
+                <div class="ce-sub">HĐĐT khởi tạo từ máy tính tiền · gửi real-time đến Tổng cục Thuế · NĐ 70/2025/NĐ-CP</div>
+              </div>
+            </label>
+            <div class="ce-mode">
+              <label><input type="radio" name="invMode" value="b2c" checked/>Cá nhân (B2C) · gửi Zalo/SMS</label>
+              <label><input type="radio" name="invMode" value="b2b"/>Doanh nghiệp (B2B) · cần MST</label>
+            </div>
+          </div>
+
           <!-- WiN MEMBER SIGNUP AT CHECKOUT -->
           <div id="winSignup" style="margin-top:8px;padding:8px;background:linear-gradient(135deg,#FFFBF0,#FFF8E8);border:1.5px solid #F59E0B;border-radius:8px">
             <label style="display:flex;align-items:flex-start;gap:6px;cursor:pointer">
@@ -1276,6 +1349,7 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="search"]:focus{o
             </div>
           </div>
         </div>
+        <div class="pc" id="checkoutReceipt" style="display:none;border-color:#0EA5E9;padding:0;overflow:hidden"></div>
       </div>
 
       <!-- ĐẶT HÀNG -->
@@ -3152,7 +3226,96 @@ function addC(n,p){const x=cart.find(c=>c.n===n);if(x)x.q++;else cart.push({n,p,
 function rC(){document.getElementById('cartC').style.display='block';document.getElementById('cartI').innerHTML=cart.map((c,i)=>`<div class="pr"><span>${c.n} x${c.q}</span><div class="flex items-center gap-1"><span class="font-bold">${(c.p*c.q).toLocaleString('vi-VN')}đ</span><button onclick="rmC(${i})" class="text-red-400 text-[10px] font-bold">X</button></div></div>`).join('');document.getElementById('cartT').textContent=cart.reduce((s,c)=>s+c.p*c.q,0).toLocaleString('vi-VN')+'đ';}
 function rmC(i){cart.splice(i,1);if(!cart.length)document.getElementById('cartC').style.display='none';else rC();}
 function clrC(){cart=[];document.getElementById('cartC').style.display='none';}
-function payC(){const t=cart.reduce((s,c)=>s+c.p*c.q,0);toast('✓ Thanh toán thành công · '+t.toLocaleString('vi-VN')+'đ · +3,5%/năm TCB','good');clrC();}
+// E-invoice (HĐĐT-MTT, NĐ 70/2025) sequence + Pay Later auto-amortisation state
+window.invSeq=window.invSeq||128;
+window.efRepaidMonth=window.efRepaidMonth||341560; // VND auto-repaid this month so far
+window.efOutstanding=window.efOutstanding||2382000; // current Pay Later draw (PO-MAS-2604-0418)
+window.efLoanRef='PO-MAS-2604-0418';
+function payC(){
+  const t=cart.reduce((s,c)=>s+c.p*c.q,0);
+  if(!t)return;
+  // Read e-invoice toggle state
+  const issueInv=document.getElementById('chkInvoice')?.checked!==false;
+  const modeRad=document.querySelector('input[name="invMode"]:checked');
+  const isB2B=modeRad&&modeRad.value==='b2b';
+  // Issue invoice number
+  window.invSeq++;
+  const invNo=String(window.invSeq).padStart(7,'0');
+  const seri='1C26TYY';
+  const cqtCode=Array.from({length:8},()=>Math.floor(Math.random()*36).toString(36)).join('').toUpperCase();
+  const vatRate=0.08;
+  const vatAmt=Math.round(t-t/(1+vatRate));
+  // 2% auto-amortisation toward Pay Later outstanding (capped to outstanding balance)
+  const efRate=0.02;
+  const efDed=Math.min(Math.round(t*efRate),window.efOutstanding);
+  const net=t-efDed;
+  window.efRepaidMonth+=efDed;
+  window.efOutstanding=Math.max(0,window.efOutstanding-efDed);
+  const pct=Math.min(100,Math.round(window.efRepaidMonth/2382000*100));
+  const buyerLine=isB2B
+    ?'CT TNHH HƯƠNG TRANG · MST 0312345678'
+    :'Chị Hương · SĐT 0912 *** 456 (gửi Zalo)';
+  // Build receipt content
+  const receipt=document.getElementById('checkoutReceipt');
+  receipt.style.display='block';
+  receipt.innerHTML=`
+    <div class="checkout-receipt">
+      <div class="cr-success">
+        <span style="font-size:14px">✓</span>
+        <span>Thanh toán thành công</span>
+        <span class="cr-amt">${t.toLocaleString('vi-VN')}đ</span>
+      </div>
+      ${issueInv?`
+      <div class="einv-card" style="margin:0;border-radius:0;border-top:none;border-left:none;border-right:none">
+        <div class="ei-hdr">
+          <span class="ei-ico">🧾</span>
+          <div>
+            <div class="ei-tit">HĐĐT-MTT đã phát hành</div>
+            <div class="ei-sub">Hoá đơn điện tử khởi tạo từ máy tính tiền · NĐ 70/2025/NĐ-CP</div>
+          </div>
+          <span class="ei-pill">REAL-TIME → GDT</span>
+        </div>
+        <div class="ei-body">
+          <div class="ei-row"><span class="ei-l">Số / Ký hiệu</span><span class="ei-v">${invNo} · ${seri}</span></div>
+          <div class="ei-row"><span class="ei-l">Mã của cơ quan thuế</span><span class="ei-v ei-mono">${cqtCode}</span></div>
+          <div class="ei-row"><span class="ei-l">Bên bán</span><span class="ei-v">Tạp hoá Cô Lan · MST 8123456789</span></div>
+          <div class="ei-row"><span class="ei-l">Bên mua</span><span class="ei-v">${buyerLine}</span></div>
+          <div class="ei-row"><span class="ei-l">VAT 8%</span><span class="ei-v">${vatAmt.toLocaleString('vi-VN')}đ</span></div>
+          <div class="ei-row"><span class="ei-l">Tổng thanh toán (đã VAT)</span><span class="ei-v">${t.toLocaleString('vi-VN')}đ</span></div>
+        </div>
+        <div class="ei-foot">
+          <div class="ei-qr"></div>
+          <div>Khách tra cứu tại <b>tracuuhoadon.gdt.gov.vn</b> · QR/link đã gửi qua Zalo<br/>T-VAN: M-Invoice (Misa) · không cần chữ ký số (NĐ 70/2025 §11)</div>
+        </div>
+      </div>`:''}
+      <div class="ef-split" style="margin:6px 8px 8px;border-radius:8px">
+        <div class="es-hdr"><span class="es-ef">EF</span>Tiền vào ví Bác · tự động chia theo Pay Later</div>
+        <div class="es-row"><span class="es-l">Tổng nhận từ khách</span><span class="es-gross">+${t.toLocaleString('vi-VN')}đ</span></div>
+        <div class="es-row"><span class="es-l">↳ Trừ 2% trả Pay Later <span class="es-loan-tag">${window.efLoanRef}</span></span><span class="es-out">−${efDed.toLocaleString('vi-VN')}đ</span></div>
+        <div class="es-row es-net"><span class="es-l">Vào tài khoản TCB · sinh lời 3,5%/năm</span><span class="es-in">+${net.toLocaleString('vi-VN')}đ</span></div>
+        <div class="es-progress">
+          Tiến độ trả Pay Later tháng 4: <b>${window.efRepaidMonth.toLocaleString('vi-VN')}đ</b> / 2.382.000đ · còn nợ <b>${window.efOutstanding.toLocaleString('vi-VN')}đ</b>
+          <div class="es-bar"><div class="es-bar-fill" style="width:${pct}%"></div></div>
+        </div>
+      </div>
+    </div>`;
+  // Update bottom EF bar
+  const finBar=document.getElementById('winxFinBar');
+  if(finBar){
+    finBar.style.display='flex';
+    finBar.innerHTML=`
+      <div style="width:16px;height:16px;border-radius:4px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:900;color:#fff">EF</div>
+      <div style="flex:1;font-size:8px;color:#fff"><b>Tự động trả Pay Later</b> · −${efDed.toLocaleString('vi-VN')}đ đơn này · còn nợ ${window.efOutstanding.toLocaleString('vi-VN')}đ</div>
+      <span style="font-size:10px;color:rgba(255,255,255,.6);cursor:pointer" onclick="document.getElementById('winxFinBar').style.display='none'">&#x2715;</span>`;
+  }
+  // Toasts
+  if(issueInv)toast('🧾 HĐĐT '+invNo+' đã gửi Zalo · mã CQT cấp tự động','good');
+  toast('✓ '+t.toLocaleString('vi-VN')+'đ · −'+efDed.toLocaleString('vi-VN')+'đ trả Pay Later (2%)','good');
+  // Clear cart, auto-dismiss receipt
+  clrC();
+  clearTimeout(window._receiptT);
+  window._receiptT=setTimeout(()=>{receipt.style.display='none';receipt.innerHTML='';},9000);
+}
 
 // TOAST helper (non-blocking feedback)
 function toast(msg,kind){
